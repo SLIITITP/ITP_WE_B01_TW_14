@@ -1,15 +1,15 @@
 Please go under edit and edit this file as needed for your project
 
 # Project Name - BUSINESS MANAGEMENT SYSTEM FOR SOUTHERN AGRO SERVE (Pvt) Ltd 
-# Batch - ITP_WE_B01_TW14
-### Group Leader - IT21234484 - Jayasinghe P.T. (GITHUB ID)
-### Member 2     - IT21286278  - Illesinghe A. T. (GITHUB ID)
-### Member 3     - IT21209420  - Hasaranga M.D.E. (GITHUB ID)
+# Batch - ITP_WE_B01_14
+### Group Leader - IT21234484 - Jayasinghe P.T. (Pasindujay1)
+### Member 2     - IT21286278  - Illesinghe A. T. (IT21286278)
+### Member 3     - IT21209420  - Hasaranga M.D.E. (IT21209420)
 ### Member 4     - IT21219498  - Vithanage C.S.  (GITHUB ID)
 ### Member 5     - IT21440236 - Kodithuwakku Y.S.(IT21440236)
-### Member 6     - IT21440922  - Dewmin T.Y.(GITHUB ID)
-### Member 7     - IT21312908  - Fernando K.R.A.W.(GITHUB ID)
-### Member 8     - IT21307058  - Dayananda I.H.M.B. L. (GITHUB ID)
+### Member 6     - IT21440922  - Dewmin T.Y.(yasidew)
+### Member 7     - IT21312908  - Fernando K.R.A.W.(it21312908)
+### Member 8     - IT21307058  - Dayananda I.H.M.B. L. (IT21307058)
 
 #### Brief Description of Project -  
 
