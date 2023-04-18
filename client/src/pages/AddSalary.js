@@ -12,7 +12,7 @@ const CreateSalary = () => {
   const { toast } = useContext(ToastContext);
 
   const [userDetails, setUserDetails] = useState({
-    eid: "",
+    empid: "",
     salary: "",
     date: "",
     bonus: "",
@@ -37,10 +37,10 @@ const CreateSalary = () => {
     });
     const result = await res.json();
     if (!result.error) {
-      toast.success(`Salary [${userDetails.eid}] Transfer Complete`);
+      toast.success(`Salary [${userDetails.empid}] Transfer Complete`);
 
       setUserDetails({
-        eid: "",
+        empid: "",
         salary: "",
         date: "",
         bonus: "",
@@ -52,7 +52,7 @@ const CreateSalary = () => {
 
   const handleClear = () => {
     setUserDetails({
-      eid: "",
+      empid: "",
       salary: "",
       date: "",
       bonus: "",
@@ -63,17 +63,17 @@ const CreateSalary = () => {
     <>
       <h2>Employee Salary Details</h2>
       <form onSubmit={handleSubmit}>
-        {/* EID */}
+        {/* empid */}
         <div className="form-group">
-          <label htmlFor="eidInput" className="form-label mt-4">
+          <label htmlFor="empidInput" className="form-label mt-4">
             Enter Employee ID
           </label>
           <input
             type="text"
             className="form-control"
-            id="eidInput"
-            name="eid"
-            value={userDetails.eid}
+            id="empidInput"
+            name="empid"
+            value={userDetails.empid}
             onChange={handleInputChange}
             placeholder="EM001"
             required

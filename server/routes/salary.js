@@ -2,11 +2,12 @@ const router = require("express").Router();
 const mongoose = require("mongoose");
 
 const { validateSalary, Salary } = require("../models/Salary");
+const { Employee } = require("../models/Employee");
 const auth = require("../middlewares/auth");
 
 //add salary
 router.post("/salary", auth, async (req, res) => {
-  const { eid, salary, date, bonus } = req.body;
+  const { empid, salary, date, bonus } = req.body;
 
   const { error } = validateSalary(req.body);
 
@@ -14,8 +15,14 @@ router.post("/salary", auth, async (req, res) => {
     return res.status(400).json({ error: error.details[0].message });
   }
   try {
+    // Verify if the empid exists in the employee database
+    const employee = await Employee.findOne({ empid });
+    if (!employee) {
+      return res.status(400).json({ error: "Employee does not exist" });
+    }
+
     const newSalary = new Salary({
-      eid,
+      empid: employee._id,
       salary,
       date,
       bonus,

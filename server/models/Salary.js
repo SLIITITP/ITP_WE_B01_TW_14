@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Joi = require("joi");
 
 const SalarySchema = new mongoose.Schema({
-  eid: {
+  empid: {
     type: String,
     required: [true, "Please add a employee id"],
   },
@@ -29,7 +29,7 @@ const Salary = new mongoose.model("Salary", SalarySchema);
 
 const validateSalary = (data) => {
   const schema = Joi.object({
-    eid: Joi.string().min(5).max(5).required(),
+    empid: Joi.string().min(5).max(5).required(),
     salary: Joi.number().min(5).max(100000000000).required(),
     date: Joi.string().min(4).max(100).required(),
     bonus: Joi.number().min(5).max(100000000000).required(),
