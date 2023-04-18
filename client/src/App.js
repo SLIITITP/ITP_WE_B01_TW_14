@@ -16,6 +16,7 @@ import AllEmployee from "./pages/AllEmployees";
 import EditEmployee from "./pages/EditEmployee";
 import CreateSalary from "./pages/AddSalary";
 import CreateAttendance from "./pages/AddAttendance";
+import Report from "./pages/CreateReport";
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
               <Route path="/editemp/:id" element={<EditEmployee />} />
               <Route path="/addsalary" element={<CreateSalary />} />
               <Route path="/addattendance" element={<CreateAttendance />} />
+              <Route path="/createreport" element={<Report />} />
             </Switch>
           </Layout>
         </AuthContextProvider>

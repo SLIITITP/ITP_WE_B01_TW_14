@@ -62,6 +62,11 @@ const Navbar = ({ title = "Southern Agro" }) => {
                     <a className="nav-link">Salary</a>
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link to="/createreport">
+                    <a className="nav-link">Report</a>
+                  </Link>
+                </li>
                 <li
                   className="nav-item"
                   onClick={() => {

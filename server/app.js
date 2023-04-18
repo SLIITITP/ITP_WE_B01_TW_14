@@ -24,6 +24,7 @@ app.use("/api/", require("./routes/contact"));
 app.use("/api/", require("./routes/employee"));
 app.use("/api/", require("./routes/salary"));
 app.use("/api/", require("./routes/attendance"));
+app.use("/api/", require("./routes/report"));
 
 //if our token was valid then we will have the user in the request object.
 // app.get("/protected", auth, (req, res) => {
