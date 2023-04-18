@@ -2,11 +2,12 @@ const router = require("express").Router();
 const mongoose = require("mongoose");
 
 const { validateAttendance, Attendance } = require("../models/Attendance");
+const { Employee } = require("../models/Employee");
 const auth = require("../middlewares/auth");
 
 //Mark attendance
 router.post("/attendance", auth, async (req, res) => {
-  const { eid, date, entrytime, offtime } = req.body;
+  const { empid, date, entrytime, offtime } = req.body;
 
   const { error } = validateAttendance(req.body);
 
@@ -14,8 +15,14 @@ router.post("/attendance", auth, async (req, res) => {
     return res.status(400).json({ error: error.details[0].message });
   }
   try {
+    // Verify if the empid exists in the employee database
+    const employee = await Employee.findOne({ empid });
+    if (!employee) {
+      return res.status(400).json({ error: "Employee does not exist" });
+    }
+
     const newAttendance = new Attendance({
-      eid,
+      empid: employee._id,
       date,
       entrytime,
       offtime,

@@ -12,7 +12,7 @@ const CreateAttendance = () => {
   const { toast } = useContext(ToastContext);
 
   const [userDetails, setUserDetails] = useState({
-    eid: "",
+    empid: "",
     date: "",
     entrytime: "",
     offtime: "",
@@ -37,12 +37,14 @@ const CreateAttendance = () => {
     });
     const result = await res.json();
     if (!result.error) {
-      toast.success(`Attendace of [${userDetails.eid}] Recorded Successfully`);
+      toast.success(
+        `Attendace of [${userDetails.empid}] Recorded Successfully`
+      );
       toast.success(`Entry Time [${userDetails.entrytime}]`);
       toast.success(`Off Time [${userDetails.offtime}]`);
 
       setUserDetails({
-        eid: "",
+        empid: "",
         date: "",
         entrytime: "",
         offtime: "",
@@ -54,7 +56,7 @@ const CreateAttendance = () => {
 
   const handleClear = () => {
     setUserDetails({
-      eid: "",
+      empid: "",
       date: "",
       entrytime: "",
       offtime: "",
@@ -65,17 +67,17 @@ const CreateAttendance = () => {
     <>
       <h2>Attendance</h2>
       <form onSubmit={handleSubmit}>
-        {/* EID */}
+        {/* empid */}
         <div className="form-group">
-          <label htmlFor="eidInput" className="form-label mt-4">
+          <label htmlFor="empidInput" className="form-label mt-4">
             Enter Employee ID
           </label>
           <input
             type="text"
             className="form-control"
-            id="eidInput"
-            name="eid"
-            value={userDetails.eid}
+            id="empidInput"
+            name="empid"
+            value={userDetails.empid}
             onChange={handleInputChange}
             placeholder="EM001"
             required

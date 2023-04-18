@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Joi = require("joi");
 
 const AttendanceSchema = new mongoose.Schema({
-  eid: {
+  empid: {
     type: String,
     required: [true, "Please enter a employee id"],
   },
@@ -29,7 +29,7 @@ const Attendance = new mongoose.model("Attendance", AttendanceSchema);
 
 const validateAttendance = (data) => {
   const schema = Joi.object({
-    eid: Joi.string().min(5).max(5).required(),
+    empid: Joi.string().min(5).max(5).required(),
     date: Joi.string().min(4).max(100).required(),
     entrytime: Joi.string().min(4).max(100).required(),
     offtime: Joi.string().min(4).max(100).required(),
