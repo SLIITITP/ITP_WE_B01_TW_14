@@ -86,6 +86,10 @@ const AllEmployee = () => {
       (employee) =>
         employee.empid.toLowerCase().includes(searchInput.toLowerCase()) ||
         employee.firstname.toLowerCase().includes(searchInput.toLowerCase()) ||
+        employee.department.toLowerCase().includes(searchInput.toLowerCase()) ||
+        employee.designation
+          .toLowerCase()
+          .includes(searchInput.toLowerCase()) ||
         employee.lastname.toLowerCase().includes(searchInput.toLowerCase())
     );
     console.log(newSearchUser);
