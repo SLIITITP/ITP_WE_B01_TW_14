@@ -12,6 +12,8 @@ const AllEmployee = () => {
   const [loading, setLoading] = useState(false);
   const [modalData, setModalData] = useState({}); //by default it is an empty object
   const [employees, setEmployees] = useState([]);
+  // const [originalEmployees, setOriginalEmployees] = useState([]);
+  // const [employees, setEmployees] = useState(initialEmployees);
   const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
@@ -66,9 +68,19 @@ const AllEmployee = () => {
     }
   };
 
+  // useEffect(() => {
+  //   setEmployees([]);
+  //   setOriginalEmployees([]);
+  // }, []);
+
   //e is the event object, which is passed by default to the event handler function
   const handleSearchSubmit = (event) => {
     event.preventDefault();
+
+    // if (!searchInput) {
+    //   setEmployees(originalEmployees);
+    //   return;
+    // }
 
     const newSearchUser = employees.filter(
       (employee) =>
@@ -80,6 +92,12 @@ const AllEmployee = () => {
     setEmployees(newSearchUser);
   };
 
+  const handleInputChange = (event) => {
+    setSearchInput(event.target.value);
+    if (event.target.value === "") {
+      setEmployees([]);
+    }
+  };
   return (
     <>
       <div>
@@ -92,12 +110,33 @@ const AllEmployee = () => {
           <Spinner splash="Loading Employees..." />
         ) : (
           <>
+            <form className="d-flex" onSubmit={handleSearchSubmit}>
+              <input
+                type="text"
+                name="searchInput"
+                id="searchInput"
+                className="form-control my-2"
+                placeholder="Search Employee"
+                value={searchInput}
+                // onChange={searchHandle}
+                // onChange={handleInputChange}
+                onChange={(e) => {
+                  handleInputChange(e);
+                  setSearchInput(e.target.value);
+                  handleSearchSubmit(e); // call the search function on each input change
+                }}
+                // onChange={(e) => setSearchInput(e.target.value)}
+              />
+              <button type="submit" className="btn btn-info mx-2 my-2">
+                Search
+              </button>
+            </form>
             {employees ? (
               employees.length === 0 ? (
                 <h3>No Employees Found</h3>
               ) : (
                 <>
-                  <form className="d-flex" onSubmit={handleSearchSubmit}>
+                  {/* <form className="d-flex" onSubmit={handleSearchSubmit}>
                     <input
                       type="text"
                       name="searchInput"
@@ -105,12 +144,17 @@ const AllEmployee = () => {
                       className="form-control my-2"
                       placeholder="Search Employee"
                       value={searchInput}
-                      onChange={(e) => setSearchInput(e.target.value)}
+                      onChange={handleInputChange}
+                      // onChange={(e) => {
+                      //   setSearchInput(e.target.value);
+                      //   handleSearchSubmit(e); // call the search function on each input change
+                      // }}
+                      // onChange={(e) => setSearchInput(e.target.value)}
                     />
                     <button type="submit" className="btn btn-info mx-2 my-2">
                       Search
                     </button>
-                  </form>
+                  </form> */}
                   <p>
                     Your Total Contacts: <strong>{employees.length}</strong>{" "}
                   </p>
