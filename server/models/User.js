@@ -20,5 +20,3 @@ const User = new mongoose.model("User", UserSchema);
 
 //In order to use this model in other files, we need to export it
 module.exports = User;
-
-//zuri\server\models\User.js

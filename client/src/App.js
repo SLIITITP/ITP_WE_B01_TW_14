@@ -17,6 +17,7 @@ import EditEmployee from "./pages/EditEmployee";
 import CreateSalary from "./pages/AddSalary";
 import CreateAttendance from "./pages/AddAttendance";
 import Report from "./pages/CreateReport";
+import Index from "./pages";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
           <Layout>
             <Switch>
               <Route path="/" element={<Home />} />
+              <Route path="/index" element={<Index />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/create" element={<CreateContact />} />
