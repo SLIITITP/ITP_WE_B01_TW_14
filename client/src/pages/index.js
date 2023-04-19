@@ -22,7 +22,7 @@ const Index = () => {
           </Link>
         </div>
         <div>
-          <Link className="btn btn-info" to={"/"} role="button">
+          <Link className="btn btn-primary" to={"/"} role="button">
             Dashboard
           </Link>
         </div>

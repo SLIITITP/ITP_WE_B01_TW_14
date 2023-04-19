@@ -39,7 +39,7 @@ const Home = () => {
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/index"}
-              className="btn btn-success btn-lg btn-block button-link"
+              className="btn btn-success btn-lg btn-block  button-link"
             >
               Customer and Customer Order Management
             </Link>
@@ -47,7 +47,7 @@ const Home = () => {
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/index"}
-              className="btn btn-success btn-lg btn-block button-link"
+              className="btn btn-success btn-lg btn-block  button-link"
             >
               User Management
             </Link>
@@ -55,7 +55,7 @@ const Home = () => {
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/index"}
-              className="btn btn-success btn-lg btn-block button-link"
+              className="btn btn-success btn-lg btn-block  button-link"
             >
               Payment management system
             </Link>
@@ -63,7 +63,7 @@ const Home = () => {
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/index"}
-              className="btn btn-success btn-lg btn-block button-link"
+              className="btn btn-success btn-lg btn-block  button-link"
             >
               Employee Management
             </Link>
@@ -71,7 +71,7 @@ const Home = () => {
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/index"}
-              className="btn btn-success btn-lg btn-block button-link"
+              className="btn btn-success btn-lg btn-block  button-link"
             >
               Inventory control management
             </Link>
@@ -79,7 +79,7 @@ const Home = () => {
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/index"}
-              className="btn btn-success btn-lg btn-block button-link"
+              className="btn btn-success btn-lg btn-block  button-link"
             >
               Supplier Management
             </Link>
@@ -87,7 +87,7 @@ const Home = () => {
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/index"}
-              className="btn btn-success btn-lg btn-block button-link"
+              className="btn btn-success btn-lg btn-block  button-link"
             >
               Vehicle Management
             </Link>
