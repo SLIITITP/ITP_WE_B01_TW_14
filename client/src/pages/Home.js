@@ -12,10 +12,16 @@ const Home = () => {
   useEffect(() => {
     !user && navigate("/login", { replace: true });
   }, []);
+
+  const now = new Date();
+  const hour = now.getHours();
+  const greeting = hour < 12 ? "Good morning" : "Good evening";
+
   return (
     <>
       <div className="jumbotron">
-        <h1 className="display-4">Welcome {user ? user.name : null}</h1>
+        <h1 className="display-4">{greeting}!</h1>
+        <h3>Welcome {user ? user.name : null}</h3>
         <hr className="my-4" />
         {/* <div>
           <Link className="btn btn-info mb-2" to={"/createemp"} role="button">
