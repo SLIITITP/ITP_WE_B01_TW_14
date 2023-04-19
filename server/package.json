@@ -27,6 +27,7 @@
     "nodemailer": "^6.9.1",
     "nodemon": "^2.0.22",
     "pdfkit": "^0.13.0",
+    "pdfkit-table": "^0.1.99",
     "stream-http": "^3.2.0",
     "style-loader": "^3.3.2"
   }

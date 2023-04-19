@@ -13,7 +13,7 @@ function Report() {
       const url = window.URL.createObjectURL(new Blob([res.data]));
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", "report.pdf");
+      link.setAttribute("download", "Southern Agro Serve (Pvt) Ltd.pdf");
       document.body.appendChild(link);
       link.click();
     } catch (err) {
@@ -24,7 +24,11 @@ function Report() {
 
   return (
     <div>
-      <button onClick={handleDownload} disabled={loading}>
+      <button
+        className="btn btn-success"
+        onClick={handleDownload}
+        disabled={loading}
+      >
         {loading ? "Generating report..." : "Download Report"}
       </button>
     </div>
