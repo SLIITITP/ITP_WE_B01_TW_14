@@ -32,7 +32,8 @@ router.get("/report", async (req, res) => {
     doc.fontSize(20).fillColor("black").text("Employee Details:\n");
     employees.forEach((employee) => {
       doc.fontSize(18).text(
-        `- Name of employee : ${employee.firstname} ${employee.lastname}\n
+        `Employee ID : ${employee.empid}\n
+        Name of employee : ${employee.firstname} ${employee.lastname}\n
       Email : ${employee.email}\n
       Contact Number : ${employee.phone}\n
       Date Joined : ${employee.datejoined}\n
