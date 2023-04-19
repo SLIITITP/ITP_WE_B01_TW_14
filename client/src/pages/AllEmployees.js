@@ -164,17 +164,62 @@ const AllEmployee = () => {
                   </p>
                   <table className="table table-hover">
                     <thead>
-                      <tr className="table-dark">
-                        <th scope="col">Employee ID </th>
-                        <th scope="col"> First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Contact Number</th>
-                        <th scope="col">Date Joined</th>
-                        <th scope="col">Department</th>
-                        <th scope="col">Designation</th>
+                      <tr>
+                        <th
+                          scope="col"
+                          style={{ width: "10%", whiteSpace: "nowrap" }}
+                        >
+                          Employee ID
+                        </th>
+                        <th
+                          scope="col"
+                          style={{ width: "15%", whiteSpace: "nowrap" }}
+                        >
+                          First Name
+                        </th>
+                        <th
+                          scope="col"
+                          style={{ width: "15%", whiteSpace: "nowrap" }}
+                        >
+                          Last Name
+                        </th>
+                        <th
+                          scope="col"
+                          style={{
+                            width: "20%",
+                            whiteSpace: "nowrap",
+                            textAlign: "center",
+                          }}
+                        >
+                          Email
+                        </th>
+                        <th
+                          scope="col"
+                          style={{ width: "10%", whiteSpace: "nowrap" }}
+                        >
+                          Contact Number
+                        </th>
+                        <th
+                          scope="col"
+                          style={{ width: "10%", whiteSpace: "nowrap" }}
+                        >
+                          Date Joined
+                        </th>
+                        <th
+                          scope="col"
+                          style={{ width: "10%", whiteSpace: "nowrap" }}
+                        >
+                          Department
+                        </th>
+                        <th
+                          scope="col"
+                          style={{ width: "10%", whiteSpace: "nowrap" }}
+                        >
+                          Designation
+                        </th>
                       </tr>
                     </thead>
+
                     <tbody>
                       {employees.map((employee) => (
                         <tr
