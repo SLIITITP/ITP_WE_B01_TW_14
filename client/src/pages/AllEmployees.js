@@ -106,9 +106,16 @@ const AllEmployee = () => {
     <>
       <div>
         <h1>Employees</h1>
-        <a href="/myemployees" className="btn btn-danger my-2">
-          Reload Employee List
-        </a>
+        <div className="d-flex justify-content-between">
+          <a href="/myemployees" className="btn btn-danger my-2">
+            Reload Employee List
+          </a>
+          <div>
+            <Link className="btn btn-info mb-2" to={"/createemp"} role="button">
+              Add Employee
+            </Link>
+          </div>
+        </div>
         <hr className="my-4" />
         {loading ? (
           <Spinner splash="Loading Employees..." />

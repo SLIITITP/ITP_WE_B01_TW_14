@@ -43,15 +43,20 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   </Link>
                 </li> */}
                 <li className="nav-item">
+                  <Link to="/" role="button">
+                    <a className="nav-link">Dashboard</a>
+                  </Link>
+                </li>
+                {/* <li className="nav-item">
                   <Link to="/myemployees">
                     <a className="nav-link">All Employees</a>
                   </Link>
-                </li>
-                <li className="nav-item">
+                </li> */}
+                {/* <li className="nav-item">
                   <Link to="/createemp">
                     <a className="nav-link">Add Employee</a>
                   </Link>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <Link to="/addattendance">
                     <a className="nav-link">Attendace</a>
