@@ -9,11 +9,12 @@ const auth = require("../middlewares/auth");
 router.post("/attendance", auth, async (req, res) => {
   const { empid, date, entrytime, offtime } = req.body;
 
-  const { error } = validateAttendance(req.body);
+  // const { error } = validateAttendance(req.body);
 
-  if (error) {
-    return res.status(400).json({ error: error.details[0].message });
-  }
+  // if (error) {
+  //   return res.status(400).json({ error: error.details[0].message });
+  // }
+
   try {
     // Verify if the empid exists in the employee database
     const employee = await Employee.findOne({ empid });

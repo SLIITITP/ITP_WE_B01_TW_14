@@ -12,11 +12,13 @@ const AttendanceSchema = new mongoose.Schema({
   },
   entrytime: {
     type: String,
-    required: [true, "Please enter entry time"],
+    // required: [true, "Please enter entry time"],
+    // required: false,
   },
   offtime: {
     type: String,
-    required: [true, "Please enter off time"],
+    // required: [true, "Please enter off time"],
+    // required: false,
   },
   //we use this to find who has added the salary
   postedBy: {
@@ -25,20 +27,28 @@ const AttendanceSchema = new mongoose.Schema({
   },
 });
 
+// AttendanceSchema.pre("save", function (next) {
+//   if (!this.entrytime && !this.offtime) {
+//     return next(new Error("Please enter either entry time or off time"));
+//   } else {
+//     next();
+//   }
+// });
+
 const Attendance = new mongoose.model("Attendance", AttendanceSchema);
 
-const validateAttendance = (data) => {
-  const schema = Joi.object({
-    empid: Joi.string().min(5).max(5).required(),
-    date: Joi.string().min(4).max(100).required(),
-    entrytime: Joi.string().min(4).max(100).required(),
-    offtime: Joi.string().min(4).max(100).required(),
-  });
+// const validateAttendance = (data) => {
+//   const schema = Joi.object({
+//     empid: Joi.string().min(5).max(5).required(),
+//     date: Joi.string().min(4).max(100).required(),
+//     entrytime: Joi.string().min(4).max(100).optional(),
+//     offtime: Joi.string().min(4).max(100).optional(),
+//   });
 
-  return schema.validate(data);
-};
+//   return schema.validate(data);
+// };
 
 module.exports = {
-  validateAttendance,
+  // validateAttendance,
   Attendance,
 };
