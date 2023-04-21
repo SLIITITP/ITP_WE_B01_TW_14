@@ -1,5 +1,5 @@
 // /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
@@ -10,6 +10,9 @@ const Navbar = ({ title = "Southern Agro" }) => {
   const navigate = useNavigate();
   const { user, setUser } = useContext(AuthContext);
   const { toast } = useContext(ToastContext);
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container-fluid">
@@ -20,6 +23,14 @@ const Navbar = ({ title = "Southern Agro" }) => {
         <button
           className="navbar-toggler"
           type="button"
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        {/* <button
+          className="navbar-toggler"
+          type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarColor01"
           aria-controls="navbarColor01"
@@ -27,7 +38,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
-        </button>
+        </button> */}
         <div className="collapse navbar-collapse" id="navbarColor01">
           <ul className="navbar-nav ms-auto">
             {user ? (

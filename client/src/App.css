@@ -23,3 +23,31 @@ tbody tr:nth-child(odd) {
 .table tbody tr td {
   color: black;
 }
+
+/* side nav bar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+@media (max-width: 991px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    left: 0;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+}
