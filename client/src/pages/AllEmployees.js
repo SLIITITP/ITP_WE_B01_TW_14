@@ -141,7 +141,13 @@ const AllEmployee = () => {
               <button type="submit" className="btn btn-info mx-2 my-2">
                 Search
               </button>
+              <a href="/another-page">
+                <button type="button" className="btn btn-secondary mx-2 my-2">
+                  Reset
+                </button>
+              </a>
             </form>
+
             {employees ? (
               employees.length === 0 ? (
                 <h3>No Employees Found</h3>

@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+// /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -107,6 +107,107 @@ const Navbar = ({ title = "Southern Agro" }) => {
 
 export default Navbar;
 
-//NOTES:
+// //NOTES:
 
-//Difference between Link and <a> tag in react-router-dom is that Link tag does not refresh the page, it just changes the url in the browser and <a> tag refreshes the page.
+// //Difference between Link and <a> tag in react-router-dom is that Link tag does not refresh the page, it just changes the url in the browser and <a> tag refreshes the page.
+
+// sidebar code
+// import { useContext } from "react";
+// import { Link } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+// import AuthContext from "../context/AuthContext";
+// import ToastContext from "../context/ToastContext";
+
+// //this is the navbar component
+// const Navbar = ({ title = "Southern Agro" }) => {
+//   const navigate = useNavigate();
+//   const { user, setUser } = useContext(AuthContext);
+//   const { toast } = useContext(ToastContext);
+//   return (
+//     <div className="d-flex" id="wrapper">
+//       <div className="bg-primary border-right" id="sidebar-wrapper">
+//         <div className="sidebar-heading">{title}</div>
+//         <div className="list-group list-group-flush">
+//           {user ? (
+//             <>
+//               <Link
+//                 to="/"
+//                 className="list-group-item list-group-item-action bg-primary"
+//               >
+//                 Dashboard
+//               </Link>
+//               <Link
+//                 to="/addattendance"
+//                 className="list-group-item list-group-item-action bg-primary"
+//               >
+//                 Attendance
+//               </Link>
+//               <Link
+//                 to="/addsalary"
+//                 className="list-group-item list-group-item-action bg-primary"
+//               >
+//                 Salary
+//               </Link>
+//               <Link
+//                 to="/createreport"
+//                 className="list-group-item list-group-item-action bg-primary"
+//               >
+//                 Report
+//               </Link>
+//               <button
+//                 className="btn btn-danger mt-4 mx-4"
+//                 onClick={() => {
+//                   setUser(null);
+//                   localStorage.clear();
+//                   toast.success("Logout Successful!");
+//                   navigate("/login", { replace: true });
+//                 }}
+//               >
+//                 Logout
+//               </button>
+//             </>
+//           ) : (
+//             <>
+//               <Link
+//                 to="/login"
+//                 className="list-group-item list-group-item-action bg-primary"
+//               >
+//                 Login
+//               </Link>
+//               <Link
+//                 to="/register"
+//                 className="list-group-item list-group-item-action bg-primary"
+//               >
+//                 Register
+//               </Link>
+//             </>
+//           )}
+//         </div>
+//       </div>
+//       <div id="page-content-wrapper">
+//         <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+//           <button className="btn btn-primary" id="menu-toggle">
+//             <span className="navbar-toggler-icon"></span>
+//           </button>
+
+//           <div className="collapse navbar-collapse" id="navbarSupportedContent">
+//             <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
+//               <li className="nav-item active">
+//                 <Link to="/" className="nav-link">
+//                   Home
+//                 </Link>
+//               </li>
+//             </ul>
+//           </div>
+//         </nav>
+
+//         <div className="container-fluid">
+//           <h1 className="mt-4">{title}</h1>
+//           <p>Welcome to the Southern Agro Dashboard</p>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Navbar;

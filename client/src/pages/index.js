@@ -139,9 +139,9 @@ const Index = () => {
       <div>
         <h1 style={{ textAlign: "center" }}>Employee Details</h1>
         <div className="d-flex justify-content-between">
-          <a href="/index" className="btn btn-danger my-2">
+          {/* <a href="/index" className="btn btn-danger my-2">
             Reload Employee List
-          </a>
+          </a> */}
           <div>
             <Link className="btn btn-info mb-2" to={"/createemp"} role="button">
               Add New Employee
@@ -173,6 +173,11 @@ const Index = () => {
               <button type="submit" className="btn btn-info mx-2 my-2">
                 Search
               </button>
+              <a href="/index">
+                <button type="button" className="btn btn-danger mx-2 my-2">
+                  Reset
+                </button>
+              </a>
             </form>
             {employees ? (
               employees.length === 0 ? (
