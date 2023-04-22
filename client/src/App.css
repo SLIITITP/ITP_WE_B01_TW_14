@@ -51,3 +51,106 @@ tbody tr:nth-child(odd) {
     left: 0;
   }
 }
+
+/* Bhanuka **********************************************************/
+.add_btn {
+  text-align: right;
+}
+
+.invalid-input {
+  display: block;
+  color: red;
+  margin-left: 20px;
+}
+
+.drop_down {
+  width: 650px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.gap {
+  margin-right: 50px;
+}
+
+.card {
+  padding-top: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+}
+
+.btn-style {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-left: 1100px;
+}
+
+.form {
+  width: 100%;
+}
+
+.image {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 32px 32px;
+}
+
+.item {
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+/* .card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+} */
+.card p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid--2-col {
+  grid-template-rows: repeat(2, 1fr);
+}
+
+/* Bhanuka **********************************************************/

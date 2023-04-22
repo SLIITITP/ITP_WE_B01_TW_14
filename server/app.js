@@ -27,9 +27,40 @@ app.use("/api/", require("./routes/attendance"));
 app.use("/api/", require("./routes/report"));
 
 //if our token was valid then we will have the user in the request object.
-// app.get("/protected", auth, (req, res) => {
+// app.get("/protected", auth, (req, res) => {s
 //     return res.status(200).json({ ...req.user._doc });
 // });
+
+//Bhanuka***************************************************************************
+app.use("/api/", require("./routes/vehicle"));
+app.use("/api/", require("./routes/fuel"));
+app.use("/api/", require("./routes/runningrecord"));
+app.use("/api/", require("./routes/garage"));
+app.use("/api/", require("./routes/vehicledocument"));
+app.use("/api/", require("./routes/driver-vehicle-assign"));
+app.use("/api/", require("./routes/repairassign"));
+app.use("/api/", require("./routes/repair"));
+
+// const vehiclerouter = require("./routes/vehicle");
+// const fuelrouter = require("./routes/fuel");
+// const runningrecordrouter = require("./routes/runningrecord");
+// const garagerouter = require("./routes/garage");
+// const documentrouter = require("./routes/vehicledocument");
+// const assignrouter = require("./routes/driver-vehicle-assign");
+// const repairassignrouter = require("./routes/repairassign");
+// const repairrouter = require("./routes/repair");
+
+// app.use(vehiclerouter);
+// app.use(fuelrouter);
+// app.use(runningrecordrouter);
+// app.use(garagerouter);
+// app.use(documentrouter);
+// app.use(assignrouter);
+// app.use(repairassignrouter);
+// app.use(repairrouter);
+
+// app.use("/vehicleuploads", express.static("./vehicleuploads"));
+//Bhanuka***************************************************************************
 
 //server configurations.
 const PORT = process.env.PORT || 8000; //3000 port we will use  for frontend
