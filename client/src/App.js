@@ -19,7 +19,7 @@ import CreateAttendance from "./pages/AddAttendance";
 import Report from "./pages/CreateReport";
 import Index from "./pages";
 
-// Bhanuka
+// Bhanuka********************************************************
 import "./App.css";
 //import {Navbar} from './components/Navbar';
 import { AllVehicle } from "./pages/AllVehicle";
@@ -35,7 +35,7 @@ import { Editdocument } from "./pages/Editdocument";
 import { AddRunnigRecords } from "./pages/AddRunnigRecords";
 import { AddRepair } from "./pages/AddRepair";
 import { RegisterGarage } from "./pages/RegisterGarage";
-// Bhanuka
+// Bhanuka********************************************************
 
 const App = () => {
   return (
@@ -58,7 +58,8 @@ const App = () => {
               <Route path="/addattendance" element={<CreateAttendance />} />
               <Route path="/createreport" element={<Report />} />
 
-              {/* Bhanuka */}
+              {/* Bhanuka******************************************************** */}
+
               <Route path="/vmdashboard" exact element={<VMDashboard />} />
               <Route path="/allvehicle" exact element={<AllVehicle />} />
               <Route path="/registerVehicle" element={<AddVehicle />} />
@@ -87,7 +88,7 @@ const App = () => {
               <Route path="/addrepair" element={<AddRepair />} />
               <Route path="/registerGarage" element={<RegisterGarage />} />
 
-              {/* Bhanuka */}
+              {/* Bhanuka******************************************************** */}
             </Switch>
           </Layout>
         </AuthContextProvider>

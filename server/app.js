@@ -32,6 +32,7 @@ app.use("/api/", require("./routes/report"));
 // });
 
 //Bhanuka***************************************************************************
+
 app.use("/api/", require("./routes/vehicle"));
 app.use("/api/", require("./routes/fuel"));
 app.use("/api/", require("./routes/runningrecord"));
@@ -60,6 +61,7 @@ app.use("/api/", require("./routes/repair"));
 // app.use(repairrouter);
 
 // app.use("/vehicleuploads", express.static("./vehicleuploads"));
+
 //Bhanuka***************************************************************************
 
 //server configurations.
