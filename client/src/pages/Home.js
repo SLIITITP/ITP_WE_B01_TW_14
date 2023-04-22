@@ -36,7 +36,7 @@ const Home = () => {
         <div className="row">
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
-              to={"/index"}
+              to={"/allsalesreps"}
               className="btn btn-success btn-lg btn-block button-link"
             >
               Delivery Management

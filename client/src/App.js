@@ -37,6 +37,17 @@ import { AddRepair } from "./pages/AddRepair";
 import { RegisterGarage } from "./pages/RegisterGarage";
 // Bhanuka********************************************************
 
+// Pasindu********************************************************
+import AllSalesReps from "./pages/AllSalesReps";
+import CreateSalesRep from "./pages/CreateRep";
+import EditDelivery from "./pages/EditSalesRep";
+import AllSchedules from "./pages/AllSchedules";
+import CreateSchedule from "./pages/CreateSchedule";
+import EditSchedule from "./pages/EditSchedule";
+import CreateDeliveryReport from "./pages/CreateDeliveryReport";
+
+// Pasindu********************************************************
+
 const App = () => {
   return (
     <Router>
@@ -87,8 +98,21 @@ const App = () => {
               <Route path="/addRunningRecords" element={<AddRunnigRecords />} />
               <Route path="/addrepair" element={<AddRepair />} />
               <Route path="/registerGarage" element={<RegisterGarage />} />
-
               {/* Bhanuka******************************************************** */}
+
+              {/* Pasindu******************************************************** */}
+              <Route path="/allsalesreps" element={<AllSalesReps />} />
+              <Route path="/createsalesrep" element={<CreateSalesRep />} />
+              <Route path="/editsalerep/:id" element={<EditDelivery />} />
+              <Route path="/myschedules" element={<AllSchedules />} />
+              <Route path="/createschedule" element={<CreateSchedule />} />
+              <Route path="/editschedule/:id" element={<EditSchedule />} />
+              <Route
+                path="/createdeliveryreport"
+                element={<CreateDeliveryReport />}
+              />
+
+              {/* Pasindu******************************************************** */}
             </Switch>
           </Layout>
         </AuthContextProvider>

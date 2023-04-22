@@ -3,6 +3,7 @@ require("dotenv").config({ path: "./config/config.env" });
 const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser"); //pasindu
 
 //Initialize express app
 const app = express();
@@ -63,6 +64,25 @@ app.use("/api/", require("./routes/repair"));
 // app.use("/vehicleuploads", express.static("./vehicleuploads"));
 
 //Bhanuka***************************************************************************
+
+//Pasindu***************************************************************************
+const cors = require("cors");
+app.use(cors());
+app.use(bodyParser.json());
+
+app.use("/api", require("./routes/deliveries"));
+app.use("/api", require("./routes/schedules"));
+app.use("/api", require("./routes/deliveryreport"));
+
+// const deliveryRouter = require("./routes/deliveries");
+// //const deliveryRouter = require("./routes/deliveries.js");
+// //app.use("/delivery",deliveryRouter); //front end eken backend eke data call karanna url eka
+
+// const scheduleRouter = require("./routes/schedules");
+// //const scheduleRouter = require("./routes/schedules.js");
+// app.use("/schedule",scheduleRouter); //front end eken backend eke data call karanna url eka
+
+//Pasindu***************************************************************************
 
 //server configurations.
 const PORT = process.env.PORT || 8000; //3000 port we will use  for frontend
