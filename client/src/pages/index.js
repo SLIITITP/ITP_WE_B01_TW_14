@@ -9,9 +9,13 @@ import React, { useContext, useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
 import { Modal } from "react-bootstrap";
 import ToastContext from "../context/ToastContext";
+
 // import { Link } from "react-router-dom";
 // import Button from 'react-bootstrap/Button';
 // import Modal from 'react-bootstrap/Modal';
+
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -117,6 +121,11 @@ const Index = () => {
     }
   };
   //end of new
+
+  // show a toast message when the component mounts
+  // React.useEffect(() => {
+  //   toast.success("Welcome to Employee Management!");
+  // }, []);
 
   return (
     <>
@@ -293,6 +302,7 @@ const Index = () => {
             )}
           </>
         )}
+        {/* <ToastContainer position="top-right" autoClose={5000} /> */}
       </div>
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
