@@ -33,10 +33,12 @@ export const RegisterGarage = () => {
 
     const { garageName, garageOwner, Address, Email, ContactNo } = inpval;
 
-    const res = await fetch("/addGarage", {
+    const res = await fetch(`http://localhost:8000/api/addGarage`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        //Newly added
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({
         garageName,
@@ -48,7 +50,7 @@ export const RegisterGarage = () => {
     });
 
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
 
     if (res.status === 422 || !data) {
       console.log("error ");
@@ -56,7 +58,7 @@ export const RegisterGarage = () => {
     } else {
       toast.success(`${garageName} added successfuly`);
       //setShow(true);
-      console.log("data added");
+      // console.log("data added");
     }
   };
 

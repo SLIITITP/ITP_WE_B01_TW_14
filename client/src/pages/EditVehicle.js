@@ -62,10 +62,12 @@ export const EditVehicle = () => {
   console.log(id);
 
   const getdata = async () => {
-    const res = await fetch(`/getVehicle/${id}`, {
+    const res = await fetch(`http://localhost:8000/api/getVehicle/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        //Newly added
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
 
@@ -149,7 +151,11 @@ export const EditVehicle = () => {
       },
     };
 
-    const res = await axios.patch(`/updatevehicle/${id}`, vehicledata, config);
+    const res = await axios.patch(
+      `http://localhost:8000/api/updatevehicle/${id}`,
+      vehicledata,
+      config
+    );
 
     if (res.status === 422) {
       toast.error(res.error);

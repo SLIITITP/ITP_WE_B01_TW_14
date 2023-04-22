@@ -18,10 +18,12 @@ export const VehicleDetail = () => {
   console.log(id);
 
   const getdata = async () => {
-    const res = await fetch(`/getVehicle/${id}`, {
+    const res = await fetch(`http://localhost:8000/api/getVehicle/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        //Newly added
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
 

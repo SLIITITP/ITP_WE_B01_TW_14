@@ -122,7 +122,11 @@ export const AddVehicle = () => {
       },
     };
 
-    const res = await axios.post("/registerVehicle", vehicledata, config);
+    const res = await axios.post(
+      "http://localhost:8000/api/registerVehicle",
+      vehicledata,
+      config
+    );
 
     if (res.status === 422) {
       console.log("error ");

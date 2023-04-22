@@ -59,7 +59,11 @@ export const AllVehicleDocument = () => {
       },
     };
 
-    const res = await axios.post("/registerImg", formData, config);
+    const res = await axios.post(
+      "http://localhost:8000/api/registerImg",
+      formData,
+      config
+    );
 
     if (res.data.status === 422) {
       console.log("errror");
@@ -70,10 +74,12 @@ export const AllVehicleDocument = () => {
   };
 
   const getUserData = async () => {
-    const res = await fetch("/getdocumentdata", {
+    const res = await fetch("http://localhost:8000/api/getdocumentdata", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        //Newly added
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
 
@@ -109,10 +115,12 @@ export const AllVehicleDocument = () => {
   // }
 
   const dltdoc = async (id) => {
-    const res = await fetch(`/deletedoc/${id}`, {
+    const res = await fetch(`http://localhost:8000/api/deletedoc/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        //Newly added
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
 

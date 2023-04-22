@@ -2,11 +2,13 @@ const router = require("express").Router();
 const PDFDocument = require("pdfkit");
 const { Employee } = require("../models/Employee");
 const { Salary } = require("../models/Salary");
+const { Attendance } = require("../models/Attendance");
 
 router.get("/report", async (req, res) => {
   try {
     const employees = await Employee.find();
     const salaries = await Salary.find();
+    const attendances = await Attendance.find();
 
     // Create a new PDF document
     const doc = new PDFDocument();
@@ -41,12 +43,21 @@ router.get("/report", async (req, res) => {
       Designation : ${employee.designation}\n\n\n`
       );
     });
-    doc.fontSize(20).text("\nSalary Payments:\n");
+    doc.fontSize(20).text("\nSalary Payments\n");
     salaries.forEach((salary) => {
       doc.fontSize(18).text(
         `Amount:LKR${salary.salary}\n
       Payment Date:(${salary.date})\n
       Bonus:(${salary.bonus})\n\n\n`
+      );
+    });
+    doc.fontSize(20).text("\nAttendance\n");
+    attendances.forEach((attendance) => {
+      doc.fontSize(18).text(
+        `Employee ID:LKR${attendance.empid}\n
+      Date:(${attendance.date})\n
+      Entry Time:(${attendance.entrytime})\n
+      Off Time:(${attendance.offtime})\n\n\n`
       );
     });
 

@@ -35,10 +35,12 @@ export const RepairAssign = () => {
 
     const { registerNo, driver, driverMail, garage, vehicleIssue } = inpval;
 
-    const res = await fetch("/assigndrivertorepair", {
+    const res = await fetch("http://localhost:8000/api/assigndrivertorepair", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        //Newly added
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({
         registerNo,
@@ -65,10 +67,12 @@ export const RepairAssign = () => {
   };
 
   const getdata = async (e) => {
-    const res = await fetch("/getdata", {
+    const res = await fetch("http://localhost:8000/api/getdata", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        //Newly added
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
 
@@ -84,10 +88,12 @@ export const RepairAssign = () => {
   };
 
   const getgaragedata = async (e) => {
-    const res = await fetch("/getgaragedata", {
+    const res = await fetch("http://localhost:8000/api/getgaragedata", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        //Newly added
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
 

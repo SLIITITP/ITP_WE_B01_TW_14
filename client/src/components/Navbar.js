@@ -1,17 +1,25 @@
 // /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import ToastContext from "../context/ToastContext";
+import { useLocation } from "react-router-dom";
 
 //this is the navbar component
 const Navbar = ({ title = "Southern Agro" }) => {
+  const [currentPage, setCurrentPage] = useState("");
+  const location = useLocation();
+
+  useEffect(() => {
+    setCurrentPage(location.pathname);
+  }, [location.pathname]);
+
   const navigate = useNavigate();
   const { user, setUser } = useContext(AuthContext);
   const { toast } = useContext(ToastContext);
 
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  // const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -20,13 +28,13 @@ const Navbar = ({ title = "Southern Agro" }) => {
           <a className="navbar-brand">{title}</a>
         </Link>
 
-        <button
+        {/* <button
           className="navbar-toggler"
           type="button"
           onClick={() => setSidebarOpen(!sidebarOpen)}
         >
           <span className="navbar-toggler-icon"></span>
-        </button>
+        </button> */}
 
         {/* <button
           className="navbar-toggler"
@@ -54,7 +62,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   </Link>
                 </li> */}
                 <li className="nav-item">
-                  <Link to="/" role="button">
+                  <Link to="/index" role="button">
                     <a className="nav-link">Dashboard</a>
                   </Link>
                 </li>

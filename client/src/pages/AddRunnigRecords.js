@@ -41,10 +41,12 @@ export const AddRunnigRecords = () => {
       comment,
     } = inpval;
 
-    const res = await fetch("/addRecords", {
+    const res = await fetch("http://localhost:8000/api/addRecords", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        //Newly added
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({
         registerNo,
@@ -75,6 +77,8 @@ export const AddRunnigRecords = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        //Newly added
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
 

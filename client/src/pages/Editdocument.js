@@ -34,10 +34,12 @@ export const Editdocument = () => {
   console.log(id);
 
   const getdata = async () => {
-    const res = await fetch(`/getdocVehicle/${id}`, {
+    const res = await fetch(`http://localhost:8000/api/getdocVehicle/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        //Newly added
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
 

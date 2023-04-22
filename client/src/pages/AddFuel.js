@@ -35,10 +35,12 @@ export const AddFuel = () => {
 
     const { registerNo, fuelType, capacity, Amount, fillingStation } = inpval;
 
-    const res = await fetch("/addFuel", {
+    const res = await fetch("http://localhost:8000/api/addFuel", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        //Newly added
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({
         registerNo,
@@ -69,6 +71,8 @@ export const AddFuel = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        //Newly added
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
 

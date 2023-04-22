@@ -73,7 +73,11 @@ export const AddRepair = () => {
       },
     };
 
-    const res = await axios.post("/addrepair", repairdata, config);
+    const res = await axios.post(
+      "http://localhost:8000/api/addrepair",
+      repairdata,
+      config
+    );
 
     if (res.status === 422) {
       console.log("error ");
@@ -90,6 +94,8 @@ export const AddRepair = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        //Newly added
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
 
@@ -109,6 +115,8 @@ export const AddRepair = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        //Newly added
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
 

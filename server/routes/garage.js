@@ -15,7 +15,7 @@ router.post("/addGarage", auth, async (req, res) => {
   }
 
   if (!garageName || !garageOwner || !Address || !Email || !ContactNo) {
-    res.status(422).json("plz fill the data");
+    res.status(422).json("please fill the data");
   }
 
   try {
@@ -27,9 +27,14 @@ router.post("/addGarage", auth, async (req, res) => {
       ContactNo,
     });
 
-    await addgarage.save();
-    res.status(201).json(addgarage);
-    console.log(addgarage);
+    const result = await addgarage.save();
+    //201 means success
+    //._doc defines name, address, email and phone
+    return res.status(201).json({ ...result._doc });
+
+    // await addgarage.save();
+    // res.status(201).json(addgarage);
+    // console.log(result);
   } catch (error) {
     res.status(422).json(error);
   }

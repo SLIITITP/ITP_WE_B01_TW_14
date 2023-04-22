@@ -28,10 +28,12 @@ export const AllVehicle = () => {
   };
 
   const getdata = async (e) => {
-    const res = await fetch("/getdata", {
+    const res = await fetch("http://localhost:8000/api/getdata", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        //Newly added
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
 
@@ -52,6 +54,8 @@ export const AllVehicle = () => {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
+          //Newly added
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
 
