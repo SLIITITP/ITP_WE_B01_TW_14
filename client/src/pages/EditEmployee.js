@@ -53,7 +53,7 @@ const EditEmployee = () => {
         department: "",
         designation: "",
       });
-      navigate("/myemployees");
+      navigate("/index");
     } else {
       toast.error(result.error);
       console.log(result);
