@@ -29,31 +29,79 @@ const Navbar = ({ title = "Southern Agro" }) => {
           <ul className="navbar-nav ms-auto">
             {user ? (
               <>
+                {/* BHANUKA*************************************************** */}
                 {/* <li className="nav-item">
-                  <Link to="/mycontacts">
-                    <a className="nav-link">All Contacts</a>
+                  <Link to="/allvehicle">
+                    <a className="nav-link">Vehicle</a>
                   </Link>
-                </li> */}
-                {/* <li className="nav-item">
-                  <Link to="/create">
-                    <a className="nav-link">Create Contact</a>
-                  </Link>
-                </li> */}
+                </li>
                 <li className="nav-item">
+                  <Link to="/addRunningRecords">
+                    <a className="nav-link">Running Records</a>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/addrepair">
+                    <a className="nav-link">Repair</a>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/registerGarage">
+                    <a className="nav-link">garage</a>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/allDocument">
+                    <a className="nav-link">Document Storage</a>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/drivervehicleAssign">
+                    <a className="nav-link">Driver Assign</a>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/repairAssign">
+                    <a className="nav-link">Repair Assign</a>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/addFuel">
+                    <a className="nav-link">Add Fuel</a>
+                  </Link>
+                </li> */}
+
+                {/* BHANUKA*************************************************** */}
+
+                {/* PASINDU******************************************** */}
+                <li className="nav-item">
+                  <Link to="/createsalesrep" role="button">
+                    <a className="nav-link">Create sales rep</a>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/allsalesreps">
+                    <a className="nav-link">Sales Representatives</a>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/myschedules">
+                    <a className="nav-link">Delivery Schedules</a>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/createdeliveryreport">
+                    <a className="nav-link">Report</a>
+                  </Link>
+                </li>
+                {/* PASINDU******************************************** */}
+
+                {/* YERAN************************************** */}
+                {/* <li className="nav-item">
                   <Link to="/index" role="button">
                     <a className="nav-link">Dashboard</a>
                   </Link>
                 </li>
-                {/* <li className="nav-item">
-                  <Link to="/myemployees">
-                    <a className="nav-link">All Employees</a>
-                  </Link>
-                </li> */}
-                {/* <li className="nav-item">
-                  <Link to="/createemp">
-                    <a className="nav-link">Add Employee</a>
-                  </Link>
-                </li> */}
                 <li className="nav-item">
                   <Link to="/addattendance">
                     <a className="nav-link">Attendace</a>
@@ -68,7 +116,9 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   <Link to="/createreport">
                     <a className="nav-link">Report</a>
                   </Link>
-                </li>
+                </li> */}
+                {/* YERAN************************************** */}
+
                 <li
                   className="nav-item"
                   onClick={() => {
