@@ -3,7 +3,7 @@ const PDFDocument = require("pdfkit");
 const { Delivery } = require("../models/delivery");
 const { Schedule } = require("../models/schedule");
 
-router.get("/report", async (req, res) => {
+router.get("/deliveryreport", async (req, res) => {
   try {
     const deliveries = await Delivery.find();
     const schedules = await Schedule.find();

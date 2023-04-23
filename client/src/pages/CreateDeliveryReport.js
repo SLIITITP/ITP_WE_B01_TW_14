@@ -7,7 +7,7 @@ function Report() {
   const handleDownload = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://localhost:8000/api/report", {
+      const res = await axios.get("http://localhost:8000/api/deliveryreport", {
         responseType: "blob",
       });
       const url = window.URL.createObjectURL(new Blob([res.data]));
