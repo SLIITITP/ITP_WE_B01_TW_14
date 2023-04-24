@@ -84,6 +84,17 @@ app.use("/api", require("./routes/deliveryreport"));
 
 //Pasindu***************************************************************************
 
+//Yasitha***************************************************************************
+
+//Routes
+app.use("/api", require("./routes/auth"));
+app.use("/api", require("./routes/category"));
+app.use("/api", require("./routes/stock"));
+app.use("/api", require("./routes/profit"));
+app.use("/api", require("./routes/stockreport"));
+
+//Yasitha***************************************************************************
+
 //server configurations.
 const PORT = process.env.PORT || 8000; //3000 port we will use  for frontend
 app.listen(PORT, async () => {

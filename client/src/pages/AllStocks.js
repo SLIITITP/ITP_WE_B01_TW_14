@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 // import Button from 'react-bootstrap/Button';
 // import Modal from 'react-bootstrap/Modal';
 
-const AllSchedules = () => {
+const AllStock = () => {
   const { toast } = useContext(ToastContext);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [modalData, setModalData] = useState({}); //by default it is an empty object
-  const [schedules, setSchedules] = useState([]);
+  const [stocks, setStocks] = useState([]);
   // const [originalEmployees, setOriginalEmployees] = useState([]);
   // const [employees, setEmployees] = useState(initialEmployees);
   const [searchInput, setSearchInput] = useState("");
@@ -23,7 +23,7 @@ const AllSchedules = () => {
     //async/await syntax directly inside the useEffect callback function, which is not allowed. Instead, you can define an asynchronous function inside the useEffect and then call it.
     async function fetchData() {
       try {
-        const res = await fetch(`http://localhost:8000/api/myschedules`, {
+        const res = await fetch(`http://localhost:8000/api/mystocks`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -31,7 +31,7 @@ const AllSchedules = () => {
         });
         const result = await res.json();
         if (!result.error) {
-          setSchedules(result.schedule);
+          setStocks(result.stock);
           setLoading(false);
         } else {
           console.log(result);
@@ -44,23 +44,18 @@ const AllSchedules = () => {
     fetchData();
   }, []);
 
-  const deleteSchedule = async (id) => {
-    if (
-      window.confirm("Are you sure you want to delete this Delivery Schedule?")
-    ) {
+  const deleteStock = async (id) => {
+    if (window.confirm("Are you sure you want to delete this stock?")) {
       try {
-        const res = await fetch(
-          `http://localhost:8000/api/deleteschedule/${id}`,
-          {
-            method: "DELETE",
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
+        const res = await fetch(`http://localhost:8000/api/deletestock/${id}`, {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
         const result = await res.json();
         if (!result.error) {
-          setSchedules(result.schedules);
+          setStocks(result.stocks);
           toast.success("Deleted Successfully");
           setShowModal(false);
         } else {
@@ -68,9 +63,7 @@ const AllSchedules = () => {
         }
       } catch (err) {
         console.log(err);
-        toast.error(
-          "Failed to delete Delivery Schedule. Please try again later."
-        );
+        toast.error("Failed to delete stock. Please try again later.");
       }
     }
   };
@@ -89,45 +82,44 @@ const AllSchedules = () => {
     //   return;
     // }
 
-    const newSearchUser = schedules.filter(
-      (schedule) =>
-        schedule.deliveryscheduleID
-          .toLowerCase()
-          .includes(searchInput.toLowerCase()) ||
-        schedule.orderID.toLowerCase().includes(searchInput.toLowerCase()) ||
-        schedule.destination.toLowerCase().includes(searchInput.toLowerCase())
+    const newSearchUser = stocks.filter(
+      (stock) =>
+        stock.stockid.toLowerCase().includes(searchInput.toLowerCase()) ||
+        stock.supplier.toLowerCase().includes(searchInput.toLowerCase()) ||
+        stock.name.toLowerCase().includes(searchInput.toLowerCase())
+      // stock.image.toLowerCase().includes(searchInput.toLowerCase()) ||
     );
     console.log(newSearchUser);
-    setSchedules(newSearchUser);
+    setStocks(newSearchUser);
   };
 
   const handleInputChange = (event) => {
     setSearchInput(event.target.value);
     if (event.target.value === "") {
-      setSchedules([]);
+      setStocks([]);
     }
   };
   return (
     <>
       <div>
-        <h1 style={{ textAlign: "center" }}>Delivery Schedule</h1>
+        <h1>Stocks</h1>
         <div className="d-flex justify-content-between">
-          {/* <a href="/myschedules" className="btn btn-danger my-2">
-            Reload Delivery Schedule List
-          </a> */}
+          <a href="/mystocks" className="btn btn-danger my-2">
+            Reload Stock List
+          </a>
           <div>
             <Link
               className="btn btn-info mb-2"
-              to={"/createschedule"}
+              to={"/createstock"}
               role="button"
             >
-              Add Delivery Schedule
+              Add Stock
             </Link>
           </div>
         </div>
         <hr className="my-4" />
         {loading ? (
-          <Spinner splash="Loading Delivery Schedules..." />
+          <Spinner splash="Loading Stocks..." />
         ) : (
           <>
             <form className="d-flex" onSubmit={handleSearchSubmit}>
@@ -136,7 +128,7 @@ const AllSchedules = () => {
                 name="searchInput"
                 id="searchInput"
                 className="form-control my-2"
-                placeholder="Search Delivery Schedule"
+                placeholder="Search Stock"
                 value={searchInput}
                 // onChange={searchHandle}
                 // onChange={handleInputChange}
@@ -150,16 +142,10 @@ const AllSchedules = () => {
               <button type="submit" className="btn btn-info mx-2 my-2">
                 Search
               </button>
-              <a href="/myschedules">
-                <button type="button" className="btn btn-danger mx-2 my-2">
-                  Reset
-                </button>
-              </a>
             </form>
-
-            {schedules ? (
-              schedules.length === 0 ? (
-                <h3>No Sales Delivery Schedules Found</h3>
+            {stocks ? (
+              stocks.length === 0 ? (
+                <h3>No Stocks Found</h3>
               ) : (
                 <>
                   {/* <form className="d-flex" onSubmit={handleSearchSubmit}>
@@ -168,7 +154,7 @@ const AllSchedules = () => {
                       name="searchInput"
                       id="searchInput"
                       className="form-control my-2"
-                      placeholder="Search Sales Representative"
+                      placeholder="Search Employee"
                       value={searchInput}
                       onChange={handleInputChange}
                       // onChange={(e) => {
@@ -182,8 +168,7 @@ const AllSchedules = () => {
                     </button>
                   </form> */}
                   <p>
-                    Your Total Delivery schedules:{" "}
-                    <strong>{schedules.length}</strong>{" "}
+                    Your Total Stocks: <strong>{stocks.length}</strong>{" "}
                   </p>
                   <table className="table table-hover">
                     <thead>
@@ -192,43 +177,75 @@ const AllSchedules = () => {
                           scope="col"
                           style={{ width: "10%", whiteSpace: "nowrap" }}
                         >
-                          Delivery Schedule ID
+                          Stock ID
                         </th>
                         <th
                           scope="col"
                           style={{ width: "15%", whiteSpace: "nowrap" }}
                         >
-                          Order ID
+                          Name
                         </th>
                         <th
                           scope="col"
                           style={{ width: "15%", whiteSpace: "nowrap" }}
                         >
-                          Date
+                          Category
                         </th>
                         <th
                           scope="col"
-                          style={{ width: "15%", whiteSpace: "nowrap" }}
+                          style={{
+                            width: "20%",
+                            whiteSpace: "nowrap",
+                            textAlign: "center",
+                          }}
                         >
-                          destination
+                          Description
+                        </th>
+                        <th
+                          scope="col"
+                          style={{ width: "10%", whiteSpace: "nowrap" }}
+                        >
+                          Cost Price
+                        </th>
+                        <th
+                          scope="col"
+                          style={{ width: "10%", whiteSpace: "nowrap" }}
+                        >
+                          Selling Price
+                        </th>
+                        <th
+                          scope="col"
+                          style={{ width: "10%", whiteSpace: "nowrap" }}
+                        >
+                          Quantity
+                        </th>
+                        <th
+                          scope="col"
+                          style={{ width: "10%", whiteSpace: "nowrap" }}
+                        >
+                          Supplier
                         </th>
                       </tr>
                     </thead>
 
                     <tbody>
-                      {schedules.map((schedule) => (
+                      {stocks.map((stock) => (
                         <tr
-                          key={schedule._id}
+                          key={stock._id}
                           onClick={() => {
                             setModalData({}); //we need to clear the modal data before setting it again
-                            setModalData(schedule);
+                            setModalData(stock);
                             setShowModal(true);
                           }}
                         >
-                          <th scope="row">{schedule.deliveryscheduleID}</th>
-                          <td>{schedule.orderID}</td>
-                          <td>{schedule.date}</td>
-                          <td>{schedule.destination}</td>
+                          <th scope="row">{stock.stockid}</th>
+                          <td>{stock.name}</td>
+                          <td>{stock.category}</td>
+                          <td>{stock.description}</td>
+                          <td>LKR {stock.costprice}</td>
+                          <td>LKR {stock.sellingprice}</td>
+                          <td>{stock.quantity}</td>
+                          <td>{stock.supplier}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -236,7 +253,7 @@ const AllSchedules = () => {
                 </>
               )
             ) : (
-              <h3>No Delivery Schedules Found</h3>
+              <h3>No Stocks Found</h3>
             )}
           </>
         )}
@@ -248,30 +265,37 @@ const AllSchedules = () => {
         </Modal.Header>
 
         <Modal.Body>
-          <h3>{modalData.salesRepID}</h3>
+          <h3>{modalData.stockid}</h3>
           <p>
-            <strong>Delivery Schedule ID</strong>:{" "}
-            {modalData.deliveryscheduleID}
-          </p>
-
-          <p>
-            <strong>order ID</strong>: {modalData.orderID}
+            <strong> Name</strong>: {modalData.name}
           </p>
           <p>
-            <strong>Date</strong>: {modalData.date}
+            <strong>Category</strong>: {modalData.category}
           </p>
           <p>
-            <strong>Destination</strong>: {modalData.destination}
+            <strong>Description</strong>: {modalData.description}
+          </p>
+          <p>
+            <strong>Cost Price</strong>: {modalData.costprice}
+          </p>
+          <p>
+            <strong>Selling Price</strong>: {modalData.sellingprice}
+          </p>
+          <p>
+            <strong>Quantity</strong>: {modalData.quantity}
+          </p>
+          <p>
+            <strong>Supplier</strong>: {modalData.supplier}
           </p>
         </Modal.Body>
 
         <Modal.Footer>
-          <Link className="btn btn-info" to={`/editschedule/${modalData._id}`}>
+          <Link className="btn btn-info" to={`/editstock/${modalData._id}`}>
             Edit
           </Link>
           <button
             className="btn btn-danger"
-            onClick={() => modalData && deleteSchedule(modalData._id)}
+            onClick={() => modalData && deleteStock(modalData._id)}
           >
             Delete
           </button>
@@ -296,4 +320,4 @@ const AllSchedules = () => {
 };
 
 // export default AllContacts;
-export default AllSchedules;
+export default AllStock;

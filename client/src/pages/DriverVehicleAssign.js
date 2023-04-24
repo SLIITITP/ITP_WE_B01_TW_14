@@ -62,7 +62,7 @@ export const DriverVehicleAssign = () => {
   };
 
   const getdata = async (e) => {
-    const res = await fetch("/getdata", {
+    const res = await fetch("http://localhost:8000/api/getdata", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

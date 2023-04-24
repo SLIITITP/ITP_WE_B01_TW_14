@@ -18,6 +18,7 @@ import CreateSalary from "./pages/AddSalary";
 import CreateAttendance from "./pages/AddAttendance";
 import Report from "./pages/CreateReport";
 import Index from "./pages";
+import EMDashboard from "./pages/EMDashboard";
 
 // Bhanuka********************************************************
 import "./App.css";
@@ -48,6 +49,21 @@ import CreateDeliveryReport from "./pages/CreateDeliveryReport";
 
 // Pasindu********************************************************
 
+// Yasitha********************************************************
+import CreateStock from "./pages/CreateStock";
+import AllStock from "./pages/AllStocks";
+import CreateCategory from "./pages/CreateCategory";
+import AllCategory from "./pages/AllCategories";
+import EditStock from "./pages/EditStock";
+import EditCategory from "./pages/EditCategory";
+import AddProfit from "./pages/AddProfit";
+import AllProfit from "./pages/AllProfits";
+import EditProfit from "./pages/EditProfit";
+import StockReport from "./pages/CreateReportStock";
+import IMDashboard from "./pages/IMDashboard";
+
+// Yasitha********************************************************
+
 const App = () => {
   return (
     <Router>
@@ -68,6 +84,7 @@ const App = () => {
               <Route path="/addsalary" element={<CreateSalary />} />
               <Route path="/addattendance" element={<CreateAttendance />} />
               <Route path="/createreport" element={<Report />} />
+              <Route path="/emdashboard" element={<EMDashboard />} />
 
               {/* Bhanuka******************************************************** */}
 
@@ -113,6 +130,21 @@ const App = () => {
               />
 
               {/* Pasindu******************************************************** */}
+
+              {/* Yasitha******************************************************** */}
+              <Route path="/createcategory" element={<CreateCategory />} />
+              <Route path="/mycategories" element={<AllCategory />} />
+              <Route path="/createstock" element={<CreateStock />} />
+              <Route path="/mystocks" element={<AllStock />} />
+              <Route path="/editstock/:id" element={<EditStock />} />
+              <Route path="/editcategory/:id" element={<EditCategory />} />
+              <Route path="/addprofit" element={<AddProfit />} />
+              <Route path="/myprofits" element={<AllProfit />} />
+              <Route path="/editprofit/:id" element={<EditProfit />} />
+              <Route path="/stockreport" element={<StockReport />} />
+              <Route path="/imdashboard" element={<IMDashboard />} />
+
+              {/* Yasitha******************************************************** */}
             </Switch>
           </Layout>
         </AuthContextProvider>

@@ -73,13 +73,40 @@ const Navbar = ({ title = "Southern Agro" }) => {
 
                 {/* BHANUKA*************************************************** */}
 
-                {/* PASINDU******************************************** */}
-                <li className="nav-item">
-                  <Link to="/createsalesrep" role="button">
-                    <a className="nav-link">Create sales rep</a>
+                {/* YASITHA*************************************************** */}
+                {/* <li className="nav-item">
+                  <Link to="/stockreport">
+                    <a className="nav-link">Report</a>
                   </Link>
                 </li>
                 <li className="nav-item">
+                  <Link to="/imdashboard">
+                    <a className="nav-link">Charts</a>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/myprofits">
+                    <a className="nav-link">Profit</a>
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link to="/mycategories">
+                    <a className="nav-link">Categories</a>
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link to="/mystocks">
+                    <a className="nav-link">Inventory</a>
+                  </Link>
+                </li> */}
+
+                {/* YASITHA*************************************************** */}
+
+                {/* PASINDU******************************************** */}
+
+                {/* <li className="nav-item">
                   <Link to="/allsalesreps">
                     <a className="nav-link">Sales Representatives</a>
                   </Link>
@@ -93,13 +120,18 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   <Link to="/createdeliveryreport">
                     <a className="nav-link">Report</a>
                   </Link>
-                </li>
+                </li> */}
                 {/* PASINDU******************************************** */}
 
                 {/* YERAN************************************** */}
-                {/* <li className="nav-item">
+                <li className="nav-item">
                   <Link to="/index" role="button">
                     <a className="nav-link">Dashboard</a>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/emdashboard" role="button">
+                    <a className="nav-link">Charts</a>
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -116,7 +148,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   <Link to="/createreport">
                     <a className="nav-link">Report</a>
                   </Link>
-                </li> */}
+                </li>
                 {/* YERAN************************************** */}
 
                 <li

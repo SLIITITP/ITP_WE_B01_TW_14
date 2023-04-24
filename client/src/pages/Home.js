@@ -76,7 +76,7 @@ const Home = () => {
           </div>
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
-              to={"/index"}
+              to={"/mystocks"}
               className="btn btn-success btn-lg btn-block  button-link"
             >
               Inventory control management

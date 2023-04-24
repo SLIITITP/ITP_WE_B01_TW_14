@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 // import Button from 'react-bootstrap/Button';
 // import Modal from 'react-bootstrap/Modal';
 
-const AllSchedules = () => {
+const AllCategory = () => {
   const { toast } = useContext(ToastContext);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [modalData, setModalData] = useState({}); //by default it is an empty object
-  const [schedules, setSchedules] = useState([]);
+  const [categories, setCategories] = useState([]);
   // const [originalEmployees, setOriginalEmployees] = useState([]);
   // const [employees, setEmployees] = useState(initialEmployees);
   const [searchInput, setSearchInput] = useState("");
@@ -23,7 +23,7 @@ const AllSchedules = () => {
     //async/await syntax directly inside the useEffect callback function, which is not allowed. Instead, you can define an asynchronous function inside the useEffect and then call it.
     async function fetchData() {
       try {
-        const res = await fetch(`http://localhost:8000/api/myschedules`, {
+        const res = await fetch(`http://localhost:8000/api/mycategories`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -31,7 +31,7 @@ const AllSchedules = () => {
         });
         const result = await res.json();
         if (!result.error) {
-          setSchedules(result.schedule);
+          setCategories(result.category);
           setLoading(false);
         } else {
           console.log(result);
@@ -44,23 +44,18 @@ const AllSchedules = () => {
     fetchData();
   }, []);
 
-  const deleteSchedule = async (id) => {
-    if (
-      window.confirm("Are you sure you want to delete this Delivery Schedule?")
-    ) {
+  const deleteCategory = async (id) => {
+    if (window.confirm("Are you sure you want to delete this category?")) {
       try {
-        const res = await fetch(
-          `http://localhost:8000/api/deleteschedule/${id}`,
-          {
-            method: "DELETE",
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
+        const res = await fetch(`http://localhost:8000/api/deletecategory/${id}`, {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
         const result = await res.json();
         if (!result.error) {
-          setSchedules(result.schedules);
+          setCategories(result.categories);
           toast.success("Deleted Successfully");
           setShowModal(false);
         } else {
@@ -68,9 +63,7 @@ const AllSchedules = () => {
         }
       } catch (err) {
         console.log(err);
-        toast.error(
-          "Failed to delete Delivery Schedule. Please try again later."
-        );
+        toast.error("Failed to delete stock. Please try again later.");
       }
     }
   };
@@ -89,45 +82,41 @@ const AllSchedules = () => {
     //   return;
     // }
 
-    const newSearchUser = schedules.filter(
-      (schedule) =>
-        schedule.deliveryscheduleID
-          .toLowerCase()
-          .includes(searchInput.toLowerCase()) ||
-        schedule.orderID.toLowerCase().includes(searchInput.toLowerCase()) ||
-        schedule.destination.toLowerCase().includes(searchInput.toLowerCase())
+    const newSearchUser = categories.filter(
+      (category) =>
+        category.catid.toLowerCase().includes(searchInput.toLowerCase()) ||
+        category.name.toLowerCase().includes(searchInput.toLowerCase()) 
+        
+        
+        
     );
     console.log(newSearchUser);
-    setSchedules(newSearchUser);
+    setCategories(newSearchUser);
   };
 
   const handleInputChange = (event) => {
     setSearchInput(event.target.value);
     if (event.target.value === "") {
-      setSchedules([]);
+      setCategories([]);
     }
   };
   return (
     <>
       <div>
-        <h1 style={{ textAlign: "center" }}>Delivery Schedule</h1>
+        <h1>categories</h1>
         <div className="d-flex justify-content-between">
-          {/* <a href="/myschedules" className="btn btn-danger my-2">
-            Reload Delivery Schedule List
-          </a> */}
+          <a href="/mycategories" className="btn btn-danger my-2">
+            Reload Category List
+          </a>
           <div>
-            <Link
-              className="btn btn-info mb-2"
-              to={"/createschedule"}
-              role="button"
-            >
-              Add Delivery Schedule
+            <Link className="btn btn-info mb-2" to={"/createcategory"} role="button">
+              Add Category
             </Link>
           </div>
         </div>
         <hr className="my-4" />
         {loading ? (
-          <Spinner splash="Loading Delivery Schedules..." />
+          <Spinner splash="Loading Categories..." />
         ) : (
           <>
             <form className="d-flex" onSubmit={handleSearchSubmit}>
@@ -136,7 +125,7 @@ const AllSchedules = () => {
                 name="searchInput"
                 id="searchInput"
                 className="form-control my-2"
-                placeholder="Search Delivery Schedule"
+                placeholder="Search Category"
                 value={searchInput}
                 // onChange={searchHandle}
                 // onChange={handleInputChange}
@@ -150,16 +139,10 @@ const AllSchedules = () => {
               <button type="submit" className="btn btn-info mx-2 my-2">
                 Search
               </button>
-              <a href="/myschedules">
-                <button type="button" className="btn btn-danger mx-2 my-2">
-                  Reset
-                </button>
-              </a>
             </form>
-
-            {schedules ? (
-              schedules.length === 0 ? (
-                <h3>No Sales Delivery Schedules Found</h3>
+            {categories ? (
+              categories.length === 0 ? (
+                <h3>No Categories Found</h3>
               ) : (
                 <>
                   {/* <form className="d-flex" onSubmit={handleSearchSubmit}>
@@ -168,7 +151,7 @@ const AllSchedules = () => {
                       name="searchInput"
                       id="searchInput"
                       className="form-control my-2"
-                      placeholder="Search Sales Representative"
+                      placeholder="Search Employee"
                       value={searchInput}
                       onChange={handleInputChange}
                       // onChange={(e) => {
@@ -182,8 +165,7 @@ const AllSchedules = () => {
                     </button>
                   </form> */}
                   <p>
-                    Your Total Delivery schedules:{" "}
-                    <strong>{schedules.length}</strong>{" "}
+                    Your Total Categories: <strong>{categories.length}</strong>{" "}
                   </p>
                   <table className="table table-hover">
                     <thead>
@@ -192,43 +174,55 @@ const AllSchedules = () => {
                           scope="col"
                           style={{ width: "10%", whiteSpace: "nowrap" }}
                         >
-                          Delivery Schedule ID
+                          Category ID
                         </th>
                         <th
                           scope="col"
                           style={{ width: "15%", whiteSpace: "nowrap" }}
                         >
-                          Order ID
+                          Name
                         </th>
                         <th
                           scope="col"
                           style={{ width: "15%", whiteSpace: "nowrap" }}
                         >
-                          Date
+                          Quantity Available
                         </th>
                         <th
                           scope="col"
-                          style={{ width: "15%", whiteSpace: "nowrap" }}
+                          style={{
+                            width: "20%",
+                            whiteSpace: "nowrap",
+                            textAlign: "center",
+                          }}
                         >
-                          destination
+                          Quantity Sold
                         </th>
+                        <th
+                          scope="col"
+                          style={{ width: "10%", whiteSpace: "nowrap" }}
+                        >
+                          Orders In Queue
+                        </th>
+                        
                       </tr>
                     </thead>
 
                     <tbody>
-                      {schedules.map((schedule) => (
+                      {categories.map((category) => (
                         <tr
-                          key={schedule._id}
+                          key={category._id}
                           onClick={() => {
                             setModalData({}); //we need to clear the modal data before setting it again
-                            setModalData(schedule);
+                            setModalData(category);
                             setShowModal(true);
                           }}
                         >
-                          <th scope="row">{schedule.deliveryscheduleID}</th>
-                          <td>{schedule.orderID}</td>
-                          <td>{schedule.date}</td>
-                          <td>{schedule.destination}</td>
+                          <th scope="row">{category.catid}</th>
+                          <td>{category.name}</td>
+                          <td>{category.quantityavailable}</td>
+                          <td>{category.quantitysold}</td>
+                          <td>{category.ordersinqueue}</td> 
                         </tr>
                       ))}
                     </tbody>
@@ -236,7 +230,7 @@ const AllSchedules = () => {
                 </>
               )
             ) : (
-              <h3>No Delivery Schedules Found</h3>
+              <h3>No Categories Found</h3>
             )}
           </>
         )}
@@ -248,30 +242,29 @@ const AllSchedules = () => {
         </Modal.Header>
 
         <Modal.Body>
-          <h3>{modalData.salesRepID}</h3>
+          <h3>{modalData.catid}</h3>
           <p>
-            <strong>Delivery Schedule ID</strong>:{" "}
-            {modalData.deliveryscheduleID}
-          </p>
-
-          <p>
-            <strong>order ID</strong>: {modalData.orderID}
+            <strong> Name</strong>: {modalData.name}
           </p>
           <p>
-            <strong>Date</strong>: {modalData.date}
+            <strong>Quantity Available</strong>: {modalData.quantityavailable}
           </p>
           <p>
-            <strong>Destination</strong>: {modalData.destination}
+            <strong>Quantity Sold</strong>: {modalData.quantitysold}
           </p>
+          <p>
+            <strong>Orders In Queue</strong>: {modalData.ordersinqueue}
+          </p>
+      
         </Modal.Body>
 
         <Modal.Footer>
-          <Link className="btn btn-info" to={`/editschedule/${modalData._id}`}>
+          <Link className="btn btn-info" to={`/editcategory/${modalData._id}`}>
             Edit
           </Link>
           <button
             className="btn btn-danger"
-            onClick={() => modalData && deleteSchedule(modalData._id)}
+            onClick={() => modalData && deleteCategory(modalData._id)}
           >
             Delete
           </button>
@@ -296,4 +289,4 @@ const AllSchedules = () => {
 };
 
 // export default AllContacts;
-export default AllSchedules;
+export default AllCategory;
