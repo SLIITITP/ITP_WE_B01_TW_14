@@ -22,9 +22,12 @@ const Navbar = ({ title = "Southern Agro" }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container-fluid">
-        <Link to="/">
-          <a className="navbar-brand">{title}</a>
+        <Link to="/" className="navbar-brand">
+          {title}
         </Link>
+        {/* <Link to="/">
+          <a className="navbar-brand">{title}</a>
+        </Link> */}
         <div className="collapse navbar-collapse" id="navbarColor01">
           <ul className="navbar-nav ms-auto">
             {user ? (
@@ -125,12 +128,37 @@ const Navbar = ({ title = "Southern Agro" }) => {
 
                 {/* YERAN************************************** */}
                 <li className="nav-item">
-                  <Link to="/index" role="button">
-                    <a className="nav-link">Dashboard</a>
+                  <Link to="/index" role="button" className="nav-link">
+                    Dashboard
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/emdashboard" role="button">
+                  <Link to="/emdashboard" role="button" className="nav-link">
+                    Charts
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/addattendance" role="button" className="nav-link">
+                    Attendace
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/addsalary" role="button" className="nav-link">
+                    Salary
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/createreport" role="button" className="nav-link">
+                    Report
+                  </Link>
+                </li>
+                {/* <li className="nav-item">
+                  <Link to="/index" role="button">
+                    <a className="nav-link">Dashboard</a>
+                  </Link>
+                </li> */}
+                {/* <li className="nav-item">
+                  <Link to="/" role="button">
                     <a className="nav-link">Charts</a>
                   </Link>
                 </li>
@@ -148,7 +176,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   <Link to="/createreport">
                     <a className="nav-link">Report</a>
                   </Link>
-                </li>
+                </li> */}
                 {/* YERAN************************************** */}
 
                 <li
