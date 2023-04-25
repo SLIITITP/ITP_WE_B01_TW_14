@@ -270,23 +270,23 @@ const Navbar = ({ title = "Southern Agro" }) => {
           {user ? (
             <>
               <li className="nav-item">
-                <Link to="/index" role="button" className="nav-link">
+                <Link to="/" role="button" className="nav-link">
                   Dashboard
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/emdashboard" role="button" className="nav-link">
-                  Charts
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/addattendance" role="button" className="nav-link">
-                  Attendace
+                <Link to="/index" role="button" className="nav-link">
+                  Employee
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="/addsalary" role="button" className="nav-link">
                   Salary
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/addattendance" role="button" className="nav-link">
+                  Attendace
                 </Link>
               </li>
               <li className="nav-item">
