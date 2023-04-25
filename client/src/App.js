@@ -20,9 +20,9 @@ import Report from "./pages/CreateReport";
 import Index from "./pages";
 import EMDashboard from "./pages/EMDashboard";
 import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 // Bhanuka********************************************************
-import "./App.css";
 //import {Navbar} from './components/Navbar';
 import { AllVehicle } from "./pages/AllVehicle";
 import { AddVehicle } from "./pages/AddVehicle";
@@ -70,6 +70,7 @@ const App = () => {
     <Router>
       <ToastContextProvider>
         <AuthContextProvider>
+          <Header />
           <Layout>
             <Switch>
               <Route path="/" element={<Home />} />

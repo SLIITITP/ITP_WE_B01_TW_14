@@ -260,8 +260,12 @@ const Navbar = ({ title = "Southern Agro" }) => {
       </button>
       <div className={`sidenav${showSidebar ? " open" : ""}`}>
         <Link to="/" className="navbar-brand">
-          {title}
+          <img src="" alt="" />
         </Link>
+
+        {/* <Link to="/" className="navbar-brand">
+          {title}
+        </Link> */}
         <ul className="navbar-nav">
           {user ? (
             <>
