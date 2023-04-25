@@ -24,34 +24,6 @@ tbody tr:nth-child(odd) {
   color: black;
 }
 
-/* side nav bar */
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: -250px;
-  width: 250px;
-  height: 100%;
-  background-color: #333;
-  transition: all 0.3s ease-in-out;
-}
-
-.sidebar.open {
-  left: 0;
-}
-
-@media (max-width: 991px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-    left: 0;
-  }
-
-  .sidebar.open {
-    left: 0;
-  }
-}
-
 .currency-input {
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
@@ -68,6 +40,107 @@ tbody tr:nth-child(odd) {
   border-color: #80bdff;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
+/* Sidenav bar styling */
+.toggle-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+  background-color: #000;
+  border: none;
+  padding: 7px;
+  border-radius: 0;
+}
+
+.toggle-btn:focus {
+  outline: none;
+}
+
+.toggle-btn svg {
+  color: #fff;
+}
+
+.sidenav {
+  height: 100%;
+  width: 220px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: all 0.3s ease;
+  transform: translateX(-220px);
+}
+
+.sidenav.open {
+  width: 250px;
+  transform: translateX(0);
+}
+
+.content {
+  margin-left: 220px; /* set to the same width as the sidenav */
+  transition: margin-left 0.3s ease; /* add a transition effect */
+}
+
+.sidenav.open ~ .content {
+  margin-left: 250px; /* adjust to the width of the sidenav when open */
+}
+
+.sidenav .navbar-brand {
+  font-size: 24px;
+  color: #fff;
+  margin: 0;
+  padding: 20px 15px;
+  display: block;
+  text-align: center;
+  border-bottom: 1px solid #555;
+}
+
+.sidenav .navbar-nav {
+  padding: 0;
+  margin: 0;
+}
+
+.sidenav .nav-item {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidenav .nav-link {
+  display: block;
+  padding: 15px;
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.sidenav .nav-link:hover {
+  background-color: #555;
+}
+
+.sidenav .btn-danger {
+  position: absolute;
+  bottom: 0;
+  margin: 15px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #d9534f;
+  color: #fff;
+  font-size: 18px;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.sidenav .btn-danger:hover {
+  background-color: #c9302c;
+  cursor: pointer;
+}
+
+/* Sidenav bar styling */
 
 /* Bhanuka **********************************************************/
 
