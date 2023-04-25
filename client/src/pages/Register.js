@@ -45,83 +45,87 @@ const Register = () => {
   };
   return (
     <>
-      <h3>Create your account</h3>
+      <h3 className="text-center">Create your account</h3>
 
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="nameInput" className="form-label mt-4">
-            Name
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="nameInput"
-            name="name"
-            value={credentials.name}
-            onChange={handleInputChange}
-            placeholder="Yeran Kodithuwakku"
-            required
-            fdprocessedid="8n2of"
-          />
+      <div className="row justify-content-center">
+        <div className="col-12 col-md-6">
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="nameInput" className="form-label mt-4">
+                Name
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="nameInput"
+                name="name"
+                value={credentials.name}
+                onChange={handleInputChange}
+                placeholder="Yeran Kodithuwakku"
+                required
+                fdprocessedid="8n2of"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="emailInput" className="form-label mt-4">
+                Email address
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                id="emailInput"
+                aria-describedby="emailHelp"
+                name="email"
+                value={credentials.email}
+                onChange={handleInputChange}
+                placeholder="yerankodithuwakku@gmail.com"
+                required
+                fdprocessedid="8n2of"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="passwordInput" className="form-label mt-4">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="passwordInput"
+                name="password"
+                value={credentials.password}
+                placeholder="Enter Password"
+                onChange={handleInputChange}
+                required
+                fdprocessedid="8n2of"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="confirmPassword" className="form-label mt-4">
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="confirmPassword"
+                name="confirmPassword"
+                value={credentials.confirmPassword}
+                placeholder="Confirm Password"
+                onChange={handleInputChange}
+                required
+                fdprocessedid="8n2of"
+              />
+            </div>
+            <input
+              type="submit"
+              value="Register"
+              className="btn btn-primary my-3"
+            ></input>
+            <p>
+              Already have an account? <Link to="/login">Login</Link>
+            </p>
+          </form>
         </div>
-        <div className="form-group">
-          <label htmlFor="emailInput" className="form-label mt-4">
-            Email address
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="emailInput"
-            aria-describedby="emailHelp"
-            name="email"
-            value={credentials.email}
-            onChange={handleInputChange}
-            placeholder="yerankodithuwakku@gmail.com"
-            required
-            fdprocessedid="8n2of"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="passwordInput" className="form-label mt-4">
-            Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="passwordInput"
-            name="password"
-            value={credentials.password}
-            placeholder="Enter Password"
-            onChange={handleInputChange}
-            required
-            fdprocessedid="8n2of"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="confirmPassword" className="form-label mt-4">
-            Confirm Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="confirmPassword"
-            name="confirmPassword"
-            value={credentials.confirmPassword}
-            placeholder="Confirm Password"
-            onChange={handleInputChange}
-            required
-            fdprocessedid="8n2of"
-          />
-        </div>
-        <input
-          type="submit"
-          value="Register"
-          className="btn btn-primary my-3"
-        ></input>
-        <p>
-          Already have an account? <Link to="/login">Login</Link>
-        </p>
-      </form>
+      </div>
     </>
   );
 };

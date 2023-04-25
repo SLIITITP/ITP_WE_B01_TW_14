@@ -19,6 +19,7 @@ import CreateAttendance from "./pages/AddAttendance";
 import Report from "./pages/CreateReport";
 import Index from "./pages";
 import EMDashboard from "./pages/EMDashboard";
+import Footer from "./components/Footer";
 
 // Bhanuka********************************************************
 import "./App.css";
@@ -149,6 +150,7 @@ const App = () => {
           </Layout>
         </AuthContextProvider>
       </ToastContextProvider>
+      <Footer />
     </Router>
   );
 };
