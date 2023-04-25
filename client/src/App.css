@@ -40,6 +40,14 @@ tbody tr:nth-child(odd) {
   border-color: #80bdff;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
+
+/* body {
+  background: linear-gradient(180deg, #69af7a, #e3f1d8);
+} */
+body {
+  background: radial-gradient(circle, #69af7a, #e3f1d8);
+}
+
 /* Sidenav bar styling */
 .toggle-btn {
   position: fixed;
@@ -67,7 +75,7 @@ tbody tr:nth-child(odd) {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #000;
+  background-color: #224957;
   overflow-x: hidden;
   padding-top: 60px;
   transition: all 0.3s ease;
