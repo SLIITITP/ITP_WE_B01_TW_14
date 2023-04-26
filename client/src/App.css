@@ -277,6 +277,7 @@
 }
 
 /* Home Page CSS for buttons */
+
 /* Table Header */
 thead {
   /* background-color: #7bad25; */
@@ -300,9 +301,7 @@ tbody tr:nth-child(odd) {
 /* Table Body */
 
 /* Body content */
-/* body {
-  background: linear-gradient(180deg, #69af7a, #e3f1d8);
-} */
+
 body {
   background: radial-gradient(circle, #69af7a, #e3f1d8);
 }
@@ -414,31 +413,34 @@ body {
   background-color: #c9302c;
   cursor: pointer;
 }
+
+.nav-link {
+  font-weight: 500;
+}
+
+.nav-link {
+  text-decoration: none;
+}
+
 /* Sidenav bar styling */
 
 /* Forms */
 .form-style {
   background: radial-gradient(circle, #69af7a, #e3f1d8);
   padding: 30px;
-}
-.form-style {
-  background: radial-gradient(circle, #69af7a, #e3f1d8);
-  padding: 30px;
+  position: relative; /* Set the position property of the parent element to relative */
 }
 
 .form-group label {
   display: block;
   margin-bottom: 5px;
   color: black;
+  font-weight: 500;
 }
 
 .btn-darkgreen {
   background-color: #006400;
   border: none;
-}
-
-.btn-darkgreen:hover {
-  background-color: #228b22;
 }
 
 .bg-darkgreen {
@@ -473,10 +475,12 @@ form h2 {
   border-radius: 5px; /* Add rounded edges to the input fields */
 }
 
-.btn-info:hover,
-.btn-danger:hover {
-  background-color: #006400; /* Set the background color for the buttons when hovered */
-  border-color: #006400; /* Set the border color for the buttons when hovered */
+.btn {
+  font-weight: bold;
+}
+
+.text-center button {
+  margin-left: 10px;
 }
 /* Forms */
 

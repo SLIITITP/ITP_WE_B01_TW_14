@@ -76,7 +76,7 @@ const CreateSalary = () => {
 
   return (
     <>
-      <h2 className="text-center bg-darkgreen text-white p-3">
+      <h2 className="text-center bg-darkgreen text-white p-2">
         Employee Salary
       </h2>
       <div className="row justify-content-center">
@@ -195,7 +195,7 @@ const CreateSalary = () => {
               <button
                 type="button"
                 onClick={handleClear}
-                className="btn btn-danger my-2 ml-2"
+                className="btn btn-danger my-2"
               >
                 Clear
               </button>

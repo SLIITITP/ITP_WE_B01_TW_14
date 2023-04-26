@@ -235,15 +235,34 @@ import AuthContext from "../context/AuthContext";
 import ToastContext from "../context/ToastContext";
 import { useLocation } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChartBar,
+  faUsers,
+  faMoneyBillAlt,
+  faCalendarAlt,
+  faFileAlt,
+  faSignInAlt,
+  faUserPlus,
+  faSignOutAlt,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = ({ title = "Southern Agro" }) => {
   const [currentPage, setCurrentPage] = useState("");
   const location = useLocation();
   const [showSidebar, setShowSidebar] = useState(false);
+  const [dateTime, setDateTime] = useState(new Date());
 
   useEffect(() => {
     setCurrentPage(location.pathname);
   }, [location.pathname]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDateTime(new Date());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const navigate = useNavigate();
   const { user, setUser } = useContext(AuthContext);
@@ -259,38 +278,60 @@ const Navbar = ({ title = "Southern Agro" }) => {
         {showSidebar ? <FaTimes /> : <FaBars />}
       </button>
       <div className={`sidenav${showSidebar ? " open" : ""}`}>
-        <Link to="/" className="navbar-brand">
-          <img src="" alt="" />
-        </Link>
+        <ul className="navbar-nav">
+          <p className="nav-link">{dateTime.toLocaleString()}</p>
 
-        {/* <Link to="/" className="navbar-brand">
+          {/* <Link to="/" className="navbar-brand">
+          <img src="" alt="" />
+        </Link> */}
+
+          {/* <Link to="/" className="navbar-brand">
           {title}
         </Link> */}
-        <ul className="navbar-nav">
           {user ? (
             <>
               <li className="nav-item">
                 <Link to="/" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faChartBar}
+                    style={{ marginRight: "10px", color: "lightgreen" }}
+                  />
                   Dashboard
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="/index" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faUsers}
+                    style={{ marginRight: "10px", color: "lightgreen" }}
+                  />
                   Employee
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="/addsalary" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faMoneyBillAlt}
+                    style={{ marginRight: "10px", color: "lightgreen" }}
+                  />
                   Salary
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="/addattendance" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faCalendarAlt}
+                    style={{ marginRight: "10px", color: "lightgreen" }}
+                  />
                   Attendace
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="/createreport" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faFileAlt}
+                    style={{ marginRight: "10px", color: "lightgreen" }}
+                  />
                   Report
                 </Link>
               </li>
@@ -303,19 +344,41 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   navigate("/login", { replace: true });
                 }}
               >
-                <button className="btn btn-danger">Logout</button>
+                <button className="btn btn-danger">
+                  <FontAwesomeIcon
+                    icon={faSignOutAlt}
+                    style={{ marginRight: "10px", color: "lightgreen" }}
+                  />
+                  Logout
+                </button>
               </li>
             </>
           ) : (
             <>
               <li className="nav-item">
-                <Link to="/login">
-                  <a className="nav-link">Login</a>
+                <Link
+                  to="/login"
+                  className="nav-link"
+                  style={{ textDecoration: "none" }}
+                >
+                  <FontAwesomeIcon
+                    icon={faSignInAlt}
+                    style={{ marginRight: "10px", color: "lightgreen" }}
+                  />
+                  Login
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/register">
-                  <a className="nav-link"> Register</a>
+                <Link
+                  to="/register"
+                  className="nav-link"
+                  style={{ textDecoration: "none" }}
+                >
+                  <FontAwesomeIcon
+                    icon={faUserPlus}
+                    style={{ marginRight: "10px", color: "lightgreen" }}
+                  />
+                  Register
                 </Link>
               </li>
             </>
