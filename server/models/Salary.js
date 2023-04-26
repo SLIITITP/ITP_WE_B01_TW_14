@@ -16,7 +16,7 @@ const SalarySchema = new mongoose.Schema({
   },
   bonus: {
     type: Number,
-    required: [true, "Please add the bonus"],
+    // required: [true, "Please add the bonus"],
   },
   //we use this to find who has added the salary
   postedBy: {
@@ -32,7 +32,7 @@ const validateSalary = (data) => {
     empid: Joi.string().min(5).max(5).required(),
     salary: Joi.number().min(5).max(100000000000).required(),
     date: Joi.string().min(4).max(100).required(),
-    bonus: Joi.number().min(5).max(100000000000).required(),
+    bonus: Joi.number().min(5).max(100000000000).optional(),
   });
 
   return schema.validate(data);

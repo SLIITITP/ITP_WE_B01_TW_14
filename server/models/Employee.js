@@ -69,7 +69,7 @@ const Employee = new mongoose.model("Employee", EmployeeSchema);
 
 const validateEmployee = (data) => {
   const schema = Joi.object({
-    firstname: Joi.string().min(4).max(50).required(),
+    firstname: Joi.string().min(2).max(50).required(),
     lastname: Joi.string().min(4).max(50).required(),
     email: Joi.string().min(4).max(100).required(),
     phone: Joi.number().min(7).max(100000000000).required(),

@@ -37,65 +37,65 @@ const Home = () => {
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/allsalesreps"}
-              className="btn btn-success btn-lg btn-block button-link"
+              className="btn btn-success btn-lg btn-block button-link button-link1 "
             >
-              Delivery Management
+              <span>Delivery Management</span>
             </Link>
           </div>
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/index"}
-              className="btn btn-success btn-lg btn-block  button-link"
+              className="btn btn-success btn-lg btn-block  button-link button-link2"
             >
-              Customer and Customer Order Management
+              <span>Customer and Customer Order Management</span>
             </Link>
           </div>
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/index"}
-              className="btn btn-success btn-lg btn-block  button-link"
+              className="btn btn-success btn-lg btn-block  button-link button-link3"
             >
-              User Management
+              <span>User Management</span>
             </Link>
           </div>
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/index"}
-              className="btn btn-success btn-lg btn-block  button-link"
+              className="btn btn-success btn-lg btn-block  button-link button-link4"
             >
-              Payment management system
+              <span>Payment management system</span>
             </Link>
           </div>
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/index"}
-              className="btn btn-success btn-lg btn-block  button-link"
+              className="btn btn-success btn-lg btn-block  button-link button-link5"
             >
-              Employee Management
+              <span>Employee Management</span>
             </Link>
           </div>
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/mystocks"}
-              className="btn btn-success btn-lg btn-block  button-link"
+              className="btn btn-success btn-lg btn-block  button-link button-link6"
             >
-              Inventory control management
+              <span>Inventory control management</span>
             </Link>
           </div>
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/index"}
-              className="btn btn-success btn-lg btn-block  button-link"
+              className="btn btn-success btn-lg btn-block  button-link button-link7"
             >
-              Supplier Management
+              <span>Supplier Management</span>
             </Link>
           </div>
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/vmdashboard"}
-              className="btn btn-success btn-lg btn-block  button-link"
+              className="btn btn-success btn-lg btn-block  button-link button-link8"
             >
-              Vehicle Management
+              <span>Vehicle Management</span>
             </Link>
           </div>
         </div>

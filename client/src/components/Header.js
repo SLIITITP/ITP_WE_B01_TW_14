@@ -21,6 +21,7 @@ const Header = () => {
             {user.name}
           </span>
           <img
+            // src={user.profilePicture}
             src={user.profilePicture}
             alt={user.name}
             className="rounded-circle mr-2"
