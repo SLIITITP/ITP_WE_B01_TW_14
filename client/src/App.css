@@ -112,9 +112,14 @@ body {
 }
 
 .sidenav .nav-item {
+  margin: 10px 45px;
   margin-left: 30px;
   padding: 0;
   list-style: none;
+  border-radius: 10px;
+  background-color: #ffffff;
+  padding: 0;
+  display: inline-block;
 }
 
 .sidenav .nav-link {
@@ -124,10 +129,12 @@ body {
   font-size: 18px;
   text-decoration: none;
   transition: all 0.2s ease;
+  text-decoration: none;
+  color: #000000;
 }
 
 .sidenav .nav-link:hover {
-  background-color: #555;
+  background-color: #03c988;
 }
 
 .sidenav .btn-danger {
