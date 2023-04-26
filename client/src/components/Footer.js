@@ -7,7 +7,7 @@ const Footer = () => {
       style={{ backgroundColor: "darkgreen" }}
     >
       <p style={{ color: "white" }}>
-        &copy; 2023 Southern Agro. All rights reserved.
+        &copy; 2023 Southern Agro Serve (Pvt) Ltd. All rights reserved.
       </p>
     </footer>
   );

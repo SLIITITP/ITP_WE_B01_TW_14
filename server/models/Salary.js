@@ -27,18 +27,18 @@ const SalarySchema = new mongoose.Schema({
 
 const Salary = new mongoose.model("Salary", SalarySchema);
 
-const validateSalary = (data) => {
-  const schema = Joi.object({
-    empid: Joi.string().min(5).max(5).required(),
-    salary: Joi.number().min(5).max(100000000000).required(),
-    date: Joi.string().min(4).max(100).required(),
-    bonus: Joi.number().min(5).max(100000000000).optional(),
-  });
+// const validateSalary = (data) => {
+//   const schema = Joi.object({
+//     empid: Joi.string().min(5).max(5).required(),
+//     salary: Joi.number().min(5).max(100000000000).required(),
+//     date: Joi.string().min(4).max(100).required(),
+//     bonus: Joi.number().min(5).max(100000000000).optional(),
+//   });
 
-  return schema.validate(data);
-};
+//   return schema.validate(data);
+// };
 
 module.exports = {
-  validateSalary,
+  // validateSalary,
   Salary,
 };

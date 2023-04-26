@@ -1,13 +1,11 @@
 import React from "react";
 
 import { useContext, useState } from "react";
-import Card from "react-bootstrap/Card";
 
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import AuthContext from "../context/AuthContext";
 import ToastContext from "../context/ToastContext";
-import CurrencyInput from "react-currency-input-field";
 
 const CreateSalary = () => {
   const { user } = useContext(AuthContext);
@@ -35,16 +33,6 @@ const CreateSalary = () => {
     }
   };
 
-  // const handleInputChange = (event) => {
-  //   const { name, value } = event.target;
-
-  //   // Replace any non-numeric characters with an empty string
-  //   const formattedValue = value.replace(/[^0-9]/g, "");
-
-  //   setUserDetails({ ...userDetails, [name]: formattedValue });
-  //   // setUserDetails({ ...userDetails, [name]: value }); //spread the existing values and add the new value/overwrite the existing value
-  // };
-
   const handleSubmit = async (event) => {
     event.preventDefault(); //prevent the default behaviour of the form; which is to refresh the page
 
@@ -70,7 +58,13 @@ const CreateSalary = () => {
       toast.error(result.error);
     }
   };
+  // add a state variable to store whether the bonus should be added
+  const [addBonus, setAddBonus] = useState(false);
 
+  // handle the radio button change event
+  const handleBonusChange = (event) => {
+    setAddBonus(event.target.value === "yes");
+  };
   const handleClear = () => {
     setUserDetails({
       empid: "",
@@ -143,25 +137,55 @@ const CreateSalary = () => {
               />
             </div>
             {/* Bonus */}
+            {/* render the bonus input field conditionally based on the addBonus state */}
             <div className="form-group">
-              <label htmlFor="bonusInput" className="form-label">
-                Bonus
+              <label htmlFor="addBonusInput" className="form-label">
+                Add Bonus?
               </label>
-              <input
-                type="text"
-                className="form-control rounded"
-                id="bonusInput"
-                name="bonus"
-                value={`LKR ${userDetails.bonus.replace(
-                  /\B(?=(\d{3})+(?!\d))/g,
-                  ","
-                )}`}
-                onChange={handleInputChange}
-                placeholder="LKR 100,000"
-                required
-                fdprocessedid="8n2of"
-              />
+              <div>
+                <label>
+                  <input
+                    type="radio"
+                    name="addBonus"
+                    value="yes"
+                    checked={addBonus}
+                    onChange={handleBonusChange}
+                  />
+                  Yes
+                </label>
+                <label className="ml-2">
+                  <input
+                    type="radio"
+                    name="addBonus"
+                    value="no"
+                    checked={!addBonus}
+                    onChange={handleBonusChange}
+                  />
+                  No
+                </label>
+              </div>
             </div>
+            {addBonus && (
+              <div className="form-group">
+                <label htmlFor="bonusInput" className="form-label">
+                  Bonus
+                </label>
+                <input
+                  type="text"
+                  className="form-control rounded"
+                  id="bonusInput"
+                  name="bonus"
+                  value={`LKR ${userDetails.bonus.replace(
+                    /\B(?=(\d{3})+(?!\d))/g,
+                    ","
+                  )}`}
+                  onChange={handleInputChange}
+                  placeholder="LKR 100,000"
+                  required
+                  fdprocessedid="8n2of"
+                />
+              </div>
+            )}
             <div className="text-center">
               <input
                 type="submit"
