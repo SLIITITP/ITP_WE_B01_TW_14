@@ -303,7 +303,9 @@ tbody tr:nth-child(odd) {
 /* Body content */
 
 body {
-  background: radial-gradient(circle, #69af7a, #e3f1d8);
+  /* background: linear-gradient(315deg, #20bf55 0%, #01baef 74%); */
+  background-color: #378b29;
+  background-image: linear-gradient(315deg, #378b29 0%, #74d680 74%);
 }
 /* Body content */
 
@@ -326,6 +328,9 @@ body {
 .toggle-btn svg {
   color: #fff;
 }
+.toggle-btn:hover + .sidenav {
+  transform: translateX(0);
+}
 
 .sidenav {
   height: 100%;
@@ -334,11 +339,14 @@ body {
   z-index: 3; /* set a higher z-index than the overlays */
   top: 0;
   left: 0;
-  background-color: #224957;
+  background-color: #0c1e35;
   overflow-x: hidden;
   padding-top: 60px;
-  transition: all 0.3s ease;
-  transform: translateX(-220px);
+  /* transition: all 0.3s ease; */
+  /* transform: translateX(-220px); */
+  text-align: left;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
 }
 
 .sidenav.open {
@@ -370,7 +378,7 @@ body {
   margin: 0;
 }
 
-.sidenav .nav-item {
+/* .sidenav .nav-item {
   margin: 10px 45px;
   margin-left: 30px;
   padding: 0;
@@ -379,21 +387,31 @@ body {
   background-color: #ffffff;
   padding: 0;
   display: inline-block;
-}
+} */
 
 .sidenav .nav-link {
   display: block;
   padding: 15px;
-  color: #fff;
+  /* color: #fff; */
   font-size: 18px;
   text-decoration: none;
-  transition: all 0.2s ease;
-  text-decoration: none;
-  color: #000000;
+  /* transition: all 0.2s ease; */
+  color: white;
+  /* text-align: center; */
+  font-size: 0.9em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-grow: 1;
+  transition: color 0.3s;
 }
 
-.sidenav .nav-link:hover {
+/* .sidenav .nav-link:hover {
   background-color: #03c988;
+} */
+
+.sidenav .nav-link:hover {
+  color: #03c988;
 }
 
 .sidenav .btn-danger {
@@ -406,7 +424,13 @@ body {
   color: #fff;
   font-size: 18px;
   text-transform: uppercase;
-  transition: all 0.2s ease;
+  /* transition: all 0.2s ease; */
+  font-size: 0.9em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-grow: 1;
+  transition: color 0.3s;
 }
 
 .sidenav .btn-danger:hover {
@@ -426,7 +450,8 @@ body {
 
 /* Forms */
 .form-style {
-  background: radial-gradient(circle, #69af7a, #e3f1d8);
+  /* background-color: #378b29;
+  background-image: linear-gradient(315deg, #378b29 0%, #74d680 74%); */
   padding: 30px;
   position: relative; /* Set the position property of the parent element to relative */
 }
@@ -443,15 +468,11 @@ body {
   border: none;
 }
 
-.bg-darkgreen {
+/* .bg-darkgreen {
   background-color: #006400;
-}
+} */
 form {
-  background: radial-gradient(
-    circle,
-    #69af7a,
-    #e3f1d8
-  ); /* Set the background color */
+  /* Set the background color */
   padding: 30px; /* Add some padding to the form */
   border-radius: 10px; /* Add rounded edges to the form */
 }

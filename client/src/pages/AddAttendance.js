@@ -81,7 +81,7 @@ const CreateAttendance = () => {
 
   return (
     <>
-      <h2 className="text-center">Attendance</h2>
+      <h2 className="text-center bg-darkgreen text-white p-2">Attendance</h2>
 
       <div className="row justify-content-center">
         <div className="col-12 col-md-6">
@@ -236,16 +236,21 @@ const CreateAttendance = () => {
             fdprocessedid="8n2of"
           />
         </div> */}
-
-            <input type="submit" value="Submit" className="btn btn-info my-2" />
-            <button
-              type="button"
-              onClick={handleClear}
-              className="btn btn-danger my-2 ml-2"
-              // The ml-2 class adds a left margin of 2 units, which creates a space between the two buttons.
-            >
-              Clear
-            </button>
+            <div className="text-center">
+              <input
+                type="submit"
+                value="Submit"
+                className="btn btn-info my-2"
+              />
+              <button
+                type="button"
+                onClick={handleClear}
+                className="btn btn-danger my-2 ml-2"
+                // The ml-2 class adds a left margin of 2 units, which creates a space between the two buttons.
+              >
+                Clear
+              </button>
+            </div>
           </form>
         </div>
       </div>

@@ -190,7 +190,7 @@ const CreateSalary = () => {
               <input
                 type="submit"
                 value="Submit"
-                className="btn btn-success my-2"
+                className="btn btn-info my-2"
               />
               <button
                 type="button"

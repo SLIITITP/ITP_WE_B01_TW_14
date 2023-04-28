@@ -71,7 +71,7 @@ const CreateEmployee = () => {
 
   return (
     <>
-      <h2 className="text-center">Add Employee</h2>
+      <h2 className="text-center bg-darkgreen text-white p-2">Add Employee</h2>
       <div className="row justify-content-center">
         <div className="col-12 col-md-6">
           <form onSubmit={handleSubmit}>
@@ -238,19 +238,21 @@ const CreateEmployee = () => {
                 <option value="Entomologist">Entomologist</option>
               </select>
             </div>
-            <input
-              type="submit"
-              value="Add Employee"
-              className="btn btn-info my-2"
-            />
-            <button
-              type="button"
-              onClick={handleClear}
-              className="btn btn-danger my-2 ml-2"
-              // The ml-2 class adds a left margin of 2 units, which creates a space between the two buttons.
-            >
-              Clear
-            </button>
+            <div className="text-center">
+              <input
+                type="submit"
+                value="Add Employee"
+                className="btn btn-info my-2"
+              />
+              <button
+                type="button"
+                onClick={handleClear}
+                className="btn btn-danger my-2 ml-2"
+                // The ml-2 class adds a left margin of 2 units, which creates a space between the two buttons.
+              >
+                Clear
+              </button>
+            </div>
           </form>
         </div>
       </div>

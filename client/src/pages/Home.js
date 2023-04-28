@@ -63,7 +63,7 @@ const Home = () => {
               to={"/index"}
               className="btn btn-success btn-lg btn-block  button-link button-link4"
             >
-              <span>Payment management system</span>
+              <span>Invoice Entry system</span>
             </Link>
           </div>
           <div className="col-lg-4 col-md-6 mb-4">

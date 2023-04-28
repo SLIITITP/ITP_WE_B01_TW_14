@@ -18,27 +18,3 @@ export default Layout;
 
 // // NOTES:
 // //containers will be used to wrap our components. It will give us extra space for our components.
-
-// import { useState } from "react";
-// import Navbar from "./Navbar";
-// import Sidebar from "./Sidebar";
-
-// const Layout = ({ navbar = true, children }) => {
-//   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-//   const handleSidebarToggle = () => {
-//     setIsSidebarOpen(!isSidebarOpen);
-//   };
-
-//   return (
-//     <>
-//       {navbar && <Navbar onSidebarToggle={handleSidebarToggle} />}
-//       {isSidebarOpen && <Sidebar onSidebarToggle={handleSidebarToggle} />}
-//       <div className={`container ${isSidebarOpen ? "ml-4" : ""} mt-3`}>
-//         {children}
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Layout;

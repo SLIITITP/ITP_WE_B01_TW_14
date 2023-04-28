@@ -228,7 +228,7 @@
 
 // //Difference between Link and <a> tag in react-router-dom is that Link tag does not refresh the page, it just changes the url in the browser and <a> tag refreshes the page.
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
@@ -268,8 +268,20 @@ const Navbar = ({ title = "Southern Agro" }) => {
   const { user, setUser } = useContext(AuthContext);
   const { toast } = useContext(ToastContext);
 
+  const sidebarRef = useRef(null); // create a ref to the sidebar element
+
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
+  };
+
+  const handleMouseEnter = () => {
+    // set showSidebar to true when mouse enters the sidebar
+    setShowSidebar(true);
+  };
+
+  const handleMouseLeave = () => {
+    // set showSidebar to false when mouse leaves the sidebar
+    setShowSidebar(false);
   };
 
   return (
@@ -277,7 +289,12 @@ const Navbar = ({ title = "Southern Agro" }) => {
       <button className="toggle-btn" onClick={toggleSidebar}>
         {showSidebar ? <FaTimes /> : <FaBars />}
       </button>
-      <div className={`sidenav${showSidebar ? " open" : ""}`}>
+      <div
+        className={`sidenav${showSidebar ? " open" : ""}`}
+        ref={sidebarRef} // set the ref to the sidebar element
+        onMouseEnter={handleMouseEnter} // handle mouse enter event
+        onMouseLeave={handleMouseLeave} // handle mouse leave event
+      >
         <ul className="navbar-nav">
           <p className="nav-link">{dateTime.toLocaleString()}</p>
 
@@ -294,7 +311,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 <Link to="/" role="button" className="nav-link">
                   <FontAwesomeIcon
                     icon={faChartBar}
-                    style={{ marginRight: "10px", color: "lightgreen" }}
+                    style={{ marginRight: "10px", color: "white" }}
                   />
                   Dashboard
                 </Link>
@@ -303,7 +320,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 <Link to="/index" role="button" className="nav-link">
                   <FontAwesomeIcon
                     icon={faUsers}
-                    style={{ marginRight: "10px", color: "lightgreen" }}
+                    style={{ marginRight: "10px", color: "white" }}
                   />
                   Employee
                 </Link>
@@ -312,7 +329,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 <Link to="/addsalary" role="button" className="nav-link">
                   <FontAwesomeIcon
                     icon={faMoneyBillAlt}
-                    style={{ marginRight: "10px", color: "lightgreen" }}
+                    style={{ marginRight: "10px", color: "white" }}
                   />
                   Salary
                 </Link>
@@ -321,7 +338,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 <Link to="/addattendance" role="button" className="nav-link">
                   <FontAwesomeIcon
                     icon={faCalendarAlt}
-                    style={{ marginRight: "10px", color: "lightgreen" }}
+                    style={{ marginRight: "10px", color: "white" }}
                   />
                   Attendace
                 </Link>
@@ -330,7 +347,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 <Link to="/createreport" role="button" className="nav-link">
                   <FontAwesomeIcon
                     icon={faFileAlt}
-                    style={{ marginRight: "10px", color: "lightgreen" }}
+                    style={{ marginRight: "10px", color: "white" }}
                   />
                   Report
                 </Link>
@@ -347,7 +364,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 <button className="btn btn-danger">
                   <FontAwesomeIcon
                     icon={faSignOutAlt}
-                    style={{ marginRight: "10px", color: "lightgreen" }}
+                    style={{ marginRight: "10px", color: "white" }}
                   />
                   Logout
                 </button>
@@ -363,12 +380,12 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 >
                   <FontAwesomeIcon
                     icon={faSignInAlt}
-                    style={{ marginRight: "10px", color: "lightgreen" }}
+                    style={{ marginRight: "10px", color: "white" }}
                   />
                   Login
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link
                   to="/register"
                   className="nav-link"
@@ -376,11 +393,11 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 >
                   <FontAwesomeIcon
                     icon={faUserPlus}
-                    style={{ marginRight: "10px", color: "lightgreen" }}
+                    style={{ marginRight: "10px", color: "white" }}
                   />
                   Register
                 </Link>
-              </li>
+              </li> */}
             </>
           )}
         </ul>
