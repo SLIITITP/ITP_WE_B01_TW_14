@@ -16,6 +16,7 @@ const SalarySchema = new mongoose.Schema({
   },
   bonus: {
     type: Number,
+    default: 0, //setting a default value for bonus
     // required: [true, "Please add the bonus"],
   },
   //we use this to find who has added the salary
@@ -23,7 +24,20 @@ const SalarySchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
+  totalSalary: {
+    type: Number,
+  },
 });
+
+SalarySchema.pre("save", function (next) {
+  // add bonus to salary and store in totalSalary field
+  this.totalSalary = this.salary + this.bonus;
+  next();
+});
+
+// Here, we added a new field called "totalSalary" to the SalarySchema. We also set a default value of 0 for the "bonus" field.
+
+// Then, we added a pre hook to the schema that runs before saving a salary document. In this hook, we add the bonus to the salary and store the result in the "totalSalary" field. Finally, we call the next() function to continue with the save operation.
 
 const Salary = new mongoose.model("Salary", SalarySchema);
 

@@ -46,7 +46,13 @@ const CreateSalary = () => {
     });
     const result = await res.json();
     if (!result.error) {
-      toast.success(`Salary [${userDetails.empid}] Transfer Complete`);
+      toast.success(`Salary ${userDetails.empid} Transfer Complete`);
+      toast.info(`Total Amount Transferred LKR ${result.totalSalary}`);
+      // console.log(result);
+
+      //       Here, we extract the totalsalary from the result object and display it in a toast message using toast.info. We also update the userDetails state to clear the form after the salary transfer is complete.
+
+      // Note: Make sure that your backend API returns the totalsalary value in the response object.
 
       setUserDetails({
         empid: "",

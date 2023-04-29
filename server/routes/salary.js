@@ -21,11 +21,15 @@ router.post("/salary", auth, async (req, res) => {
       return res.status(400).json({ error: "Employee does not exist" });
     }
 
+    // Calculate total salary by adding bonus to salary
+    const totalSalary = salary + bonus;
+
     const newSalary = new Salary({
       empid: employee._id,
       salary,
       date,
       bonus,
+      totalSalary, // Add the new field to the document
       postedBy: req.user._id,
     });
     //save salary
