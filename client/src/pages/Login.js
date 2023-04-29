@@ -33,6 +33,12 @@ const Login = () => {
     loginUser(credentials);
   };
 
+  var button = document.getElementById("mainButton");
+
+  var openForm = function () {
+    button.className = "active";
+  };
+
   return (
     <>
       <h3 className="text-center">Login</h3>

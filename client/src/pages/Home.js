@@ -82,6 +82,7 @@ const Home = () => {
               <span>Inventory control management</span>
             </Link>
           </div>
+
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/index"}
