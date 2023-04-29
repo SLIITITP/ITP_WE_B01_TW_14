@@ -25,7 +25,7 @@ router.post("/salary", auth, async (req, res) => {
     const totalSalary = salary + bonus;
 
     const newSalary = new Salary({
-      empid: employee._id,
+      empid: employee.empid,
       salary,
       date,
       bonus,

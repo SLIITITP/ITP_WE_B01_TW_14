@@ -48,7 +48,7 @@ const CreateSalary = () => {
     if (!result.error) {
       toast.success(`Salary ${userDetails.empid} Transfer Complete`);
       toast.info(`Total Amount Transferred LKR ${result.totalSalary}`);
-      // console.log(result);
+      console.log(result);
 
       //       Here, we extract the totalsalary from the result object and display it in a toast message using toast.info. We also update the userDetails state to clear the form after the salary transfer is complete.
 
