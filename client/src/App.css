@@ -276,6 +276,10 @@
   opacity: 0.8;
 }
 
+.supplier-btn {
+  margin-left: 150px;
+}
+
 /* Home Page CSS for buttons */
 
 /* Table Header */
@@ -504,16 +508,6 @@ form h2 {
   margin-left: 10px;
 }
 /* Forms */
-
-/* Login page */
-
-.login-form {
-  background-image: url("https://static.dw.com/image/64115481_1006.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* Login page */
 
 /* Bhanuka **********************************************************/
 

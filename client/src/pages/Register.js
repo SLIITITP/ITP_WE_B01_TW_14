@@ -13,6 +13,7 @@ const Register = () => {
     email: "",
     password: "",
     confirmPassword: "",
+    role: "",
   });
 
   const handleInputChange = (event) => {
@@ -30,7 +31,8 @@ const Register = () => {
     if (
       !credentials.email ||
       !credentials.password ||
-      !credentials.confirmPassword
+      !credentials.confirmPassword ||
+      !credentials.role
     ) {
       toast.error("Please enter all the required fields!");
       return;
@@ -114,6 +116,26 @@ const Register = () => {
                 required
                 fdprocessedid="8n2of"
               />
+            </div>
+            <div className="form-group">
+              <label htmlFor="roleInput" className="form-label mt-4">
+                Role
+              </label>
+              <select
+                className="form-control"
+                id="roleInput"
+                name="role"
+                value={credentials.role}
+                onChange={handleInputChange}
+                placeholder="HR Manager"
+                required
+                fdprocessedid="8n2of"
+              >
+                <option value="">Select Role</option>
+                <option value="HR Manager">HR Manager</option>
+                <option value="Delivery Manager">Delivery Manager</option>
+                <option value="Vehicle Manager">Vehicle Manager</option>
+              </select>
             </div>
             <input
               type="submit"

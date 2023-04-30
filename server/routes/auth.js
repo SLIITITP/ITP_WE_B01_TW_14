@@ -7,11 +7,11 @@ const auth = require("../middlewares/auth");
 const User = require("../models/User");
 
 router.post("/register", async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, role } = req.body;
 
   //<check all the missing fields>
   //status 400 is for Bad User Input
-  if (!name || !email || !password)
+  if (!name || !email || !password || !role)
     return res
       .status(400)
       .json({ error: `Please enter all the required fields.` });
@@ -48,15 +48,13 @@ router.post("/register", async (req, res) => {
     const doesUserAlreadyExist = await User.findOne({ email });
 
     if (doesUserAlreadyExist)
-      return res
-        .status(400)
-        .json({
-          error: `a user with that email [${email}] already exists. Please try again.`,
-        });
+      return res.status(400).json({
+        error: `a user with that email [${email}] already exists. Please try again.`,
+      });
 
     const hashedPassword = await bcrypt.hash(password, 12); //12 is the length of the salt Salt is a random string of characters that is added to the password before hashing. It is used to make the password more secure.
 
-    const newUser = new User({ name, email, password: hashedPassword });
+    const newUser = new User({ name, email, password: hashedPassword, role });
 
     //save the user
     const result = await newUser.save();

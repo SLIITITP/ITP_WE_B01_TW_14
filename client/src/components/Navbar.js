@@ -298,14 +298,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
         <ul className="navbar-nav">
           <p className="nav-link">{dateTime.toLocaleString()}</p>
 
-          {/* <Link to="/" className="navbar-brand">
-          <img src="" alt="" />
-        </Link> */}
-
-          {/* <Link to="/" className="navbar-brand">
-          {title}
-        </Link> */}
-          {user ? (
+          {user && user.role === "HR Manager" ? (
             <>
               <li className="nav-item">
                 <Link to="/" role="button" className="nav-link">
@@ -347,6 +340,57 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 <Link to="/createreport" role="button" className="nav-link">
                   <FontAwesomeIcon
                     icon={faFileAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Report
+                </Link>
+              </li>
+              <li
+                className="nav-item"
+                onClick={() => {
+                  setUser(null);
+                  localStorage.clear();
+                  toast.success("Logout Successful!");
+                  navigate("/login", { replace: true });
+                }}
+              >
+                <button className="btn btn-danger">
+                  <FontAwesomeIcon
+                    icon={faSignOutAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Logout
+                </button>
+              </li>
+            </>
+          ) : user && user.role === "Delivery Manager" ? (
+            <>
+              <li className="nav-item">
+                <Link to="/allsalesreps" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    // icon={faTruck}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Sales Representatives
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/myschedules" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    // icon={faTruck}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Delivery Schedules
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/createdeliveryreport"
+                  role="button"
+                  className="nav-link"
+                >
+                  <FontAwesomeIcon
+                    // icon={faTruck}
                     style={{ marginRight: "10px", color: "white" }}
                   />
                   Report
