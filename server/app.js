@@ -65,6 +65,29 @@ app.use("/api/", require("./routes/repair"));
 
 //Bhanuka***************************************************************************
 
+// Ashen***************
+const categoryRoutes = require("./routes/categoryRoutes");
+const productRoutes = require("./routes/productRoutes");
+const orderRoutes = require("./routes/orderRoutes");
+
+app.use("/api/categories", categoryRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/orders", orderRoutes);
+
+// app.use("/api/", require("./routes/categoryRoutes"));
+// app.use("/api/", require("./routes/productRoutes"));
+// app.use("/api/", require("./routes/orderRoutes"));
+//new
+app.use("/api/", require("./routes/auth"));
+app.get("/protected", auth, (req, res) => {
+  return res.status(200).json({ ...req.user._doc });
+});
+
+app.use((err, req, res, next) => {
+  res.status(500).send({ message: err.message });
+});
+// Ashen*************************************************
+
 //Pasindu***************************************************************************
 const cors = require("cors");
 app.use(cors());

@@ -101,7 +101,7 @@ const Home = () => {
           </div>
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
-              to={"/index"}
+              to={"/cart"}
               className="btn btn-success btn-lg btn-block  button-link button-link2"
             >
               <span>Customer Order Management</span>

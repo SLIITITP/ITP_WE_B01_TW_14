@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ToastContext from "./ToastContext";
+import { Store } from "../Store";
 
 const AuthContext = createContext();
 
@@ -13,6 +14,11 @@ export const AuthContextProvider = ({ children }) => {
 
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
+
+  //ashen
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { userInfo } = state;
+  //ashen
 
   useEffect(() => {
     checkUserLoggedIn();
@@ -64,6 +70,8 @@ export const AuthContextProvider = ({ children }) => {
         localStorage.setItem("token", result.token);
         setUser(result.user);
         toast.success(`Welcome ${result.user.name}`);
+        ctxDispatch({ type: "USER_SIGNIN", payload: result });
+        localStorage.setItem("userInfo", JSON.stringify(result));
 
         navigate("/", { replace: true });
       } else {

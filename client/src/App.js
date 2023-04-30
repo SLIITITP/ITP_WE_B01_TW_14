@@ -4,6 +4,9 @@ import Layout from "./components/Layout";
 // import { ToastContextProvider } from "./context/ToastContext";
 import { AuthContextProvider } from "./context/AuthContext";
 
+//ashen
+import { ToastContainer, toast } from "react-toastify";
+
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -65,7 +68,72 @@ import IMDashboard from "./pages/IMDashboard";
 
 // Yasitha********************************************************
 
+// Ashen********************************************************
+
+import HomeScreen from "./screens/HomeScreen";
+import ProductScreen from "./screens/ProductScreen";
+import Container from "react-bootstrap/Container";
+import Navbar from "react-bootstrap/Navbar";
+import { LinkContainer } from "react-router-bootstrap";
+import Badge from "react-bootstrap/Badge";
+import Nav from "react-bootstrap/Nav";
+import { useContext, useEffect, useState } from "react";
+import { Store } from "./Store";
+import CartScreen from "./screens/CartScreen";
+import ShippingDetailsScreen from "./screens/ShippingDetailsScreen";
+import PlaceOrderScreen from "./screens/PlaceOrderScreen";
+import SigninScreen from "./screens/SigninScreen";
+// import Header from './components/Header';
+import OrderScreen from "./screens/OrderScreen";
+import OrderHistoryScreen from "./screens/OrderHistoryScreen";
+import { getError } from "./utils";
+import SearchBox from "./components/SearchBox";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import SearchScreen from "./screens/SearchScreen";
+import ProtectedRoute from "./components/ProtectedRoute";
+import AdminRoute from "./components/AdminRoute";
+import DashboardScreen from "./screens/DashboardScreen";
+import OrderListScreen from "./screens/OrderListSCreen";
+import NavigationScreen from "./screens/NavigationScreen";
+import PaymentGatewayScreen from "./screens/PaymentGatewayScreen";
+// import Footer from './components/Footer';
+//import CreateCategory from './pages/CreateCategory';
+// import Layout from './components/Layout';
+// import Login from './screens/Login';
+// import { AuthContextProvider } from './context/AuthContext';
+import CreateCustomer from "./screens/CreateCustomer";
+import CustomerScreen from "./screens/CustomerScreen";
+
+// Ashen********************************************************
+
 const App = () => {
+  // Ashen********************************************************
+
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { cart, userInfo } = state;
+
+  const signoutHandler = () => {
+    ctxDispatch({ type: "USER_SIGNOUT" });
+    localStorage.removeItem("userInfo");
+    localStorage.removeItem("cartItems");
+    localStorage.removeItem("shippingDetails");
+  };
+
+  const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        // const { data } = await axios.get(`/api/products/categories`);
+        // setCategories(data);
+      } catch (err) {
+        toast.error(getError(err));
+      }
+    };
+    fetchCategories();
+  }, []);
+  // Ashen********************************************************
   return (
     <Router>
       <ToastContextProvider>
@@ -147,6 +215,99 @@ const App = () => {
               <Route path="/imdashboard" element={<IMDashboard />} />
 
               {/* Yasitha******************************************************** */}
+
+              {/* Ashen******************************************************** */}
+              {/* <ToastContainer position="bottom-center" limit={1} /> */}
+              {/* <main>
+                <Container> */}
+              {/* <Route path="/" element={<SigninScreen />} /> */}
+              <Route
+                path="/products"
+                element={
+                  <ProtectedRoute>
+                    <HomeScreen />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/product/:name" element={<ProductScreen />} />
+              <Route
+                path="/cart"
+                element={
+                  <ProtectedRoute>
+                    <CartScreen />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/navscreen" element={<NavigationScreen />} />
+              <Route path="/shipping" element={<ShippingDetailsScreen />} />
+              <Route path="/placeorder" element={<PlaceOrderScreen />} />
+              <Route path="/order/:id" element={<OrderScreen />} />
+
+              <Route
+                path="/paymentgateway"
+                element={<PaymentGatewayScreen />}
+              />
+              <Route
+                path="/orderhistory"
+                element={
+                  <ProtectedRoute>
+                    <OrderHistoryScreen />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/search"
+                element={
+                  <ProtectedRoute>
+                    <SearchScreen />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/dashboard"
+                element={
+                  <AdminRoute>
+                    <DashboardScreen />
+                  </AdminRoute>
+                }
+              />
+              <Route
+                path="/admin/orders"
+                element={
+                  <AdminRoute>
+                    <OrderListScreen />
+                  </AdminRoute>
+                }
+              ></Route>
+
+              {/* <Route
+                    path="/login"
+                    element={
+                      <AuthContextProvider>
+                        <Login />
+                      </AuthContextProvider>
+                    }
+                  /> */}
+              <Route
+                path="/customerinfo"
+                element={
+                  <AuthContextProvider>
+                    <CustomerScreen />
+                  </AuthContextProvider>
+                }
+              />
+              <Route
+                path="/createcustomer"
+                element={
+                  <AuthContextProvider>
+                    <CreateCustomer />
+                  </AuthContextProvider>
+                }
+              />
+              {/* </Container>
+              </main> */}
+
+              {/* Ashen******************************************************** */}
             </Switch>
           </Layout>
         </AuthContextProvider>
