@@ -146,7 +146,12 @@ const Index = () => {
 
       {/* new code */}
       <div>
-        <h1 style={{ textAlign: "center" }}>Employee Details</h1>
+        <h1
+          className="text-center bg-darkgreen text-white p-2"
+          style={{ textAlign: "center" }}
+        >
+          Employee Details
+        </h1>
         <div className="d-flex justify-content-between">
           {/* <a href="/index" className="btn btn-danger my-2">
             Reload Employee List

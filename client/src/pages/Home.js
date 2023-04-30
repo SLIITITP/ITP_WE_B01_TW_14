@@ -45,9 +45,9 @@ const Home = () => {
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/index"}
-              className="btn btn-success btn-lg btn-block  button-link button-link2"
+              className="btn btn-success btn-lg btn-block  button-link button-link9"
             >
-              <span>Customer and Customer Order Management</span>
+              <span>Live Store</span>
             </Link>
           </div>
           <div className="col-lg-4 col-md-6 mb-4">
@@ -83,7 +83,7 @@ const Home = () => {
             </Link>
           </div>
 
-          <div className="col-lg-4 col-md-8 mb-6">
+          <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/index"}
               className="btn btn-success btn-lg btn-block  button-link button-link7"
@@ -91,12 +91,20 @@ const Home = () => {
               <span>Supplier Management</span>
             </Link>
           </div>
-          <div className="col-lg-4 col-md-8 mb-6">
+          <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/vmdashboard"}
               className="btn btn-success btn-lg btn-block  button-link button-link8"
             >
               <span>Vehicle Management</span>
+            </Link>
+          </div>
+          <div className="col-lg-4 col-md-6 mb-4">
+            <Link
+              to={"/index"}
+              className="btn btn-success btn-lg btn-block  button-link button-link2"
+            >
+              <span>Customer Order Management</span>
             </Link>
           </div>
         </div>
