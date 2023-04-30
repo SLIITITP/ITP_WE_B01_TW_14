@@ -136,6 +136,7 @@ const Register = () => {
                 <option value="HR Manager">HR Manager</option>
                 <option value="Delivery Manager">Delivery Manager</option>
                 <option value="Vehicle Manager">Vehicle Manager</option>
+                <option value="Customer Manager">Customer Manager</option>
                 <option value="Inventory Control Manager">
                   Inventory Control Manager
                 </option>
