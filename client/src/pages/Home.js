@@ -83,7 +83,7 @@ const Home = () => {
             </Link>
           </div>
 
-          <div className="col-lg-4 col-md-8 mb-6 mx-auto supplier-btn">
+          <div className="col-lg-4 col-md-8 mb-6">
             <Link
               to={"/index"}
               className="btn btn-success btn-lg btn-block  button-link button-link7"
@@ -91,7 +91,7 @@ const Home = () => {
               <span>Supplier Management</span>
             </Link>
           </div>
-          <div className="col-lg-4 col-md-8 mb-6 mx-auto ">
+          <div className="col-lg-4 col-md-8 mb-6">
             <Link
               to={"/vmdashboard"}
               className="btn btn-success btn-lg btn-block  button-link button-link8"

@@ -243,8 +243,11 @@ import {
   faCalendarAlt,
   faFileAlt,
   faSignInAlt,
-  faUserPlus,
   faSignOutAlt,
+  faTruck,
+  faUserTie,
+  faFolder,
+  faClipboardList,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = ({ title = "Southern Agro" }) => {
@@ -368,7 +371,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
               <li className="nav-item">
                 <Link to="/allsalesreps" role="button" className="nav-link">
                   <FontAwesomeIcon
-                    // icon={faTruck}
+                    icon={faUserTie}
                     style={{ marginRight: "10px", color: "white" }}
                   />
                   Sales Representatives
@@ -377,7 +380,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
               <li className="nav-item">
                 <Link to="/myschedules" role="button" className="nav-link">
                   <FontAwesomeIcon
-                    // icon={faTruck}
+                    icon={faTruck}
                     style={{ marginRight: "10px", color: "white" }}
                   />
                   Delivery Schedules
@@ -390,10 +393,157 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   className="nav-link"
                 >
                   <FontAwesomeIcon
-                    // icon={faTruck}
+                    icon={faFileAlt}
                     style={{ marginRight: "10px", color: "white" }}
                   />
                   Report
+                </Link>
+              </li>
+              <li
+                className="nav-item"
+                onClick={() => {
+                  setUser(null);
+                  localStorage.clear();
+                  toast.success("Logout Successful!");
+                  navigate("/login", { replace: true });
+                }}
+              >
+                <button className="btn btn-danger">
+                  <FontAwesomeIcon
+                    icon={faSignOutAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Logout
+                </button>
+              </li>
+            </>
+          ) : user && user.role === "Inventory Control Manager" ? (
+            <>
+              <li className="nav-item">
+                <Link to="/myprofits" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faChartBar}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Profits
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link to="/mycategories" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faFolder}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Categories
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link to="/mystocks" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faClipboardList}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Inventory
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/stockreport" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faFileAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Report
+                </Link>
+              </li>
+              <li
+                className="nav-item"
+                onClick={() => {
+                  setUser(null);
+                  localStorage.clear();
+                  toast.success("Logout Successful!");
+                  navigate("/login", { replace: true });
+                }}
+              >
+                <button className="btn btn-danger">
+                  <FontAwesomeIcon
+                    icon={faSignOutAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Logout
+                </button>
+              </li>
+            </>
+          ) : user && user.role === "Vehicle Manager" ? (
+            <>
+              <li className="nav-item">
+                <Link to="/allvehicle" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faChartBar}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Vehicle
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link
+                  to="/addRunningRecords"
+                  role="button"
+                  className="nav-link"
+                >
+                  <FontAwesomeIcon
+                    icon={faFolder}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Running Records
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link to="/addrepair" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faClipboardList}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Repair
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/registerGarage" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faFileAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Garage
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/allDocument" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faFileAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Document Storage
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/repairAssign" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faFileAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Repair Assign
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/addFuel" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faFileAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Add Fuel
                 </Link>
               </li>
               <li
