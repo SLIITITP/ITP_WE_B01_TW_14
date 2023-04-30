@@ -1,29 +1,33 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
 //let Delivery = require("../models/delivery");
+const { Employee } = require("../models/Employee");
 
-const { validateDelivery, Delivery } = require("../models/delivery");
+// const { validateDelivery, Delivery } = require("../models/delivery");
+const { Delivery } = require("../models/delivery");
 const auth = require("../middlewares/auth");
-
-
 
 //Add sales representative
 router.post("/delivery", auth, async (req, res) => {
-    const {
-        EmployeeID,
-        Territory
-    } = req.body;
+  const { EmployeeID, Territory } = req.body;
 
-    const { error } = validateDelivery(req.body);
+  // const { error } = validateDelivery(req.body);
 
-    if (error) {
-        return res.status(400).json({ error: error.details[0].message });
+  // if (error) {
+  //   return res.status(400).json({ error: error.details[0].message });
+  // }
+
+  try {
+    // Verify if the empid exists in the employee database
+    const employee = await Employee.findOne({ EmployeeID });
+    if (!employee) {
+      return res.status(400).json({ error: "Employee does not exist" });
     }
-    try {
-        const newdelivery = new Delivery({
-        EmployeeID,
-        Territory,
-        postedBy: req.user._id,
+
+    const newdelivery = new Delivery({
+      EmployeeID: employee.empid,
+      Territory,
+      postedBy: req.user._id,
     });
     //save the user
     const result = await newdelivery.save();
@@ -35,113 +39,107 @@ router.post("/delivery", auth, async (req, res) => {
   }
 });
 
-
 //fetch sales reps
 router.get("/mydeliveries", auth, async (req, res) => {
-    try {
-      const delivery = await Delivery.find({ postedBy: req.user._id }).populate(
-        "postedBy",
-        "-password"
-      );
-  
-      return res.status(200).json({ delivery: delivery });
-      // return res.status(200).json({ employee: employee.reverse() });
-    } catch (err) {
-      console.log(err);
-    }
-  });
+  try {
+    const delivery = await Delivery.find({ postedBy: req.user._id }).populate(
+      "postedBy",
+      "-password"
+    );
 
+    return res.status(200).json({ delivery: delivery });
+    // return res.status(200).json({ employee: employee.reverse() });
+  } catch (err) {
+    console.log(err);
+  }
+});
 
-  //update sales reps
+//update sales reps
 router.put("/delivery", auth, async (req, res) => {
-    const { id } = req.body;
-  
-    if (!id) {
-      return res.status(400).json({ error: "Please provide an id" });
-    }
-    if (!mongoose.isValidObjectId(id)) {
-      return res.status(400).json({ error: "Invalid id" });
-    }
-    try {
-      const delivery = await Delivery.findOne({ _id: id });
-  
-      if (req.user._id.toString() !== delivery.postedBy._id.toString()) {
-        return res
-          .status(401)
-          .json({ error: "Unauthorized! You can't update this sales repsentative" });
-      }
-      const updatedData = { ...req.body, id: undefined };
-      // const result = await Employee.updateOne({ _id: id }, updatedData);
-      const result = await Delivery.findByIdAndUpdate(id, updatedData, {
-        new: true,
+  const { id } = req.body;
+
+  if (!id) {
+    return res.status(400).json({ error: "Please provide an id" });
+  }
+  if (!mongoose.isValidObjectId(id)) {
+    return res.status(400).json({ error: "Invalid id" });
+  }
+  try {
+    const delivery = await Delivery.findOne({ _id: id });
+
+    if (req.user._id.toString() !== delivery.postedBy._id.toString()) {
+      return res.status(401).json({
+        error: "Unauthorized! You can't update this sales repsentative",
       });
-  
-      // Fetch the updated sales rep and send it back to the client
-      const updatedDelivery = await Delivery.findById(id);
-      return res.status(200).json(updatedDelivery);
-  
-      // return res.status(200).json({ ...result._doc });
-    } catch (err) {
-      console.log(err);
     }
-  });
+    const updatedData = { ...req.body, id: undefined };
+    // const result = await Employee.updateOne({ _id: id }, updatedData);
+    const result = await Delivery.findByIdAndUpdate(id, updatedData, {
+      new: true,
+    });
 
-  //delete sales representative
+    // Fetch the updated sales rep and send it back to the client
+    const updatedDelivery = await Delivery.findById(id);
+    return res.status(200).json(updatedDelivery);
+
+    // return res.status(200).json({ ...result._doc });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//delete sales representative
 router.delete("/deletedelivery/:id", auth, async (req, res) => {
-    const { id } = req.params;
-  
-    if (!id) {
-      return res.status(400).json({ error: "Please provide an id" });
-    }
-    if (!mongoose.isValidObjectId(id)) {
-      return res.status(400).json({ error: "Invalid id" });
-    }
-    try {
-      const delivery = await Delivery.findOne({ _id: id });
-      if (!delivery) {
-        return res.status(404).json({ error: "Sales representative not found" });
-      }
-      if (req.user._id.toString() !== delivery.postedBy._id.toString()) {
-        return res
-          .status(401)
-          .json({ error: "Unauthorized! You can't delete this sales representative" });
-      }
-      const result = await Delivery.deleteOne({ _id: id });
-      const deliveries = await Delivery.find({ postedBy: req.user._id }).populate(
-        "postedBy",
-        "-password"
-      );
-      return res.status(200).json({ deliveries: deliveries });
-      // return res.status(200).json({ employees: employees.reverse() });
-    } catch (error) {
-      console.log(error);
-    }
-  });
+  const { id } = req.params;
 
-  //to get a single contact
+  if (!id) {
+    return res.status(400).json({ error: "Please provide an id" });
+  }
+  if (!mongoose.isValidObjectId(id)) {
+    return res.status(400).json({ error: "Invalid id" });
+  }
+  try {
+    const delivery = await Delivery.findOne({ _id: id });
+    if (!delivery) {
+      return res.status(404).json({ error: "Sales representative not found" });
+    }
+    if (req.user._id.toString() !== delivery.postedBy._id.toString()) {
+      return res.status(401).json({
+        error: "Unauthorized! You can't delete this sales representative",
+      });
+    }
+    const result = await Delivery.deleteOne({ _id: id });
+    const deliveries = await Delivery.find({ postedBy: req.user._id }).populate(
+      "postedBy",
+      "-password"
+    );
+    return res.status(200).json({ deliveries: deliveries });
+    // return res.status(200).json({ employees: employees.reverse() });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+//to get a single contact
 router.get("/delivery/:id", auth, async (req, res) => {
-    const { id } = req.params;
-  
-    if (!id) {
-      return res.status(400).json({ error: "Please provide an id" });
-    }
-    if (!mongoose.isValidObjectId(id)) {
-      return res.status(400).json({ error: "Invalid id" });
-    }
-    try {
-      const delivery = await Delivery.findOne({ _id: id });
-  
-      return res.status(200).json({ ...delivery._doc });
-    } catch (err) {
-      console.log(err);
-    }
-  });
-  
-  module.exports = router;
-  
+  const { id } = req.params;
 
+  if (!id) {
+    return res.status(400).json({ error: "Please provide an id" });
+  }
+  if (!mongoose.isValidObjectId(id)) {
+    return res.status(400).json({ error: "Invalid id" });
+  }
+  try {
+    const delivery = await Delivery.findOne({ _id: id });
 
+    return res.status(200).json({ ...delivery._doc });
+  } catch (err) {
+    console.log(err);
+  }
+});
 
+module.exports = router;
 
 // router.route("/").get((req,res)=>{ // display method
 //     Delivery.find().then((Deliveries)=>{
@@ -150,7 +148,6 @@ router.get("/delivery/:id", auth, async (req, res) => {
 //         console.log(err)
 //     })
 // })
-
 
 //update method
 //frontend eken student ge ID eka pass kranna oni backend ekata , ID eken thama student keekwa uniquely identify kranne
@@ -176,7 +173,7 @@ router.get("/delivery/:id", auth, async (req, res) => {
 //         console.log(err);
 //         res.status(500).send({status:"Error with updating data",error: err.message});
 //     })
-   
+
 // })
 
 //delete method
@@ -200,12 +197,11 @@ router.get("/delivery/:id", auth, async (req, res) => {
 //     }).catch(()=>{
 //         console.log(err.message);
 //         res.status(500).send({status: "Error with get user", error: err.message});
-    
+
 //     })
 // })
 
 // module.exports = router;
-
 
 //********************************
 
@@ -222,7 +218,7 @@ router.get("/delivery/:id", auth, async (req, res) => {
 //     })
 
 //     newdelivery.save().then(()=>{
-//         res.json("Sales rep added") // res.json eken wenne api response ekak widiyata yawanwa json format eken 
+//         res.json("Sales rep added") // res.json eken wenne api response ekak widiyata yawanwa json format eken
 //     }).catch((err)=>{
 //         console.log(err);
 //     })
@@ -235,7 +231,6 @@ router.get("/delivery/:id", auth, async (req, res) => {
 //         console.log(err)
 //     })
 // })
-
 
 // //update method
 // //frontend eken student ge ID eka pass kranna oni backend ekata , ID eken thama student keekwa uniquely identify kranne
@@ -261,7 +256,7 @@ router.get("/delivery/:id", auth, async (req, res) => {
 //         console.log(err);
 //         res.status(500).send({status:"Error with updating data",error: err.message});
 //     })
-   
+
 // })
 
 // //delete method
@@ -285,7 +280,7 @@ router.get("/delivery/:id", auth, async (req, res) => {
 //     }).catch(()=>{
 //         console.log(err.message);
 //         res.status(500).send({status: "Error with get user", error: err.message});
-    
+
 //     })
 // })
 

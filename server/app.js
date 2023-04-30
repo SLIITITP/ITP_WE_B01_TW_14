@@ -90,29 +90,29 @@ app.use((err, req, res, next) => {
 
 // Hasa*************************************************
 // import helmet from "helmet";
-const clientRoutes = require("./routes/client.js");
-const generalRoutes = require("./routes/general.js");
-const managementRoutes = require("./routes/management.js");
-const salesRoutes = require("./routes/sales.js");
-const authRoutes = require("./routes/authRoutes.js");
+// const clientRoutes = require("./routes/client.js");
+// const generalRoutes = require("./routes/general.js");
+// const managementRoutes = require("./routes/management.js");
+// const salesRoutes = require("./routes/sales.js");
+// const authRoutes = require("./routes/authRoutes.js");
 
-const { logger, logEvents } = require("./middleware/logger.js");
-const cookieParser = require("cookie-parser");
-const corsOptions = require("./config/corsOptions.js");
+// const { logger, logEvents } = require("./middleware/logger.js");
+// const cookieParser = require("cookie-parser");
+// const corsOptions = require("./config/corsOptions.js");
 
-// app.use(helmet());
+// // app.use(helmet());
 
-app.use(logger);
-app.use(cors(corsOptions));
-app.use(express.json());
-app.use(cookieParser());
+// app.use(logger);
+// app.use(cors(corsOptions));
+// app.use(express.json());
+// app.use(cookieParser());
 
-/* ROUTES */
-app.use("/client", clientRoutes);
-app.use("/general", generalRoutes);
-app.use("/management", managementRoutes);
-app.use("/sales", salesRoutes);
-app.use("/auth", authRoutes);
+// /* ROUTES */
+// app.use("/client", clientRoutes);
+// app.use("/general", generalRoutes);
+// app.use("/management", managementRoutes);
+// app.use("/sales", salesRoutes);
+// app.use("/auth", authRoutes);
 // Hasa*************************************************
 
 //Pasindu***************************************************************************
