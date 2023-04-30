@@ -35,9 +35,9 @@ const Login = () => {
 
   var button = document.getElementById("mainButton");
 
-  var openForm = function () {
-    button.className = "active";
-  };
+  // var openForm = function () {
+  //   button.className = "active";
+  // };
 
   return (
     <>
