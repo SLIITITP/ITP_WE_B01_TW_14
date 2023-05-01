@@ -1,0 +1,23 @@
+{
+  "name": "roboto-font",
+  "description": "Roboto fonts",
+  "version": "0.1.0",
+  "keywords": ["font", "roboto", "fontrobot", "font", "bootstrap"],
+  "bugs": {
+    "url" : "https://github.com/alejonext/roboto-fonts/issues"
+  },
+  "author": {
+    "name": "AlejoNext",
+    "email": "alejonext@gmail.com",
+    "web": "http://alejonext.co"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alejonext/roboto-fonts.git"
+  },
+  "dependencies": {
+  },
+  "engines" : {
+    "node" : ">=0.10.3"
+  }
+}

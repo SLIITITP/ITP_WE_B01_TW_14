@@ -24,6 +24,10 @@ function Report() {
 
   return (
     <div>
+      <h2 className="text-center bg-darkgreen text-white p-2">
+        Employee Detail Report
+      </h2>
+
       <button
         className="btn btn-success"
         onClick={handleDownload}
