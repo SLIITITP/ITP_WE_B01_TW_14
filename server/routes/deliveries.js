@@ -9,7 +9,7 @@ const auth = require("../middlewares/auth");
 
 //Add sales representative
 router.post("/delivery", auth, async (req, res) => {
-  const { EmployeeID, Territory } = req.body;
+  const { empid, Territory } = req.body;
 
   // const { error } = validateDelivery(req.body);
 
@@ -19,13 +19,13 @@ router.post("/delivery", auth, async (req, res) => {
 
   try {
     // Verify if the empid exists in the employee database
-    const employee = await Employee.findOne({ EmployeeID });
+    const employee = await Employee.findOne({ empid });
     if (!employee) {
       return res.status(400).json({ error: "Employee does not exist" });
     }
 
     const newdelivery = new Delivery({
-      EmployeeID: employee.empid,
+      empid: employee.empid,
       Territory,
       postedBy: req.user._id,
     });
@@ -155,12 +155,12 @@ module.exports = router;
 //id=salesRepID
 // router.route("/update/:id").put(async(req,res)=>{
 //     let userID = req.params.id;
-//     //front end eken ewanne  object ekak.. e object eke tiyanwa salesRepID,EmployeeID,Territory kiyala api update krana oni data tika..e 3 ewanwa object ekak widiyata backend ekata request eke body eke..e request eke body eke tiyana values tika palleha widiyata object ekakata dagannwa api
-//     const{EmployeeID,Territory} = req.body; //destructure method eken thani line eken request body eke tiyana data 3 variables 3kata assign akaragnna puluwn instead of writing 3 lines like in the add method
+//     //front end eken ewanne  object ekak.. e object eke tiyanwa salesRepID,empid,Territory kiyala api update krana oni data tika..e 3 ewanwa object ekak widiyata backend ekata request eke body eke..e request eke body eke tiyana values tika palleha widiyata object ekakata dagannwa api
+//     const{empid,Territory} = req.body; //destructure method eken thani line eken request body eke tiyana data 3 variables 3kata assign akaragnna puluwn instead of writing 3 lines like in the add method
 
 //     const updateDelivery = {
 
-//         EmployeeID,
+//         empid,
 //         Territory
 //     }
 
@@ -209,11 +209,11 @@ module.exports = router;
 // let Delivery = require("../models/delivery");
 
 // router.route("/add").post((req,res)=>{
-//     const EmployeeID = req.body.EmployeeID;
+//     const empid = req.body.empid;
 //     const Territory = req.body.Territory;
 
 //     const newdelivery = new Delivery({
-//         EmployeeID,
+//         empid,
 //         Territory
 //     })
 
@@ -238,12 +238,12 @@ module.exports = router;
 // //id=salesRepID
 // router.route("/update/:id").put(async(req,res)=>{
 //     let userID = req.params.id;
-//     //front end eken ewanne  object ekak.. e object eke tiyanwa salesRepID,EmployeeID,Territory kiyala api update krana oni data tika..e 3 ewanwa object ekak widiyata backend ekata request eke body eke..e request eke body eke tiyana values tika palleha widiyata object ekakata dagannwa api
-//     const{EmployeeID,Territory} = req.body; //destructure method eken thani line eken request body eke tiyana data 3 variables 3kata assign akaragnna puluwn instead of writing 3 lines like in the add method
+//     //front end eken ewanne  object ekak.. e object eke tiyanwa salesRepID,empid,Territory kiyala api update krana oni data tika..e 3 ewanwa object ekak widiyata backend ekata request eke body eke..e request eke body eke tiyana values tika palleha widiyata object ekakata dagannwa api
+//     const{empid,Territory} = req.body; //destructure method eken thani line eken request body eke tiyana data 3 variables 3kata assign akaragnna puluwn instead of writing 3 lines like in the add method
 
 //     const updateDelivery = {
 
-//         EmployeeID,
+//         empid,
 //         Territory
 //     }
 

@@ -34,7 +34,7 @@ router.get("/deliveryreport", async (req, res) => {
     deliveries.forEach((delivery) => {
       doc.fontSize(18).text(
         `Sales Representative ID : ${delivery.salesRepID}\n
-         Employee ID             : ${delivery.EmployeeID} \n
+         Employee ID             : ${delivery.empid} \n
          Territory               : ${delivery.Territory}\n\n\n`
       );
     });

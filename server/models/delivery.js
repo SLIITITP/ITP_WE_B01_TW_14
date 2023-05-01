@@ -18,7 +18,7 @@ const deliverySchema = new Schema({
     type: String,
     unique: true,
   },
-  EmployeeID: {
+  empid: {
     type: String,
     required: [true, "Please add Employee Id"],
   },
@@ -68,7 +68,7 @@ const Delivery = mongoose.model("Delivery", deliverySchema);
 
 // const validateDelivery = (data) => {
 //     const schema = Joi.object({
-//         EmployeeID: Joi.string().min(2).max(5).required(),
+//         empid: Joi.string().min(2).max(5).required(),
 //         Territory: Joi.string().min(3).max(100).required(),
 
 //     });
@@ -93,7 +93,7 @@ module.exports = { Delivery };
 //             type : String,
 //             unique :true
 //          },
-//     EmployeeID : {
+//     empid : {
 //         type : String,
 //         required: true
 //     },

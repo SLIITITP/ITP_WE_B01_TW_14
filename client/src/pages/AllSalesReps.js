@@ -94,7 +94,7 @@ const AllSalesReps = () => {
     const newSearchUser = deliveries.filter(
       (delivery) =>
         delivery.salesRepID.toLowerCase().includes(searchInput.toLowerCase()) ||
-        delivery.EmployeeID.toLowerCase().includes(searchInput.toLowerCase()) ||
+        delivery.empid.toLowerCase().includes(searchInput.toLowerCase()) ||
         delivery.Territory.toLowerCase().includes(searchInput.toLowerCase())
     );
     console.log(newSearchUser);
@@ -225,7 +225,7 @@ const AllSalesReps = () => {
                           }}
                         >
                           <th scope="row">{delivery.salesRepID}</th>
-                          <td>{delivery.EmployeeID}</td>
+                          <td>{delivery.empid}</td>
                           <td>{delivery.Territory}</td>
                         </tr>
                       ))}
@@ -248,7 +248,7 @@ const AllSalesReps = () => {
         <Modal.Body>
           <h3>{modalData.salesRepID}</h3>
           <p>
-            <strong>Employee ID</strong>: {modalData.EmployeeID}
+            <strong>Employee ID</strong>: {modalData.empid}
           </p>
 
           <p>

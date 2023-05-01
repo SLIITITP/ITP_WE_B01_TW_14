@@ -12,7 +12,7 @@ const CreateSalesRep = () => {
   const { toast } = useContext(ToastContext);
 
   const [userDetails, setUserDetails] = useState({
-    EmployeeID: "",
+    empid: "",
     Territory: "",
   });
   const navigate = useNavigate();
@@ -36,11 +36,11 @@ const CreateSalesRep = () => {
     const result = await res.json();
     if (!result.error) {
       toast.success(
-        `Employee [${userDetails.EmployeeID}] Added Successfully as a Sales Representative`
+        `Employee [${userDetails.empid}] Added Successfully as a Sales Representative`
       );
 
       setUserDetails({
-        EmployeeID: "",
+        empid: "",
         Territory: "",
       });
       navigate("/allsalesreps");
@@ -51,7 +51,7 @@ const CreateSalesRep = () => {
 
   const handleClear = () => {
     setUserDetails({
-      EmployeeID: "",
+      empid: "",
       Territory: "",
     });
   };
@@ -69,8 +69,8 @@ const CreateSalesRep = () => {
             type="text"
             className="form-control"
             id="empIDInput"
-            name="EmployeeID"
-            value={userDetails.EmployeeID}
+            name="empid"
+            value={userDetails.empid}
             onChange={handleInputChange}
             placeholder="E001"
             required

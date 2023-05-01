@@ -13,7 +13,7 @@ const EditDelivery = () => {
   const { user } = useContext(AuthContext);
   const { toast } = useContext(ToastContext);
   const [userDetails, setUserDetails] = useState({
-    EmployeeID: "",
+    empid: "",
     Territory: "",
   });
   const [loading, setLoading] = useState(false);
@@ -37,10 +37,10 @@ const EditDelivery = () => {
     const result = await res.json();
     if (!result.error) {
       console.log(result);
-      toast.success(`Updated [${userDetails.EmployeeID}] Successfully`);
+      toast.success(`Updated [${userDetails.empid}] Successfully`);
 
       setUserDetails({
-        EmployeeID: "",
+        empid: "",
         Territory: "",
       });
       navigate("/allsalesreps");
@@ -64,7 +64,7 @@ const EditDelivery = () => {
         console.log(result);
         if (!result.error) {
           setUserDetails({
-            EmployeeID: result.EmployeeID,
+            empid: result.empid,
             Territory: result.Territory,
           });
         } else {
@@ -99,8 +99,8 @@ const EditDelivery = () => {
                 type="text"
                 className="form-control"
                 id="empIDInput"
-                name="EmployeeID"
-                value={userDetails.EmployeeID}
+                name="empid"
+                value={userDetails.empid}
                 onChange={handleInputChange}
                 placeholder="E001"
                 required

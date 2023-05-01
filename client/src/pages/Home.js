@@ -42,22 +42,22 @@ const Home = () => {
               <span>Delivery Management</span>
             </Link>
           </div>
-          <div className="col-lg-4 col-md-6 mb-4">
+          {/* <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/index"}
               className="btn btn-success btn-lg btn-block  button-link button-link9"
             >
               <span>Live Store</span>
             </Link>
-          </div>
-          <div className="col-lg-4 col-md-6 mb-4">
+          </div> */}
+          {/* <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/index"}
               className="btn btn-success btn-lg btn-block  button-link button-link3"
             >
               <span>User Management</span>
             </Link>
-          </div>
+          </div> */}
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
               to={"/index"}
@@ -99,7 +99,7 @@ const Home = () => {
               <span>Vehicle Management</span>
             </Link>
           </div>
-          <div className="col-lg-4 col-md-6 mb-4">
+          <div className="col-lg-4 col-md-6 mb-4 mx-auto">
             <Link
               to={"/cart"}
               className="btn btn-success btn-lg btn-block  button-link button-link2"
