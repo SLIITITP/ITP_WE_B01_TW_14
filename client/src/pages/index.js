@@ -222,7 +222,7 @@ const Index = () => {
                     </button>
                   </form> */}
                   <p>
-                    Your Total Contacts: <strong>{employees.length}</strong>{" "}
+                    Your Total Employees: <strong>{employees.length}</strong>{" "}
                   </p>
                   <table className="table table-hover">
                     <thead>

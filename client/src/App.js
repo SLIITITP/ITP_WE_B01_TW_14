@@ -103,6 +103,8 @@ import PaymentGatewayScreen from "./screens/PaymentGatewayScreen";
 // import { AuthContextProvider } from './context/AuthContext';
 import CreateCustomer from "./screens/CreateCustomer";
 import CustomerScreen from "./screens/CustomerScreen";
+import AllSalary from "./pages/AllSalaries";
+import AllAttendance from "./pages/AllAttendances";
 
 // Ashen********************************************************
 
@@ -152,7 +154,9 @@ const App = () => {
               <Route path="/myemployees" element={<AllEmployee />} />
               <Route path="/editemp/:id" element={<EditEmployee />} />
               <Route path="/addsalary" element={<CreateSalary />} />
+              <Route path="/mysalaries" element={<AllSalary />} />
               <Route path="/addattendance" element={<CreateAttendance />} />
+              <Route path="/myattendances" element={<AllAttendance />} />
               <Route path="/createreport" element={<Report />} />
 
               {/* Bhanuka******************************************************** */}
