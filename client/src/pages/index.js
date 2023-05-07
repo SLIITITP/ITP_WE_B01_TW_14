@@ -9,6 +9,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
 import { Modal } from "react-bootstrap";
 import ToastContext from "../context/ToastContext";
+import { Helmet } from "react-helmet-async";
 
 // import { Link } from "react-router-dom";
 // import Button from 'react-bootstrap/Button';
@@ -129,6 +130,9 @@ const Index = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Employees</title>
+      </Helmet>
       {/* <div className="jumbotron">
         <h1 className="display-4">Welcome {user ? user.name : null}</h1>
         <hr className="my-4" /> */}

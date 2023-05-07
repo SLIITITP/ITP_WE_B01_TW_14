@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 function Report() {
   const [loading, setLoading] = useState(false);
@@ -24,6 +25,9 @@ function Report() {
 
   return (
     <div>
+      <Helmet>
+        <title>Report</title>
+      </Helmet>
       <h2 className="text-center bg-darkgreen text-white p-2">
         Employee Detail Report
       </h2>

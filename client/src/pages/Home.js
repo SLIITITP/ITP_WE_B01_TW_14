@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { useEffect } from "react";
 import AuthContext from "../context/AuthContext";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -19,6 +20,9 @@ const Home = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Southern Agro</title>
+      </Helmet>
       <div className="jumbotron">
         <h1 className="display-4">{greeting}!</h1>
         <h3>Welcome {user ? user.name : null}</h3>
