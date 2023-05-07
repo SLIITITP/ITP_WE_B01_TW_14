@@ -111,7 +111,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                     icon={faCalendarAlt}
                     style={{ marginRight: "10px", color: "white" }}
                   />
-                  Attendace
+                  Attendance
                 </Link>
               </li>
               <li className="nav-item">
