@@ -34,7 +34,7 @@ const Header = () => {
           {user.role === "Delivery Manager" && (
             <img
               src={
-                "https://media.licdn.com/dms/image/C4D03AQFsJckPtRs40g/profile-displayphoto-shrink_400_400/0/1624634415418?e=1689206400&v=beta&t=PXiMGdHIKv-SVgBTipwPHXGBgBxLg7sssy08LSFsmB0"
+                "https://scontent.fcmb1-2.fna.fbcdn.net/v/t39.30808-6/343738766_958774192127225_2020277138152706314_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=wUq0Fnd98r4AX8M5OUd&_nc_ht=scontent.fcmb1-2.fna&oh=00_AfDsApJBH-olxzm_6wXGZutzgzxNXD6QnvGb7fxIsOFFkQ&oe=645C5B60"
               }
               alt={user.name}
               className="rounded-circle mr-2"
@@ -45,7 +45,7 @@ const Header = () => {
           {user.role === "Customer Manager" && (
             <img
               src={
-                "https://media.licdn.com/dms/image/C4D03AQEuxwVRnHC7zw/profile-displayphoto-shrink_400_400/0/1656948625943?e=1689206400&v=beta&t=f_QDyeJNdJ3zleA23fnA7iioBboI-a2m525IXecfTEs"
+                "https://scontent.fcmb1-2.fna.fbcdn.net/v/t39.30808-1/325512809_720598059414679_7618836821725563303_n.jpg?stp=dst-jpg_p320x320&_nc_cat=103&ccb=1-7&_nc_sid=7206a8&_nc_ohc=tWSlVzr__XAAX_v0NbS&_nc_ht=scontent.fcmb1-2.fna&oh=00_AfDuU0nXEGkyeOpD4c1J_VmPjlNBEsjQtwNWOraT0SrWtQ&oe=645CB58C"
               }
               alt={user.name}
               className="rounded-circle mr-2"
