@@ -4,6 +4,11 @@ import { Helmet } from "react-helmet-async";
 import ToastContext from "../context/ToastContext";
 import Spinner from "../components/Spinner";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCalendarAlt,
+  faMoneyBillAlt,
+} from "@fortawesome/free-solid-svg-icons";
 
 function Report() {
   const [loading, setLoading] = useState(false);
@@ -146,14 +151,19 @@ function Report() {
       <h1 className="text-center bg-darkgreen text-white p-2">
         Employee Detail Report
       </h1>
+      <br />
 
       <div>
         <strong>
-          <p onClick={toggleSalaryContent}>
+          <h4 onClick={toggleSalaryContent}>
+            <FontAwesomeIcon
+              icon={faMoneyBillAlt}
+              style={{ marginRight: "10px", color: "black" }}
+            />
             Salaries {showSalaryContent ? <FaAngleDown /> : <FaAngleRight />}
-          </p>
+          </h4>
         </strong>
-        <hr className="my-4" />
+        {/* <hr className="my-4" /> */}
         {showSalaryContent && (
           <>
             {loading ? (
@@ -260,14 +270,19 @@ function Report() {
           </>
         )}
       </div>
+      <br></br>
       <div>
         <strong>
-          <p onClick={toggleAttendanceContent}>
+          <h4 onClick={toggleAttendanceContent}>
+            <FontAwesomeIcon
+              icon={faCalendarAlt}
+              style={{ marginRight: "10px", color: "black" }}
+            />
             Attendance{" "}
             {showAttendanceContent ? <FaAngleDown /> : <FaAngleRight />}
-          </p>
+          </h4>
         </strong>
-        <hr className="my-4" />
+        {/* <hr className="my-4" /> */}
         {showAttendanceContent && (
           <>
             {loading ? (
@@ -370,6 +385,9 @@ function Report() {
           </>
         )}
       </div>
+      <br></br>
+      <br></br>
+      <br></br>
 
       <button
         className="btn btn-success"
