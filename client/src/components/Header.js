@@ -20,14 +20,72 @@ const Header = () => {
           <span className="text-white" style={{ paddingRight: "25px" }}>
             {user.name}
           </span>
-          <img
-            // src={user.profilePicture}
-            src={user.profilePicture}
-            alt={user.name}
-            className="rounded-circle mr-2"
-            width="40"
-            height="40"
-          />
+          {user.role === "HR Manager" && (
+            <img
+              src={
+                "https://media.licdn.com/dms/image/C5603AQE8grUhgHpt2g/profile-displayphoto-shrink_400_400/0/1659579550842?e=1689206400&v=beta&t=6h28vX-YyfU1OlNA0cZNyqd-Md1raXIomtDBM9ABHSM"
+              }
+              alt={user.name}
+              className="rounded-circle mr-2"
+              width="40"
+              height="40"
+            />
+          )}
+          {user.role === "Delivery Manager" && (
+            <img
+              src={
+                "https://scontent.fcmb1-2.fna.fbcdn.net/v/t39.30808-6/343738766_958774192127225_2020277138152706314_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=wUq0Fnd98r4AX8M5OUd&_nc_ht=scontent.fcmb1-2.fna&oh=00_AfDsApJBH-olxzm_6wXGZutzgzxNXD6QnvGb7fxIsOFFkQ&oe=645C5B60"
+              }
+              alt={user.name}
+              className="rounded-circle mr-2"
+              width="40"
+              height="40"
+            />
+          )}
+          {user.role === "Customer Manager" && (
+            <img
+              src={
+                "https://scontent.fcmb1-2.fna.fbcdn.net/v/t39.30808-1/325512809_720598059414679_7618836821725563303_n.jpg?stp=dst-jpg_p320x320&_nc_cat=103&ccb=1-7&_nc_sid=7206a8&_nc_ohc=tWSlVzr__XAAX_v0NbS&_nc_ht=scontent.fcmb1-2.fna&oh=00_AfDuU0nXEGkyeOpD4c1J_VmPjlNBEsjQtwNWOraT0SrWtQ&oe=645CB58C"
+              }
+              alt={user.name}
+              className="rounded-circle mr-2"
+              width="40"
+              height="40"
+            />
+          )}
+          {user.role === "Supplier Manager" && (
+            <img
+              src={
+                "https://media.licdn.com/dms/image/C4E03AQHB_MIwKJx34w/profile-displayphoto-shrink_100_100/0/1625974004067?e=1689206400&v=beta&t=S-zJ17gQe6GBTK-3w4jOwfyk4tf53wPyTioY-OenTss"
+              }
+              alt={user.name}
+              className="rounded-circle mr-2"
+              width="40"
+              height="40"
+            />
+          )}
+          {user.role === "Inventory Control Manager" && (
+            <img
+              src={
+                "https://media.licdn.com/dms/image/C4E03AQFRJ6istEexFg/profile-displayphoto-shrink_100_100/0/1624459091173?e=1689206400&v=beta&t=qz1g4OvzvCo1fOTGZFzfWhh7q2fvfvRpyWzaRm6L4NU"
+              }
+              alt={user.name}
+              className="rounded-circle mr-2"
+              width="40"
+              height="40"
+            />
+          )}
+          {user.role === "Vehicle Manager" && (
+            <img
+              src={
+                "https://media.licdn.com/dms/image/C4E03AQFhLqtVLVz__Q/profile-displayphoto-shrink_400_400/0/1624690151211?e=1689206400&v=beta&t=QOwKAUl9IOAMZByP_SdGnmiJDgUboPJjGo0kv8dXJMQ"
+              }
+              alt={user.name}
+              className="rounded-circle mr-2"
+              width="40"
+              height="40"
+            />
+          )}
         </div>
       )}
     </header>

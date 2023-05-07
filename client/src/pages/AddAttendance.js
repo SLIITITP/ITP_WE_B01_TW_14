@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import AuthContext from "../context/AuthContext";
 import ToastContext from "../context/ToastContext";
+import { Helmet } from "react-helmet-async";
 
 const CreateAttendance = () => {
   const { user } = useContext(AuthContext);
@@ -81,6 +82,9 @@ const CreateAttendance = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Attendance</title>
+      </Helmet>
       <h2 className="text-center bg-darkgreen text-white p-2">Attendance</h2>
 
       <div className="row justify-content-center">
@@ -107,7 +111,7 @@ const CreateAttendance = () => {
               {/* </div> */}
             </div>
             {/* DATE */}
-            <div className="form-group">
+            <div className="form-group mb-3">
               {/* <div class="mb-3 col-lg-6 col-md-6 col-12"> */}
               <label htmlFor="dateInput" className="form-label mt-4">
                 Select Date
@@ -125,7 +129,6 @@ const CreateAttendance = () => {
               />
               {/* </div> */}
             </div>
-
             {/* new code */}
             {/* Radio buttons */}
             <div className="form-group">

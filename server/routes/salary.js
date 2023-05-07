@@ -42,6 +42,18 @@ router.post("/salary", auth, async (req, res) => {
   }
 });
 
+//fetch salaries
+router.get("/mysalaries", auth, async (req, res) => {
+  try {
+    const salary = await Salary.find().populate("postedBy", "-password");
+
+    return res.status(200).json({ salary: salary });
+    // return res.status(200).json({ employee: employee.reverse() });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 module.exports = router;
 
 //NOTES:
