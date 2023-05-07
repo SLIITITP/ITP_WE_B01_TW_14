@@ -316,6 +316,15 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link to="/drivervehicleAssign" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faFileAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Driver Vehicle Assign
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link to="/addFuel" role="button" className="nav-link">
                   <FontAwesomeIcon
                     icon={faFileAlt}
@@ -345,7 +354,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
           ) : // Driver - Bhanuka Dayananda - Lakshitha Gunathilake
           user && user.role === "Driver" ? (
             <>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link to="/allvehicle" role="button" className="nav-link">
                   <FontAwesomeIcon
                     icon={faChartBar}
@@ -353,7 +362,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   />
                   Vehicle
                 </Link>
-              </li>
+              </li> */}
 
               <li className="nav-item">
                 <Link

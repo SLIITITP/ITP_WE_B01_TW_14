@@ -42,6 +42,7 @@ app.use("/api/", require("./routes/vehicledocument"));
 app.use("/api/", require("./routes/driver-vehicle-assign"));
 app.use("/api/", require("./routes/repairassign"));
 app.use("/api/", require("./routes/repair"));
+app.use("/vehicleuploads", express.static("./vehicleuploads"));
 
 // const vehiclerouter = require("./routes/vehicle");
 // const fuelrouter = require("./routes/fuel");
@@ -61,7 +62,7 @@ app.use("/api/", require("./routes/repair"));
 // app.use(repairassignrouter);
 // app.use(repairrouter);
 
-// app.use("/vehicleuploads", express.static("./vehicleuploads"));
+//  app.use("/vehicleuploads", express.static("./vehicleuploads"));
 
 //Bhanuka***************************************************************************
 
