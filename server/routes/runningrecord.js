@@ -95,4 +95,31 @@ router.get("/getvehiclerunningdata",auth, async (req, res) => {
     }
 })
 
+router.get("/getrunningdata",auth, async (req, res) => {
+    try {
+
+        //const { registerNo, startDate, endDate, driverName } = req.query;
+        const vehicleNo = req.query.vehicleNo || ""
+        const startDate = req.query.startDate || ""
+        const endDate = req.query.endDate || ""
+
+        const query = {
+            registerNo : {$regex:vehicleNo, $options: "i"},
+            //deliverdate : { $gte: new Date(startDate), $lte: new Date(endDate) }
+        };
+
+        if(startDate && endDate){
+            query.deliverdate = { $gte: new Date(startDate), $lte: new Date(endDate) };
+        }
+
+
+        const runningdata = await runningrecord.find(query);
+        res.status(201).json(runningdata);
+        //console.log(vehicledata);
+        //console.log(runningdata)
+    } catch (error) {
+        res.status(422).json(error);
+    }
+})
+
 module.exports = router;

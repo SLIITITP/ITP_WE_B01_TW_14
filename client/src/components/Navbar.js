@@ -22,6 +22,11 @@ import {
   faUserTie,
   faFolder,
   faClipboardList,
+  faUser,
+    faTachometerAlt,
+    faGasPump,
+    faTools,
+    faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = ({ title = "Southern Agro" }) => {
@@ -258,10 +263,20 @@ const Navbar = ({ title = "Southern Agro" }) => {
               <li className="nav-item">
                 <Link to="/allvehicle" role="button" className="nav-link">
                   <FontAwesomeIcon
-                    icon={faChartBar}
+                    icon={faTruck}
                     style={{ marginRight: "10px", color: "white" }}
                   />
-                  Vehicle
+                  Vehicle's
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link to="/viewRunningRecords" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faTruck}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  View Vehicle Running
                 </Link>
               </li>
 
@@ -272,7 +287,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   className="nav-link"
                 >
                   <FontAwesomeIcon
-                    icon={faFolder}
+                    icon={faTachometerAlt}
                     style={{ marginRight: "10px", color: "white" }}
                   />
                   Running Records
@@ -282,7 +297,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
               <li className="nav-item">
                 <Link to="/addrepair" role="button" className="nav-link">
                   <FontAwesomeIcon
-                    icon={faClipboardList}
+                    icon={faTools}
                     style={{ marginRight: "10px", color: "white" }}
                   />
                   Repair
@@ -318,7 +333,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
               <li className="nav-item">
                 <Link to="/drivervehicleAssign" role="button" className="nav-link">
                   <FontAwesomeIcon
-                    icon={faFileAlt}
+                    icon={faUser}
                     style={{ marginRight: "10px", color: "white" }}
                   />
                   Driver Vehicle Assign
@@ -327,7 +342,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
               <li className="nav-item">
                 <Link to="/addFuel" role="button" className="nav-link">
                   <FontAwesomeIcon
-                    icon={faFileAlt}
+                    icon={faGasPump}
                     style={{ marginRight: "10px", color: "white" }}
                   />
                   Add Fuel
@@ -354,16 +369,6 @@ const Navbar = ({ title = "Southern Agro" }) => {
           ) : // Driver - Bhanuka Dayananda - Lakshitha Gunathilake
           user && user.role === "Driver" ? (
             <>
-              {/* <li className="nav-item">
-                <Link to="/allvehicle" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    icon={faChartBar}
-                    style={{ marginRight: "10px", color: "white" }}
-                  />
-                  Vehicle
-                </Link>
-              </li> */}
-
               <li className="nav-item">
                 <Link
                   to="/addRunningRecords"
@@ -371,53 +376,26 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   className="nav-link"
                 >
                   <FontAwesomeIcon
-                    icon={faFolder}
+                    icon={faTachometerAlt}
                     style={{ marginRight: "10px", color: "white" }}
                   />
-                  Running Records
+                  Add Running Records
                 </Link>
               </li>
 
               <li className="nav-item">
                 <Link to="/addrepair" role="button" className="nav-link">
                   <FontAwesomeIcon
-                    icon={faClipboardList}
+                    icon={faTools}
                     style={{ marginRight: "10px", color: "white" }}
                   />
-                  Repair
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/registerGarage" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    icon={faFileAlt}
-                    style={{ marginRight: "10px", color: "white" }}
-                  />
-                  Garage
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/allDocument" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    icon={faFileAlt}
-                    style={{ marginRight: "10px", color: "white" }}
-                  />
-                  Document Storage
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/repairAssign" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    icon={faFileAlt}
-                    style={{ marginRight: "10px", color: "white" }}
-                  />
-                  Repair Assign
+                  Add Repair
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="/addFuel" role="button" className="nav-link">
                   <FontAwesomeIcon
-                    icon={faFileAlt}
+                    icon={faGasPump}
                     style={{ marginRight: "10px", color: "white" }}
                   />
                   Add Fuel
