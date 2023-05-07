@@ -42,13 +42,10 @@ router.post("/employee", auth, async (req, res) => {
   }
 });
 
-//fetch contacts
+//fetch employees
 router.get("/myemployees", auth, async (req, res) => {
   try {
-    const employee = await Employee.find({ postedBy: req.user._id }).populate(
-      "postedBy",
-      "-password"
-    );
+    const employee = await Employee.find().populate("postedBy", "-password");
 
     return res.status(200).json({ employee: employee });
     // return res.status(200).json({ employee: employee.reverse() });
