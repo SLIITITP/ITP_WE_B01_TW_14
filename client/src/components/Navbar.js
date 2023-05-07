@@ -281,6 +281,16 @@ const Navbar = ({ title = "Southern Agro" }) => {
               </li>
 
               <li className="nav-item">
+                <Link to="/viewFuelRecords" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faTruck}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  View Fuel Records
+                </Link>
+              </li>
+
+              <li className="nav-item">
                 <Link
                   to="/addRunningRecords"
                   role="button"
