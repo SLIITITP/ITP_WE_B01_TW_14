@@ -397,6 +397,8 @@ function Report() {
       >
         {loading ? "Generating report..." : "Download Report"}
       </button>
+      <br></br>
+      <br></br>
 
       <div>
         <div className="card mb-4 shadow-sm">
