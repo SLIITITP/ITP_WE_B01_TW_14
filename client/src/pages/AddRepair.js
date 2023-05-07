@@ -70,6 +70,8 @@ export const AddRepair = () => {
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
+
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     };
 
@@ -90,7 +92,7 @@ export const AddRepair = () => {
   };
 
   const getdata = async (e) => {
-    const res = await fetch("/getdata", {
+    const res = await fetch("/api/getvehidata", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -111,7 +113,7 @@ export const AddRepair = () => {
   };
 
   const getgaragedata = async (e) => {
-    const res = await fetch("/getgaragedata", {
+    const res = await fetch("/api/getgaragedata", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

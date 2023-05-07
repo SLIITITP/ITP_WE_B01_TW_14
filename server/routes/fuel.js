@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const moment = require("moment");
 const fuel = require("../models/fuel");
+const auth = require("../middlewares/auth");
 
-router.post("/addFuel", async (req, res) => {
+router.post("/addFuel", auth, async (req, res) => {
   //console.log(req.body);
 
   const { registerNo, fuelType, capacity, Amount, fillingStation } = req.body;
