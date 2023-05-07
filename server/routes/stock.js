@@ -1,53 +1,47 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
-const {Category} = require("../models/Category");
+const { Category } = require("../models/Category");
 const { validateStock, Stock } = require("../models/Stock");
 const auth = require("../middlewares/auth");
 
+router.post("/stock", auth, async (req, res) => {
+  const {
+    name,
+    //image,
+    category,
+    description,
+    costprice,
+    sellingprice,
+    quantity,
+    supplier,
+  } = req.body;
 
- router.post("/stock", auth, async (req, res) => {
-   const {
-     name,
-     //image,
-     category,
-     description,
-     costprice,
-     sellingprice,
-     quantity,
-     supplier,
-   } = req.body;
+  const { error } = validateStock(req.body);
 
-   const { error } = validateStock(req.body);
-
-   if (error) {
-     return res.status(400).json({ error: error.details[0].message });
-   }
-   try {
-     const newStock = new Stock({
-     name,
-     //image,
-     category,
-     description,
-     costprice,
-     sellingprice,
-     quantity,
-     supplier,
-       postedBy: req.user._id,
-     });
-     //save the user
-     const result = await newStock.save();
-     //201 means success
-     //._doc defines name, address, email and phone
-     return res.status(201).json({ ...result._doc });
-   } catch (err) {
-     console.log(err);
-   }
+  if (error) {
+    return res.status(400).json({ error: error.details[0].message });
+  }
+  try {
+    const newStock = new Stock({
+      name,
+      //image,
+      category,
+      description,
+      costprice,
+      sellingprice,
+      quantity,
+      supplier,
+      postedBy: req.user._id,
+    });
+    //save the user
+    const result = await newStock.save();
+    //201 means success
+    //._doc defines name, address, email and phone
+    return res.status(201).json({ ...result._doc });
+  } catch (err) {
+    console.log(err);
+  }
 });
-
-
-
-
-
 
 // router.post("/stock", auth, async (req, res) => {
 //   const {
@@ -107,17 +101,10 @@ const auth = require("../middlewares/auth");
 //   }
 // });
 
-
-
-
-
 //fetch contacts
 router.get("/mystocks", auth, async (req, res) => {
   try {
-    const stock = await Stock.find({ postedBy: req.user._id }).populate(
-      "postedBy",
-      "-password"
-    );
+    const stock = await Stock.find().populate("postedBy", "-password");
 
     return res.status(200).json({ stock: stock });
     // return res.status(200).json({ employee: employee.reverse() });

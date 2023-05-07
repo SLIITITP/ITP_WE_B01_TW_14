@@ -42,10 +42,7 @@ router.post("/delivery", auth, async (req, res) => {
 //fetch sales reps
 router.get("/mydeliveries", auth, async (req, res) => {
   try {
-    const delivery = await Delivery.find({ postedBy: req.user._id }).populate(
-      "postedBy",
-      "-password"
-    );
+    const delivery = await Delivery.find().populate("postedBy", "-password");
 
     return res.status(200).json({ delivery: delivery });
     // return res.status(200).json({ employee: employee.reverse() });
