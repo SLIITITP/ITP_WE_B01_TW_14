@@ -34,6 +34,7 @@ function Report() {
     setLoading(false);
   };
 
+  //salary and attendance data related code
   const { toast } = useContext(ToastContext);
   const [showModal, setShowModal] = useState(false);
   // const [loading, setLoading] = useState(false);
