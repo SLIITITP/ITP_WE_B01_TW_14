@@ -154,7 +154,6 @@ const App = () => {
               <Route path="/addsalary" element={<CreateSalary />} />
               <Route path="/addattendance" element={<CreateAttendance />} />
               <Route path="/createreport" element={<Report />} />
-              <Route path="/emdashboard" element={<EMDashboard />} />
 
               {/* Bhanuka******************************************************** */}
 

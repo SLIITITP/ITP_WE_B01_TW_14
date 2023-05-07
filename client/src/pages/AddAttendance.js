@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import AuthContext from "../context/AuthContext";
 import ToastContext from "../context/ToastContext";
+import { Helmet } from "react-helmet-async";
 
 const CreateAttendance = () => {
   const { user } = useContext(AuthContext);
@@ -81,6 +82,9 @@ const CreateAttendance = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Attendance</title>
+      </Helmet>
       <h2 className="text-center bg-darkgreen text-white p-2">Attendance</h2>
 
       <div className="row justify-content-center">
