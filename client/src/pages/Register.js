@@ -141,6 +141,7 @@ const Register = () => {
                   Inventory Control Manager
                 </option>
                 <option value="Supplier Manager">Supplier Manager</option>
+                <option value="Driver">Driver</option>
               </select>
             </div>
             <input
