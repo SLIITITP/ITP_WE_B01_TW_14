@@ -1,13 +1,189 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/* Ashen */
+.company-nav-logo {
+  border-radius: 25px;
+}
+
+.top-nav {
+  background: #0a552b;
+}
+.body-bg {
+  background: linear-gradient(180deg, #3db049 0%, rgba(149, 252, 17, 0) 100%);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.product-scr {
+  margin: 20px;
+}
+.btn-primary1 {
+  background-color: #f0c040;
+  color: black;
+}
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.product-card-image {
+  height: 320px;
+  width: 100%;
+  border-radius: 20px;
+}
+.product {
+  border: 1px #2d2c2c solid;
+  margin: 12px 12px;
+  padding: auto;
+  border-radius: 20px;
+  width: 320px;
+}
+
+.product-info {
+  padding: 1rem;
+}
+
+.product-detail-info {
+  border-radius: 20px;
+  border: #100901 1px solid;
+}
+
+.img-thumbnail {
+  height: 80px;
+}
+
+.small-container {
+  border: 1px black solid;
+  border-radius: 10px;
+  max-width: 650px;
+  background: linear-gradient(180deg, #8bdb9c 0%, rgba(114, 198, 7, 0) 100%);
+}
+
+.img-large {
+  width: 100%;
+  border-radius: 20px;
+  border: #100901 1px solid;
+}
+
+.order-screen-items-head {
+  margin: 12px;
+}
+
+.nav-header {
+  margin-bottom: 20px;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+.side-navbar {
+  width: 240px;
+  height: 100%;
+  position: fixed;
+  left: -300px;
+  background-color: #100901;
+  transition: 0.5s;
+}
+
+.site-container {
+  transition: 0.4s;
+}
+.active-cont {
+  margin-left: 240px;
+}
+.active-nav {
+  left: 0;
+}
+
+.search-product-radioBtn {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-product-radioBtn label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.search-product-radioBtn input[type="radio"] {
+  margin-right: 0.5rem;
+}
+
+.search-product-radioBtn span {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.search-product-radioBtn span:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.cus-nav-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* adjust the height to your preference */
+}
+
+.cus-nav-icon {
+  font-size: 18rem; /* adjust the font size to your preference */
+  margin: 4rem; /* add some margin between the icons */
+}
+
+.cus-nav-a {
+  text-align: center;
+}
+
+.cus-nav-div {
+  margin-top: 0px;
+  font-size: 1.5rem;
+}
+
+.main-footer {
+  color: white;
+  background-color: #0a552b;
+  padding-top: 2rem;
+  position: flex;
+  bottom: 0;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.footer-row {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.footer-col {
+  width: 50%;
+  text-align: center;
+}
+
+.footer-container {
+  text-align: center;
+}
+.footer-sub-head {
+  color: rgb(215, 104, 104);
+}
+/* Ashen */

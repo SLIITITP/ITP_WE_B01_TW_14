@@ -1,0 +1,60 @@
+@basic :'../fonts';
+@roboto : Roboto roboto,
+	thin 100 normal,
+	thinitalic 100 italic,
+	light 300 normal,
+	lightitalic 300 italic,
+	regular 400 normal,
+	italic 400 italic,
+	medium 500 normal,
+	mediumitalic 500 italic,
+	bold 700 normal,
+	bolditalic 700 italic,
+	black 900 normal,
+	blackitalic 900 italic;
+@robotocondensed : Roboto_condensed robotocondensed,
+	light 300 normal,
+	lightitalic 300 italic,
+	regular 400 normal,
+	italic 400 italic,
+	bold 700 normal,
+	bolditalic 700 italic;
+@robotoslab : Roboto_slab
+	robotoslab,
+	
+	thin 100 normal,
+	light 300 normal,
+	regular 400 normal,
+	bold 700 normal 
+
+.putFonts(@list){
+	@font-name: extract(@list,1);
+	@font-file-prefix: extract(@list, 2);
+	.loop(@i) when (@i > 0) {
+		@this-font : extract(@list, @i);
+		@weight-name: extract(@this-font,1);
+		@font-face {
+			font-family: "@{font-name}";
+			src: font-url("@{basic}/@{font-name}/@{weight-name}-webfont.eot");
+			src: font-url("@{basic}/@{font-name}/@{weight-name}-webfont?#iefix") format('embedded-opentype'),
+				font-files("@{basic}/@{font-name}/@{weight-name}-webfont.woff", "@{basic}/@{font-name}/@{weight-name}-webfont.ttf");
+			font-weight: extract(@this-font,2);
+			font-style: extract(@this-font,3);
+		}
+		.loop((@i - 1));
+		
+	}
+	.loop(length(extract(@list, 3)));
+}
+
+
+.getFonts(@lists){
+	.loop(@i) when (@i > 0) {
+		.putFonts(extract(@lists, @i));
+		.loop((@i - 1));
+		
+	}
+	.loop(length(@lists));
+}
+
+.getFonts(@roboto, @robotoslab, @robotocondensed );

@@ -1,3 +1,659 @@
+/* Report page */
+
+/* Report page */
+
+/* Home Page CSS for buttons */
+.button-link1 {
+  position: relative; /* add position relative to make the overlay absolute */
+  width: 100%;
+  height: 100%;
+  background-image: url("https://shipsy.io/wp-content/uploads/2021/09/Food_Delivery_Image-2.png");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.button-link1::before {
+  /* add a pseudo-element to create the overlay */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  z-index: 1; /* set a higher z-index than the button text */
+  border-radius: 5px;
+}
+
+.button-link1 span {
+  /* wrap the button text in a span for better control */
+  position: relative; /* add position relative to bring it above the overlay */
+  z-index: 2; /* set a higher z-index than the overlay */
+  color: white;
+  font-size: 24px;
+  padding: 0; /* decrease top padding to move text upwards */
+  top: -10px; /* adjust top position to position text correctly */
+}
+.button-link2 {
+  position: relative; /* add position relative to make the overlay absolute */
+  width: 100%;
+  height: 100%;
+  background-image: url("https://www.extensiv.com/hubfs/Skubana/Blog%20Pages/Imported_Blog_Media/order%20management-1-Oct-12-2022-05-41-13-08-PM.png");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.button-link2::before {
+  /* add a pseudo-element to create the overlay */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  z-index: 1; /* set a higher z-index than the button text */
+  border-radius: 5px;
+}
+
+.button-link2 span {
+  /* wrap the button text in a span for better control */
+  position: relative; /* add position relative to bring it above the overlay */
+  z-index: 2; /* set a higher z-index than the overlay */
+  color: white;
+  font-size: 24px;
+  padding: 0; /* decrease top padding to move text upwards */
+  top: -10px; /* adjust top position to position text correctly */
+}
+
+.button-link9 {
+  position: relative; /* add position relative to make the overlay absolute */
+  width: 100%;
+  height: 100%;
+  background-image: url("https://krushikendra.com/image/cache/catalog/New%20Images%20Folder/Sprayer-Slider-KK-750x320.png");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.button-link9::before {
+  /* add a pseudo-element to create the overlay */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  z-index: 1; /* set a higher z-index than the button text */
+  border-radius: 5px;
+}
+
+.button-link9 span {
+  /* wrap the button text in a span for better control */
+  position: relative; /* add position relative to bring it above the overlay */
+  z-index: 2; /* set a higher z-index than the overlay */
+  color: white;
+  font-size: 24px;
+  padding: 0; /* decrease top padding to move text upwards */
+  top: -10px; /* adjust top position to position text correctly */
+}
+
+.button-link3 {
+  position: relative; /* add position relative to make the overlay absolute */
+  width: 100%;
+  height: 100%;
+  background-image: url("https://news-assets.spot.io/app/uploads/2022/03/29174410/News_Cover_User_management_1_21mar221.png");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.button-link3::before {
+  /* add a pseudo-element to create the overlay */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  z-index: 1; /* set a higher z-index than the button text */
+  border-radius: 5px;
+}
+
+.button-link3 span {
+  /* wrap the button text in a span for better control */
+  position: relative; /* add position relative to bring it above the overlay */
+  z-index: 2; /* set a higher z-index than the overlay */
+  color: white;
+  font-size: 24px;
+  padding: 0; /* decrease top padding to move text upwards */
+  top: -10px; /* adjust top position to position text correctly */
+}
+.button-link4 {
+  position: relative; /* add position relative to make the overlay absolute */
+  width: 100%;
+  height: 100%;
+  background-image: url("https://content.pymnts.com/wp-content/uploads/2021/12/Data-brief-debit-cards.jpg");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.button-link4::before {
+  /* add a pseudo-element to create the overlay */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  z-index: 1; /* set a higher z-index than the button text */
+  border-radius: 5px;
+}
+
+.button-link4 span {
+  /* wrap the button text in a span for better control */
+  position: relative; /* add position relative to bring it above the overlay */
+  z-index: 2; /* set a higher z-index than the overlay */
+  color: white;
+  font-size: 24px;
+  padding: 0; /* decrease top padding to move text upwards */
+  top: -10px; /* adjust top position to position text correctly */
+}
+.button-link5 {
+  position: relative; /* add position relative to make the overlay absolute */
+  width: 100%;
+  height: 100%;
+  background-image: url("https://cdn-aekfi.nitrocdn.com/BhHUnZmQXkWPzBaLMaTftVhEvszyNTtP/assets/images/source/rev-32039f4/blog/images/2020/01/employee-management-1536x1024.jpg.webp");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.button-link5::before {
+  /* add a pseudo-element to create the overlay */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  z-index: 1; /* set a higher z-index than the button text */
+  border-radius: 5px;
+}
+
+.button-link5 span {
+  /* wrap the button text in a span for better control */
+  position: relative; /* add position relative to bring it above the overlay */
+  z-index: 2; /* set a higher z-index than the overlay */
+  color: white;
+  font-size: 24px;
+  padding: 0; /* decrease top padding to move text upwards */
+  top: -10px; /* adjust top position to position text correctly */
+}
+.button-link6 {
+  position: relative; /* add position relative to make the overlay absolute */
+  width: 100%;
+  height: 100%;
+  background-image: url("https://dynamics.folio3.com/blog/wp-content/uploads/2021/02/shutterstock_1848611224-e1612781141461.jpg");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.button-link6::before {
+  /* add a pseudo-element to create the overlay */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  z-index: 1; /* set a higher z-index than the button text */
+  border-radius: 5px;
+}
+
+.button-link6 span {
+  /* wrap the button text in a span for better control */
+  position: relative; /* add position relative to bring it above the overlay */
+  z-index: 2; /* set a higher z-index than the overlay */
+  color: white;
+  font-size: 24px;
+  padding: 0; /* decrease top padding to move text upwards */
+  top: -10px; /* adjust top position to position text correctly */
+}
+.button-link7 {
+  position: relative; /* add position relative to make the overlay absolute */
+  width: 100%;
+  height: 100%;
+  background-image: url("https://www.scmdojo.com/wp-content/uploads/2018/12/Supplier-Relationship-Management-scaled-850x558-1.jpg");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.button-link7::before {
+  /* add a pseudo-element to create the overlay */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  z-index: 1; /* set a higher z-index than the button text */
+  border-radius: 5px;
+}
+
+.button-link7 span {
+  /* wrap the button text in a span for better control */
+  position: relative; /* add position relative to bring it above the overlay */
+  z-index: 2; /* set a higher z-index than the overlay */
+  color: white;
+  font-size: 24px;
+  padding: 0; /* decrease top padding to move text upwards */
+  top: -10px; /* adjust top position to position text correctly */
+}
+.button-link8 {
+  position: relative; /* add position relative to make the overlay absolute */
+  width: 100%;
+  height: 100%;
+  background-image: url("https://zenduit.com/wp-content/uploads/2022/07/Fuel-Management.jpg");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.button-link8::before {
+  /* add a pseudo-element to create the overlay */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  z-index: 1; /* set a higher z-index than the button text */
+  border-radius: 5px;
+}
+
+.button-link8 span {
+  /* wrap the button text in a span for better control */
+  position: relative; /* add position relative to bring it above the overlay */
+  z-index: 2; /* set a higher z-index than the overlay */
+  color: white;
+  font-size: 24px;
+  padding: 0; /* decrease top padding to move text upwards */
+  top: -10px; /* adjust top position to position text correctly */
+}
+
+.button-link:hover {
+  opacity: 0.8;
+}
+
+.supplier-btn {
+  margin-left: 150px;
+}
+
+/* Home Page CSS for buttons */
+
+/* Table Header */
+thead {
+  /* background-color: #7bad25; */
+  background-color: #03c988;
+  color: black;
+}
+/* Table Header */
+
+/* Table Body */
+tbody tr:nth-child(even) {
+  background-color: #d9d9d9;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.table tbody tr td {
+  color: black;
+}
+/* Table Body */
+
+/* Body content */
+
+body {
+  /* background: linear-gradient(315deg, #20bf55 0%, #01baef 74%); */
+  background-color: #378b29;
+  background-image: linear-gradient(315deg, #378b29 0%, #74d680 74%);
+}
+/* Body content */
+
+/* Sidenav bar styling */
+.toggle-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+  background-color: #214956;
+  border: none;
+  padding: 7px;
+  border-radius: 0;
+}
+
+.toggle-btn:focus {
+  outline: none;
+}
+
+.toggle-btn svg {
+  color: #fff;
+}
+.toggle-btn:hover + .sidenav {
+  transform: translateX(0);
+}
+
+.sidenav {
+  height: 100%;
+  width: 220px;
+  position: fixed;
+  z-index: 3; /* set a higher z-index than the overlays */
+  top: 0;
+  left: 0;
+  background-color: #0c1e35;
+  overflow-x: hidden;
+  padding-top: 60px;
+  /* transition: all 0.3s ease; */
+  /* transform: translateX(-220px); */
+  text-align: left;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidenav.open {
+  width: 250px;
+  transform: translateX(0);
+}
+
+.content {
+  margin-left: 220px; /* set to the same width as the sidenav */
+  transition: margin-left 0.3s ease; /* add a transition effect */
+}
+
+.sidenav.open ~ .content {
+  margin-left: 250px; /* adjust to the width of the sidenav when open */
+}
+
+.sidenav .navbar-brand {
+  font-size: 24px;
+  color: #fff;
+  margin: 0;
+  padding: 20px 15px;
+  display: block;
+  text-align: center;
+  border-bottom: 1px solid #555;
+}
+
+.sidenav .navbar-nav {
+  padding: 0;
+  margin: 0;
+}
+
+/* .sidenav .nav-item {
+  margin: 10px 45px;
+  margin-left: 30px;
+  padding: 0;
+  list-style: none;
+  border-radius: 10px;
+  background-color: #ffffff;
+  padding: 0;
+  display: inline-block;
+} */
+
+.sidenav .nav-link {
+  display: block;
+  padding: 15px;
+  /* color: #fff; */
+  font-size: 18px;
+  text-decoration: none;
+  /* transition: all 0.2s ease; */
+  color: white;
+  /* text-align: center; */
+  font-size: 0.9em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-grow: 1;
+  transition: color 0.3s;
+}
+
+/* .sidenav .nav-link:hover {
+  background-color: #03c988;
+} */
+
+.sidenav .nav-link:hover {
+  color: #03c988;
+}
+
+.sidenav .btn-danger {
+  position: absolute;
+  bottom: 0;
+  margin: 15px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #d9534f;
+  color: #fff;
+  font-size: 18px;
+  text-transform: uppercase;
+  /* transition: all 0.2s ease; */
+  font-size: 0.9em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-grow: 1;
+  transition: color 0.3s;
+}
+
+.sidenav .btn-danger:hover {
+  background-color: #c9302c;
+  cursor: pointer;
+}
+
+.nav-link {
+  font-weight: 500;
+}
+
+.nav-link {
+  text-decoration: none;
+}
+
+/* Sidenav bar styling */
+
+/* Forms */
+.form-style {
+  /* background-color: #378b29;
+  background-image: linear-gradient(315deg, #378b29 0%, #74d680 74%); */
+  padding: 30px;
+  position: relative; /* Set the position property of the parent element to relative */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: black;
+  font-weight: 500;
+}
+
+.btn-darkgreen {
+  background-color: #006400;
+  border: none;
+}
+
+/* .bg-darkgreen {
+  background-color: #006400;
+} */
+form {
+  /* Set the background color */
+  padding: 30px; /* Add some padding to the form */
+  border-radius: 10px; /* Add rounded edges to the form */
+}
+
+form h2 {
+  background-color: darkgreen; /* Set the background color for the heading */
+  color: white; /* Set the text color for the heading */
+  padding: 10px; /* Add some padding to the heading */
+  border-radius: 10px 10px 0 0; /* Add rounded edges to the top of the heading */
+  margin-top: 0; /* Remove default margin from the top of the heading */
+}
+
+.form-group label {
+  display: block; /* Display the label as a block element */
+  color: black; /* Set the text color for the labels */
+  margin-bottom: 5px; /* Add some space between the label and the input field */
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"] {
+  border-radius: 5px; /* Add rounded edges to the input fields */
+}
+
+.btn {
+  font-weight: bold;
+}
+
+.text-center button {
+  margin-left: 10px;
+}
+/* Forms */
+
+/* Bhanuka **********************************************************/
+
+.add_btn {
+  text-align: right;
+}
+
+.invalid-input {
+  display: block;
+  color: red;
+  margin-left: 20px;
+}
+
+.drop_down {
+  width: 650px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.gap {
+  margin-right: 50px;
+}
+
+.card {
+  padding-top: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+}
+
+.btn-style {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-left: 1100px;
+}
+
+.form {
+  width: 100%;
+}
+
+.image {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 32px 32px;
+}
+
+.item {
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+/* .card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+} */
+.card p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid--2-col {
+  grid-template-rows: repeat(2, 1fr);
+}
+
+/* Bhanuka **********************************************************/
+
+/* Ashen **********************************************************/
 .App {
   text-align: center;
 }
@@ -36,3 +692,5 @@
     transform: rotate(360deg);
   }
 }
+
+/* Ashen **********************************************************/
