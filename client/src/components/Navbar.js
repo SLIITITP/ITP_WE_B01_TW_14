@@ -193,6 +193,36 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </button>
               </li>
             </>
+          ) : // Admin - Hasaranga Mallwarachchi
+          user && user.role === "Administrator" ? (
+            <>
+              <li className="nav-item">
+                <Link to="/" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faChartBar}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Dashboard
+                </Link>
+              </li>
+              <li
+                className="nav-item"
+                onClick={() => {
+                  setUser(null);
+                  localStorage.clear();
+                  toast.success("Logout Successful!");
+                  navigate("/login", { replace: true });
+                }}
+              >
+                <button className="btn btn-danger">
+                  <FontAwesomeIcon
+                    icon={faSignOutAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Logout
+                </button>
+              </li>
+            </>
           ) : // Inventory Control Manager - Yasitha Dewmin
           user && user.role === "Inventory Control Manager" ? (
             <>

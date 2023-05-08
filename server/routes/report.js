@@ -3,7 +3,6 @@ const PDFDocument = require("pdfkit");
 const { Employee } = require("../models/Employee");
 const { Salary } = require("../models/Salary");
 const { Attendance } = require("../models/Attendance");
-const PDFTable = require("pdfkit-table");
 
 router.get("/report", async (req, res) => {
   try {
@@ -29,14 +28,6 @@ router.get("/report", async (req, res) => {
     const fs = require("fs");
     const path = require("path");
 
-    // Register custom font
-    const fontPath = path.join(__dirname, "..", "Fonts", "Roboto-Black.ttf");
-    const fontBytes = fs.readFileSync(fontPath);
-    const customFont = {
-      regular: fontBytes,
-    };
-    PDFDocument.registerFont("MyFont", customFont);
-
     // Read the logo file
     // const logo = fs.readFileSync(path.join(__dirname, "logo.png"));
 
@@ -57,63 +48,24 @@ router.get("/report", async (req, res) => {
       .moveDown(2);
 
     // Employee Details
-    // doc
-    //   .fontSize(24)
-    //   .fillColor("#2E7D32")
-    //   .text("Employee Details", { underline: true })
-    //   .moveDown(1);
-    // employees.forEach((employee) => {
-    //   doc
-    //     .fontSize(16)
-    //     .fillColor("#000000")
-    //     .text(`Employee ID: ${employee.empid}`)
-    //     .text(`Name of employee: ${employee.firstname} ${employee.lastname}`)
-    //     .text(`Email: ${employee.email}`)
-    //     .text(`Contact Number: ${employee.phone}`)
-    //     .text(`Date Joined: ${employee.datejoined}`)
-    //     .text(`Department: ${employee.department}`)
-    //     .text(`Designation: ${employee.designation}`)
-    //     .moveDown(2);
-    // });
-    // Employee Details
     doc
       .fontSize(24)
-      .font("MyFont")
       .fillColor("#2E7D32")
       .text("Employee Details", { underline: true })
       .moveDown(1);
-
-    // Define table columns
-    const tableColumns = [
-      "Employee ID",
-      "Name",
-      "Email",
-      "Contact Number",
-      "Date Joined",
-      "Department",
-      "Designation",
-    ];
-
-    // Define table rows
-    const tableRows = employees.map((employee) => [
-      employee.empid,
-      `${employee.firstname} ${employee.lastname}`,
-      employee.email,
-      employee.phone,
-      employee.datejoined,
-      employee.department,
-      employee.designation,
-    ]);
-
-    // Create table
-    const table = new PDFTable(doc, {
-      bottomMargin: 30,
+    employees.forEach((employee) => {
+      doc
+        .fontSize(16)
+        .fillColor("#000000")
+        .text(`Employee ID: ${employee.empid}`)
+        .text(`Name of employee: ${employee.firstname} ${employee.lastname}`)
+        .text(`Email: ${employee.email}`)
+        .text(`Contact Number: ${employee.phone}`)
+        .text(`Date Joined: ${employee.datejoined}`)
+        .text(`Department: ${employee.department}`)
+        .text(`Designation: ${employee.designation}`)
+        .moveDown(2);
     });
-    table.addColumns(tableColumns);
-    table.addBody(tableRows);
-
-    // Draw table on document
-    table.draw();
 
     // Salary Payments
     doc
