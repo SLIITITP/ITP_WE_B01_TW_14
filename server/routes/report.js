@@ -4,6 +4,11 @@ const { Employee } = require("../models/Employee");
 const { Salary } = require("../models/Salary");
 const { Attendance } = require("../models/Attendance");
 
+const table = require("table");
+
+const fs = require("fs");
+const path = require("path");
+
 router.get("/report", async (req, res) => {
   try {
     const employees = await Employee.find();
@@ -24,10 +29,6 @@ router.get("/report", async (req, res) => {
     gradient.stop(0, "#378b29");
     gradient.stop(0.74, "#74d680");
 
-    //image
-    const fs = require("fs");
-    const path = require("path");
-
     // Read the logo file
     // const logo = fs.readFileSync(path.join(__dirname, "logo.png"));
 
@@ -44,7 +45,19 @@ router.get("/report", async (req, res) => {
       .fillColor("white")
       .image(logo, 10, 10, { width: 80, height: 80 })
       .fontSize(40)
-      .text("Southern Agro Serve (Pvt) Ltd\n", { align: "center" })
+      .text("Southern Agro Serve (Pvt) Ltd", { align: "center" })
+      .moveDown(2);
+
+    // Add current date and time and HR manager's name
+    const currentDate = new Date().toLocaleDateString();
+    const currentTime = new Date().toLocaleTimeString();
+    const hrManagerName = "Yeran Kodithuwakku";
+    doc
+      .moveUp(1)
+      .fontSize(16)
+      .fillColor("#000000")
+      .text(`Date and Time: ${currentDate} ${currentTime}`, { align: "left" })
+      .text(`HR Manager: ${hrManagerName}`, { align: "left" })
       .moveDown(2);
 
     // Employee Details
