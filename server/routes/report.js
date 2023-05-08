@@ -53,8 +53,12 @@ router.get("/report", async (req, res) => {
       .moveUp(1)
       .fontSize(16)
       .fillColor("#000000")
-      .text(`Date and Time: ${currentDate} ${currentTime}`, { align: "left" })
-      .text(`HR Manager: ${hrManagerName}`, { align: "left" })
+      .text(
+        "This is a computer generated document. No signature is required.",
+        { align: "left" }
+      )
+      .text(`Printed on: ${currentDate} ${currentTime}`, { align: "left" })
+      // .text(`HR Manager: ${hrManagerName}`, { align: "left" })
       .moveDown(2);
 
     // Employee Details
