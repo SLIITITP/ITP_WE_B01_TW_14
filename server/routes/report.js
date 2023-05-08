@@ -4,8 +4,6 @@ const { Employee } = require("../models/Employee");
 const { Salary } = require("../models/Salary");
 const { Attendance } = require("../models/Attendance");
 
-const table = require("table");
-
 const fs = require("fs");
 const path = require("path");
 
@@ -30,7 +28,6 @@ router.get("/report", async (req, res) => {
     gradient.stop(0.74, "#74d680");
 
     // Read the logo file
-    // const logo = fs.readFileSync(path.join(__dirname, "logo.png"));
 
     // Get the absolute path to the logo.png file
     const logoPath = path.join(__dirname, "..", "images", "logo.png");
@@ -66,18 +63,29 @@ router.get("/report", async (req, res) => {
       .fillColor("#2E7D32")
       .text("Employee Details", { underline: true })
       .moveDown(1);
+
     employees.forEach((employee) => {
       doc
         .fontSize(16)
         .fillColor("#000000")
-        .text(`Employee ID: ${employee.empid}`)
-        .text(`Name of employee: ${employee.firstname} ${employee.lastname}`)
-        .text(`Email: ${employee.email}`)
-        .text(`Contact Number: ${employee.phone}`)
-        .text(`Date Joined: ${employee.datejoined}`)
-        .text(`Department: ${employee.department}`)
-        .text(`Designation: ${employee.designation}`)
-        .moveDown(2);
+        .text(`Employee ID: ${employee.empid}`, { bold: true })
+        .list(
+          [
+            `Name of employee: ${employee.firstname} ${employee.lastname}`,
+            `Email: ${employee.email}`,
+            `Contact Number: ${employee.phone}`,
+            `Date Joined: ${employee.datejoined}`,
+            `Department: ${employee.department}`,
+            `Designation: ${employee.designation}`,
+          ],
+          {
+            bulletRadius: 2,
+            bulletIndent: 10,
+            textIndent: 20,
+            lineGap: 5,
+          }
+        )
+        .moveDown(1);
     });
 
     // Salary Payments
@@ -90,9 +98,20 @@ router.get("/report", async (req, res) => {
       doc
         .fontSize(16)
         .fillColor("#000000")
-        .text(`Amount: LKR ${salary.salary}`)
-        .text(`Payment Date: (${salary.date})`)
-        .text(`Bonus: (${salary.bonus})`)
+        .text(`Employee ID: ${salary.empid}`)
+        .list(
+          [
+            `Amount: LKR ${salary.salary}`,
+            `Payment Date: (${salary.date})`,
+            `Bonus: (${salary.bonus})`,
+          ],
+          {
+            bulletRadius: 2,
+            bulletIndent: 10,
+            textIndent: 20,
+            lineGap: 5,
+          }
+        )
         .moveDown(2);
     });
 
@@ -107,9 +126,19 @@ router.get("/report", async (req, res) => {
         .fontSize(16)
         .fillColor("#000000")
         .text(`Employee ID: ${attendance.empid}`)
-        .text(`Date: (${attendance.date})`)
-        .text(`Entry Time: (${attendance.entrytime})`)
-        .text(`Off Time: (${attendance.offtime})`)
+        .list(
+          [
+            `Date: (${attendance.date})`,
+            `Entry Time: (${attendance.entrytime})`,
+            `Off Time: (${attendance.offtime})`,
+          ],
+          {
+            bulletRadius: 2,
+            bulletIndent: 10,
+            textIndent: 20,
+            lineGap: 5,
+          }
+        )
         .moveDown(2);
     });
 
