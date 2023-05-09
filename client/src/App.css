@@ -15,6 +15,10 @@
   border-radius: 5px;
 }
 
+.table-responsive {
+  overflow-x: auto;
+}
+
 .button-link1::before {
   /* add a pseudo-element to create the overlay */
   content: "";
@@ -220,6 +224,7 @@
   text-decoration: none;
   border-radius: 5px;
 }
+
 
 .button-link6::before {
   /* add a pseudo-element to create the overlay */
