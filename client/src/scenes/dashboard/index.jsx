@@ -1,6 +1,6 @@
 import React from "react";
 import FlexBetween from "components/FlexBetween";
-import Header from "components/Header";
+import Header from "components/Header.jsx";
 import {
   DownloadOutlined,
   Email,
@@ -64,7 +64,7 @@ const Dashboard = () => {
     <Box m="1.5rem 2.5rem">
       <FlexBetween>
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
-        <p>Current User: {username}</p>
+    
 
         <Box>
           <Button

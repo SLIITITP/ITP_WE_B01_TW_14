@@ -1,4 +1,4 @@
-import { Routes as Switch, Route } from "react-router-dom";
+import { Routes as Switch, Route, Routes } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import Layout from "./components/Layout";
 // import { ToastContextProvider } from "./context/ToastContext";
@@ -68,6 +68,28 @@ import IMDashboard from "./pages/IMDashboard";
 
 // Yasitha********************************************************
 
+// Hasaranga********************************************************
+import { CssBaseline ,ThemeProvider } from "@mui/material";
+import {createTheme} from "@mui/material/styles";
+import { themeSettings } from "theme";
+import { useSelector } from "react-redux";
+import { useMemo } from "react";
+import { BrowserRouter, Navigate  } from "react-router-dom";
+import  Dashboard from "scenes/dashboard";
+
+import Products from "scenes/products";
+import Customers from "scenes/customers";
+import Transactions from "scenes/transactions";
+import Overview from "scenes/overview";
+import Daily from "scenes/daily";
+import Monthly from "scenes/monthly";
+import Breakdown from "scenes/breakdown";
+import Admin from "scenes/admin";
+import Createuser from "scenes/createuser";
+import Updateuser from "scenes/updateuser";
+import Performance from "scenes/performance";
+
+// Hasaranga********************************************************
 // Ashen********************************************************
 
 import HomeScreen from "./screens/HomeScreen";
@@ -109,6 +131,11 @@ import AllAttendance from "./pages/AllAttendances";
 // Ashen********************************************************
 
 const App = () => {
+//Hasaranga***********************************************
+ const mode = useSelector((state) => state.global.mode);
+  const theme = useMemo(()=> createTheme(themeSettings(mode)),[mode])
+//Hasaranga***********************************************
+
   // Ashen********************************************************
 
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -140,6 +167,7 @@ const App = () => {
     <Router>
       <ToastContextProvider>
         <AuthContextProvider>
+        <ThemeProvider theme={theme}>
           <Header />
           <Layout>
             <Switch>
@@ -311,13 +339,29 @@ const App = () => {
               </main> */}
 
               {/* Ashen******************************************************** */}
+             
+              <Route path="/dashboardAdmin" element={<Dashboard/>}/>
+              <Route path="/productsAdmin" element={<Products />} />
+              <Route path="/users" element={<Customers />} />
+              <Route path="/transactions" element={<Transactions />} />
+              <Route path="/overview" element={<Overview />} />
+              <Route path="/daily" element={<Daily />} />
+              <Route path="/monthly" element={<Monthly />} />
+              <Route path="/breakdown" element={<Breakdown />} />
+              <Route path="/admin" element={<Admin />} />
+              <Route path="/performance" element={<Performance />} />
+              <Route path="/createuser" element={<Createuser />} />
+              <Route path="/updateuser" element={<Updateuser />} />
+
             </Switch>
+   
           </Layout>
+          </ThemeProvider>
         </AuthContextProvider>
       </ToastContextProvider>
       <Footer />
     </Router>
   );
 };
-
 export default App;
+

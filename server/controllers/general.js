@@ -1,8 +1,7 @@
-import User from "../models/Userdata";
-import OverallStat from "../models/OverallStat.js";
-import Transaction from "../models/Transaction.js";
-
-export const getUser = async (req, res) => {
+const User = require("../models/Userdata");
+const OverallStat = require("../models/OverallStat.js");
+const Transaction = require("../models/Transaction.js");
+exports.getUser = async (req, res) => {
   try {
     const { id } = req.params;
     const user = await User.findById(id);
@@ -11,7 +10,7 @@ export const getUser = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
-export const deleteCustomers = async (req, res) => {
+exports.deleteCustomers = async (req, res) => {
   const user = await User.findById(req.params.id);
   if (user) {
     await user.deleteOne();
@@ -21,7 +20,7 @@ export const deleteCustomers = async (req, res) => {
   }
 };
 
-export const updateCutomers = async (req, res) => {
+exports.updateCutomers = async (req, res) => {
   const { id, name, email, phoneNumber, occupation, role } = req.body;
   try {
     const updatedData = await User.findByIdAndUpdate(
@@ -34,7 +33,7 @@ export const updateCutomers = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-export const getDashboardStats = async (req, res) => {
+exports.getDashboardStats = async (req, res) => {
   try {
     // hardcoded values
     const currentMonth = "November";
@@ -79,7 +78,7 @@ export const getDashboardStats = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
-export const createCutomers = async (req, res, next) => {
+exports.createCutomers = async (req, res, next) => {
   try {
     const { name, email, password, occupation, phoneNumber, role } = req.body;
 

@@ -6,7 +6,7 @@ import Navbar from "components/Navbar"
 import SideBar from "components/Sidebar";
 import { useGetUserQuery } from "state/api";
 
-const Layout = () => {
+const Layouts = () => {
   const [sideBarOpened , setsideBarOpened ] = useState(true)
 
   const userId = useSelector((state) => state.global.userId);
@@ -15,7 +15,7 @@ const Layout = () => {
   
   return (
     <Box display={"flex"} width="100%" height="100%" >
-      <SideBar
+      {/* <SideBar
         user={data || {}}
         widthDrawer="300px"
         sideBarOpened = {sideBarOpened}
@@ -27,11 +27,11 @@ const Layout = () => {
           user={data || {}}
           sideBarOpened = {sideBarOpened}
           setsideBarOpened = {setsideBarOpened}
-        />
+        /> */}
         <Outlet />
-      </Box>
+      {/* </Box> */}
     </Box>
   )
 }
 
-export default Layout
+export default Layouts

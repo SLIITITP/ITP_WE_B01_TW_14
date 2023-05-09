@@ -82,7 +82,7 @@ app.use("/api/", require("./routes/auth"));
 app.get("/protected", auth, (req, res) => {
   return res.status(200).json({ ...req.user._doc });
 });
-
+ 
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
@@ -90,30 +90,48 @@ app.use((err, req, res, next) => {
 
 // Hasa*************************************************
 // import helmet from "helmet";
-// const clientRoutes = require("./routes/client.js");
-// const generalRoutes = require("./routes/general.js");
-// const managementRoutes = require("./routes/management.js");
-// const salesRoutes = require("./routes/sales.js");
-// const authRoutes = require("./routes/authRoutes.js");
+const clientRoutes = require("./routes/client.js");
+const generalRoutes = require("./routes/general.js");
+const managementRoutes = require("./routes/management.js");
+const salesRoutes = require("./routes/sales.js");
+const authRoutes = require("./routes/authRoutes.js");
+const helmet = require ("helmet")
+const { logger, logEvents } = require("./middlewares/logger.js");
+const User = require ("./models/Userdata")
+const Product = require ("./models/Product")
+const ProductStat = require ("./models/ProductStat.js")
+const Transaction = require ("./models/Transaction.js")
+const OverallStat = require ("./models/OverallStat.js")
+const AffiliateStat = require ("./models/AffiliateStat.js")
 
-// const { logger, logEvents } = require("./middleware/logger.js");
-// const cookieParser = require("cookie-parser");
-// const corsOptions = require("./config/corsOptions.js");
+const {
+  dataUser,
+  dataProduct,
+  dataProductStat,
+  dataTransaction, 
+  dataOverallStat,
+  dataAffiliateStat,
+ 
+} =require( "./data/index.js")
 
-// // app.use(helmet());
+const cookieParser = require("cookie-parser");
+const corsOptions = require("./config/corsOptions.js");
+
+app.use(helmet());
 
 // app.use(logger);
-// app.use(cors(corsOptions));
-// app.use(express.json());
-// app.use(cookieParser());
+// // app.use(cors(corsOptions));
+app.use(express.json());
+app.use(cookieParser());
 
-// /* ROUTES */
-// app.use("/client", clientRoutes);
-// app.use("/general", generalRoutes);
-// app.use("/management", managementRoutes);
-// app.use("/sales", salesRoutes);
-// app.use("/auth", authRoutes);
+/* ROUTES */
+app.use("/client", clientRoutes);
+app.use("/general", generalRoutes);
+app.use("/management", managementRoutes);
+app.use("/sales", salesRoutes);
+app.use("/auth", authRoutes);
 // Hasa*************************************************
+
 
 //Pasindu***************************************************************************
 const cors = require("cors");
@@ -154,6 +172,7 @@ app.listen(PORT, async () => {
   try {
     await connectDB();
     console.log(`server listening on port: ${PORT}`);
+   
   } catch (err) {
     console.log(err);
   }

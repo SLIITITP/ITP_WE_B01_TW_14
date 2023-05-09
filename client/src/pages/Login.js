@@ -7,14 +7,14 @@ import ToastContext from "../context/ToastContext";
 import Footer from "../components/Footer";
 
 const Login = () => {
-  const { toast } = useContext(ToastContext);
-  const { loginUser } = useContext(AuthContext);
+  const { toast } = useContext(ToastContext); 
+  const {  loginUser } = useContext(AuthContext);
 
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
   });
-
+ 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, useTheme, IconButton,Button } from "@mui/material";
 import { useGetCustomersQuery } from "state/api";
-import Header from "components/Header";
+import Header from "components/Header.jsx";
 import { DataGrid } from "@mui/x-data-grid";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';

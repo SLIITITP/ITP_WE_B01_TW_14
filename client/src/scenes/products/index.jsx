@@ -13,7 +13,7 @@ import {
 } from "@mui/material"; 
 
 import { useGetProductsQuery } from "state/api";
-import Header from "components/Header";
+import Header from "components/Header.jsx";
 
 const Product = ({
   _id,

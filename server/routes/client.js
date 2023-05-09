@@ -1,11 +1,10 @@
-import express from "express";
-import verifyJWT from '../middleware/verifyJWT.js'
-import {
+const express = require('express');
+const verifyJWT = require('../middlewares/verifyJWT');
+ const {
   getProducts,
   getCustomers,
   getTransactions,
-  
-} from "../controllers/client.js";
+} = require('../controllers/client.js');
 
 const router = express.Router();
 
@@ -15,4 +14,4 @@ router.get("/products", getProducts);
 router.get("/customers", getCustomers);
 router.get("/transactions", getTransactions);
 
-export default router;
+module.exports = router;

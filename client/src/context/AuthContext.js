@@ -72,8 +72,9 @@ export const AuthContextProvider = ({ children }) => {
         toast.success(`Welcome ${result.user.name}`);
         ctxDispatch({ type: "USER_SIGNIN", payload: result });
         localStorage.setItem("userInfo", JSON.stringify(result));
-
-        navigate("/", { replace: true });
+        
+        result.user.role === "Administrator" ?  navigate("/dashboardAdmin", { replace: true }): navigate("/", { replace: true });
+       
       } else {
         toast.error(result.error);
       }

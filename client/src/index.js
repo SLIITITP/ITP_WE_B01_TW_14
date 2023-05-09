@@ -7,14 +7,44 @@ import reportWebVitals from "./reportWebVitals";
 // ashen
 import { HelmetProvider } from "react-helmet-async";
 import { StoreProvider } from "./Store";
+import { BrowserRouter } from "react-router-dom";
+
 // ashen
+
+//Hasa
+import { configureStore } from "@reduxjs/toolkit";
+import globalReducer from "state"
+import { Provider } from "react-redux";
+import { setupListeners } from "@reduxjs/toolkit/query";
+import { api } from "state/api";
+import {Route, Routes } from "react-router-dom";
+import authReducer from './features/auth/authSlice'
+import { apiSlice } from './app/api/apiSlice'
+import dataReducer from './state/updateSlice'
+
+//Hasa
+const store = configureStore({
+  reducer: {
+    global: globalReducer,
+    [api.reducerPath]: api.reducer,
+    auth:authReducer,
+    data:dataReducer,
+    [apiSlice.reducerPath]: apiSlice.reducer,
+  },
+  middleware: (getDefault) => getDefault().concat(api.middleware,apiSlice.middleware),
+});
+setupListeners(store.dispatch) ;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <StoreProvider>
       <HelmetProvider>
+      <Provider store={store}>
+    
         <App />
+        </Provider>
+      
       </HelmetProvider>
     </StoreProvider>
   </React.StrictMode>

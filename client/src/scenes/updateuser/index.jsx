@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import React, { useState } from 'react';
 
 import { Box ,useTheme} from "@mui/material";
-import Header from "components/Header";
+import Header from "components/Header.jsx";
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import 'react-toastify/dist/ReactToastify.css';

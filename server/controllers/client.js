@@ -1,9 +1,10 @@
-import Product from "../models/Product.js";
-import ProductStat from "../models/ProductStat.js";
-import User from "../models/Userdata";
-import Transaction from "../models/Transaction.js";
 
-export const getProducts = async (req, res) => {
+const Product = require("../models/Product"); 
+const ProductStat = require("../models/ProductStat.js");
+const User = require("../models/Userdata");
+const Transaction = require("../models/Transaction.js");
+
+const getProducts = async (req, res) => {
   try {
     const products = await Product.find();
 
@@ -25,16 +26,19 @@ export const getProducts = async (req, res) => {
   }
 };
 
-export const getCustomers = async (req, res) => {
+const getCustomers = async (req, res) => {
+
   try {
     const customers = await User.find({ role: "user" }).select("-password");
     res.status(200).json(customers);
+
   } catch (error) {
     res.status(404).json({ message: error.message });
+    
   }
 };
 
-export const getTransactions = async (req, res) => {
+const getTransactions = async (req, res) => {
   try {
     const { page = 1, pageSize = 20, sort = null, search = "" } = req.query;
 
@@ -70,3 +74,5 @@ export const getTransactions = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+module.exports = { getProducts, getCustomers, getTransactions };
