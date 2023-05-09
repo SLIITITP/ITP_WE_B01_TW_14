@@ -6,6 +6,8 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 export const ViewRunningRecords = () => {
 
@@ -37,6 +39,33 @@ export const ViewRunningRecords = () => {
         }
     }
 
+    const handlePrintAll = () => {
+        const unit = "pt";
+        const size = "A4";
+        const orientation = "portrait";
+        const marginLeft = 40;
+        const doc = new jsPDF(orientation, unit, size);
+        doc.setFontSize(16);
+        doc.setFont("helvetica", "bold");
+        doc.text("Southern Agro Serve (Pvt) limited \nVehicle Running Records \n\n", marginLeft, 40);
+        const headers = [["Vehicle No", "Driver Name", "Route Details", "No of Miles"]];
+
+        const data = getrunningdata.map((ele) => [
+            ele.registerNo,
+            ele.driverName,
+            ele.routeDetails,
+            ele.noOfMiles
+        ])
+        let content = {
+            startY: 70,
+            head: headers,
+            body: data
+        };
+
+        doc.autoTable(content)
+        doc.save("all-runningrecord.pdf")
+    }
+
     useEffect(() => {
         getdata();
     }, [vehicleNo, startDate, endDate]);
@@ -60,46 +89,51 @@ export const ViewRunningRecords = () => {
     return (
         <div>
             <h1>Vehicle Running Records</h1>
+            {/* <button className="btn btn-warning mx-2" onClick={() => handlePrintAll()}>Generate Report</button> */}
             <form>
-            <div className="row">
-            <div class="mb-3 col-lg-4 col-md-4 col-12">
-                <label>
-                    <b>Vehicle No:</b>
-                    <input
-                        type="text"
-                        value={vehicleNo}
-                        onChange={(event) => setVehicleNo(event.target.value)}
-                        class="form-control"
-                    />
-                </label>
-                </div>
-                <div class="mb-3 col-lg-4 col-md-4 col-12">
-                <label>
-                    <b>Start Date:</b>
-                    <input
-                        type="date"
-                        value={startDate}
-                        onChange={(event) => setStartDate(event.target.value)}
-                        class="form-control"
-                    />
-                </label>
-                </div>
-                <div class="mb-3 col-lg-4 col-md-4 col-12">
-                <label>
-                    <b>End Date:</b>
-                    <input
-                        type="date"
-                        value={endDate}
-                        onChange={(event) => setEndDate(event.target.value)}
-                        class="form-control"
-                    />
-                </label>
-                </div>
+                <div className="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-6 mb-3">
+                        <label>
+                            <b>Vehicle No:</b>
+                            <input
+                                type="text"
+                                value={vehicleNo}
+                                onChange={(event) => setVehicleNo(event.target.value)}
+                                class="form-control"
+                            />
+                        </label>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-6 mb-3">
+                        <label>
+                            <b>Start Date:</b>
+                            <input
+                                type="date"
+                                value={startDate}
+                                onChange={(event) => setStartDate(event.target.value)}
+                                class="form-control"
+                            />
+                        </label>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-6 mb-3">
+                        <label>
+                            <b>End Date:</b>
+                            <input
+                                type="date"
+                                value={endDate}
+                                onChange={(event) => setEndDate(event.target.value)}
+                                class="form-control"
+                            />
+                        </label>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-6 mb-3">
+                        <br></br>
+                    <button className="btn btn-warning mx-2" onClick={() => handlePrintAll()}>Generate Report</button>
+                    </div>
                 </div>
             </form>
 
-            <br/>
-            <br/>
+            <br />
+            <br />
 
             <div style={{ position: 'relative' }}>
                 <div style={{ position: 'absolute', top: -40, right: 0 }}>

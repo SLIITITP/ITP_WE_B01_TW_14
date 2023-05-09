@@ -211,7 +211,7 @@ export const VMDashboard = () => {
         </div>
         <div className="row">
 
-          <div className="col-lg-4">
+          <div className="col-lg-6">
             <div className="card card-body mb-4 shadow-sm">
               <article className="icontext">
                 <span className="icon icon-sm rounded-circle alert-primary">
@@ -230,7 +230,7 @@ export const VMDashboard = () => {
             </div>
           </div>
 
-          <div className="col-lg-4">
+          <div className="col-lg-6">
             <div className="card card-body mb-4 shadow-sm">
               <article className="icontext">
                 <span className="icon icon-sm rounded-circle alert-primary">
@@ -248,26 +248,6 @@ export const VMDashboard = () => {
               </article>
             </div>
           </div>
-
-          <div className="col-lg-4">
-            <div className="card card-body mb-4 shadow-sm">
-              <article className="icontext">
-                <span className="icon icon-sm rounded-circle alert-primary">
-                <FontAwesomeIcon
-                    icon={faUser}
-                    style={{ marginRight: "10px", color: "#03c988" }}
-                  />
-                </span>
-                <div className="text">
-                  <h6 className="mb-1">
-                    Total Driver's
-                  </h6>
-                  {/* <span>{getscheduledata.length}</span> */}
-                </div>
-              </article>
-            </div>
-          </div>
-
 
         </div>
         <div className="row">
@@ -308,7 +288,7 @@ export const VMDashboard = () => {
                             <TableCell className="tableCell">{opts.registerNo}</TableCell>
                             <TableCell className="tableCell">{opts.driverName}</TableCell>
                             <TableCell className="tableCell">{opts.routeDetails}</TableCell>
-                            <TableCell className="tableCell" bg="danger">
+                            <TableCell className="tableCell" style={{ backgroundColor: 'red', color: 'white', width: '100px', height: '50px' }}>
                               <span className="status">Breakdown</span>
                             </TableCell>
                           </TableRow>

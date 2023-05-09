@@ -13,7 +13,7 @@ export const FuelUsageMonthly = () => {
                 boxShadow: "0 2px 10px 0 rgba(70, 76, 79, .2);" ,
                 width:"100%", 
                 height:"350px" }}
-                src="https://charts.mongodb.com/charts-southern-agro-serve-yxqwr/embed/charts?id=643a98d8-2b11-4568-87cc-f10d0f93a26e&maxDataAge=3600&theme=light&autoRefresh=true"></iframe>
+                src="https://charts.mongodb.com/charts-southern-agro-serve-yxqwr/embed/charts?id=645a0553-d3ec-4ff6-84f4-6b93ed8b0fea&maxDataAge=3600&theme=light&autoRefresh=true"></iframe>
             </article>
         </div>
   )

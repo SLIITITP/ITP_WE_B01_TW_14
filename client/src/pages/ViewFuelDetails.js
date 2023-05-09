@@ -6,7 +6,8 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 export const ViewFuelDetails = () => {
 
@@ -38,6 +39,33 @@ export const ViewFuelDetails = () => {
         }
     }
 
+    const handlePrintAll = () => {
+        const unit = "pt";
+        const size = "A4";
+        const orientation = "portrait";
+        const marginLeft = 40;
+        const doc = new jsPDF(orientation, unit, size);
+        doc.setFontSize(16);
+        doc.setFont("helvetica", "bold");
+        doc.text("Southern Agro Serve (Pvt) limited \nFuel Records \n\n", marginLeft, 40);
+        const headers = [["Vehicle No", "Fuel Type", "Capacity", "Amount(Rs.)"]];
+
+        const data = getfueldata.map((ele) => [
+            ele.registerNo,
+            ele.fuelType,
+            ele.capacity,
+            ele.Amount
+        ])
+        let content = {
+            startY: 70,
+            head: headers,
+            body: data
+        };
+
+        doc.autoTable(content)
+        doc.save("Fuel-Record.pdf")
+    }
+
     useEffect(() => {
         getdata();
     }, [vehicleNo, startDate, endDate]);
@@ -49,9 +77,10 @@ export const ViewFuelDetails = () => {
 
         <div>
             <h1>Vehicle Running Records</h1>
+            {/* <button className="btn btn-warning mx-2" onClick={() => handlePrintAll()}>Generate Report</button> */}
             <form>
                 <div className="row">
-                    <div class="mb-3 col-lg-4 col-md-4 col-12">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-6 mb-3">
                         <label>
                             <b>Vehicle No:</b>
                             <input
@@ -62,7 +91,7 @@ export const ViewFuelDetails = () => {
                             />
                         </label>
                     </div>
-                    <div class="mb-3 col-lg-4 col-md-4 col-12">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-6 mb-3">
                         <label>
                             <b>Start Date:</b>
                             <input
@@ -73,7 +102,7 @@ export const ViewFuelDetails = () => {
                             />
                         </label>
                     </div>
-                    <div class="mb-3 col-lg-4 col-md-4 col-12">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-6 mb-3">
                         <label>
                             <b>End Date:</b>
                             <input
@@ -83,6 +112,10 @@ export const ViewFuelDetails = () => {
                                 class="form-control"
                             />
                         </label>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-6 mb-3">
+                        <br></br>
+                    <button className="btn btn-warning mx-2" onClick={() => handlePrintAll()}>Generate Report</button>
                     </div>
                 </div>
             </form>
