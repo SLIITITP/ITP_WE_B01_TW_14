@@ -85,7 +85,7 @@ export const VMDashboard = () => {
   const [getvehicledata, setVehicledata] = useState([]);
   const [getgaragedata, setGaragedata] = useState([]);
   const [getrunningdata, setRunningdata] = useState([]);
-  //const [getdriverdata, setdriverdata] = useState([]);
+  //const [getscheduledata, setscheduledata] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState({});
 
@@ -112,27 +112,42 @@ export const VMDashboard = () => {
     }
   }
 
-  // const getdrivdata = async (e) => {
+  // const getschedulerdata = async (e) => {
 
-  //   const res = await fetch("/api/getdriverdata", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
+  //   // const res = await fetch(`http://localhost:8000/api/myschedules`, {
+  //   //   method: "GET",
+  //   //   headers: {
+  //   //     Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //   //   },
+  //   // });
 
-  //       Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //   // const data = await res.json();
+  //   // console.log(data);
+
+  //   // if (res.status === 422 || !data) {
+  //   //   console.log("error ");
+
+  //   // } else {
+  //   //   setscheduledata(data.schedule)
+  //   //   console.log("get data");
+  //   // }
+
+  //     const res = await fetch(`http://localhost:8000/api/myschedules`, {
+  //       method: "GET",
+  //       headers: {
+  //         "Content-Type": "application/json",
+
+  //         Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //       },
+  //     });
+  //     const result = await res.json();
+  //     console.log(result)
+  //     if (!result.error) {
+  //       setscheduledata(result.schedule);
+  //     } else {
+  //       console.log(result);
   //     }
-  //   });
 
-  //   const data = await res.json();
-  //   console.log(data);
-
-  //   if (res.status === 422 || !data) {
-  //     console.log("error ");
-
-  //   } else {
-  //     setdriverdata(data)
-  //     console.log("get data");
-  //   }
   // }
 
   const getvehidata = async (e) => {
@@ -247,7 +262,7 @@ export const VMDashboard = () => {
                   <h6 className="mb-1">
                     Total Driver's
                   </h6>
-                  <span></span>
+                  {/* <span>{getscheduledata.length}</span> */}
                 </div>
               </article>
             </div>
