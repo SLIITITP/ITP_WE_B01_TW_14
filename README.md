@@ -22,6 +22,7 @@ The Business Management System developed for Southern Agro Serve (Pvt) Ltd. Allo
 Hence, the system proves to be the ideal solution for our client as well as his staff to efficiently manage and keep track of the daily activities of Southern Agro Serve more efficiently sparring much valuable time. 
 
 #### Technologies used - MERN STACK
+# Link to GitHub Repo - https://github.com/SLIITITP/ITP_WE_B01_TW_14
 
 Note - The student's github account should be given in brackets e.g. (asiriRepos), this ideally should be your student id 
 
