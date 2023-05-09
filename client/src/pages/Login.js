@@ -58,7 +58,7 @@ const Login = () => {
                 name="email"
                 value={credentials.email}
                 onChange={handleInputChange}
-                placeholder="yerankodithuwakku@gmail.com"
+                placeholder="Enter email"
                 required
                 fdprocessedid="8n2of"
               />
