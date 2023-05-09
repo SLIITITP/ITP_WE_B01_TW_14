@@ -53,6 +53,17 @@ const Header = () => {
               height="40"
             />
           )}
+          {user.role === "Financial Manager" && (
+            <img
+              src={
+                "https://media.licdn.com/dms/image/C5603AQEcfhRNz3JrHw/profile-displayphoto-shrink_100_100/0/1627656583754?e=1689206400&v=beta&t=l1IJgRlj_w-ugh7Go98kPtG0Y3v6gfF6lzGvZ9xgwv8"
+              }
+              alt={user.name}
+              className="rounded-circle mr-2"
+              width="40"
+              height="40"
+            />
+          )}
           {user.role === "Customer Manager" && (
             <img
               src={
