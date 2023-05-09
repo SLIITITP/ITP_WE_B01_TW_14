@@ -3,7 +3,9 @@ const PDFDocument = require("pdfkit");
 const { Employee } = require("../models/Employee");
 const { Salary } = require("../models/Salary");
 const { Attendance } = require("../models/Attendance");
-const PDFTable = require("pdfkit-table");
+
+const fs = require("fs");
+const path = require("path");
 
 router.get("/report", async (req, res) => {
   try {
@@ -25,20 +27,7 @@ router.get("/report", async (req, res) => {
     gradient.stop(0, "#378b29");
     gradient.stop(0.74, "#74d680");
 
-    //image
-    const fs = require("fs");
-    const path = require("path");
-
-    // Register custom font
-    const fontPath = path.join(__dirname, "..", "Fonts", "Roboto-Black.ttf");
-    const fontBytes = fs.readFileSync(fontPath);
-    const customFont = {
-      regular: fontBytes,
-    };
-    PDFDocument.registerFont("MyFont", customFont);
-
     // Read the logo file
-    // const logo = fs.readFileSync(path.join(__dirname, "logo.png"));
 
     // Get the absolute path to the logo.png file
     const logoPath = path.join(__dirname, "..", "images", "logo.png");
@@ -53,67 +42,55 @@ router.get("/report", async (req, res) => {
       .fillColor("white")
       .image(logo, 10, 10, { width: 80, height: 80 })
       .fontSize(40)
-      .text("Southern Agro Serve (Pvt) Ltd\n", { align: "center" })
+      .text("Southern Agro Serve (Pvt) Ltd", { align: "center" })
+      .moveDown(2);
+
+    // Add current date and time and HR manager's name
+    const currentDate = new Date().toLocaleDateString();
+    const currentTime = new Date().toLocaleTimeString();
+    const hrManagerName = "Yeran Kodithuwakku";
+    doc
+      .moveUp(1)
+      .fontSize(16)
+      .fillColor("#000000")
+      .text(
+        "This is a computer generated document. No signature is required.",
+        { align: "left" }
+      )
+      .text(`Printed on: ${currentDate} ${currentTime}`, { align: "left" })
+      // .text(`HR Manager: ${hrManagerName}`, { align: "left" })
       .moveDown(2);
 
     // Employee Details
-    // doc
-    //   .fontSize(24)
-    //   .fillColor("#2E7D32")
-    //   .text("Employee Details", { underline: true })
-    //   .moveDown(1);
-    // employees.forEach((employee) => {
-    //   doc
-    //     .fontSize(16)
-    //     .fillColor("#000000")
-    //     .text(`Employee ID: ${employee.empid}`)
-    //     .text(`Name of employee: ${employee.firstname} ${employee.lastname}`)
-    //     .text(`Email: ${employee.email}`)
-    //     .text(`Contact Number: ${employee.phone}`)
-    //     .text(`Date Joined: ${employee.datejoined}`)
-    //     .text(`Department: ${employee.department}`)
-    //     .text(`Designation: ${employee.designation}`)
-    //     .moveDown(2);
-    // });
-    // Employee Details
     doc
       .fontSize(24)
-      .font("MyFont")
       .fillColor("#2E7D32")
       .text("Employee Details", { underline: true })
       .moveDown(1);
 
-    // Define table columns
-    const tableColumns = [
-      "Employee ID",
-      "Name",
-      "Email",
-      "Contact Number",
-      "Date Joined",
-      "Department",
-      "Designation",
-    ];
-
-    // Define table rows
-    const tableRows = employees.map((employee) => [
-      employee.empid,
-      `${employee.firstname} ${employee.lastname}`,
-      employee.email,
-      employee.phone,
-      employee.datejoined,
-      employee.department,
-      employee.designation,
-    ]);
-
-    // Create table
-    const table = new PDFTable(doc, {
-      bottomMargin: 30,
+    employees.forEach((employee) => {
+      doc
+        .fontSize(16)
+        .fillColor("#000000")
+        .text(`Employee ID: ${employee.empid}`, { bold: true })
+        .list(
+          [
+            `Name of employee: ${employee.firstname} ${employee.lastname}`,
+            `Email: ${employee.email}`,
+            `Contact Number: ${employee.phone}`,
+            `Date Joined: ${employee.datejoined}`,
+            `Department: ${employee.department}`,
+            `Designation: ${employee.designation}`,
+          ],
+          {
+            bulletRadius: 2,
+            bulletIndent: 10,
+            textIndent: 20,
+            lineGap: 5,
+          }
+        )
+        .moveDown(1);
     });
-    table.addColumns(tableColumns);
-    table.addBody(tableRows);
-
-    // Draw table on document
-    table.draw();
 
     // Salary Payments
     doc
@@ -125,9 +102,20 @@ router.get("/report", async (req, res) => {
       doc
         .fontSize(16)
         .fillColor("#000000")
-        .text(`Amount: LKR ${salary.salary}`)
-        .text(`Payment Date: (${salary.date})`)
-        .text(`Bonus: (${salary.bonus})`)
+        .text(`Employee ID: ${salary.empid}`)
+        .list(
+          [
+            `Amount: LKR ${salary.salary}`,
+            `Payment Date: (${salary.date})`,
+            `Bonus: (${salary.bonus})`,
+          ],
+          {
+            bulletRadius: 2,
+            bulletIndent: 10,
+            textIndent: 20,
+            lineGap: 5,
+          }
+        )
         .moveDown(2);
     });
 
@@ -142,9 +130,19 @@ router.get("/report", async (req, res) => {
         .fontSize(16)
         .fillColor("#000000")
         .text(`Employee ID: ${attendance.empid}`)
-        .text(`Date: (${attendance.date})`)
-        .text(`Entry Time: (${attendance.entrytime})`)
-        .text(`Off Time: (${attendance.offtime})`)
+        .list(
+          [
+            `Date: (${attendance.date})`,
+            `Entry Time: (${attendance.entrytime})`,
+            `Off Time: (${attendance.offtime})`,
+          ],
+          {
+            bulletRadius: 2,
+            bulletIndent: 10,
+            textIndent: 20,
+            lineGap: 5,
+          }
+        )
         .moveDown(2);
     });
 

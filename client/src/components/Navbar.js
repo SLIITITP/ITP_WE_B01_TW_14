@@ -193,6 +193,84 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </button>
               </li>
             </>
+          ) : // Financial  Manager - Chamikara vithanage
+          user && user.role === "Financial Manager" ? (
+            <>
+              <li className="nav-item">
+                <Link to="/add-your-one" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faUserTie}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  add-your-one
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/add-your one" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faTruck}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  add-your-one
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/add-your one" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faFileAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Report
+                </Link>
+              </li>
+              <li
+                className="nav-item"
+                onClick={() => {
+                  setUser(null);
+                  localStorage.clear();
+                  toast.success("Logout Successful!");
+                  navigate("/login", { replace: true });
+                }}
+              >
+                <button className="btn btn-danger">
+                  <FontAwesomeIcon
+                    icon={faSignOutAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Logout
+                </button>
+              </li>
+            </>
+          ) : // Admin - Hasaranga Mallwarachchi
+          user && user.role === "Administrator" ? (
+            <>
+              <li className="nav-item">
+                <Link to="/" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faChartBar}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Dashboard
+                </Link>
+              </li>
+              <li
+                className="nav-item"
+                onClick={() => {
+                  setUser(null);
+                  localStorage.clear();
+                  toast.success("Logout Successful!");
+                  navigate("/login", { replace: true });
+                }}
+              >
+                <button className="btn btn-danger">
+                  <FontAwesomeIcon
+                    icon={faSignOutAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Logout
+                </button>
+              </li>
+            </>
           ) : // Inventory Control Manager - Yasitha Dewmin
           user && user.role === "Inventory Control Manager" ? (
             <>
