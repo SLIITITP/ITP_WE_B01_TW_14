@@ -3,6 +3,7 @@ const PDFDocument = require("pdfkit");
 const { Employee } = require("../models/Employee");
 const { Salary } = require("../models/Salary");
 const { Attendance } = require("../models/Attendance");
+const { Invoice } = require("../models/InvoiceE");
 
 const fs = require("fs");
 const path = require("path");
@@ -12,6 +13,7 @@ router.get("/report", async (req, res) => {
     const employees = await Employee.find();
     const salaries = await Salary.find();
     const attendances = await Attendance.find();
+    const invoices = await Invoice.find();
 
     // Create a new PDF document
     const doc = new PDFDocument();
@@ -144,6 +146,24 @@ router.get("/report", async (req, res) => {
           }
         )
         .moveDown(2);
+    });
+
+    //invoices
+    doc.fontSize(20).fillColor("black").text("Invoice Details:\n");
+    invoices.forEach((invoice) => {
+      doc.fontSize(18).text(
+        `Invoice No : ${invoice.invoiceNo}\n
+      Date of issued : ${invoice.issuedDate}\n
+    Customer Name : ${invoice.cusName}\n
+    Business Name : ${invoice.busiName}\n
+    Address : ${invoice.address}\n
+    Mobile Number : ${invoice.mobileNo}\n
+    Payment method : ${invoice.payMethod}\n
+    Bank Code : ${invoice.bankCode}\n
+    Banking Date : ${invoice.bankDate}\n
+    Cheque No : ${invoice.cheqNo}\n
+    Paid Amount : ${invoice.paidAmount}\n\n\n`
+      );
     });
 
     // Pipe the PDF to the response object

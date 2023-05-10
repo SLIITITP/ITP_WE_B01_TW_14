@@ -26,6 +26,8 @@ app.use("/api/", require("./routes/employee"));
 app.use("/api/", require("./routes/salary"));
 app.use("/api/", require("./routes/attendance"));
 app.use("/api/", require("./routes/report"));
+app.use("/invoice", require("./routes/report"));
+app.use("/invoice", require("./routes/invoices"));
 
 //if our token was valid then we will have the user in the request object.
 // app.get("/protected", auth, (req, res) => {s
@@ -40,6 +42,8 @@ app.use("/api/", require("./routes/runningrecord"));
 app.use("/api/", require("./routes/garage"));
 app.use("/api/", require("./routes/vehicledocument"));
 app.use("/api/", require("./routes/driver-vehicle-assign"));
+
+//invoice entry system
 app.use("/api/", require("./routes/repairassign"));
 app.use("/api/", require("./routes/repair"));
 

@@ -106,6 +106,14 @@ import CustomerScreen from "./screens/CustomerScreen";
 import AllSalary from "./pages/AllSalaries";
 import AllAttendance from "./pages/AllAttendances";
 
+//Chamikara****************************************************
+import AllInvoice from "./pages/InvoiceList";
+import AddInvoice from "./pages/AddInvoice";
+import EditDeleteInvoice from "./pages/EditDeleteInvoice";
+import InvReport from "./pages/InvReport";
+
+//Chamikara****************************************************
+
 // Ashen********************************************************
 
 const App = () => {
@@ -143,81 +151,89 @@ const App = () => {
           <Header />
           <Layout>
             <Switch>
-              <Route path="/" element={<Home />} />
-              <Route path="/index" element={<Index />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/create" element={<CreateContact />} />
-              <Route path="/mycontacts" element={<AllContact />} />
-              <Route path="/edit/:id" element={<EditContact />} />
-              <Route path="/createemp" element={<CreateEmployee />} />
-              <Route path="/myemployees" element={<AllEmployee />} />
-              <Route path="/editemp/:id" element={<EditEmployee />} />
-              <Route path="/addsalary" element={<CreateSalary />} />
-              <Route path="/mysalaries" element={<AllSalary />} />
-              <Route path="/addattendance" element={<CreateAttendance />} />
-              <Route path="/myattendances" element={<AllAttendance />} />
-              <Route path="/createreport" element={<Report />} />
+              <Route path='/' element={<Home />} />
+              <Route path='/index' element={<Index />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/register' element={<Register />} />
+              <Route path='/create' element={<CreateContact />} />
+              <Route path='/mycontacts' element={<AllContact />} />
+              <Route path='/edit/:id' element={<EditContact />} />
+              <Route path='/createemp' element={<CreateEmployee />} />
+              <Route path='/myemployees' element={<AllEmployee />} />
+              <Route path='/editemp/:id' element={<EditEmployee />} />
+              <Route path='/addsalary' element={<CreateSalary />} />
+              <Route path='/mysalaries' element={<AllSalary />} />
+              <Route path='/addattendance' element={<CreateAttendance />} />
+              <Route path='/myattendances' element={<AllAttendance />} />
+              <Route path='/createreport' element={<Report />} />
 
               {/* Bhanuka******************************************************** */}
 
-              <Route path="/vmdashboard" exact element={<VMDashboard />} />
-              <Route path="/allvehicle" exact element={<AllVehicle />} />
-              <Route path="/registerVehicle" element={<AddVehicle />} />
+              <Route path='/vmdashboard' exact element={<VMDashboard />} />
+              <Route path='/allvehicle' exact element={<AllVehicle />} />
+              <Route path='/registerVehicle' element={<AddVehicle />} />
               <Route
-                path="/allvehicle/editVehicle/:id"
+                path='/allvehicle/editVehicle/:id'
                 element={<EditVehicle />}
               />
               <Route
-                path="/allvehicle/viewVehicle/:id"
+                path='/allvehicle/viewVehicle/:id'
                 element={<VehicleDetail />}
               />
               <Route
-                path="/drivervehicleAssign"
+                path='/drivervehicleAssign'
                 element={<DriverVehicleAssign />}
               />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/addFuel" element={<AddFuel />} />
-              <Route path="/repairAssign" element={<RepairAssign />} />
-              <Route path="/allDocument" element={<AllVehicleDocument />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/register' element={<Register />} />
+              <Route path='/addFuel' element={<AddFuel />} />
+              <Route path='/repairAssign' element={<RepairAssign />} />
+              <Route path='/allDocument' element={<AllVehicleDocument />} />
               <Route
-                path="/allDocument/editdoc/:id"
+                path='/allDocument/editdoc/:id'
                 element={<Editdocument />}
               />
-              <Route path="/addRunningRecords" element={<AddRunnigRecords />} />
-              <Route path="/addrepair" element={<AddRepair />} />
-              <Route path="/registerGarage" element={<RegisterGarage />} />
+              <Route path='/addRunningRecords' element={<AddRunnigRecords />} />
+              <Route path='/addrepair' element={<AddRepair />} />
+              <Route path='/registerGarage' element={<RegisterGarage />} />
               {/* Bhanuka******************************************************** */}
 
               {/* Pasindu******************************************************** */}
-              <Route path="/allsalesreps" element={<AllSalesReps />} />
-              <Route path="/createsalesrep" element={<CreateSalesRep />} />
-              <Route path="/editsalerep/:id" element={<EditDelivery />} />
-              <Route path="/myschedules" element={<AllSchedules />} />
-              <Route path="/createschedule" element={<CreateSchedule />} />
-              <Route path="/editschedule/:id" element={<EditSchedule />} />
+              <Route path='/allsalesreps' element={<AllSalesReps />} />
+              <Route path='/createsalesrep' element={<CreateSalesRep />} />
+              <Route path='/editsalerep/:id' element={<EditDelivery />} />
+              <Route path='/myschedules' element={<AllSchedules />} />
+              <Route path='/createschedule' element={<CreateSchedule />} />
+              <Route path='/editschedule/:id' element={<EditSchedule />} />
               <Route
-                path="/createdeliveryreport"
+                path='/createdeliveryreport'
                 element={<CreateDeliveryReport />}
               />
 
               {/* Pasindu******************************************************** */}
 
               {/* Yasitha******************************************************** */}
-              <Route path="/createcategory" element={<CreateCategory />} />
-              <Route path="/mycategories" element={<AllCategory />} />
-              <Route path="/createstock" element={<CreateStock />} />
-              <Route path="/mystocks" element={<AllStock />} />
-              <Route path="/editstock/:id" element={<EditStock />} />
-              <Route path="/editcategory/:id" element={<EditCategory />} />
-              <Route path="/addprofit" element={<AddProfit />} />
-              <Route path="/myprofits" element={<AllProfit />} />
-              <Route path="/editprofit/:id" element={<EditProfit />} />
-              <Route path="/stockreport" element={<StockReport />} />
-              <Route path="/imdashboard" element={<IMDashboard />} />
+              <Route path='/createcategory' element={<CreateCategory />} />
+              <Route path='/mycategories' element={<AllCategory />} />
+              <Route path='/createstock' element={<CreateStock />} />
+              <Route path='/mystocks' element={<AllStock />} />
+              <Route path='/editstock/:id' element={<EditStock />} />
+              <Route path='/editcategory/:id' element={<EditCategory />} />
+              <Route path='/addprofit' element={<AddProfit />} />
+              <Route path='/myprofits' element={<AllProfit />} />
+              <Route path='/editprofit/:id' element={<EditProfit />} />
+              <Route path='/stockreport' element={<StockReport />} />
+              <Route path='/imdashboard' element={<IMDashboard />} />
 
               {/* Yasitha******************************************************** */}
+
+              {/*Chamikara********************************************************/}
+              <Route path='/addInv' element={<AddInvoice />} />
+              <Route path='/allInv' element={<AllInvoice />} />
+              <Route path='/editInv/:id' element={<EditDeleteInvoice />} />
+              <Route path='/reportInv' element={<InvReport />} />
+
+              {/*Chamikara********************************************************/}
 
               {/* Ashen******************************************************** */}
               {/* <ToastContainer position="bottom-center" limit={1} /> */}
@@ -225,33 +241,33 @@ const App = () => {
                 <Container> */}
               {/* <Route path="/" element={<SigninScreen />} /> */}
               <Route
-                path="/products"
+                path='/products'
                 element={
                   <ProtectedRoute>
                     <HomeScreen />
                   </ProtectedRoute>
                 }
               />
-              <Route path="/product/:name" element={<ProductScreen />} />
+              <Route path='/product/:name' element={<ProductScreen />} />
               <Route
-                path="/cart"
+                path='/cart'
                 element={
                   <ProtectedRoute>
                     <CartScreen />
                   </ProtectedRoute>
                 }
               />
-              <Route path="/navscreen" element={<NavigationScreen />} />
-              <Route path="/shipping" element={<ShippingDetailsScreen />} />
-              <Route path="/placeorder" element={<PlaceOrderScreen />} />
-              <Route path="/order/:id" element={<OrderScreen />} />
+              <Route path='/navscreen' element={<NavigationScreen />} />
+              <Route path='/shipping' element={<ShippingDetailsScreen />} />
+              <Route path='/placeorder' element={<PlaceOrderScreen />} />
+              <Route path='/order/:id' element={<OrderScreen />} />
 
               <Route
-                path="/paymentgateway"
+                path='/paymentgateway'
                 element={<PaymentGatewayScreen />}
               />
               <Route
-                path="/orderhistory"
+                path='/orderhistory'
                 element={
                   <ProtectedRoute>
                     <OrderHistoryScreen />
@@ -259,7 +275,7 @@ const App = () => {
                 }
               />
               <Route
-                path="/search"
+                path='/search'
                 element={
                   <ProtectedRoute>
                     <SearchScreen />
@@ -267,7 +283,7 @@ const App = () => {
                 }
               />
               <Route
-                path="/admin/dashboard"
+                path='/admin/dashboard'
                 element={
                   <AdminRoute>
                     <DashboardScreen />
@@ -275,7 +291,7 @@ const App = () => {
                 }
               />
               <Route
-                path="/admin/orders"
+                path='/admin/orders'
                 element={
                   <AdminRoute>
                     <OrderListScreen />
@@ -292,7 +308,7 @@ const App = () => {
                     }
                   /> */}
               <Route
-                path="/customerinfo"
+                path='/customerinfo'
                 element={
                   <AuthContextProvider>
                     <CustomerScreen />
@@ -300,7 +316,7 @@ const App = () => {
                 }
               />
               <Route
-                path="/createcustomer"
+                path='/createcustomer'
                 element={
                   <AuthContextProvider>
                     <CreateCustomer />

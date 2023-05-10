@@ -23,10 +23,10 @@ const Home = () => {
       <Helmet>
         <title>Southern Agro</title>
       </Helmet>
-      <div className="jumbotron">
-        <h1 className="display-4">{greeting}!</h1>
+      <div className='jumbotron'>
+        <h1 className='display-4'>{greeting}!</h1>
         <h3>Welcome {user ? user.name : null}</h3>
-        <hr className="my-4" />
+        <hr className='my-4' />
         {/* <div>
           <Link className="btn btn-info mb-2" to={"/createemp"} role="button">
             Add Employee
@@ -37,11 +37,11 @@ const Home = () => {
             Employee Management
           </Link>
         </div> */}
-        <div className="row">
-          <div className="col-lg-4 col-md-6 mb-4">
+        <div className='row'>
+          <div className='col-lg-4 col-md-6 mb-4'>
             <Link
               to={"/allsalesreps"}
-              className="btn btn-success btn-lg btn-block button-link button-link1 "
+              className='btn btn-success btn-lg btn-block button-link button-link1 '
             >
               <span>Delivery Management</span>
             </Link>
@@ -62,51 +62,51 @@ const Home = () => {
               <span>User Management</span>
             </Link>
           </div> */}
-          <div className="col-lg-4 col-md-6 mb-4">
+          <div className='col-lg-4 col-md-6 mb-4'>
             <Link
-              to={"/index"}
-              className="btn btn-success btn-lg btn-block  button-link button-link4"
+              to={"/allInv"}
+              className='btn btn-success btn-lg btn-block  button-link button-link4'
             >
               <span>Invoice Entry system</span>
             </Link>
           </div>
-          <div className="col-lg-4 col-md-6 mb-4">
+          <div className='col-lg-4 col-md-6 mb-4'>
             <Link
               to={"/index"}
-              className="btn btn-success btn-lg btn-block  button-link button-link5"
+              className='btn btn-success btn-lg btn-block  button-link button-link5'
             >
               <span>Employee Management</span>
             </Link>
           </div>
-          <div className="col-lg-4 col-md-6 mb-4">
+          <div className='col-lg-4 col-md-6 mb-4'>
             <Link
               to={"/mystocks"}
-              className="btn btn-success btn-lg btn-block  button-link button-link6"
+              className='btn btn-success btn-lg btn-block  button-link button-link6'
             >
               <span>Inventory control management</span>
             </Link>
           </div>
 
-          <div className="col-lg-4 col-md-6 mb-4">
+          <div className='col-lg-4 col-md-6 mb-4'>
             <Link
               to={"/index"}
-              className="btn btn-success btn-lg btn-block  button-link button-link7"
+              className='btn btn-success btn-lg btn-block  button-link button-link7'
             >
               <span>Supplier Management</span>
             </Link>
           </div>
-          <div className="col-lg-4 col-md-6 mb-4">
+          <div className='col-lg-4 col-md-6 mb-4'>
             <Link
               to={"/vmdashboard"}
-              className="btn btn-success btn-lg btn-block  button-link button-link8"
+              className='btn btn-success btn-lg btn-block  button-link button-link8'
             >
               <span>Vehicle Management</span>
             </Link>
           </div>
-          <div className="col-lg-4 col-md-6 mb-4 mx-auto">
+          <div className='col-lg-4 col-md-6 mb-4 mx-auto'>
             <Link
               to={"/cart"}
-              className="btn btn-success btn-lg btn-block  button-link button-link2"
+              className='btn btn-success btn-lg btn-block  button-link button-link2'
             >
               <span>Customer Order Management</span>
             </Link>
