@@ -90,7 +90,7 @@ export default function PlaceOrderScreen() {
       <h1 className="my-3">Preview Order</h1>
       <Row>
         <Col md={8}>
-          <Card className="mb-3">
+          <Card className="mb-3" style={{ color: 'black', fontWeight: '400' }}>
             <Card.Body>
               <Card.Title>Shipping</Card.Title>
               <Card.Text>
@@ -104,11 +104,16 @@ export default function PlaceOrderScreen() {
                 <strong>Contact No : </strong>
                 {cart.shippingDetails.contactNo} <br />
               </Card.Text>
-              <Link to="/shipping">Edit</Link>
+              <Link
+                to="/shipping"
+                style={{ letterSpacing: '0px', color: '#0d6efd' }}
+              >
+                Edit
+              </Link>
             </Card.Body>
           </Card>
 
-          <Card className="mb-3">
+          <Card className="mb-3" style={{ color: 'black', fontWeight: '400' }}>
             <Card.Body>
               <Card.Title>Credit Details</Card.Title>
               <Card.Text>
@@ -117,12 +122,17 @@ export default function PlaceOrderScreen() {
                 <strong>Credit Amount : </strong>
                 {cart.totalPrice.toFixed(2)}
               </Card.Text>
-              <Link to="/shipping">Edit</Link>
+              <Link
+                to="/shipping"
+                style={{ letterSpacing: '0px', color: '#0d6efd' }}
+              >
+                Edit
+              </Link>
             </Card.Body>
           </Card>
 
           <Card className="mb-3">
-            <Card.Body>
+            <Card.Body style={{ color: 'black', fontWeight: '400' }}>
               <Card.Title>Items</Card.Title>
               <ListGroup variant="flush">
                 {cart.cartItems.map((item) => (
@@ -134,7 +144,12 @@ export default function PlaceOrderScreen() {
                           alt={item.name}
                           className="img-fluid rounded img-thumbnail"
                         ></img>{' '}
-                        <Link to={`/product/${item.name}`}>{item.name}</Link>
+                        <Link
+                          to={`/product/${item.name}`}
+                          style={{ letterSpacing: '0px', color: '#0d6efd' }}
+                        >
+                          {item.name}
+                        </Link>
                       </Col>
                       <Col md={3}>
                         <span>{item.quantity}</span>
@@ -146,13 +161,18 @@ export default function PlaceOrderScreen() {
                   </ListGroup.Item>
                 ))}
               </ListGroup>
-              <Link to="/cart">Edit</Link>
+              <Link
+                to="/cart"
+                style={{ letterSpacing: '0px', color: '#0d6efd' }}
+              >
+                Edit
+              </Link>
             </Card.Body>
           </Card>
         </Col>
 
         <Col md={4}>
-          <Card>
+          <Card style={{ color: 'black', fontWeight: '400' }}>
             <Card.Body>
               <Card.Title>Order Summary</Card.Title>
               <ListGroup variant="flush">
@@ -190,6 +210,12 @@ export default function PlaceOrderScreen() {
                       type="button"
                       onClick={placeOrderHandler}
                       disabled={cart.cartItems.length === 0}
+                      style={{
+                        backgroundColor: '#f0c040',
+                        color: 'black',
+                        borderRadius: '10px',
+                        border: '1px black solid',
+                      }}
                     >
                       Place Order
                     </Button>

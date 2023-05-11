@@ -8,6 +8,7 @@ import MessageBox from '../components/MessageBox';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import '../index.css';
 
 const reducer = (state, action) => {
   switch (action.type) {

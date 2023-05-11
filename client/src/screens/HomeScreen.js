@@ -36,7 +36,10 @@ function HomeScreen() {
     fetchData();
   }, []);
   return (
-    <div className="products">
+    <div
+      className="products"
+      style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}
+    >
       <Helmet>
         <title>Products</title>
       </Helmet>

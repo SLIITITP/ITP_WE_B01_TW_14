@@ -62,7 +62,10 @@ export default function CartScreen() {
                         alt={item.name}
                         className="img-fluid rounded img-thumbnail"
                       ></img>{' '}
-                      <Link to={`/product/${item.name}`}>
+                      <Link
+                        to={`/product/${item.name}`}
+                        style={{ letterSpacing: '0px', color: '#0d6efd' }}
+                      >
                         <strong> {item.name}</strong>
                       </Link>
                     </Col>
@@ -90,7 +93,12 @@ export default function CartScreen() {
                           }
                           updateCartHandler(item, newQuantity);
                         }}
-                        style={{ width: '5rem', textAlign: 'center' }}
+                        style={{
+                          width: '5rem',
+                          textAlign: 'center',
+                          borderRadius: '10px',
+                          backgroundColor: '#BFC9CA',
+                        }}
                       />
                       {/* <span>{item.quantity}</span>{' '} */}
                       {/* <Button
@@ -104,7 +112,9 @@ export default function CartScreen() {
                       </Button> */}
                     </Col>
                     <Col md={3}>
-                      Rs.{(item.sellingprice * item.quantity).toFixed(2)}
+                      <strong>
+                        Rs.{(item.sellingprice * item.quantity).toFixed(2)}
+                      </strong>
                     </Col>
                     <Col md={2}>
                       <Button
@@ -125,7 +135,7 @@ export default function CartScreen() {
             <Card.Body>
               <ListGroup variant="flush">
                 <ListGroup.Item>
-                  <h5>
+                  <h5 style={{ letterSpacing: '0px' }}>
                     <b>
                       Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}{' '}
                       items) : Rs.
@@ -142,6 +152,12 @@ export default function CartScreen() {
                       type="button"
                       variant="primary"
                       disabled={cartItems.length === 0}
+                      style={{
+                        backgroundColor: '#f0c040',
+                        color: 'black',
+                        borderRadius: '10px',
+                        border: '1px black solid',
+                      }}
                     >
                       Proceed to Checkout
                     </Button>
