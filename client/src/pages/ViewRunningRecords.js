@@ -39,6 +39,8 @@ export const ViewRunningRecords = () => {
         }
     }
 
+    const totalMileage = getrunningdata.reduce((acc, curr) => acc + curr.noOfMiles, 0);
+
     const handlePrintAll = () => {
         const unit = "pt";
         const size = "A4";
@@ -47,14 +49,15 @@ export const ViewRunningRecords = () => {
         const doc = new jsPDF(orientation, unit, size);
         doc.setFontSize(16);
         doc.setFont("helvetica", "bold");
-        doc.text("Southern Agro Serve (Pvt) limited \nVehicle Running Records \n\n", marginLeft, 40);
-        const headers = [["Vehicle No", "Driver Name", "Route Details", "No of Miles"]];
+        doc.text("Southern Agro Serve (Pvt) Ltd \nVehicle Running Records \n\n", marginLeft, 40);
+        const headers = [["Vehicle No", "Driver Name", "Route Details", "No of Miles","Deliver Date"]];
 
         const data = getrunningdata.map((ele) => [
             ele.registerNo,
             ele.driverName,
             ele.routeDetails,
-            ele.noOfMiles
+            ele.noOfMiles,
+            new Date(ele.deliverdate).toLocaleDateString()
         ])
         let content = {
             startY: 70,
@@ -63,7 +66,8 @@ export const ViewRunningRecords = () => {
         };
 
         doc.autoTable(content)
-        doc.save("all-runningrecord.pdf")
+        doc.text(`\nTotal Mileage: ${totalMileage}`, marginLeft, doc.autoTable.previous.finalY + 10);
+        doc.save("runningrecord.pdf")
     }
 
     useEffect(() => {
@@ -84,7 +88,7 @@ export const ViewRunningRecords = () => {
     //     }
     //   };
 
-    const totalMileage = getrunningdata.reduce((acc, curr) => acc + curr.noOfMiles, 0);
+    // const totalMileage = getrunningdata.reduce((acc, curr) => acc + curr.noOfMiles, 0);
 
     return (
         <div>
@@ -149,6 +153,7 @@ export const ViewRunningRecords = () => {
                                         <TableCell className="tableCell">Driver Name</TableCell>
                                         <TableCell className="tableCell">Route Details</TableCell>
                                         <TableCell className="tableCell">No of Miles</TableCell>
+                                        <TableCell className="tableCell">Deliver Date</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -161,6 +166,9 @@ export const ViewRunningRecords = () => {
                                                     <TableCell className="tableCell">{opts.routeDetails}</TableCell>
                                                     <TableCell className="tableCell">
                                                         {opts.noOfMiles}
+                                                    </TableCell>
+                                                    <TableCell className="tableCell">
+                                                        {new Date(opts.deliverdate).toLocaleDateString()}
                                                     </TableCell>
                                                 </TableRow>
                                             )

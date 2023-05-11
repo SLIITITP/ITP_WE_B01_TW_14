@@ -39,6 +39,9 @@ export const ViewFuelDetails = () => {
         }
     }
 
+    const totalFuel = getfueldata.reduce((acc, curr) => acc + curr.capacity, 0);
+    const totalCost = getfueldata.reduce((acc, curr) => acc + curr.Amount, 0);
+
     const handlePrintAll = () => {
         const unit = "pt";
         const size = "A4";
@@ -54,7 +57,8 @@ export const ViewFuelDetails = () => {
             ele.registerNo,
             ele.fuelType,
             ele.capacity,
-            ele.Amount
+            ele.Amount,
+            new Date(ele.fueldate).toLocaleDateString()
         ])
         let content = {
             startY: 70,
@@ -63,6 +67,8 @@ export const ViewFuelDetails = () => {
         };
 
         doc.autoTable(content)
+        doc.text(`\nTotal Fuel(L): ${totalFuel}`, marginLeft, doc.autoTable.previous.finalY + 10);
+        doc.text(`\n\nTotal Cost for Fuel: Rs.${totalCost}`, marginLeft, doc.autoTable.previous.finalY + 10);
         doc.save("Fuel-Record.pdf")
     }
 
@@ -70,13 +76,13 @@ export const ViewFuelDetails = () => {
         getdata();
     }, [vehicleNo, startDate, endDate]);
 
-    const totalFuel = getfueldata.reduce((acc, curr) => acc + curr.capacity, 0);
-    const totalCost = getfueldata.reduce((acc, curr) => acc + curr.Amount, 0);
+    // const totalFuel = getfueldata.reduce((acc, curr) => acc + curr.capacity, 0);
+    // const totalCost = getfueldata.reduce((acc, curr) => acc + curr.Amount, 0);
 
     return (
 
         <div>
-            <h1>Vehicle Running Records</h1>
+            <h1>Fuel Records</h1>
             {/* <button className="btn btn-warning mx-2" onClick={() => handlePrintAll()}>Generate Report</button> */}
             <form>
                 <div className="row">
@@ -141,6 +147,7 @@ export const ViewFuelDetails = () => {
                                         <TableCell className="tableCell">Fuel Type</TableCell>
                                         <TableCell className="tableCell">Capacity</TableCell>
                                         <TableCell className="tableCell">Amount</TableCell>
+                                        <TableCell className="tableCell">Fuel Date</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -151,7 +158,8 @@ export const ViewFuelDetails = () => {
                                                     <TableCell className="tableCell">{opts.registerNo}</TableCell>
                                                     <TableCell className="tableCell">{opts.fuelType}</TableCell>
                                                     <TableCell className="tableCell">{opts.capacity}</TableCell>
-                                                    <TableCell className="tableCell">{opts.Amount}</TableCell>
+                                                    <TableCell className="tableCell">Rs.{opts.Amount}</TableCell>
+                                                    <TableCell className="tableCell">{new Date(opts.fueldate).toLocaleDateString()}</TableCell>
                                                 </TableRow>
                                             )
                                         }

@@ -85,7 +85,7 @@ export const VMDashboard = () => {
   const [getvehicledata, setVehicledata] = useState([]);
   const [getgaragedata, setGaragedata] = useState([]);
   const [getrunningdata, setRunningdata] = useState([]);
-  //const [getscheduledata, setscheduledata] = useState([]);
+  const [getscheduledata, setscheduledata] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState({});
 
@@ -112,43 +112,43 @@ export const VMDashboard = () => {
     }
   }
 
-  // const getschedulerdata = async (e) => {
+  const getschedulerdata = async (e) => {
 
-  //   // const res = await fetch(`http://localhost:8000/api/myschedules`, {
-  //   //   method: "GET",
-  //   //   headers: {
-  //   //     Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //   //   },
-  //   // });
+    // const res = await fetch(`http://localhost:8000/api/myschedules`, {
+    //   method: "GET",
+    //   headers: {
+    //     Authorization: `Bearer ${localStorage.getItem("token")}`,
+    //   },
+    // });
 
-  //   // const data = await res.json();
-  //   // console.log(data);
+    // const data = await res.json();
+    // console.log(data);
 
-  //   // if (res.status === 422 || !data) {
-  //   //   console.log("error ");
+    // if (res.status === 422 || !data) {
+    //   console.log("error ");
 
-  //   // } else {
-  //   //   setscheduledata(data.schedule)
-  //   //   console.log("get data");
-  //   // }
+    // } else {
+    //   setscheduledata(data.schedule)
+    //   console.log("get data");
+    // }
 
-  //     const res = await fetch(`http://localhost:8000/api/myschedules`, {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
+      const res = await fetch(`http://localhost:8000/api/myschedules`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
 
-  //         Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //       },
-  //     });
-  //     const result = await res.json();
-  //     console.log(result)
-  //     if (!result.error) {
-  //       setscheduledata(result.schedule);
-  //     } else {
-  //       console.log(result);
-  //     }
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      const result = await res.json();
+      console.log(result)
+      if (!result.error) {
+        setscheduledata(result.schedule);
+      } else {
+        console.log(result);
+      }
 
-  // }
+  }
 
   const getvehidata = async (e) => {
 
@@ -201,6 +201,7 @@ export const VMDashboard = () => {
     getdata();
     getvehidata();
     getgaradata();
+    getschedulerdata();
   }, []);
 
   return (
@@ -243,7 +244,8 @@ export const VMDashboard = () => {
                   <h6 className="mb-1">
                     Total Garage's
                   </h6>
-                  <span><b>{getgaragedata.length}</b></span>
+                  <span><b>{getgaragedata.length}</b></span><br></br>
+                  <span><b>{getscheduledata.length}</b></span>
                 </div>
               </article>
             </div>
