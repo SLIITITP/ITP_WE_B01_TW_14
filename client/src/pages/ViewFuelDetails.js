@@ -67,7 +67,7 @@ export const ViewFuelDetails = () => {
         };
 
         doc.autoTable(content)
-        doc.text(`\nTotal Fuel(L): ${totalFuel}`, marginLeft, doc.autoTable.previous.finalY + 10);
+        doc.text(`\nTotal Fuel: ${totalFuel} liter`, marginLeft, doc.autoTable.previous.finalY + 10);
         doc.text(`\n\nTotal Cost for Fuel: Rs.${totalCost}`, marginLeft, doc.autoTable.previous.finalY + 10);
         doc.save("Fuel-Record.pdf")
     }

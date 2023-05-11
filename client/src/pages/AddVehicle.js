@@ -89,6 +89,21 @@ export const AddVehicle = () => {
       return false;
     }
 
+    if (registerNo.length > 8) {
+      toast.error("Inavlid Register No.....")
+      return false
+    }
+
+    if (manufactureYear.length !== 4) {
+      toast.error("Invalid manufacturing year!..")
+      return false
+    }
+
+    if (chassisNo.length > 20) {
+      toast.error("Invalid Chassis No.....")
+      return false
+    }
+
     // const res = await fetch("/registerVehicle", {
     //     method: "POST",
     //     headers: {
@@ -143,7 +158,6 @@ export const AddVehicle = () => {
 
   return (
     <div className="container">
-      <NavLink to="/">home</NavLink>
       <div className="d-flex">
         <h2>Register Vehicle</h2>
       </div>
