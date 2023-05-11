@@ -19,21 +19,25 @@ const Header = () => {
           Southern Agro
         </h1>
       </Link>
-      {user && user.role === 'Customer Manager' && <SearchBox />}
-      {user && user.role === 'Customer Manager' && (
-        <Link
-          to="/cart"
-          className="nav-link"
-          style={{ marginRight: '20px', color: 'white' }}
-        >
-          Cart
-          {cart.cartItems.length > 0 && (
-            <Badge pill bg="danger">
-              {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
-            </Badge>
-          )}
-        </Link>
-      )}
+      {user &&
+        (user.role === 'Customer Manager' || user.role === 'Customer') && (
+          <SearchBox />
+        )}
+      {user &&
+        (user.role === 'Customer Manager' || user.role === 'Customer') && (
+          <Link
+            to="/cart"
+            className="nav-link"
+            style={{ marginRight: '20px', color: 'white' }}
+          >
+            Cart
+            {cart.cartItems.length > 0 && (
+              <Badge pill bg="danger">
+                {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+              </Badge>
+            )}
+          </Link>
+        )}
       {user && (
         <div className="d-flex align-items-center">
           <span className="text-white" style={{ paddingRight: '25px' }}>
@@ -61,7 +65,7 @@ const Header = () => {
               height="40"
             />
           )}
-          {user.role === 'Customer Manager' && (
+          {(user.role === 'Customer Manager' || user.role === 'Customer') && (
             <img
               src={
                 'https://scontent.fcmb1-2.fna.fbcdn.net/v/t39.30808-1/325512809_720598059414679_7618836821725563303_n.jpg?stp=dst-jpg_p320x320&_nc_cat=103&ccb=1-7&_nc_sid=7206a8&_nc_ohc=tWSlVzr__XAAX_v0NbS&_nc_ht=scontent.fcmb1-2.fna&oh=00_AfDuU0nXEGkyeOpD4c1J_VmPjlNBEsjQtwNWOraT0SrWtQ&oe=645CB58C'

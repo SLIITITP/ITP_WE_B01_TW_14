@@ -522,6 +522,96 @@ const Navbar = ({ title = 'Southern Agro' }) => {
                 </button>
               </li>
             </>
+          ) : //Ashen Illesinghe - Customer
+          user && user.role === 'Customer' ? (
+            <>
+              <li className="nav-item">
+                <Link to="/products" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faChartBar}
+                    style={{ marginRight: '10px', color: 'white' }}
+                  />
+                  Products
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link
+                  to="/addRunningRecords"
+                  role="button"
+                  className="nav-link"
+                >
+                  <FontAwesomeIcon
+                    icon={faFolder}
+                    style={{ marginRight: '10px', color: 'white' }}
+                  />
+                  Running Records
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link to="/admin/orders" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faClipboardList}
+                    style={{ marginRight: '10px', color: 'white' }}
+                  />
+                  Customer Orders
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/admin/dashboard" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faFileAlt}
+                    style={{ marginRight: '10px', color: 'white' }}
+                  />
+                  Dashboard
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/allDocument" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faFileAlt}
+                    style={{ marginRight: '10px', color: 'white' }}
+                  />
+                  Document Storage
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/repairAssign" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faFileAlt}
+                    style={{ marginRight: '10px', color: 'white' }}
+                  />
+                  Repair Assign
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/addFuel" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faFileAlt}
+                    style={{ marginRight: '10px', color: 'white' }}
+                  />
+                  Add Fuel
+                </Link>
+              </li>
+              <li
+                className="nav-item"
+                onClick={() => {
+                  setUser(null);
+                  localStorage.clear();
+                  toast.success('Logout Successful!');
+                  navigate('/login', { replace: true });
+                }}
+              >
+                <button className="btn btn-danger">
+                  <FontAwesomeIcon
+                    icon={faSignOutAlt}
+                    style={{ marginRight: '10px', color: 'white' }}
+                  />
+                  Logout
+                </button>
+              </li>
+            </>
           ) : // Customer Manager - Ashen Illesinghe
           user && user.role === 'Customer Manager' ? (
             <>

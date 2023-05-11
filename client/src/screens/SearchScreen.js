@@ -117,7 +117,10 @@ export default function SearchScreen() {
           <div>
             <form>
               <h3>Department</h3>
-              <div className="search-product-radioBtn">
+              <div
+                className="search-product-radioBtn"
+                style={{ fontWeight: '400', color: 'black' }}
+              >
                 <label className="radio-label">
                   <input
                     type="radio"
@@ -150,7 +153,10 @@ export default function SearchScreen() {
             <br />
             <form>
               <h3>Price</h3>
-              <div className="search-product-radioBtn">
+              <div
+                className="search-product-radioBtn"
+                style={{ fontWeight: '400', color: 'black' }}
+              >
                 <span>
                   <label className="radio-label">
                     <input
@@ -192,7 +198,7 @@ export default function SearchScreen() {
             <>
               <Row className="justify-content-between mb-3">
                 <Col md={6}>
-                  <div>
+                  <div style={{ fontWeight: '400', color: 'black' }}>
                     {countProducts === 0 ? 'No' : countProducts} Results
                     {query !== 'all' && ' : ' + query}
                     {category !== 'all' && ''}
@@ -203,13 +209,19 @@ export default function SearchScreen() {
                       <Button
                         variant="light"
                         onClick={() => navigate('/search')}
+                        style={{
+                          background: 'transparent',
+                        }}
                       >
                         <i className="fas fa-times-circle"></i>
                       </Button>
                     ) : null}
                   </div>
                 </Col>
-                <Col className="text-end">
+                <Col
+                  className="text-end"
+                  style={{ fontWeight: '400', color: 'black' }}
+                >
                   Sort by{' '}
                   <select
                     value={order}
