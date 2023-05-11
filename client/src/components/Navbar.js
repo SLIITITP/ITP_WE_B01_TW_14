@@ -22,6 +22,8 @@ import {
   faUserTie,
   faFolder,
   faClipboardList,
+  faFileInvoice,
+  faTachometerAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = ({ title = "Southern Agro" }) => {
@@ -436,74 +438,55 @@ const Navbar = ({ title = "Southern Agro" }) => {
           user && user.role === "Supplier Manager" ? (
             <>
               <li className="nav-item">
-                <Link to="/allvehicle" role="button" className="nav-link">
+                <Link to="/dashboard" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faTachometerAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Dashboard
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link to="/allsup" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faUserTie}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Supplier
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link to="/allapp" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faCalendarAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Appointments
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link to="/allpur" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faFileInvoice}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Purchase Orders
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link to="/allrepw" role="button" className="nav-link">
                   <FontAwesomeIcon
                     icon={faChartBar}
                     style={{ marginRight: "10px", color: "white" }}
                   />
-                  Vehicle
+                  Reports
                 </Link>
               </li>
 
-              <li className="nav-item">
-                <Link
-                  to="/addRunningRecords"
-                  role="button"
-                  className="nav-link"
-                >
-                  <FontAwesomeIcon
-                    icon={faFolder}
-                    style={{ marginRight: "10px", color: "white" }}
-                  />
-                  Running Records
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link to="/addrepair" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    icon={faClipboardList}
-                    style={{ marginRight: "10px", color: "white" }}
-                  />
-                  Repair
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/registerGarage" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    icon={faFileAlt}
-                    style={{ marginRight: "10px", color: "white" }}
-                  />
-                  Garage
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/allDocument" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    icon={faFileAlt}
-                    style={{ marginRight: "10px", color: "white" }}
-                  />
-                  Document Storage
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/repairAssign" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    icon={faFileAlt}
-                    style={{ marginRight: "10px", color: "white" }}
-                  />
-                  Repair Assign
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/addFuel" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    icon={faFileAlt}
-                    style={{ marginRight: "10px", color: "white" }}
-                  />
-                  Add Fuel
-                </Link>
-              </li>
               <li
                 className="nav-item"
                 onClick={() => {

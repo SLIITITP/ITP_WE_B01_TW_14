@@ -4,6 +4,7 @@ const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser"); //pasindu
+const axios = require('axios'); //wasana
 
 //Initialize express app
 const app = express();
@@ -133,6 +134,110 @@ app.use("/api", require("./routes/deliveryreport"));
 // app.use("/schedule",scheduleRouter); //front end eken backend eke data call karanna url eka
 
 //Pasindu***************************************************************************
+
+//Wasana*******************************
+const cron = require('node-cron');
+const nodemailer = require('nodemailer');
+
+//routes
+app.use("/api", require("./routes/auth"));
+app.use("/api", require("./routes/supRouter"));
+app.use("/api",require("./routes/purchaseRouter"));
+app.use("/api",require("./routes/appointmentRouter"));
+
+const PurchaseOrders = require('./models/purchaseSchema');
+const Suppliers = require('./models/supSchema');
+
+// Function to send reminder emails to suppliers
+const sendReminderEmail = async (supplierEmail, orderItems) => {
+  try {
+    // Create nodemailer transporter object
+    let transporter = nodemailer.createTransport({
+     
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+      auth: {
+        user: 'fruwani5@gmail.com',
+        pass: 'fpaetacctrymcawy',
+      },
+    });
+
+    // Define email message
+    let message = {
+      from: 'fruwani5@gmail.com',
+      to: supplierEmail,
+      subject: 'Purchase Order Reminder',
+      text: `Dear supplier,\n\nThis is a reminder that the following items in your purchase order are still pending:\n\n${orderItems}\n\nPlease update us on the status of your order as soon as possible.\n\nBest regards,\nSouthern Agro Serve`,
+    };
+
+    // Send email
+    let info = await transporter.sendMail(message);
+    console.log(`Reminder email sent to ${supplierEmail}: ${info.messageId}`);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// Cron job to check purchase orders and send reminder emails
+//cron.schedule('*/1 * * * *', async () => {
+  // cron.schedule('0 0 * * *', async () => {
+
+  cron.schedule('0 0 * * *', async () => {
+  try {
+    const currentDate = new Date();
+    const fiveDaysAgo = new Date(currentDate.getTime() - 5 * 24 * 60 * 60 * 1000);
+
+    const incompleteOrders = await PurchaseOrders.find({
+      completed: false,
+      reqdate: { $lte: fiveDaysAgo },
+    }).populate('supid', 'email name');
+
+    incompleteOrders.forEach(async (order) => {
+      const { supid, items } = order;
+      const { email } = supid;
+      const orderItems = items.map((item) => `- ${item.quantity} ${item.itemName}`).join('\n');
+
+      await sendReminderEmail(email, orderItems);
+
+      console.log(`Reminder email sent to ${email} for purchase order ${order.orderid}`);
+    });
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+//new
+// const Appointment = require('./models/appointmentSchema');
+
+// cron.schedule('*/1 * * * *', async () => {
+//   try {
+//     const currentDate = new Date();
+//     const now = new Date();
+//     const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+//     const appointmentsToDelete = await Appointment.find({
+//       date: { $lt: currentDate },
+//       $or: [
+//         { date: currentDate, end: { $lt: time } },
+//         { date: { $lt: currentDate } }
+//       ]
+//     });
+
+//     for (const appointment of appointmentsToDelete) {
+//       try {
+//         const response = await axios.delete(`http://localhost:8000/api/deleteAppointment/${appointment._id}`);
+//         console.log(`Appointment ${appointment._id} deleted successfully:`, response.data);
+//       } catch (error) {
+//         console.error(`Failed to delete appointment ${appointment._id}: ${error.message}`);
+//       }
+//     }
+//   } catch (error) {
+//     console.error('Error:', error);
+//   }
+// });
+//new
+
+//Wasana********************************
 
 //Yasitha***************************************************************************
 
