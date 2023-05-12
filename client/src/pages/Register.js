@@ -140,6 +140,7 @@ const Register = () => {
                 <option value="Inventory Control Manager">
                   Inventory Control Manager
                 </option>
+                <option value="Financial Manager">Financial Manager</option>
                 <option value="Supplier Manager">Supplier Manager</option>
                 <option value="Driver">Driver</option>
               </select>
