@@ -2,6 +2,7 @@ import React,{useState, useEffect, useContext} from "react";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import ToastContext from "../context/ToastContext";
+import Card from "react-bootstrap/Card";
 
 export default function Editsup() {
 
@@ -41,6 +42,10 @@ export default function Editsup() {
             toast.error("Enter a valid email address");
             return;
           }
+          if (user.mobile.length !== 10) {
+            toast.error("Mobile number should be 10 digits");
+            return;
+          }
           toast.success("User updated successfully!");
           navigate("/allsup"); // Navigate to the user list page on successful update
         } catch (error) {
@@ -58,6 +63,7 @@ export default function Editsup() {
 
     return(
         <div className="container mt-5">
+          <Card clasName="shadow card">
             <form className="mx-auto w-50 shadow p-5" onSubmit={handleSubmit}>
                 <Link className="btn btn-primary" to="/">Home</Link>
                 <h3 className="mt-5" >Edit Supplier Details</h3>
@@ -88,6 +94,7 @@ export default function Editsup() {
 
                 <button className="btn btn-primary">Update</button>
             </form>
+            </Card>
         </div>
     );
 }

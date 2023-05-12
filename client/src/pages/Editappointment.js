@@ -2,6 +2,8 @@ import React,{useState, useEffect, useContext} from "react";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import ToastContext from "../context/ToastContext";
+import Card from "react-bootstrap/Card";
+import { Toast } from "react-bootstrap";
 
 const Editapp = () =>{
 
@@ -47,16 +49,17 @@ const Editapp = () =>{
             headers: { Authorization: `Bearer ${token}` },
           };
           await axios.put(`http://localhost:8000/api/editAppointment/${id}`, user, config);
-          alert('Appointment updated successfully!');
+          Toast.sucess('Appointment updated successfully!')
           navigate('/allapp');
         } catch (error) {
           console.error(error);
-          alert('Appointment update failed!');
+          Toast.error('Appointment update failed!')
         }
       };
 
     return(
         <div className="container mt-5">
+          <Card clasName="shadow card">
             <form className="mx-auto w-50 shadow p-5" onSubmit={handleSubmit}>
                 <Link className="btn btn-primary" to="/">Home</Link>
                 <h3 className="mt-5" >Edit Appointment Details</h3>
@@ -87,6 +90,7 @@ const Editapp = () =>{
 
                 <button className="btn btn-primary">Update</button>
             </form>
+            </Card>
         </div>
     );
 }

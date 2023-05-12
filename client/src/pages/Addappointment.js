@@ -14,6 +14,7 @@ const Addapp = () => {
   const [email, setEmail] = useState("");
 
   const navigate = useNavigate();
+  const { toast } = useContext(ToastContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,10 +27,10 @@ const Addapp = () => {
         headers: { Authorization: `Bearer ${token}` },
       };
       await axios.post('http://localhost:8000/api/addAppointment', { name, date, start, end, email }, config);
-      alert("Appointment added successfully");
+      toast.success("Appointment added successfully!");
       navigate('/allapp');
     } catch (err) {
-      alert(err.message);
+      toast.error(err);
       navigate('/addapp');
     }
   };

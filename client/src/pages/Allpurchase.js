@@ -84,7 +84,6 @@ const Allpur = () => {
     );
   });
 
-//Rating of the suppliers
 const handleCountClick = async () => {
   try {
     const supplierCounts = filteredPurchases.reduce((counts, purchase) => {
@@ -97,7 +96,24 @@ const handleCountClick = async () => {
 
     Object.entries(supplierCounts).forEach(async ([supid, count]) => {
       try {
-        const rating = count > 2 ? "Good" : "Bad";
+        let rating;
+        const supplier = await fetch(`http://localhost:8000/api/supplier/${supid}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }).then(res => res.json());
+        
+        if (count > 10) {
+          rating = "Excellent";
+        } else if (count > 5 && count <= 10) {
+          rating = "Good";
+        } else if (count > 2 && count <= 5) {
+          rating = "Satisfactory";
+        } else {
+          rating = "Needs Improvement";
+        }
+        
+
         console.log(`Supplier ${supid} has a count of ${count} and is rated ${rating}`);
         const response = await fetch(`http://localhost:8000/api/updateSupplierRate/${supid}`, {
           method: "PUT",
@@ -108,6 +124,7 @@ const handleCountClick = async () => {
           body: JSON.stringify({ rate: rating }),
         });
         const updatedSupplier = await response.json();
+        toast.success("rated successfully!");
         console.log(`Updated supplier ${updatedSupplier.name} with new rating: ${updatedSupplier.rate}`);
       } catch (error) {
         console.error(error);
@@ -117,6 +134,7 @@ const handleCountClick = async () => {
     console.error(error);
   }
 };
+
 
   //new
   

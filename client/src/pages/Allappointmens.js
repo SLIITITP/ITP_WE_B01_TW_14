@@ -57,7 +57,7 @@ const Allapp = ()=>{
         setAppointments((prevAppointments) =>
           prevAppointments.filter((appointment) => appointment._id !== id)
         );
-        alert("Appointment deleted successfully!");
+        toast.success("Appointment deleted successfully!");
       })
       .catch((error) => console.error(error));
   };
@@ -80,44 +80,6 @@ const Allapp = ()=>{
     return searchRegex.test(appointment.appid) || searchRegex.test(appointment.email);
   });
 
-  //new code
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const currentDate = new Date();
-      filteredAppointments.forEach((appointment) => {
-        const appointmentDate = new Date(appointment.date).toLocaleDateString();
-        const appointmentEndTime = `${appointment.end}`;
-
-        const currentDate = new Date();
-        const dateOnly = currentDate.toLocaleDateString();
-        
-        
-        const now = new Date();
-        const hours = now.getHours();
-        const minutes = now.getMinutes();
-        const time = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-        
-        
-        console.log("Appointment date : ",appointmentDate)
-        console.log("Appointment end time : ",appointmentEndTime)
-        console.log("Current date : ",dateOnly)
-        console.log("Current Time : ",time); // output example: "13:45"
-        
-
-        if (dateOnly == appointmentDate && time == appointmentEndTime) {
-          console.log(`Appointment with ID ${appointment.appid} has matched with current date and time.`);
-          console.log(appointment._id)
-          deleteAppointment(appointment._id)
-        }
-      });
-    }, 60000); // execute every minute
-
-    return () => clearInterval(interval);
-  }, [filteredAppointments]);
-  
-  //new code
-
-
     return(
         <>
       <div>
@@ -128,9 +90,8 @@ const Allapp = ()=>{
             Reload Appointment List
           </a>
           <div>
-            <Link className="btn btn-info mb-2" to={"/addapp"} role="button">
-              Add Appointment
-            </Link>
+            <Link className="btn btn-info mb-2" to={"/addapp"} role="button">Add Appointment</Link>
+            <Link className="btn btn-outline-danger mb-2 " to="/allexp">Expired Appointments</Link>
           </div>
         </div>
         <hr className="my-4" />
@@ -142,6 +103,7 @@ const Allapp = ()=>{
         <p>
           Your Total Contacts: <strong>{appointments.length}</strong>{" "}
         </p>
+        
         <hr className="my-4"/>
 
         <table className="table table-hover">

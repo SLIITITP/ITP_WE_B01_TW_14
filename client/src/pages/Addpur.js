@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from 'axios';
 import ToastContext from "../context/ToastContext";
+import Card from "react-bootstrap/Card";
 
 export default function Addpur() {
 
@@ -61,6 +62,7 @@ export default function Addpur() {
   
     return(
         <div className="container mt-5">
+          <Card clasName="shadow card">
             <form className="mx-auto w-50 shadow p-5" onSubmit={handleSubmit}>
                 <Link className="btn btn-primary" to="/allsup">Suppliers</Link>
                 <h3 className="mt-5" >Fill Order Details</h3>
@@ -88,6 +90,7 @@ export default function Addpur() {
                 </ul>
                 <button className="btn btn-primary" type="submit">Add</button>
             </form>
+            </Card>
         </div>
     )
 }

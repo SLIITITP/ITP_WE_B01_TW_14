@@ -64,6 +64,7 @@ import Addapp from "./pages/Addappointment";
 import Editapp from "./pages/Editappointment";
 import AllRecW from "./pages/AllReportsW"
 import Dashboard from "./pages/DashboardW";
+import Allexp from "./pages/AllexpiredAppointments";
 //Wasana
 
 // Yasitha********************************************************
@@ -228,6 +229,7 @@ const App = () => {
               <Route path='/editapp' element={<Editapp/>} />
               <Route path='/allrepw' element={<AllRecW/>} />
               <Route path='/dashboard' element={<Dashboard/>} />
+              <Route path='/allexp' element={<Allexp/>} />
               {/* Wasana*/}
 
               {/* Yasitha******************************************************** */}

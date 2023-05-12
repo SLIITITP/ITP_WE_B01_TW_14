@@ -155,4 +155,25 @@ try {
 });
 
 
+// Delete appointment if date and time are expired
+router.delete('/autoDeleteAppointment',auth, async (req, res) => {
+  try {
+    const appointment = await Appointments.findById(req.params.id);
+    if (!appointment) {
+      return res.status(404).send({ message: 'Appointment not found' });
+    }
+    const currentDate = new Date();
+    const appointmentDate = new Date(appointment.date + 'T' + appointment.start + ':00');
+    if (currentDate > appointmentDate) {
+      await Appointments.findByIdAndDelete(req.params.id);
+      return res.status(200).send({ message: 'Appointment deleted successfully' });
+    }
+    return res.status(400).send({ message: 'Appointment date and time have not expired yet' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ message: 'Internal server error' });
+  }
+});
+
+
 module.exports = router;

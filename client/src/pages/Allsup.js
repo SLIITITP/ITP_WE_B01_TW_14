@@ -130,14 +130,14 @@ const Allsup = ()=>{
         <table className="table table-hover">
           <thead>
             <tr>
-              <th scope="col" style={{ width: "10%", whiteSpace: "nowrap", textAlign: "center" }}>ID</th>
-              <th scope="col" style={{ width: "15%", whiteSpace: "nowrap" }}>Name</th>
-              <th scope="col" style={{ width: "15%", whiteSpace: "nowrap" }}>Address</th>
-              <th scope="col" style={{ width: "15%", whiteSpace: "nowrap" }}>Date joined</th>
-              <th scope="col" style={{ width: "15%", whiteSpace: "nowrap" }}>Mobile</th>
-              <th scope="col" style={{ width: "15%", whiteSpace: "nowrap" }}>Email</th>
-              <th scope="col" style={{ width: "15%", whiteSpace: "nowrap" }}>company</th>
-              <th scope="col" style={{ width: "15%", whiteSpace: "nowrap" }}>Rate</th>
+              <th scope="col" style={{ width: "5%", whiteSpace: "nowrap", textAlign: "center" }}>ID</th>
+              <th scope="col" style={{ width: "10%", whiteSpace: "nowrap" }}>Name</th>
+              <th scope="col" style={{ width: "10%", whiteSpace: "nowrap" }}>Address</th>
+              <th scope="col" style={{ width: "10%", whiteSpace: "nowrap" }}>Date joined</th>
+              <th scope="col" style={{ width: "10%", whiteSpace: "nowrap" }}>Mobile</th>
+              <th scope="col" style={{ width: "10%", whiteSpace: "nowrap" }}>Email</th>
+              <th scope="col" style={{ width: "10%", whiteSpace: "nowrap" }}>company</th>
+              <th scope="col" style={{ width: "5%", whiteSpace: "nowrap" }}>Rate</th>
             </tr>
           </thead>
           <tbody>

@@ -20,11 +20,11 @@ const Addsup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (mobile.length !== 10) {
-      alert("Mobile number should be 10 digits");
+      toast.error("Mobile number should be 10 digits");
       return;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      alert("Enter a valid email address");
+      toast.error("Enter a valid email address");
       return;
     }
 
@@ -36,11 +36,20 @@ const Addsup = () => {
       const config = {
         headers: { Authorization: `Bearer ${token}` },
       };
+
+      const { data } = await axios.get('http://localhost:8000/api/allSupplier', config);
+      const existingMobile = data.find((supplier) => supplier.mobile === mobile);
+
+      if (existingMobile) {
+        toast.error("Mobile number already exists");
+        return;
+      }
+
       await axios.post('http://localhost:8000/api/addSupplier', { name, address, mobile, email, company }, config);
-      alert("Supplier added successfully");
+      toast.success("Supplier added successfully");
       navigate('/allsup');
     } catch (err) {
-      alert(err.message);
+      toast.error(err.message)
     }
   };
   
