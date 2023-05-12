@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 function CreateCustomer() {
   const navigate = useNavigate();
@@ -73,6 +74,9 @@ function CreateCustomer() {
 
   return (
     <div>
+      <Helmet>
+        <title>Create customer</title>
+      </Helmet>
       <h2 className="text-center bg-darkgreen p-2">Add Customer</h2>
       <div className="row justify-content-center">
         <div className="col-12 col-md-8">
@@ -163,6 +167,7 @@ function CreateCustomer() {
               <select
                 id="districtInput"
                 name="district"
+                className="form-control"
                 value={userDetails.district}
                 onChange={handleInputChange}
                 required
@@ -230,6 +235,7 @@ function CreateCustomer() {
               </label>
               <select
                 id="creditDaysInput"
+                className="form-control"
                 name="creditDays"
                 value={userDetails.creditDays}
                 onChange={handleInputChange}

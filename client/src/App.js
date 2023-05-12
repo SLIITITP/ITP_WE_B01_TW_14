@@ -105,6 +105,7 @@ import CreateCustomer from './screens/CreateCustomer';
 import CustomerScreen from './screens/CustomerScreen';
 import AllSalary from './pages/AllSalaries';
 import AllAttendance from './pages/AllAttendances';
+import EditCustomerScreen from './screens/EditCustomerScreen';
 
 // Ashen********************************************************
 
@@ -307,6 +308,11 @@ const App = () => {
                   </AuthContextProvider>
                 }
               />
+              <Route
+                path="/editcustomer/:id"
+                element={<EditCustomerScreen />}
+              />
+
               {/* </Container>
               </main> */}
 

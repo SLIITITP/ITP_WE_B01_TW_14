@@ -3,6 +3,7 @@ import AuthContext from '../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { Modal } from 'react-bootstrap';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 function CustomerScreen() {
   const navigate = useNavigate();
@@ -80,6 +81,9 @@ function CustomerScreen() {
   return (
     <div>
       <div>
+        <Helmet>
+          <title>Customers</title>
+        </Helmet>
         <h1>Customers</h1>
         <div className="d-flex justify-content-between">
           <a href="/customerinfo" className="btn btn-danger my-2">
@@ -169,7 +173,7 @@ function CustomerScreen() {
         </Modal.Body>
 
         <Modal.Footer>
-          <Link className="btn btn-info" to={`/editemp/${modalData._id}`}>
+          <Link className="btn btn-info" to={`/editcustomer/${modalData._id}`}>
             Edit
           </Link>
           <button
