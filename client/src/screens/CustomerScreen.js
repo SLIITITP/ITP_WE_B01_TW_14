@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import AuthContext from '../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { Modal } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 
 function CustomerScreen() {
   const navigate = useNavigate();
@@ -36,6 +37,45 @@ function CustomerScreen() {
     }
     fetchData();
   }, []);
+
+  const deleteCustomer = async (id) => {
+    if (window.confirm('Are you sure you want to delete this Customer?')) {
+      try {
+        const res = await fetch(`http://localhost:8000/api/customers/${id}`, {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        });
+        const result = await res.json();
+        if (!result.error) {
+          toast.success('Customer Deleted Successfully');
+          setShowModal(false);
+          updateCustomerList();
+        } else {
+          toast.error(result.error);
+        }
+      } catch (err) {
+        console.log(err);
+        toast.error('Failed to delete Customer. Please try again later.');
+      }
+    }
+  };
+
+  const updateCustomerList = async () => {
+    try {
+      const res = await fetch('http://localhost:8000/api/customers', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      const result = await res.json();
+      setCustomers(result);
+    } catch (err) {
+      console.log(err);
+      toast.error('Failed to fetch Customers. Please try again later.');
+    }
+  };
 
   return (
     <div>
@@ -97,7 +137,6 @@ function CustomerScreen() {
       </div>
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
-          {/* <Modal.Title>{modalData.firstname}</Modal.Title> */}
           <Modal.Title>Southern Agro</Modal.Title>
         </Modal.Header>
 
@@ -135,17 +174,10 @@ function CustomerScreen() {
           </Link>
           <button
             className="btn btn-danger"
-            //onClick={() => modalData && deleteEmployee(modalData._id)}
+            onClick={() => modalData && deleteCustomer(modalData._id)}
           >
             Delete
           </button>
-
-          {/* <button
-        className="btn btn-danger"
-        onClick={() => deleteContact(modalData._id)}
-      >
-        Delete
-      </button> */}
 
           <button
             className="btn btn-warning"
