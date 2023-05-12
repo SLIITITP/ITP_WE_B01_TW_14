@@ -622,16 +622,12 @@ const Navbar = ({ title = 'Southern Agro' }) => {
               </li>
 
               <li className="nav-item">
-                <Link
-                  to="/addRunningRecords"
-                  role="button"
-                  className="nav-link"
-                >
+                <Link to="/customerinfo" role="button" className="nav-link">
                   <FontAwesomeIcon
                     icon={faFolder}
                     style={{ marginRight: '10px', color: 'white' }}
                   />
-                  Running Records
+                  Customers
                 </Link>
               </li>
 
