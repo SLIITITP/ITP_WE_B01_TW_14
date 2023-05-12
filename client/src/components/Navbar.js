@@ -22,6 +22,7 @@ import {
   faUserTie,
   faFolder,
   faClipboardList,
+  faHome,
 } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = ({ title = 'Southern Agro' }) => {
@@ -526,6 +527,15 @@ const Navbar = ({ title = 'Southern Agro' }) => {
           user && user.role === 'Customer' ? (
             <>
               <li className="nav-item">
+                <Link to="/navscreen" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faHome}
+                    style={{ marginRight: '10px', color: 'white' }}
+                  />
+                  Home
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link to="/products" role="button" className="nav-link">
                   <FontAwesomeIcon
                     icon={faChartBar}
@@ -536,26 +546,12 @@ const Navbar = ({ title = 'Southern Agro' }) => {
               </li>
 
               <li className="nav-item">
-                <Link
-                  to="/addRunningRecords"
-                  role="button"
-                  className="nav-link"
-                >
-                  <FontAwesomeIcon
-                    icon={faFolder}
-                    style={{ marginRight: '10px', color: 'white' }}
-                  />
-                  Running Records
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link to="/admin/orders" role="button" className="nav-link">
+                <Link to="/orderhistory" role="button" className="nav-link">
                   <FontAwesomeIcon
                     icon={faClipboardList}
                     style={{ marginRight: '10px', color: 'white' }}
                   />
-                  Customer Orders
+                  Order History
                 </Link>
               </li>
               <li className="nav-item">
@@ -564,7 +560,7 @@ const Navbar = ({ title = 'Southern Agro' }) => {
                     icon={faFileAlt}
                     style={{ marginRight: '10px', color: 'white' }}
                   />
-                  Dashboard
+                  Payment Gateway
                 </Link>
               </li>
               <li className="nav-item">

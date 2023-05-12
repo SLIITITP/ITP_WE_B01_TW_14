@@ -104,7 +104,7 @@ export default function OrderListScreen() {
           className="table"
           style={{
             letterSpacing: '0px',
-            fontSize: '15px',
+            fontSize: '14px',
             fontWeight: '400',
           }}
         >

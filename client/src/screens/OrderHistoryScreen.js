@@ -61,7 +61,14 @@ export default function OrderHistoryScreen() {
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
-        <table className="table">
+        <table
+          className="table"
+          style={{
+            letterSpacing: '0px',
+            fontSize: '14px',
+            fontWeight: '400',
+          }}
+        >
           <thead>
             <tr>
               <th>ID</th>
@@ -101,6 +108,7 @@ export default function OrderHistoryScreen() {
                     onClick={() => {
                       navigate(`/order/${order._id}`);
                     }}
+                    style={{ borderRadius: '10px' }}
                   >
                     Details
                   </Button>
