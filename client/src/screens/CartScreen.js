@@ -18,11 +18,6 @@ export default function CartScreen() {
   } = state;
 
   const updateCartHandler = async (item, quantity) => {
-    // const { data } = await axios.get(`/api/products/${item._id}`);
-    // if (data.countInStock < quantity) {
-    //   window.alert('Sorry. Product is out of stock');
-    //   return
-    // }
     if (quantity <= 0) {
       quantity = 1;
     }
@@ -49,7 +44,9 @@ export default function CartScreen() {
         <Col md={8}>
           {cartItems.length === 0 ? (
             <MessageBox>
-              Cart is empty. <Link to="/products">Go Shopping</Link>
+              <div style={{ fontWeight: '400', color: 'black' }}>
+                Cart is empty. <Link to="/products">Go Shopping</Link>
+              </div>
             </MessageBox>
           ) : (
             <ListGroup>
@@ -70,15 +67,6 @@ export default function CartScreen() {
                       </Link>
                     </Col>
                     <Col md={3}>
-                      {/* <Button
-                        onClick={() =>
-                          updateCartHandler(item, item.quantity - 1)
-                        }
-                        variant="light"
-                        disabled={item.quantity === 1}
-                      >
-                        <i className="fas fa-minus-circle"></i>
-                      </Button>{' '} */}
                       <input
                         type="number"
                         className="form-control"
@@ -94,22 +82,12 @@ export default function CartScreen() {
                           updateCartHandler(item, newQuantity);
                         }}
                         style={{
-                          width: '5rem',
+                          width: '6rem',
                           textAlign: 'center',
                           borderRadius: '10px',
                           backgroundColor: '#BFC9CA',
                         }}
                       />
-                      {/* <span>{item.quantity}</span>{' '} */}
-                      {/* <Button
-                        variant="light"
-                        onClick={() =>
-                          updateCartHandler(item, item.quantity + 1)
-                        }
-                        disabled={item.quantity === item.countInStock}
-                      >
-                        <i className="fas fa-plus-circle"></i>
-                      </Button> */}
                     </Col>
                     <Col md={3}>
                       <strong>
@@ -135,7 +113,7 @@ export default function CartScreen() {
             <Card.Body>
               <ListGroup variant="flush">
                 <ListGroup.Item>
-                  <h5 style={{ letterSpacing: '0px' }}>
+                  <h5 style={{ letterSpacing: '0px', fontWeight: '500' }}>
                     <b>
                       Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}{' '}
                       items) : Rs.

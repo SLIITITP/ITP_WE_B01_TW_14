@@ -105,7 +105,7 @@ function EditCustomerScreen() {
         <Spinner splash="Loading Contact..." />
       ) : (
         <>
-          <h2>Edit Customer</h2>
+          <h2 className="text-center">Edit Customer</h2>
           <div className="row justify-content-center">
             <div className="col-12 col-md-8">
               <form onSubmit={handleSubmit}>

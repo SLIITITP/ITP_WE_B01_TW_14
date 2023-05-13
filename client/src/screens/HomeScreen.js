@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 import Product from '../components/Product';
 import axios from 'axios';
 import { Helmet } from 'react-helmet-async';
@@ -17,7 +17,6 @@ const reducer = (state, action) => {
 };
 
 function HomeScreen() {
-  //const [products, setProducts] = useState([]);
   const [{ loading, error, products }, dispatch] = useReducer(reducer, {
     products: [],
     loading: true,

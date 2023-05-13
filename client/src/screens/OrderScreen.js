@@ -192,7 +192,7 @@ export default function OrderScreen() {
     const doc = new jsPDF();
 
     // Add background color to the page
-    doc.setFillColor('#f4f4f4');
+    doc.setFillColor('#E6E9ED');
     doc.rect(
       0,
       0,
@@ -313,13 +313,6 @@ export default function OrderScreen() {
                 {order.shippingDetails.creditDays} <br />
                 <strong>Credit Amount :</strong> {order.totalPrice.toFixed(2)}
               </Card.Text>
-              {/* {order.isPaid ? (
-                <MessageBox variant="success">
-                  Paid at {order.paidAt}
-                </MessageBox>
-              ) : (
-                <MessageBox variant="danger">Not Paid</MessageBox>
-              )} */}
             </Card.Body>
           </Card>
 

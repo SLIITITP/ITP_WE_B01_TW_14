@@ -77,7 +77,7 @@ function CreateCustomer() {
       <Helmet>
         <title>Create customer</title>
       </Helmet>
-      <h2 className="text-center bg-darkgreen p-2">Add Customer</h2>
+      <h2 className="text-center bg-darkgreen p-2 mt-4 mb-1">Add Customer</h2>
       <div className="row justify-content-center">
         <div className="col-12 col-md-8">
           <form onSubmit={handleSubmit}>
@@ -137,6 +137,7 @@ function CreateCustomer() {
                 name="contactNo"
                 maxLength={10}
                 minLength={10}
+                pattern="[0-9]{10}"
                 value={userDetails.contactNo}
                 onChange={handleInputChange}
                 placeholder="0XXXXXXXXX"
@@ -154,6 +155,7 @@ function CreateCustomer() {
                 name="cusNIC"
                 maxLength={12}
                 minLength={10}
+                pattern="[0-9]{9}[V|v]"
                 value={userDetails.cusNIC}
                 onChange={handleInputChange}
                 placeholder="000000000000"
@@ -211,6 +213,7 @@ function CreateCustomer() {
                 value={userDetails.email}
                 onChange={handleInputChange}
                 placeholder="abc@example.com"
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                 required
               />
             </div>

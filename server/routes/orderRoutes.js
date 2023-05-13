@@ -80,7 +80,7 @@ orderRouter.get(
       },
       {
         $lookup: {
-          from: 'categories', // Replace 'categories' with the actual name of your category collection in the database
+          from: 'categorymodels',
           localField: '_id',
           foreignField: '_id',
           as: 'category',
@@ -92,7 +92,7 @@ orderRouter.get(
       {
         $project: {
           _id: 0,
-          category: '$category.name', // Replace 'name' with the actual field name that contains the category name in your category collection
+          category: '$category.name',
           count: 1,
         },
       },

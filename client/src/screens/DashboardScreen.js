@@ -9,6 +9,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import '../index.css';
+import { Helmet } from 'react-helmet-async';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -54,6 +55,9 @@ export default function DashboardScreen() {
   return (
     <div>
       <h1>Dashboard</h1>
+      <Helmet>
+        <title>Dashboard</title>
+      </Helmet>
       {loading ? (
         <LoadingBox />
       ) : error ? (

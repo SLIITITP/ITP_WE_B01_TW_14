@@ -68,21 +68,11 @@ function CustomerScreen() {
   const handleSearchSubmit = (event) => {
     event.preventDefault();
 
-    // if (!searchInput) {
-    //   setEmployees(originalEmployees);
-    //   return;
-    // }
-
     const newSearchUser = customers.filter(
       (customer) =>
         customer.customerId.toLowerCase().includes(searchInput.toLowerCase()) ||
         customer.cusName.toLowerCase().includes(searchInput.toLowerCase()) ||
         customer.companyName.toLowerCase().includes(searchInput.toLowerCase())
-      // ||
-      // customer.designation
-      //   .toLowerCase()
-      //   .includes(searchInput.toLowerCase()) ||
-      // customer.lastname.toLowerCase().includes(searchInput.toLowerCase())
     );
     console.log(newSearchUser);
     setCustomers(newSearchUser);
@@ -103,17 +93,24 @@ function CustomerScreen() {
     }
   };
 
+  const handleInputChange = (event) => {
+    setSearchInput(event.target.value);
+    if (event.target.value === '') {
+      setCustomers([]);
+    }
+  };
+
   return (
     <div>
       <div>
         <Helmet>
           <title>Customers</title>
         </Helmet>
-        <h1>Customers</h1>
+        <h1 className="text-center mb-4">Customers</h1>
         <div className="d-flex justify-content-between">
-          <a href="/customerinfo" className="btn btn-danger my-2">
+          {/* <a href="/customerinfo" className="btn btn-danger my-2">
             Reload Customer List
-          </a>
+          </a> */}
           <div>
             <Link
               className="btn btn-info mb-2"
@@ -134,22 +131,23 @@ function CustomerScreen() {
               name="searchInput"
               id="searchInput"
               className="form-control my-2"
-              placeholder="Search Employee"
+              placeholder="Search Customer"
               value={searchInput}
-              // onChange={searchHandle}
-              // onChange={handleInputChange}
               onChange={(e) => {
-                //handleInputChange(e);
+                handleInputChange(e);
                 setSearchInput(e.target.value);
-                handleSearchSubmit(e); // call the search function on each input change
+                handleSearchSubmit(e);
               }}
-              // onChange={(e) => setSearchInput(e.target.value)}
             />
             <button type="submit" className="btn btn-info mx-2 my-2">
               Search
             </button>
             <a href="/customerinfo">
-              <button type="button" className="btn btn-secondary mx-2 my-2">
+              <button
+                type="button"
+                className="btn btn-secondary mx-2 my-2"
+                style={{ backgroundColor: '#d9534f', color: 'white' }}
+              >
                 Reset
               </button>
             </a>

@@ -86,6 +86,7 @@ function ProductScreen() {
             style={{
               borderRadius: '20px',
               border: '#100901 1px solid',
+              fontWeight: '400',
             }}
           >
             <ListGroup.Item
@@ -179,43 +180,6 @@ function ProductScreen() {
           </ListGroup>
         </Col>
       </Row>
-      {/* <Row>
-        <Col md={6}>
-          <Card.Body>
-            <ListGroup>
-              <ListGroup.Item>
-                <Row>
-                  <Col>Price : </Col>
-                  <Col>Rs. {product.sellingprice}</Col>
-                </Row>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <Row>
-                  <Col>Status : </Col>
-                  <Col>
-                    {product.countInStock > 0 ? (
-                      <Badge bg="success">
-                        {product.countInStock} units available
-                      </Badge>
-                    ) : (
-                      <Badge bg="danger">Out of Stock</Badge>
-                    )}
-                  </Col>
-                </Row>
-              </ListGroup.Item>
-              {product.countInStock > 0 && (
-                <ListGroup.Item>
-                  <div className="d-grid">
-                    <Button onClick={addToCartHandler} variant="primary">
-                      Add to Cart
-                    </Button>
-                  </div>
-                </ListGroup.Item>
-              )}
-            </ListGroup>
-          </Card.Body>
-        </Col>
-      </Row> */}
     </div>
   );
 }

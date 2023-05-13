@@ -67,7 +67,10 @@ export default function ShippingDetailsScreen() {
       <Helmet>
         <title>Shipping Details</title>
       </Helmet>
-      <div className="container small-container">
+      <div
+        className="container small-container"
+        style={{ fontWeight: '400', color: 'black' }}
+      >
         <h1 className="my-3">Shipping Details</h1>
         <Form onSubmit={submitHandler}>
           <Form.Group className="mb-3" controlId="companyName">
@@ -119,9 +122,10 @@ export default function ShippingDetailsScreen() {
               <strong>Contact Number</strong>
             </Form.Label>
             <Form.Control
-              type="text"
+              type="tel"
               maxLength={10}
               minLength={10}
+              pattern="[0-9]{10}"
               value={contactNo}
               onChange={(e) => setContactNo(e.target.value)}
               required
