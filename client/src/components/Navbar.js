@@ -24,6 +24,13 @@ import {
   faClipboardList,
   faFileInvoice,
   faTachometerAlt,
+  faUser,
+  faGear,
+  faUserPlus,
+  faUsersGear,
+    faTachometerAlt,
+    faGasPump,
+    faTools,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = ({ title = "Southern Agro" }) => {

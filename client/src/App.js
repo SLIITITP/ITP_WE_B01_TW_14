@@ -40,6 +40,8 @@ import { Editdocument } from "./pages/Editdocument";
 import { AddRunnigRecords } from "./pages/AddRunnigRecords";
 import { AddRepair } from "./pages/AddRepair";
 import { RegisterGarage } from "./pages/RegisterGarage";
+import { ViewRunningRecords } from "./pages/ViewRunningRecords";
+import { ViewFuelDetails } from "./pages/ViewFuelDetails";
 // Bhanuka********************************************************
 
 // Pasindu********************************************************
