@@ -4,6 +4,9 @@ const { Employee } = require("../models/Employee");
 const { Salary } = require("../models/Salary");
 const { Attendance } = require("../models/Attendance");
 
+const fs = require("fs");
+const path = require("path");
+
 router.get("/report", async (req, res) => {
   try {
     const employees = await Employee.find();
@@ -18,47 +21,129 @@ router.get("/report", async (req, res) => {
     res.setHeader("Content-Disposition", "attachment; filename=report.pdf");
 
     // Write data to the PDF
+
+    // Define the gradient colors
+    const gradient = doc.linearGradient(0, 0, doc.page.width, 100);
+    gradient.stop(0, "#378b29");
+    gradient.stop(0.74, "#74d680");
+
+    // Read the logo file
+
+    // Get the absolute path to the logo.png file
+    const logoPath = path.join(__dirname, "..", "images", "logo.png");
+
+    // Read the contents of the logo.png file
+    const logo = fs.readFileSync(logoPath);
+
     doc
+      .moveUp(4)
+      .rect(0, 0, doc.page.width, 100)
+      .fill("#009150")
+      .fillColor("white")
+      .image(logo, 10, 10, { width: 80, height: 80 })
       .fontSize(40)
-      .fillColor("blue")
+      .text("Southern Agro Serve (Pvt) Ltd", { align: "center" })
+      .moveDown(2);
+
+    // Add current date and time and HR manager's name
+    const currentDate = new Date().toLocaleDateString();
+    const currentTime = new Date().toLocaleTimeString();
+    const hrManagerName = "Yeran Kodithuwakku";
+    doc
+      .moveUp(1)
+      .fontSize(16)
+      .fillColor("#000000")
       .text(
-        "Southern Agro Serve (Pvt) Ltd\n\n\n",
-        { align: "center" },
-        100,
-        100
-      );
-    //The 100,100 is the x and y coordinates
-    //You can use the doc.x and doc.y to get the current x and y coordinates
-    //If u align the text to the center, the x coordinate will be the center of the page
-    //Since here the text is aligned to the center, we don't need to specify the x coordinate
-    doc.fontSize(20).fillColor("black").text("Employee Details:\n");
+        "This is a computer generated document. No signature is required.",
+        { align: "left" }
+      )
+      .text(`Printed on: ${currentDate} ${currentTime}`, { align: "left" })
+      // .text(`HR Manager: ${hrManagerName}`, { align: "left" })
+      .moveDown(2);
+
+    // Employee Details
+    doc
+      .fontSize(24)
+      .fillColor("#2E7D32")
+      .text("Employee Details", { underline: true })
+      .moveDown(1);
+
     employees.forEach((employee) => {
-      doc.fontSize(18).text(
-        `Employee ID : ${employee.empid}\n
-    Name of employee : ${employee.firstname} ${employee.lastname}\n
-  Email : ${employee.email}\n
-  Contact Number : ${employee.phone}\n
-  Date Joined : ${employee.datejoined}\n
-  Department : ${employee.department}\n
-  Designation : ${employee.designation}\n\n\n`
-      );
+      doc
+        .fontSize(16)
+        .fillColor("#000000")
+        .text(`Employee ID: ${employee.empid}`, { bold: true })
+        .list(
+          [
+            `Name of employee: ${employee.firstname} ${employee.lastname}`,
+            `Email: ${employee.email}`,
+            `Contact Number: ${employee.phone}`,
+            `Date Joined: ${employee.datejoined}`,
+            `Department: ${employee.department}`,
+            `Designation: ${employee.designation}`,
+          ],
+          {
+            bulletRadius: 2,
+            bulletIndent: 10,
+            textIndent: 20,
+            lineGap: 5,
+          }
+        )
+        .moveDown(1);
     });
-    doc.fontSize(20).text("\nSalary Payments\n");
+
+    // Salary Payments
+    doc
+      .fontSize(24)
+      .fillColor("#2E7D32")
+      .text("Salary Payments", { underline: true })
+      .moveDown(1);
     salaries.forEach((salary) => {
-      doc.fontSize(18).text(
-        `Amount:LKR${salary.salary}\n
-  Payment Date:(${salary.date})\n
-  Bonus:(${salary.bonus})\n\n\n`
-      );
+      doc
+        .fontSize(16)
+        .fillColor("#000000")
+        .text(`Employee ID: ${salary.empid}`)
+        .list(
+          [
+            `Amount: LKR ${salary.salary}`,
+            `Payment Date: (${salary.date})`,
+            `Bonus: (${salary.bonus})`,
+          ],
+          {
+            bulletRadius: 2,
+            bulletIndent: 10,
+            textIndent: 20,
+            lineGap: 5,
+          }
+        )
+        .moveDown(2);
     });
-    doc.fontSize(20).text("\nAttendance\n");
+
+    // Attendance
+    doc
+      .fontSize(24)
+      .fillColor("#2E7D32")
+      .text("Attendance", { underline: true })
+      .moveDown(1);
     attendances.forEach((attendance) => {
-      doc.fontSize(18).text(
-        `Employee ID:LKR${attendance.empid}\n
-  Date:(${attendance.date})\n
-  Entry Time:(${attendance.entrytime})\n
-  Off Time:(${attendance.offtime})\n\n\n`
-      );
+      doc
+        .fontSize(16)
+        .fillColor("#000000")
+        .text(`Employee ID: ${attendance.empid}`)
+        .list(
+          [
+            `Date: (${attendance.date})`,
+            `Entry Time: (${attendance.entrytime})`,
+            `Off Time: (${attendance.offtime})`,
+          ],
+          {
+            bulletRadius: 2,
+            bulletIndent: 10,
+            textIndent: 20,
+            lineGap: 5,
+          }
+        )
+        .moveDown(2);
     });
 
     // Pipe the PDF to the response object

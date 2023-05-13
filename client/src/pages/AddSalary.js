@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import AuthContext from "../context/AuthContext";
 import ToastContext from "../context/ToastContext";
+import { Helmet } from "react-helmet-async";
 
 const CreateSalary = () => {
   const { user } = useContext(AuthContext);
@@ -82,6 +83,9 @@ const CreateSalary = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Employee Salary</title>
+      </Helmet>
       <h2 className="text-center bg-darkgreen text-white p-2">
         Employee Salary
       </h2>

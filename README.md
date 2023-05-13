@@ -23,5 +23,17 @@ Hence, the system proves to be the ideal solution for our client as well as his 
 
 #### Technologies used - MERN STACK
 
+#### Preview: 
+
+
+https://github.com/SLIITITP/ITP_WE_B01_TW_14/assets/96247301/ca900e4e-5694-41f5-9ea8-210fbfac2458
+
+
+
+![screencapture-localhost-3000-login-2023-05-09-18_02_06](https://github.com/SLIITITP/ITP_WE_B01_TW_14/assets/96247301/e6b68206-298e-4429-9489-9894d80b0dc2)
+
+
+# Link to GitHub Repo - https://github.com/SLIITITP/ITP_WE_B01_TW_14
+
 Note - The student's github account should be given in brackets e.g. (asiriRepos), this ideally should be your student id 
 

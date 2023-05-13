@@ -40,6 +40,8 @@ import { Editdocument } from "./pages/Editdocument";
 import { AddRunnigRecords } from "./pages/AddRunnigRecords";
 import { AddRepair } from "./pages/AddRepair";
 import { RegisterGarage } from "./pages/RegisterGarage";
+import { ViewRunningRecords } from "./pages/ViewRunningRecords";
+import { ViewFuelDetails } from "./pages/ViewFuelDetails";
 // Bhanuka********************************************************
 
 // Pasindu********************************************************
@@ -52,6 +54,20 @@ import EditSchedule from "./pages/EditSchedule";
 import CreateDeliveryReport from "./pages/CreateDeliveryReport";
 
 // Pasindu********************************************************
+
+//Wasana
+import Addsup from "./pages/Addsup";
+import Allsup from "./pages/Allsup";
+import Editsup from "./pages/Editsup";
+import Allpur from "./pages/Allpurchase";
+import Addpur from "./pages/Addpur";
+import Allapp from "./pages/Allappointmens";
+import Addapp from "./pages/Addappointment";
+import Editapp from "./pages/Editappointment";
+import AllRecW from "./pages/AllReportsW"
+import Dashboard from "./pages/DashboardW";
+import Allexp from "./pages/AllexpiredAppointments";
+//Wasana
 
 // Yasitha********************************************************
 import CreateStock from "./pages/CreateStock";
@@ -103,8 +119,13 @@ import PaymentGatewayScreen from "./screens/PaymentGatewayScreen";
 // import { AuthContextProvider } from './context/AuthContext';
 import CreateCustomer from "./screens/CreateCustomer";
 import CustomerScreen from "./screens/CustomerScreen";
+
 import { ViewRunningRecords } from "./pages/ViewRunningRecords";
 import { ViewFuelDetails } from "./pages/ViewFuelDetails";
+
+// import AllSalary from "./pages/AllSalaries";
+// import AllAttendance from "./pages/AllAttendances";
+
 
 // Ashen********************************************************
 
@@ -154,7 +175,9 @@ const App = () => {
               <Route path="/myemployees" element={<AllEmployee />} />
               <Route path="/editemp/:id" element={<EditEmployee />} />
               <Route path="/addsalary" element={<CreateSalary />} />
+              <Route path="/mysalaries" element={<AllSalary />} />
               <Route path="/addattendance" element={<CreateAttendance />} />
+              <Route path="/myattendances" element={<AllAttendance />} />
               <Route path="/createreport" element={<Report />} />
 
               {/* Bhanuka******************************************************** */}
@@ -203,6 +226,20 @@ const App = () => {
               />
 
               {/* Pasindu******************************************************** */}
+
+              {/* Wasana*/}
+              <Route path='/addsup' element={<Addsup />} />
+              <Route path='/allsup' element={<Allsup/>} />
+              <Route path='/editsup' element={<Editsup/>} />
+              <Route path='/allpur' element={<Allpur/>} />
+              <Route path='/addpur' element={<Addpur/>} />
+              <Route path='/allapp' element={<Allapp/>} />
+              <Route path='/addapp' element={<Addapp/>} />
+              <Route path='/editapp' element={<Editapp/>} />
+              <Route path='/allrepw' element={<AllRecW/>} />
+              <Route path='/dashboard' element={<Dashboard/>} />
+              <Route path='/allexp' element={<Allexp/>} />
+              {/* Wasana*/}
 
               {/* Yasitha******************************************************** */}
               <Route path="/createcategory" element={<CreateCategory />} />
