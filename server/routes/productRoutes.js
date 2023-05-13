@@ -14,7 +14,7 @@ productRouter.get(`/`, async (req, res) => {
   res.send(stockList);
 });
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 9;
 productRouter.get(
   '/search',
   expressAsyncHandler(async (req, res) => {

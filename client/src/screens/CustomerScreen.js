@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import AuthContext from '../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
-import { Modal } from 'react-bootstrap';
+import { Modal, Spinner } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
 
@@ -12,6 +12,8 @@ function CustomerScreen() {
   const [loading, setLoading] = useState(false);
   const [modalData, setModalData] = useState({});
   const [showModal, setShowModal] = useState(false);
+
+  const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
     setLoading(true);
@@ -63,6 +65,29 @@ function CustomerScreen() {
     }
   };
 
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+
+    // if (!searchInput) {
+    //   setEmployees(originalEmployees);
+    //   return;
+    // }
+
+    const newSearchUser = customers.filter(
+      (customer) =>
+        customer.customerId.toLowerCase().includes(searchInput.toLowerCase()) ||
+        customer.cusName.toLowerCase().includes(searchInput.toLowerCase()) ||
+        customer.companyName.toLowerCase().includes(searchInput.toLowerCase())
+      // ||
+      // customer.designation
+      //   .toLowerCase()
+      //   .includes(searchInput.toLowerCase()) ||
+      // customer.lastname.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    console.log(newSearchUser);
+    setCustomers(newSearchUser);
+  };
+
   const updateCustomerList = async () => {
     try {
       const res = await fetch('http://localhost:8000/api/customers', {
@@ -100,6 +125,36 @@ function CustomerScreen() {
           </div>
         </div>
         <hr className="my-4" />
+        {loading ? (
+          <Spinner splash="Loading Employees..." />
+        ) : (
+          <form className="d-flex" onSubmit={handleSearchSubmit}>
+            <input
+              type="text"
+              name="searchInput"
+              id="searchInput"
+              className="form-control my-2"
+              placeholder="Search Employee"
+              value={searchInput}
+              // onChange={searchHandle}
+              // onChange={handleInputChange}
+              onChange={(e) => {
+                //handleInputChange(e);
+                setSearchInput(e.target.value);
+                handleSearchSubmit(e); // call the search function on each input change
+              }}
+              // onChange={(e) => setSearchInput(e.target.value)}
+            />
+            <button type="submit" className="btn btn-info mx-2 my-2">
+              Search
+            </button>
+            <a href="/customerinfo">
+              <button type="button" className="btn btn-secondary mx-2 my-2">
+                Reset
+              </button>
+            </a>
+          </form>
+        )}
 
         <table className="table table-hover">
           <thead>

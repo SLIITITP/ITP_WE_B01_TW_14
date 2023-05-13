@@ -47,7 +47,7 @@ const prices = [
     value: '10001-100000',
   },
   {
-    name: 'Above Rs. 10000',
+    name: 'Above Rs. 100000',
     value: '100000-10000000',
   },
 ];
@@ -55,7 +55,7 @@ const prices = [
 export default function SearchScreen() {
   const navigate = useNavigate();
   const { search } = useLocation();
-  const sp = new URLSearchParams(search); // /search?category=Shirts
+  const sp = new URLSearchParams(search);
   const category = sp.get('category') || 'all';
   const query = sp.get('query') || 'all';
   const price = sp.get('price') || 'all';
