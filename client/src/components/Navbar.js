@@ -28,7 +28,6 @@ import {
   faGear,
   faUserPlus,
   faUsersGear,
-    faTachometerAlt,
     faGasPump,
     faTools,
 } from "@fortawesome/free-solid-svg-icons";

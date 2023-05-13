@@ -119,8 +119,8 @@ import PaymentGatewayScreen from "./screens/PaymentGatewayScreen";
 // import { AuthContextProvider } from './context/AuthContext';
 import CreateCustomer from "./screens/CreateCustomer";
 import CustomerScreen from "./screens/CustomerScreen";
-import AllSalary from "./pages/AllSalaries";
-import AllAttendance from "./pages/AllAttendances";
+// import AllSalary from "./pages/AllSalaries";
+// import AllAttendance from "./pages/AllAttendances";
 
 // Ashen********************************************************
 
