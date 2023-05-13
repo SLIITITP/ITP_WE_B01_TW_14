@@ -22,21 +22,14 @@ import {
   faUserTie,
   faFolder,
   faClipboardList,
-
-
   faFileInvoice,
   faTachometerAlt,
-
   faUser,
   faGear,
   faUserPlus,
   faUsersGear,
-
-    faTachometerAlt,
-
-
-    faGasPump,
-    faTools,
+  faGasPump,
+  faTools,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = ({ title = "Southern Agro" }) => {
@@ -378,7 +371,11 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/drivervehicleAssign" role="button" className="nav-link">
+                <Link
+                  to="/drivervehicleAssign"
+                  role="button"
+                  className="nav-link"
+                >
                   <FontAwesomeIcon
                     icon={faUserPlus}
                     style={{ marginRight: "10px", color: "white" }}
@@ -388,7 +385,11 @@ const Navbar = ({ title = "Southern Agro" }) => {
               </li>
 
               <li className="nav-item">
-                <Link to="/viewRunningRecords" role="button" className="nav-link">
+                <Link
+                  to="/viewRunningRecords"
+                  role="button"
+                  className="nav-link"
+                >
                   <FontAwesomeIcon
                     icon={faTachometerAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -407,7 +408,6 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
 
-              
               <li className="nav-item">
                 <Link to="/registerGarage" role="button" className="nav-link">
                   <FontAwesomeIcon
@@ -417,7 +417,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Register Garage
                 </Link>
               </li>
-              
+
               <li
                 className="nav-item"
                 onClick={() => {
