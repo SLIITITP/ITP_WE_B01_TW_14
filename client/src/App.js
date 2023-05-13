@@ -4,7 +4,6 @@ import Layout from "./components/Layout";
 // import { ToastContextProvider } from "./context/ToastContext";
 import { AuthContextProvider } from "./context/AuthContext";
 
-//ashen
 import { ToastContainer, toast } from "react-toastify";
 
 import Home from "./pages/Home";
@@ -19,6 +18,8 @@ import AllEmployee from "./pages/AllEmployees";
 import EditEmployee from "./pages/EditEmployee";
 import CreateSalary from "./pages/AddSalary";
 import CreateAttendance from "./pages/AddAttendance";
+import AllSalary from "./pages/AllSalaries";
+import AllAttendance from "./pages/AllAttendances";
 import Report from "./pages/CreateReport";
 import Index from "./pages";
 import EMDashboard from "./pages/EMDashboard";
@@ -120,8 +121,6 @@ import PaymentGatewayScreen from "./screens/PaymentGatewayScreen";
 import CreateCustomer from "./screens/CreateCustomer";
 import CustomerScreen from "./screens/CustomerScreen";
 
-import AllSalary from "./pages/AllSalaries";
-import AllAttendance from "./pages/AllAttendances";
 
 // Ashen********************************************************
 
