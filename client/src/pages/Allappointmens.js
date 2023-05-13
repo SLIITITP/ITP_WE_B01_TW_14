@@ -163,3 +163,5 @@ const Allapp = ()=>{
 }
 
 export default Allapp;
+
+//wasana
