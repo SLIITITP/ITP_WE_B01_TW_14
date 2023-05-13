@@ -225,11 +225,7 @@ function Report() {
                             </th>
                             <th
                               scope="col"
-                              style={{
-                                width: "20%",
-                                whiteSpace: "nowrap",
-                                textAlign: "center",
-                              }}
+                              style={{ width: "15%", whiteSpace: "nowrap" }}
                             >
                               Bonus
                             </th>
