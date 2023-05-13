@@ -119,8 +119,13 @@ import PaymentGatewayScreen from "./screens/PaymentGatewayScreen";
 // import { AuthContextProvider } from './context/AuthContext';
 import CreateCustomer from "./screens/CreateCustomer";
 import CustomerScreen from "./screens/CustomerScreen";
+
+import { ViewRunningRecords } from "./pages/ViewRunningRecords";
+import { ViewFuelDetails } from "./pages/ViewFuelDetails";
+
 // import AllSalary from "./pages/AllSalaries";
 // import AllAttendance from "./pages/AllAttendances";
+
 
 // Ashen********************************************************
 
@@ -204,6 +209,8 @@ const App = () => {
               <Route path="/addRunningRecords" element={<AddRunnigRecords />} />
               <Route path="/addrepair" element={<AddRepair />} />
               <Route path="/registerGarage" element={<RegisterGarage />} />
+              <Route path="/viewRunningRecords" element={<ViewRunningRecords/>} />
+              <Route path="/viewFuelRecords" element={<ViewFuelDetails/>} />
               {/* Bhanuka******************************************************** */}
 
               {/* Pasindu******************************************************** */}
