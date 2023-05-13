@@ -4,10 +4,12 @@ const moment = require("moment");
 const repair = require("../models/repair");
 const repairuploads = require("../multerConfig/storageConfig");
 
+const auth = require("../middlewares/auth");
+
 //register vehicle to system
 router.post(
   "/addrepair",
-  repairuploads.single("invoiceImg"),
+  repairuploads.single("invoiceImg"),auth,
   async (req, res) => {
     const file = req.file.filename;
     const { registerNo, addedDriver, garage, Amount, comment } = req.body;
