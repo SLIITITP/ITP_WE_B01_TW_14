@@ -64,7 +64,7 @@ import Addpur from "./pages/Addpur";
 import Allapp from "./pages/Allappointmens";
 import Addapp from "./pages/Addappointment";
 import Editapp from "./pages/Editappointment";
-import AllRecW from "./pages/AllReportsW"
+import AllRecW from "./pages/AllReportsW";
 import Dashboard from "./pages/DashboardW";
 import Allexp from "./pages/AllexpiredAppointments";
 //Wasana
@@ -120,12 +120,8 @@ import PaymentGatewayScreen from "./screens/PaymentGatewayScreen";
 import CreateCustomer from "./screens/CreateCustomer";
 import CustomerScreen from "./screens/CustomerScreen";
 
-import { ViewRunningRecords } from "./pages/ViewRunningRecords";
-import { ViewFuelDetails } from "./pages/ViewFuelDetails";
-
-// import AllSalary from "./pages/AllSalaries";
-// import AllAttendance from "./pages/AllAttendances";
-
+import AllSalary from "./pages/AllSalaries";
+import AllAttendance from "./pages/AllAttendances";
 
 // Ashen********************************************************
 
@@ -209,8 +205,11 @@ const App = () => {
               <Route path="/addRunningRecords" element={<AddRunnigRecords />} />
               <Route path="/addrepair" element={<AddRepair />} />
               <Route path="/registerGarage" element={<RegisterGarage />} />
-              <Route path="/viewRunningRecords" element={<ViewRunningRecords/>} />
-              <Route path="/viewFuelRecords" element={<ViewFuelDetails/>} />
+              <Route
+                path="/viewRunningRecords"
+                element={<ViewRunningRecords />}
+              />
+              <Route path="/viewFuelRecords" element={<ViewFuelDetails />} />
               {/* Bhanuka******************************************************** */}
 
               {/* Pasindu******************************************************** */}
@@ -228,17 +227,17 @@ const App = () => {
               {/* Pasindu******************************************************** */}
 
               {/* Wasana*/}
-              <Route path='/addsup' element={<Addsup />} />
-              <Route path='/allsup' element={<Allsup/>} />
-              <Route path='/editsup' element={<Editsup/>} />
-              <Route path='/allpur' element={<Allpur/>} />
-              <Route path='/addpur' element={<Addpur/>} />
-              <Route path='/allapp' element={<Allapp/>} />
-              <Route path='/addapp' element={<Addapp/>} />
-              <Route path='/editapp' element={<Editapp/>} />
-              <Route path='/allrepw' element={<AllRecW/>} />
-              <Route path='/dashboard' element={<Dashboard/>} />
-              <Route path='/allexp' element={<Allexp/>} />
+              <Route path="/addsup" element={<Addsup />} />
+              <Route path="/allsup" element={<Allsup />} />
+              <Route path="/editsup" element={<Editsup />} />
+              <Route path="/allpur" element={<Allpur />} />
+              <Route path="/addpur" element={<Addpur />} />
+              <Route path="/allapp" element={<Allapp />} />
+              <Route path="/addapp" element={<Addapp />} />
+              <Route path="/editapp" element={<Editapp />} />
+              <Route path="/allrepw" element={<AllRecW />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/allexp" element={<Allexp />} />
               {/* Wasana*/}
 
               {/* Yasitha******************************************************** */}
