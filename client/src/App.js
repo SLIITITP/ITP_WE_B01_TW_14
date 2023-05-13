@@ -53,6 +53,20 @@ import CreateDeliveryReport from "./pages/CreateDeliveryReport";
 
 // Pasindu********************************************************
 
+//Wasana
+import Addsup from "./pages/Addsup";
+import Allsup from "./pages/Allsup";
+import Editsup from "./pages/Editsup";
+import Allpur from "./pages/Allpurchase";
+import Addpur from "./pages/Addpur";
+import Allapp from "./pages/Allappointmens";
+import Addapp from "./pages/Addappointment";
+import Editapp from "./pages/Editappointment";
+import AllRecW from "./pages/AllReportsW"
+import Dashboard from "./pages/DashboardW";
+import Allexp from "./pages/AllexpiredAppointments";
+//Wasana
+
 // Yasitha********************************************************
 import CreateStock from "./pages/CreateStock";
 import AllStock from "./pages/AllStocks";
@@ -203,6 +217,20 @@ const App = () => {
               />
 
               {/* Pasindu******************************************************** */}
+
+              {/* Wasana*/}
+              <Route path='/addsup' element={<Addsup />} />
+              <Route path='/allsup' element={<Allsup/>} />
+              <Route path='/editsup' element={<Editsup/>} />
+              <Route path='/allpur' element={<Allpur/>} />
+              <Route path='/addpur' element={<Addpur/>} />
+              <Route path='/allapp' element={<Allapp/>} />
+              <Route path='/addapp' element={<Addapp/>} />
+              <Route path='/editapp' element={<Editapp/>} />
+              <Route path='/allrepw' element={<AllRecW/>} />
+              <Route path='/dashboard' element={<Dashboard/>} />
+              <Route path='/allexp' element={<Allexp/>} />
+              {/* Wasana*/}
 
               {/* Yasitha******************************************************** */}
               <Route path="/createcategory" element={<CreateCategory />} />

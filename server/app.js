@@ -4,6 +4,7 @@ const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser"); //pasindu
+const axios = require("axios"); //wasana
 
 //Initialize express app
 const app = express();
@@ -133,6 +134,170 @@ app.use("/api", require("./routes/deliveryreport"));
 // app.use("/schedule",scheduleRouter); //front end eken backend eke data call karanna url eka
 
 //Pasindu***************************************************************************
+
+//Wasana****************************************************************************
+const cron = require("node-cron");
+const nodemailer = require("nodemailer");
+
+//routes
+app.use("/api", require("./routes/auth"));
+app.use("/api", require("./routes/supRouter"));
+app.use("/api", require("./routes/purchaseRouter"));
+app.use("/api", require("./routes/appointmentRouter"));
+
+//new
+app.use("/api", require("./routes/expiredAppointmentRouter"));
+//new
+
+const PurchaseOrders = require("./models/purchaseSchema");
+const Suppliers = require("./models/supSchema");
+
+// Function to send reminder emails to suppliers
+const sendReminderEmail = async (supplierEmail, orderItems) => {
+  try {
+    // Create nodemailer transporter object
+    let transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: {
+        user: "fruwani5@gmail.com",
+        pass: "fpaetacctrymcawy",
+      },
+    });
+
+    // Define email message
+    let message = {
+      from: "fruwani5@gmail.com",
+      to: supplierEmail,
+      subject: "Purchase Order Reminder",
+      text: `Dear supplier,\n\nThis is a reminder that the following items in your purchase order are still pending:\n\n${orderItems}\n\nPlease update us on the status of your order as soon as possible.\n\nBest regards,\nSouthern Agro Serve`,
+    };
+
+    // Send email
+    let info = await transporter.sendMail(message);
+    console.log(`Reminder email sent to ${supplierEmail}: ${info.messageId}`);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// Cron job to check purchase orders and send reminder emails
+//cron.schedule('*/1 * * * *', async () => {
+// cron.schedule('0 0 * * *', async () => {
+
+cron.schedule("0 0 * * *", async () => {
+  try {
+    const currentDate = new Date();
+    const fiveDaysAgo = new Date(
+      currentDate.getTime() - 5 * 24 * 60 * 60 * 1000
+    );
+
+    const incompleteOrders = await PurchaseOrders.find({
+      completed: false,
+      reqdate: { $lte: fiveDaysAgo },
+    }).populate("supid", "email name");
+
+    incompleteOrders.forEach(async (order) => {
+      const { supid, items } = order;
+      const { email } = supid;
+      const orderItems = items
+        .map((item) => `- ${item.quantity} ${item.itemName}`)
+        .join("\n");
+
+      await sendReminderEmail(email, orderItems);
+
+      console.log(
+        `Reminder email sent to ${email} for purchase order ${order.orderid}`
+      );
+    });
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+const Appointment = require("./models/appointmentSchema");
+const Expired = require("./models/expAppSchema");
+
+// const deleteExpiredAppointments = async () => {
+//   try {
+//     const currentDate = new Date();
+//     const expiredAppointments = await Appointment.find({
+//       date: { $lte: currentDate },
+//       end: { $lte: currentDate.toLocaleTimeString("en-US", { hour12: false }) },
+//     });
+//     if (expiredAppointments.length > 0) {
+//       console.log("Deleting expired appointments...");
+//       for (let appointment of expiredAppointments) {
+//         try {
+//           // Save expired appointment to expiredAppointments database
+//           const newExpired = new Expired({ appid: appointment._id });
+//           await newExpired.save();
+//           console.log(
+//             `Appointment ${appointment._id} saved to expiredAppointments`
+//           );
+//           // Delete expired appointment from appointments database
+//           await Appointment.findByIdAndDelete(appointment._id);
+//           console.log(`Appointment ${appointment._id} deleted successfully`);
+//         } catch (err) {
+//           console.error(err);
+//         }
+//       }
+//     } else {
+//       console.log("No expired appointments found");
+//     }
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+
+const deleteExpiredAppointments = async () => {
+  try {
+    const currentDate = new Date();
+    const expiredAppointments = await Appointment.find({
+      date: { $lte: currentDate },
+      end: { $lte: currentDate.toLocaleTimeString("en-US", { hour12: false }) },
+    });
+    if (expiredAppointments.length > 0) {
+      console.log("Deleting expired appointments...");
+      for (let appointment of expiredAppointments) {
+        try {
+          // Save expired appointment to expiredAppointments database
+          const newExpired = new Expired({
+            appid: appointment._id,
+            name: appointment.name,
+            date: appointment.date,
+            start: appointment.start,
+            end: appointment.end,
+            email: appointment.email,
+            appointmentid: appointment.appid // Add appointmentid as string
+          });
+          await newExpired.save();
+          console.log(
+            `Appointment ${appointment._id} ${appointment.appointmentid} (${appointment.name}, ${appointment.date}, ${appointment.start}-${appointment.end}, ${appointment.email}) saved to expiredAppointments`
+          );
+          // Delete expired appointment from appointments database
+          await Appointment.findByIdAndDelete(appointment._id);
+          console.log(`Appointment ${appointment._id} deleted successfully`);
+        } catch (err) {
+          console.error(err);
+        }
+      }
+    } else {
+      console.log("No expired appointments found");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+
+// Schedule to run the task every minute
+cron.schedule("* * * * *", () => {
+  deleteExpiredAppointments();
+});
+
+//Wasana***************************************************************************
 
 //Yasitha***************************************************************************
 
