@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import ToastContext from "../context/ToastContext";
 import axios from 'axios';
+import { Helmet } from "react-helmet-async";
 
 const Addsup = () => {
   const navigate = useNavigate();
@@ -63,8 +64,11 @@ const Addsup = () => {
 
   return (
     <>
-      <h2>Create Supplier</h2>
-      <Card clasName="shadow card">
+    <Helmet>
+        <title>Supplier</title>
+      </Helmet>
+      <h2 className="text-center bg-darkgreen text-white p-2">Create Supplier</h2>
+      
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="supCompanyInput" className="form-label mt-4">
@@ -167,7 +171,6 @@ const Addsup = () => {
             Clear
           </button>
         </form>
-      </Card>
     </>
   );
 };
