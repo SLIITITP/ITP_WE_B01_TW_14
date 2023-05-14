@@ -6,6 +6,7 @@ import { useContext } from 'react';
 import { useEffect } from 'react';
 import AuthContext from '../context/AuthContext';
 import { Helmet } from 'react-helmet-async';
+import { Height } from '@mui/icons-material';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ const Home = () => {
           </Link>
         </div> */}
         <div className="row">
-          <div className="col-lg-4 col-md-6 mb-4">
+          <div className="col-lg-4 col-md-6 mb-4" style={{height:"15vh"}}>
             <Link
               to={'/allsalesreps'}
               className="btn btn-success btn-lg btn-block button-link button-link1 "
@@ -78,7 +79,7 @@ const Home = () => {
               <span>Employee Management</span>
             </Link>
           </div>
-          <div className="col-lg-4 col-md-6 mb-4">
+          <div className="col-lg-4 col-md-6 mb-4" style={{height:"15vh"}}>
             <Link
               to={'/mystocks'}
               className="btn btn-success btn-lg btn-block  button-link button-link6"
@@ -104,7 +105,7 @@ const Home = () => {
               <span>Vehicle Management</span>
             </Link>
           </div>
-          <div className="col-lg-4 col-md-6 mb-4 mx-auto">
+          <div className="col-lg-4 col-md-6 mb-4 mx-auto" style={{height:"15vh"}}>
             <Link
               to={'admin/orders'}
               className="btn btn-success btn-lg btn-block  button-link button-link2"

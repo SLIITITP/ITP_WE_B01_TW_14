@@ -2,7 +2,6 @@ import React from "react";
 
 import Header from "components/Header.jsx";
 import {
-  DownloadOutlined,
   Email,
   PointOfSale,
   PersonAdd,
@@ -10,7 +9,6 @@ import {
 } from "@mui/icons-material";
 import {
   Box,
-  Button,
   Typography,
   useTheme,
   useMediaQuery,
@@ -21,10 +19,10 @@ import OverviewChart from "components/OverviewChart";
 import { useGetDashboardQuery } from "state/api";
 import StatBox from "components/StatBox";
 
-import useAuth from "../../hooks/useAuth.js"
+
 
 const Dashboard = () => {
-  const { username, status } = useAuth()
+
   const theme = useTheme();
   const isNonMediumScreens = useMediaQuery("(min-width: 1200px)");
   const { data, isLoading } = useGetDashboardQuery();
@@ -65,9 +63,6 @@ const Dashboard = () => {
    
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
     
-
-        
-     
 
       <Box
         mt="20px"

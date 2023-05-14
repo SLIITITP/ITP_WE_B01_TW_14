@@ -84,7 +84,7 @@ const Header = () => {
 
           {/* {user.role === 'Delivery Manager' && ( */}
 
-          {/* {user.role === "Administrator" && (
+          {user.role === "Administrator" && (
             <img
               src={
                 "https://media.licdn.com/dms/image/D5603AQEOpuARV18dBQ/profile-displayphoto-shrink_400_400/0/1674372898612?e=1689206400&v=beta&t=S_AAStf8e8WRs3NuYrT8GFDZLS4bHmHJGV2Wl2VBkWM"
@@ -94,7 +94,7 @@ const Header = () => {
               width="40"
               height="40"
             />
-          )} */}
+          )}
           {/* {user.role === "Delivery Manager" && (
             <img
               src={

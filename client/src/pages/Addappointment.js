@@ -19,6 +19,29 @@ const Addapp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth();
+    const currentDay = currentDate.getDate();
+    
+    const reqDateObj = new Date(date);
+    const reqYear = reqDateObj.getFullYear();
+    const reqMonth = reqDateObj.getMonth();
+    const reqDay = reqDateObj.getDate();
+    
+    if (reqYear < currentYear) {
+      toast.error("Requested date cannot be in the past.");
+      return;
+    }
+    if (reqYear === currentYear && reqMonth < currentMonth) {
+      toast.error("Requested date cannot be in the past.");
+      return;
+    }
+    if (reqYear === currentYear && reqMonth === currentMonth && reqDay < currentDay) {
+      toast.error("Requested date cannot be in the past.");
+      return;
+    }
     try {
       const token = localStorage.getItem('token');
       if (!token) {
@@ -36,6 +59,7 @@ const Addapp = () => {
     }
   };
 
+ 
 const handleClear = () => {
     setName("");
     setDate("");
@@ -56,16 +80,8 @@ const handleClear = () => {
 
         <form onSubmit={handleSubmit} >
           <div className="form-group">
-            <label htmlFor="name" className="form-label mt-4">
-              Enter Supplier Name
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="name"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+            <label htmlFor="name" className="form-label mt-4">Enter Supplier Name</label>
+            <input type="text" className="form-control" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)}
               placeholder="Brian Perera"
               required
               maxLength="25" // add maxLength attribute to limit input to 10 characters
@@ -85,7 +101,9 @@ const handleClear = () => {
                 name="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                placeholder="Negombo"
+                placeholder="Date"
+                // max={new Date().toISOString.split("T")[0]}
+                // min={new Date().toISOString.split("T")[0]}
                 required
                 maxLength="50"
                 fdprocessedid="8n2of"

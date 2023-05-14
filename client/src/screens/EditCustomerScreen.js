@@ -185,7 +185,7 @@ function EditCustomerScreen() {
                     type="text"
                     className="form-control"
                     id="customerNICInput"
-                    name="customerNIC"
+                    name="cusNIC"
                     value={customerDetails.cusNIC}
                     onChange={handleInputChange}
                     placeholder="198956934125"
