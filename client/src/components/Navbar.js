@@ -447,7 +447,7 @@ const Navbar = ({ title = 'Southern Agro' }) => {
           ) : // Driver - Bhanuka Dayananda - Lakshitha Gunathilake
           user && user.role === 'Driver' ? (
             <>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link to="/allvehicle" role="button" className="nav-link">
                   <FontAwesomeIcon
                     icon={faChartBar}
@@ -455,7 +455,7 @@ const Navbar = ({ title = 'Southern Agro' }) => {
                   />
                   Vehicle
                 </Link>
-              </li>
+              </li> */}
 
               <li className="nav-item">
                 <Link
@@ -473,46 +473,6 @@ const Navbar = ({ title = 'Southern Agro' }) => {
                   Add Running Records
                 </Link>
               </li>
-
-              <li className="nav-item">
-                <Link to="/addrepair" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    icon={faClipboardList}
-                    style={{ marginRight: '10px', color: 'white' }}
-                  />
-                  Repair
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/registerGarage" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    icon={faFileAlt}
-                    style={{ marginRight: '10px', color: 'white' }}
-                  />
-                  Garage
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/allDocument" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    icon={faFileAlt}
-                    style={{ marginRight: '10px', color: 'white' }}
-                  />
-                  Document Storage
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/repairAssign" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    //icon={faFileAlt}
-                    //style={{ marginRight: '10px', color: 'white' }}
-
-                    icon={faTools}
-                    style={{ marginRight: '10px', color: 'white' }}
-                  />
-                  Add Repair
-                </Link>
-              </li>
               <li className="nav-item">
                 <Link to="/addFuel" role="button" className="nav-link">
                   <FontAwesomeIcon
@@ -525,6 +485,58 @@ const Navbar = ({ title = 'Southern Agro' }) => {
                   Add Fuel
                 </Link>
               </li>
+
+              <li className="nav-item">
+                <Link to="/addrepair" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faTools}
+                    style={{ marginRight: '10px', color: 'white' }}
+                  />
+                  Add Repair
+                </Link>
+              </li>
+              {/* <li className="nav-item">
+                <Link to="/registerGarage" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faFileAlt}
+                    style={{ marginRight: '10px', color: 'white' }}
+                  />
+                  Garage
+                </Link>
+              </li> */}
+              {/* <li className="nav-item">
+                <Link to="/allDocument" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faFileAlt}
+                    style={{ marginRight: '10px', color: 'white' }}
+                  />
+                  Document Storage
+                </Link>
+              </li> */}
+              {/* <li className="nav-item">
+                <Link to="/repairAssign" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    //icon={faFileAlt}
+                    //style={{ marginRight: '10px', color: 'white' }}
+
+                    icon={faTools}
+                    style={{ marginRight: '10px', color: 'white' }}
+                  />
+                  Add Repair
+                </Link>
+              </li> */}
+              {/* <li className="nav-item">
+                <Link to="/addFuel" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    //icon={faFileAlt}
+                    //style={{ marginRight: '10px', color: 'white' }}
+
+                    icon={faGasPump}
+                    style={{ marginRight: '10px', color: 'white' }}
+                  />
+                  Add Fuel
+                </Link>
+              </li> */}
               <li
                 className="nav-item"
                 onClick={() => {

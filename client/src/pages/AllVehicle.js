@@ -583,8 +583,8 @@ export const AllVehicle = () => {
               <p><strong>Model :</strong> {modalData.model}</p>
               <p><strong>Fuel Type :</strong> {modalData.fuelType}</p>
               <p><strong>Vehicle Color :</strong> {modalData.vehicleColor}</p>
-              <p><strong>Insurance Expired Date :</strong> {modalData.InsuranceExpiredDate}</p>
-              <p><strong>Licence Expired Date :</strong> {modalData.LicenceExpiredDate}</p>
+              <p><strong>Insurance Expired Date :</strong>{new Date(modalData.InsuranceExpiredDate).toLocaleDateString()}</p>
+              <p><strong>Licence Expired Date :</strong>{new Date(modalData.LicenceExpiredDate).toLocaleDateString()}</p>
               <p><strong>Vehicle Status :</strong>{modalData.vehicleStatus}</p>
         </Modal.Body>
 
