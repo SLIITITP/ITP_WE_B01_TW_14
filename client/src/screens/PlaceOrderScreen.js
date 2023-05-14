@@ -143,6 +143,7 @@ export default function PlaceOrderScreen() {
                           src={item.imageUrl}
                           alt={item.name}
                           className="img-fluid rounded img-thumbnail"
+                          style={{ maxWidth: '100px' }}
                         ></img>{' '}
                         <Link
                           to={`/product/${item.name}`}
@@ -152,10 +153,14 @@ export default function PlaceOrderScreen() {
                         </Link>
                       </Col>
                       <Col md={3}>
-                        <span>{item.quantity}</span>
+                        <span>
+                          <b>{item.quantity}</b>
+                        </span>
                       </Col>
                       <Col md={3}>
-                        Rs. {(item.sellingprice * item.quantity).toFixed(2)}
+                        <b>
+                          Rs. {(item.sellingprice * item.quantity).toFixed(2)}
+                        </b>
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -217,7 +222,7 @@ export default function PlaceOrderScreen() {
                         border: '1px black solid',
                       }}
                     >
-                      Place Order
+                      <b>Place Order</b>
                     </Button>
                   </div>
                   {loading && <LoadingBox></LoadingBox>}

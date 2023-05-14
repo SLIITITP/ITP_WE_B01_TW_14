@@ -3,6 +3,7 @@ import Spinner from "../components/Spinner";
 import { Modal } from "react-bootstrap";
 import ToastContext from "../context/ToastContext";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 // import Button from 'react-bootstrap/Button';
 // import Modal from 'react-bootstrap/Modal';
 
@@ -101,6 +102,9 @@ const AllStock = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>Stocks</title>
+      </Helmet>
       <div>
         <h1>Stocks</h1>
         <div className="d-flex justify-content-between">

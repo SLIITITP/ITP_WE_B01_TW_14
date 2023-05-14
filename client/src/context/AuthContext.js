@@ -74,13 +74,6 @@ export const AuthContextProvider = ({ children }) => {
         ctxDispatch({ type: 'USER_SIGNIN', payload: result });
         localStorage.setItem('userInfo', JSON.stringify(result));
 
-        result.user.role === 'Administrator'
-          ? navigate('/dashboardAdmin', { replace: true })
-          : navigate('/', { replace: true });
-
-        ctxDispatch({ type: 'USER_SIGNIN', payload: result });
-        localStorage.setItem('userInfo', JSON.stringify(result));
-
         if (result.user.role === 'Customer') {
           navigate('/navscreen', { replace: true });
         } else if (result.user.role === 'Administrator') {
