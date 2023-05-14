@@ -79,7 +79,7 @@ function CreateCustomer() {
       </Helmet>
       <h2 className="text-center bg-darkgreen p-2 mt-4 mb-1">Add Customer</h2>
       <div className="row justify-content-center">
-        <div className="col-12 col-md-8">
+        <div className="col-12 col-md-7">
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="cusNameInput" className="form-label mt-4">
@@ -262,7 +262,7 @@ function CreateCustomer() {
               <button
                 type="button"
                 onClick={handleClear}
-                className="btn btn-danger my-2 ml-2"
+                className="btn btn-danger"
               >
                 Clear
               </button>

@@ -86,6 +86,7 @@ export const RegisterGarage = () => {
                   onChange={setdata}
                   name="garageName"
                   class="form-control"
+                  placeholder="Enter Garage Name"
                 />
               </div>
               <div class="mb-3 col-lg-6 col-md-6 col-12">
@@ -98,6 +99,7 @@ export const RegisterGarage = () => {
                   onChange={setdata}
                   name="garageOwner"
                   class="form-control"
+                  placeholder="Enter Garage Owner Name"
                 />
               </div>
               <div class="mb-3 col-lg-6 col-md-6 col-12">
@@ -110,6 +112,7 @@ export const RegisterGarage = () => {
                   onChange={setdata}
                   name="Address"
                   class="form-control"
+                  placeholder="Enter Garage Address"
                 />
               </div>
 
@@ -123,6 +126,7 @@ export const RegisterGarage = () => {
                   onChange={setdata}
                   name="Email"
                   class="form-control"
+                  placeholder="Enter Garage Email Address"
                 />
               </div>
               <div class="mb-3 col-lg-6 col-md-6 col-12">
@@ -135,6 +139,7 @@ export const RegisterGarage = () => {
                   onChange={setdata}
                   name="ContactNo"
                   class="form-control"
+                  placeholder="Enter Garage Contact No"
                 />
               </div>
             </div>

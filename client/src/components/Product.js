@@ -54,8 +54,8 @@ function Product(props) {
           to={`/product/${product.name}`}
           style={{ letterSpacing: '0px', color: '#0d6efd' }}
         >
-          <Card.Title style={{ letterSpacing: '0px' }}>
-            {product.name}
+          <Card.Title style={{ letterSpacing: '0px', fontSize: '16px' }}>
+            <b>{product.name}</b>
           </Card.Title>
         </Link>
         <Card.Text>Rs. {product.sellingprice.toFixed(2)}</Card.Text>
@@ -80,7 +80,7 @@ function Product(props) {
                 border: '1px solid',
               }}
             >
-              Add to cart
+              <b>Add to cart</b>
             </Button>
           )}
         </Stack>
