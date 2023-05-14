@@ -15,7 +15,7 @@ import { Helmet } from "react-helmet-async";
 // import Button from 'react-bootstrap/Button';
 // import Modal from 'react-bootstrap/Modal';
 
-// import { ToastContainer, toast } from "react-toastify";
+// import { ToastContainer, toast } from "react-toastify"; 
 // import "react-toastify/dist/ReactToastify.css";
 
 const Index = () => {

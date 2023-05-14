@@ -123,12 +123,11 @@ import IMDashboard from './pages/IMDashboard';
 // Yasitha********************************************************
 
 // Hasaranga********************************************************
-import { CssBaseline, ThemeProvider } from '@mui/material';
+import {  ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import { themeSettings } from 'theme';
 import { useSelector } from 'react-redux';
 import { useMemo } from 'react';
-import { BrowserRouter, Navigate } from 'react-router-dom';
 import DashboardAdmin from './scenes/dashboard/index.jsx';
 
 import Products from 'scenes/products';

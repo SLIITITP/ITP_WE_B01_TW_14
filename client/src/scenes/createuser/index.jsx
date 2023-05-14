@@ -113,12 +113,12 @@ const Createuser = () => {
           <MDBInput wrapperClass='mb-4' label='Password' size='lg' id='password' type='password' name='password' value={formData.password} onChange={handleInputChange} />
           {formErrors.password && <div className='text-danger mb-2'>{formErrors.password}</div>}
           
-          <MDBInput wrapperClass='mb-4' label='Phone Number' size='lg' id='phoneNumber' type='text' name='phoneNumber' value={formData.phoneNumber} onChange={handleInputChange} />
+          <MDBInput wrapperClass='mb-4' label='Phone Number' size='lg' id='phoneNumber' type='number' name='phoneNumber' value={formData.phoneNumber} onChange={handleInputChange} />
           {formErrors.phoneNumber && <div className='text-danger mb-2 '>{formErrors.phoneNumber}</div>}
           {/* <MDBInput wrapperClass='mb-4' label='Role' size='lg' id='role' type='text' name='role' value={formData.role} onChange={handleInputChange} /> */}
         
-          <MDBDropdown style={{ marginBottom: '15px' }}>
-            <MDBDropdownToggle wrapperClass='mb-4' size='lg'>
+          <MDBDropdown style={{ marginBottom: '40px' }}>
+            <MDBDropdownToggle wrapperClass='mb-4' size='lg' style={{backgroundColor:'#d2d4d2' ,color:'black', width:'100%'}}>
               {formData.role || 'Select Role'}
             </MDBDropdownToggle>
               <MDBDropdownMenu style={{cursor: 'pointer'}}>
@@ -155,10 +155,11 @@ const Createuser = () => {
               </MDBDropdownMenu>
           </MDBDropdown>
           {formErrors.role && <div className='text-danger mb-2 '>{formErrors.role}</div>}
-          
-          <MDBBtn className='mb-4 w-100 gradient-custom-4' size='lg' type='submit' disabled={isLoading} onClick={handleSubmit}>
+          <div className='button'>
+          <MDBBtn className='btn btn-info mb-2' size='lg' type='submit' disabled={isLoading} onClick={handleSubmit}>
             {isLoading ? 'Submitting...' : 'Submit' }
           </MDBBtn>
+          </div>
           {error && <div className='text-center text-danger'>{error.message}</div>}
         </MDBCardBody>
       </MDBCard>
