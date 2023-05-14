@@ -172,7 +172,8 @@ app.listen(PORT, async () => {
   try {
     await connectDB();
     console.log(`server listening on port: ${PORT}`);
-   
+        //  User.insertMany(dataUser);
+        //  Product.insertMany(dataProduct);
   } catch (err) {
     console.log(err);
   }

@@ -11,7 +11,7 @@ const router = express.Router();
 // router.use(verifyJWT)
 
 router.get("/products", getProducts);
-router.get("/customers", getCustomers);
+router.get("/customers", getCustomers); 
 router.get("/transactions", getTransactions);
 
 module.exports = router;

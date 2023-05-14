@@ -66,7 +66,7 @@ export const api = createApi({
     }),
     getAdmins: build.query({
       query: () => "management/admins",
-      providesTags: ["Admins"],
+      providesTags: ["Customers"],
      
     }),
     getUserPerformance: build.query({

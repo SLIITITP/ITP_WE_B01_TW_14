@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
 const User = require("../models/Userdata");
+const Users = require("../models/User");
 const Transaction = require("../models/Transaction.js");
 
 exports.getAdmins = async (req, res) => {
   try {
-    const admins = await User.find({ role: "admin" }).select("-password");
+    const admins = await Users.find({ role: "Administrator" }).select("-password");
     res.status(200).json(admins);
   } catch (error) {
     res.status(404).json({ message: error.message });

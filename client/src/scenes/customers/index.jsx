@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useContext} from 'react'
 import { Box, useTheme, IconButton,Button } from "@mui/material";
 import { useGetCustomersQuery } from "state/api";
 import Header from "components/Header.jsx";
@@ -10,13 +10,24 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { setData } from '../../state/updateSlice'
 import { useNavigate } from "react-router-dom";
+import ToastContext from "../../context/ToastContext";
+
 
 const Customers = () => {
- 
+  const { toast } = useContext(ToastContext);
   const theme = useTheme();
   const dispatch = useDispatch()
   const [deleteUser] = useDeleteUserMutation()
   const navigate = useNavigate();
+  const deleteUsers = (data)=>{ 
+    if (window.confirm("Are you sure you want to delete this contact?")) { 
+      toast.success("Deleted Successfully");
+      deleteUser(data)
+    }else{
+      toast.error("User Not deleted");
+    }
+
+  }  
 
   const updateUser = (data)=>{  
     dispatch(setData(data));
@@ -44,15 +55,15 @@ const Customers = () => {
         field: "phoneNumber",
         headerName: "Phone Number",
         flex: 0.5,
-        renderCell: (params) => {
-          return params.value.replace(/^(\d{3})(\d{3})(\d{4})/, "($1)$2-$3");
-        },
+        // renderCell: (params) => {
+        //   return params.value.replace(/^(\d{3})(\d{3})(\d{4})/, "($1)$2-$3");
+        // },
       },
-      {
-        field: "occupation",
-        headerName: "Occupation",
-        flex: 1,
-      },
+      // {
+      //   field: "occupation",
+      //   headerName: "Occupation",
+      //   flex: 1,
+      // },
       {
         field: "role",
         headerName: "Role",
@@ -66,7 +77,7 @@ const Customers = () => {
         disableColumnMenu: true,
         flex: 0.3,
         renderCell: (params) => (
-          <IconButton aria-label="update" onClick={() => updateUser({id:params.row._id , name:params.row.name,email:params.row.email, phoneNumber:params.row.phoneNumber ,occupation:params.row.occupation ,role:params.row.role })}>
+          <IconButton aria-label="update" onClick={() => updateUser({id:params.row._id , name:params.row.name,email:params.row.email ,phoneNumber:params.row.phoneNumber ,role:params.row.role })}>
             <EditIcon />
           </IconButton>
         ),
@@ -79,7 +90,7 @@ const Customers = () => {
         disableColumnMenu: true,
         flex: 0.3,
         renderCell: (params) => (
-          <IconButton aria-label="delete" onClick={() => deleteUser({id:params.row._id})}>
+          <IconButton aria-label="delete" onClick={() => deleteUsers({id:params.row._id})}>
             <DeleteIcon />
           </IconButton>
         ),

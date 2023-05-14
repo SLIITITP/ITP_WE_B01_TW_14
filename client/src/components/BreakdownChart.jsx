@@ -1,12 +1,17 @@
 
-import React from "react";
-import { ResponsivePie } from "@nivo/pie";
-import { Box, Typography, useTheme } from "@mui/material";
+import React, { useEffect, useState }from "react";
+import { ResponsivePie } from "@nivo/pie"; 
+import { Box, Typography, useTheme , Button } from "@mui/material";
 import { useGetSalesQuery } from "state/api";
-
+import { useRef} from "react"
+import { toPng } from 'html-to-image'
+import download from 'downloadjs'
+import {DownloadOutlined} from "@mui/icons-material";
 const BreakdownChart = ({ isDashboard = false }) => {
+ 
   const { data, isLoading } = useGetSalesQuery();
   const theme = useTheme();
+
 
   if (!data || isLoading) return "Loading...";
 
@@ -32,9 +37,14 @@ const BreakdownChart = ({ isDashboard = false }) => {
       minHeight={isDashboard ? "325px" : undefined}
       minWidth={isDashboard ? "325px" : undefined}
       position="relative"
+ 
     >
+      
+     
+      <div style={{ height: '100%', width: '100%' }} >
       <ResponsivePie
         data={formattedData}
+        
         theme={{
           axis: {
             domain: {
@@ -98,7 +108,7 @@ const BreakdownChart = ({ isDashboard = false }) => {
             justify: false,
             translateX: isDashboard ? 20 : 0,
             translateY: isDashboard ? 50 : 56,
-            itemsSpacing: 0,
+            itemsSpacing:  !isDashboard ? 30 : 10  ,
             itemWidth: 85,
             itemHeight: 18,
             itemTextColor: "#999",
@@ -110,13 +120,15 @@ const BreakdownChart = ({ isDashboard = false }) => {
               {
                 on: "hover",
                 style: {
-                  itemTextColor: theme.palette.primary[500],
+                  itemTextColor: "theme.palette.primary[200]",
                 },
               },
             ],
           },
         ]}
+       
       />
+      </div>
       <Box
         position="absolute"
         top="50%"

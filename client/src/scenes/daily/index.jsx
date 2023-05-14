@@ -1,12 +1,27 @@
 import React, { useMemo, useState } from "react";
-import { Box, useTheme } from "@mui/material";
+import { Box, useTheme ,Button} from "@mui/material";
 import Header from "components/Header.jsx";
 import { ResponsiveLine } from "@nivo/line";
 import { useGetSalesQuery } from "state/api";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useRef} from "react"
+import { toPng } from 'html-to-image'
+import download from 'downloadjs'
+import {DownloadOutlined} from "@mui/icons-material";
 
 const Daily = () => {
+
+  const chart = useRef(null)
+
+  const handleExportSVG =async () => {
+      if (!chart.current) {
+        return
+      }
+      const dataUrl = await toPng(chart.current)
+      download(dataUrl, 'chart.png')
+    }
+
   const [startDate, setStartDate] = useState(new Date("2021-02-01"));
   const [endDate, setEndDate] = useState(new Date("2021-03-01"));
   const { data } = useGetSalesQuery();
@@ -49,6 +64,22 @@ const Daily = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
+      <Button
+            onClick={handleExportSVG}
+            sx={{
+              backgroundColor: theme.palette.secondary.light,
+              color: theme.palette.background.alt,
+              fontSize: "14px",
+              fontWeight: "bold",
+              padding: "10px 20px",
+              marginBottom: "20px"
+              
+            }}
+          >
+            <DownloadOutlined sx={{ mr: "10px" }} />
+            Download Daily Chart
+          </Button>
+      <div style={{ height: '100%', width: '100%' }} ref={chart}>
       <Header title="DAILY SALES" subtitle="Chart of daily sales" />
       <Box height="75vh">
         <Box display="flex" justifyContent="flex-end">
@@ -180,6 +211,7 @@ const Daily = () => {
           <>Loading...</>
         )}
       </Box>
+      </div>
     </Box>
   );
 };
