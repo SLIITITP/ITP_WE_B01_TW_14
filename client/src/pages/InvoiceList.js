@@ -3,16 +3,15 @@ import Spinner from "../components/Spinner";
 import { Modal } from "react-bootstrap";
 import ToastContext from "../context/ToastContext";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 // import Button from 'react-bootstrap/Button';
 // import Modal from 'react-bootstrap/Modal';
 
-const AllStock = () => {
+const AllInvoice = () => {
   const { toast } = useContext(ToastContext);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [modalData, setModalData] = useState({}); //by default it is an empty object
-  const [stocks, setStocks] = useState([]);
+  const [invoices, setInvoices] = useState([]);
   // const [originalEmployees, setOriginalEmployees] = useState([]);
   // const [employees, setEmployees] = useState(initialEmployees);
   const [searchInput, setSearchInput] = useState("");
@@ -24,7 +23,7 @@ const AllStock = () => {
     //async/await syntax directly inside the useEffect callback function, which is not allowed. Instead, you can define an asynchronous function inside the useEffect and then call it.
     async function fetchData() {
       try {
-        const res = await fetch(`http://localhost:8000/api/mystocks`, {
+        const res = await fetch(`http://localhost:8000/invoice/allInv`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -32,7 +31,7 @@ const AllStock = () => {
         });
         const result = await res.json();
         if (!result.error) {
-          setStocks(result.stock);
+          setInvoices(result.invoice);
           setLoading(false);
         } else {
           console.log(result);
@@ -45,18 +44,21 @@ const AllStock = () => {
     fetchData();
   }, []);
 
-  const deleteStock = async (id) => {
-    if (window.confirm("Are you sure you want to delete this stock?")) {
+  const deleteInvoice = async (id) => {
+    if (window.confirm("Are you sure you want to delete this invoice?")) {
       try {
-        const res = await fetch(`http://localhost:8000/api/deletestock/${id}`, {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
+        const res = await fetch(
+          `http://localhost:8000/invoice/deleteInv/${id}`,
+          {
+            method: "DELETE",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
         const result = await res.json();
         if (!result.error) {
-          setStocks(result.stocks);
+          setInvoices(result.invoices);
           toast.success("Deleted Successfully");
           setShowModal(false);
         } else {
@@ -64,7 +66,7 @@ const AllStock = () => {
         }
       } catch (err) {
         console.log(err);
-        toast.error("Failed to delete stock. Please try again later.");
+        toast.error("Failed to delete invoice. Please try again later.");
       }
     }
   };
@@ -83,58 +85,52 @@ const AllStock = () => {
     //   return;
     // }
 
-    const newSearchUser = stocks.filter(
-      (stock) =>
-        stock.stockid.toLowerCase().includes(searchInput.toLowerCase()) ||
-        stock.supplier.toLowerCase().includes(searchInput.toLowerCase()) ||
-        stock.name.toLowerCase().includes(searchInput.toLowerCase())
-      // stock.image.toLowerCase().includes(searchInput.toLowerCase()) ||
+    const newSearchUser = invoices.filter(
+      (invoice) =>
+        invoice.invoiceNo.toLowerCase().includes(searchInput.toLowerCase()) ||
+        invoice.cusName.toLowerCase().includes(searchInput.toLowerCase()) ||
+        invoice.busiName.toLowerCase().includes(searchInput.toLowerCase()) ||
+        invoice.address.toLowerCase().includes(searchInput.toLowerCase()) ||
+        invoice.issuedDate.toLowerCase().includes(searchInput.toLowerCase())
     );
     console.log(newSearchUser);
-    setStocks(newSearchUser);
+    setInvoices(newSearchUser);
   };
 
   const handleInputChange = (event) => {
     setSearchInput(event.target.value);
     if (event.target.value === "") {
-      setStocks([]);
+      setInvoices([]);
     }
   };
   return (
     <>
-
-    
-      <Helmet>
-        <title>Stocks</title>
-      </Helmet>
       <div>
-        <h1>Stocks</h1>
-        <div className="d-flex justify-content-between">
-          <a href="/mystocks" className="btn btn-danger my-2">
-            Reload Stock List
+        <h1 className='text-center bg-darkgreen text-white p-2'>
+          Customer Invoices
+        </h1>
+        <div className='d-flex justify-content-between'>
+          <a href='/allInv' className='btn btn-danger my-2'>
+            Reload Invoice List
           </a>
           <div>
-            <Link
-              className="btn btn-info mb-2"
-              to={"/createstock"}
-              role="button"
-            >
-              Add Stock
+            <Link className='btn btn-info mb-2' to={"/addInv"} role='button'>
+              Add Invoice
             </Link>
           </div>
         </div>
-        <hr className="my-4" />
+        <hr className='my-4' />
         {loading ? (
-          <Spinner splash="Loading Stocks..." />
+          <Spinner splash='Loading Invoices...' />
         ) : (
           <>
-            <form className="d-flex" onSubmit={handleSearchSubmit}>
+            <form className='d-flex' onSubmit={handleSearchSubmit}>
               <input
-                type="text"
-                name="searchInput"
-                id="searchInput"
-                className="form-control my-2"
-                placeholder="Search Stock"
+                type='text'
+                name='searchInput'
+                id='searchInput'
+                className='form-control my-2'
+                placeholder='Search Invoice...'
                 value={searchInput}
                 // onChange={searchHandle}
                 // onChange={handleInputChange}
@@ -145,13 +141,19 @@ const AllStock = () => {
                 }}
                 // onChange={(e) => setSearchInput(e.target.value)}
               />
-              <button type="submit" className="btn btn-info mx-2 my-2">
+              <button type='submit' className='btn btn-info mx-2 my-2'>
                 Search
               </button>
+              {/* <a href='/another-page'>
+                <button type='button' className='btn btn-secondary mx-2 my-2'>
+                  Reset
+                </button>
+              </a> */}
             </form>
-            {stocks ? (
-              stocks.length === 0 ? (
-                <h3>No Stocks Found</h3>
+
+            {invoices ? (
+              invoices.length === 0 ? (
+                <h3>No Invoices Found</h3>
               ) : (
                 <>
                   {/* <form className="d-flex" onSubmit={handleSearchSubmit}>
@@ -174,84 +176,113 @@ const AllStock = () => {
                     </button>
                   </form> */}
                   <p>
-                    Your Total Stocks: <strong>{stocks.length}</strong>{" "}
+                    Your Total Invoices: <strong>{invoices.length}</strong>{" "}
                   </p>
-                  <table className="table table-hover">
+                  <table className='table table-hover'>
                     <thead>
                       <tr>
-                        <th
-                          scope="col"
+                        {/* <th
+                          scope='col'
                           style={{ width: "10%", whiteSpace: "nowrap" }}
                         >
-                          Stock ID
-                        </th>
+                          Invoice ID
+                        </th> */}
                         <th
-                          scope="col"
+                          scope='col'
+                          style={{ width: "10%", whiteSpace: "nowrap" }}
+                        >
+                          Invoice No
+                        </th>
+
+                        <th
+                          scope='col'
                           style={{ width: "15%", whiteSpace: "nowrap" }}
                         >
-                          Name
+                          Date of Issued
                         </th>
                         <th
-                          scope="col"
+                          scope='col'
                           style={{ width: "15%", whiteSpace: "nowrap" }}
                         >
-                          Category
+                          Customer Name
                         </th>
                         <th
-                          scope="col"
+                          scope='col'
                           style={{
                             width: "20%",
                             whiteSpace: "nowrap",
                             textAlign: "center",
                           }}
                         >
-                          Description
+                          Mobile Number
                         </th>
                         <th
-                          scope="col"
+                          scope='col'
                           style={{ width: "10%", whiteSpace: "nowrap" }}
                         >
-                          Cost Price
+                          Business Name
+                        </th>
+                        {/* <th
+                          scope='col'
+                          style={{ width: "10%", whiteSpace: "nowrap" }}
+                        >
+                          Address
+                        </th> */}
+                        <th
+                          scope='col'
+                          style={{ width: "10%", whiteSpace: "nowrap" }}
+                        >
+                          Payment method
+                        </th>
+                        {/* <th
+                          scope='col'
+                          style={{ width: "10%", whiteSpace: "nowrap" }}
+                        >
+                          Bank code
                         </th>
                         <th
-                          scope="col"
+                          scope='col'
                           style={{ width: "10%", whiteSpace: "nowrap" }}
                         >
-                          Selling Price
+                          Banking Date
                         </th>
                         <th
-                          scope="col"
+                          scope='col'
                           style={{ width: "10%", whiteSpace: "nowrap" }}
                         >
-                          Quantity
-                        </th>
+                          Cheque Number
+                        </th> */}
                         <th
-                          scope="col"
+                          scope='col'
                           style={{ width: "10%", whiteSpace: "nowrap" }}
                         >
-                          Supplier
+                          Paid Amount
                         </th>
                       </tr>
                     </thead>
 
                     <tbody>
-                      {stocks.map((stock) => (
+                      {invoices.map((invoice) => (
                         <tr
-                          key={stock._id}
+                          key={invoice._id}
                           onClick={() => {
                             setModalData({}); //we need to clear the modal data before setting it again
-                            setModalData(stock);
+                            setModalData(invoice);
                             setShowModal(true);
                           }}
                         >
-                          <th scope="row">{stock.stockid}</th>
-                          <td>{stock.name}</td>
-                          <td>{stock.category}</td>
-                          <td>{stock.description}</td>
-                          <td>LKR {stock.costprice}</td>
-                          <td>LKR {stock.sellingprice}</td>
-                          <td>{stock.quantity}</td>
-                          <td>{stock.supplier}</td>
+                          <th scope='row'>{invoice.invoiceNo}</th>
+                          {/* <td>{invoice.invoiceNo}</td> */}
+                          <td>{invoice.issuedDate}</td>
+                          <td>{invoice.cusName}</td>
+                          <td>{invoice.mobileNo}</td>
+                          <td>{invoice.busiName}</td>
+                          {/* <td>{invoice.address}</td> */}
+                          <td>{invoice.payMethod}</td>
+                          {/* <td>{invoice.bankCode}</td>
+                          <td>{invoice.bankDate}</td>
+                          <td>{invoice.cheqNo}</td> */}
+                          <td>{`LKR.${invoice.paidAmount}`}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -259,7 +290,7 @@ const AllStock = () => {
                 </>
               )
             ) : (
-              <h3>No Stocks Found</h3>
+              <h3>No Invoices Found</h3>
             )}
           </>
         )}
@@ -267,41 +298,55 @@ const AllStock = () => {
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           {/* <Modal.Title>{modalData.firstname}</Modal.Title> */}
-          <Modal.Title>Southern Agro</Modal.Title>
+          <Modal.Title>Southern Agro Invoice</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
-          <h3>{modalData.stockid}</h3>
+          <h3>{modalData.invoiceId}</h3>
           <p>
-            <strong> Name</strong>: {modalData.name}
+            <strong>Invoice No</strong>: {modalData.invoiceNo}
+          </p>
+
+          <p>
+            <strong>Date of Issued</strong>: {modalData.issuedDate}
           </p>
           <p>
-            <strong>Category</strong>: {modalData.category}
+            <strong>Customer Name</strong>: {modalData.cusName}
           </p>
           <p>
-            <strong>Description</strong>: {modalData.description}
+            <strong>Mobile Number</strong>: {modalData.mobileNo}
           </p>
           <p>
-            <strong>Cost Price</strong>: {modalData.costprice}
+            <strong>Business Name</strong>: {modalData.busiName}
           </p>
           <p>
-            <strong>Selling Price</strong>: {modalData.sellingprice}
+            <strong>Address</strong>: {modalData.address}
           </p>
           <p>
-            <strong>Quantity</strong>: {modalData.quantity}
+            <strong>Payment method</strong>: {modalData.payMethod}
           </p>
           <p>
-            <strong>Supplier</strong>: {modalData.supplier}
+            <strong>Bank Code</strong>: {modalData.bankCode}
+          </p>
+          <p>
+            <strong>Banking Date</strong>: {modalData.bankDate}
+          </p>
+          <p>
+            <strong>Cheque Number</strong>: {modalData.cheqNo}
+          </p>
+          <p>
+            <strong>Paid Amount</strong>: {`LKR.${modalData.paidAmount}`}
           </p>
         </Modal.Body>
 
         <Modal.Footer>
-          <Link className="btn btn-info" to={`/editstock/${modalData._id}`}>
+          {/* <Link className='btn btn-info' to={`/updateInv/${modalData._id}`}> */}
+          <Link className='btn btn-info' to={`/editInv/${modalData._id}`}>
             Edit
           </Link>
           <button
-            className="btn btn-danger"
-            onClick={() => modalData && deleteStock(modalData._id)}
+            className='btn btn-danger'
+            onClick={() => modalData && deleteInvoice(modalData._id)}
           >
             Delete
           </button>
@@ -314,7 +359,7 @@ const AllStock = () => {
           </button> */}
 
           <button
-            className="btn btn-warning"
+            className='btn btn-warning'
             onClick={() => setShowModal(false)}
           >
             Close
@@ -325,5 +370,5 @@ const AllStock = () => {
   );
 };
 
-// export default AllContacts;
-export default AllStock;
+// export default AllInvoices;
+export default AllInvoice;
