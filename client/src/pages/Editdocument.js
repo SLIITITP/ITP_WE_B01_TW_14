@@ -85,11 +85,13 @@ export const Editdocument = () => {
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
+
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     };
 
     const res = await axios.patch(
-      `/updatedocvehicle/${id}`,
+      `/api/updatedocvehicle/${id}`,
       vehicledata,
       config
     );
@@ -98,7 +100,7 @@ export const Editdocument = () => {
       alert("fill the data");
     } else {
       alert("success");
-      history("/");
+      history("/allDocument");
     }
   };
 
