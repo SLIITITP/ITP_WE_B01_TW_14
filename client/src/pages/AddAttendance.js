@@ -111,7 +111,7 @@ const CreateAttendance = () => {
               {/* </div> */}
             </div>
             {/* DATE */}
-            <div className="form-group">
+            <div className="form-group mb-3">
               {/* <div class="mb-3 col-lg-6 col-md-6 col-12"> */}
               <label htmlFor="dateInput" className="form-label mt-4">
                 Select Date
@@ -129,7 +129,6 @@ const CreateAttendance = () => {
               />
               {/* </div> */}
             </div>
-
             {/* new code */}
             {/* Radio buttons */}
             <div className="form-group">

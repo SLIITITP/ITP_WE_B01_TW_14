@@ -22,11 +22,19 @@ import {
   faUserTie,
   faFolder,
   faClipboardList,
+
+
+  faFileInvoice,
+  faTachometerAlt,
+
   faUser,
   faGear,
   faUserPlus,
   faUsersGear,
+
     faTachometerAlt,
+
+
     faGasPump,
     faTools,
 } from "@fortawesome/free-solid-svg-icons";
@@ -118,7 +126,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                     icon={faCalendarAlt}
                     style={{ marginRight: "10px", color: "white" }}
                   />
-                  Attendace
+                  Attendance
                 </Link>
               </li>
               <li className="nav-item">
@@ -180,6 +188,84 @@ const Navbar = ({ title = "Southern Agro" }) => {
                     style={{ marginRight: "10px", color: "white" }}
                   />
                   Report
+                </Link>
+              </li>
+              <li
+                className="nav-item"
+                onClick={() => {
+                  setUser(null);
+                  localStorage.clear();
+                  toast.success("Logout Successful!");
+                  navigate("/login", { replace: true });
+                }}
+              >
+                <button className="btn btn-danger">
+                  <FontAwesomeIcon
+                    icon={faSignOutAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Logout
+                </button>
+              </li>
+            </>
+          ) : // Financial  Manager - Chamikara vithanage
+          user && user.role === "Financial Manager" ? (
+            <>
+              <li className="nav-item">
+                <Link to="/add-your-one" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faUserTie}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  add-your-one
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/add-your one" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faTruck}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  add-your-one
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/add-your one" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faFileAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Report
+                </Link>
+              </li>
+              <li
+                className="nav-item"
+                onClick={() => {
+                  setUser(null);
+                  localStorage.clear();
+                  toast.success("Logout Successful!");
+                  navigate("/login", { replace: true });
+                }}
+              >
+                <button className="btn btn-danger">
+                  <FontAwesomeIcon
+                    icon={faSignOutAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Logout
+                </button>
+              </li>
+            </>
+          ) : // Admin - Hasaranga Mallwarachchi
+          user && user.role === "Administrator" ? (
+            <>
+              <li className="nav-item">
+                <Link to="/" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faChartBar}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Dashboard
                 </Link>
               </li>
               <li
@@ -407,74 +493,55 @@ const Navbar = ({ title = "Southern Agro" }) => {
           user && user.role === "Supplier Manager" ? (
             <>
               <li className="nav-item">
-                <Link to="/allvehicle" role="button" className="nav-link">
+                <Link to="/dashboard" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faTachometerAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Dashboard
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link to="/allsup" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faUserTie}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Supplier
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link to="/allapp" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faCalendarAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Appointments
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link to="/allpur" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faFileInvoice}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Purchase Orders
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link to="/allrepw" role="button" className="nav-link">
                   <FontAwesomeIcon
                     icon={faChartBar}
                     style={{ marginRight: "10px", color: "white" }}
                   />
-                  Vehicle
+                  Reports
                 </Link>
               </li>
 
-              <li className="nav-item">
-                <Link
-                  to="/addRunningRecords"
-                  role="button"
-                  className="nav-link"
-                >
-                  <FontAwesomeIcon
-                    icon={faFolder}
-                    style={{ marginRight: "10px", color: "white" }}
-                  />
-                  Running Records
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link to="/addrepair" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    icon={faClipboardList}
-                    style={{ marginRight: "10px", color: "white" }}
-                  />
-                  Repair
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/registerGarage" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    icon={faFileAlt}
-                    style={{ marginRight: "10px", color: "white" }}
-                  />
-                  Garage
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/allDocument" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    icon={faFileAlt}
-                    style={{ marginRight: "10px", color: "white" }}
-                  />
-                  Document Storage
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/repairAssign" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    icon={faFileAlt}
-                    style={{ marginRight: "10px", color: "white" }}
-                  />
-                  Repair Assign
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/addFuel" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    icon={faFileAlt}
-                    style={{ marginRight: "10px", color: "white" }}
-                  />
-                  Add Fuel
-                </Link>
-              </li>
               <li
                 className="nav-item"
                 onClick={() => {

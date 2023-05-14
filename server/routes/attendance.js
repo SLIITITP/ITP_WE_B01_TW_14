@@ -23,7 +23,7 @@ router.post("/attendance", auth, async (req, res) => {
     }
 
     const newAttendance = new Attendance({
-      empid: employee._id,
+      empid: employee.empid,
       date,
       entrytime,
       offtime,
@@ -34,6 +34,21 @@ router.post("/attendance", auth, async (req, res) => {
     //201 means success
     //._doc defines name, address, email and phone
     return res.status(201).json({ ...result._doc });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//fetch attendance records
+router.get("/myattendances", auth, async (req, res) => {
+  try {
+    const attendance = await Attendance.find().populate(
+      "postedBy",
+      "-password"
+    );
+
+    return res.status(200).json({ attendance: attendance });
+    // return res.status(200).json({ employee: employee.reverse() });
   } catch (err) {
     console.log(err);
   }
