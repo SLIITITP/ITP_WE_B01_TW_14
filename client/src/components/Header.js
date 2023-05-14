@@ -123,7 +123,7 @@ const Header = () => {
           {user.role === "Customer Manager" && (
             <img
               src={
-                "https://scontent.fcmb1-2.fna.fbcdn.net/v/t39.30808-1/325512809_720598059414679_7618836821725563303_n.jpg?stp=dst-jpg_p320x320&_nc_cat=103&ccb=1-7&_nc_sid=7206a8&_nc_ohc=tWSlVzr__XAAX_v0NbS&_nc_ht=scontent.fcmb1-2.fna&oh=00_AfDuU0nXEGkyeOpD4c1J_VmPjlNBEsjQtwNWOraT0SrWtQ&oe=645CB58C"
+                "https://media.licdn.com/dms/image/C4D03AQEuxwVRnHC7zw/profile-displayphoto-shrink_400_400/0/1656948625943?e=1689811200&v=beta&t=h-niYSxTZ5I4k3aE6rXYtHDKB6aoolIj4ObOXGRs2c4"
               }
               alt={user.name}
               className="rounded-circle mr-2"
