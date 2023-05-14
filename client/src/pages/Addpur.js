@@ -25,41 +25,146 @@ export default function Addpur() {
         setQuantity('');
     };
  
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-          const token = localStorage.getItem('token'); // get the access token from local storage
-          const response1 = await axios.post('http://localhost:8000/api/addPurchase', 
-            {supid: location.state.uID, reqdate, items},
-            { headers: { Authorization: `Bearer ${token}` } } // include the authorization header
-          );
-          toast.success("Purchase order added successfully");
-          console.log(response1);
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+
+    //     try {
+    //       const token = localStorage.getItem('token'); // get the access token from local storage
+    //       const response1 = await axios.post('http://localhost:8000/api/addPurchase', 
+    //         {supid: location.state.uID, reqdate, items},
+    //         { headers: { Authorization: `Bearer ${token}` } } // include the authorization header
+    //       );
+    //       toast.success("Purchase order added successfully");
+    //       console.log(response1);
       
-          try {
-            const response2 = await axios.post('http://localhost:8000/api/send-report-email', {
-              to: `${location.state.uemail}`,
-              subject: 'Purchase Order from Southern Agro',
-              body: `Order Details\n 
-                ID:${location.state.uSupID}\n
-                Order ID : ${response1.data.orderid}
-                Requested Date : ${reqdate}
-                Items: ${JSON.stringify(items)}
-                Date: ${response1.data.date}
-              `,
-            }, { headers: { Authorization: `Bearer ${token}` } }); // include the authorization header
-            toast.success("Email sent successfully");
-            console.log(response2.data);
-          } catch (error) {
-            console.error(error);
-            //setError('Error sending email');
-          }
+    //       try {
+    //         const response2 = await axios.post('http://localhost:8000/api/send-report-email', {
+    //           to: `${location.state.uemail}`,
+    //           subject: 'Purchase Order from Southern Agro',
+    //           body: `Order Details\n 
+    //             ID:${location.state.uSupID}\n
+    //             Order ID : ${response1.data.orderid}
+    //             Requested Date : ${reqdate}
+    //             Items: ${JSON.stringify(items)}
+    //             Date: ${response1.data.date}
+    //           `,
+    //         }, { headers: { Authorization: `Bearer ${token}` } }); // include the authorization header
+    //         toast.success("Email sent successfully");
+    //         console.log(response2.data);
+    //       } catch (error) {
+    //         console.error(error);
+    //         //setError('Error sending email');
+    //       }
         
-          navigate('/allpur');
-        } catch (err) {
-          alert(err.message);
-        }
-      };
+    //       navigate('/allpur');
+    //     } catch (err) {
+    //       alert(err.message);
+    //     }
+    //   };
+
+  //   const handleSubmit = async (e) => {
+  //     e.preventDefault();
+      
+  //     const currentDate = new Date().toLocaleDateString('en-GB');; // get the current date
+      
+  //     try {
+  //         const token = localStorage.getItem('token'); // get the access token from local storage
+  //         const response1 = await axios.post('http://localhost:8000/api/addPurchase', 
+  //           {supid: location.state.uID, reqdate, items},
+  //           { headers: { Authorization: `Bearer ${token}` } } // include the authorization header
+  //         );
+  //         toast.success("Purchase order added successfully");
+  //         console.log(response1);
+  //         console.log("Requested Date: ", reqdate);
+  //         console.log("Current Date: ", currentDate);
+      
+  //         try {
+  //             const response2 = await axios.post('http://localhost:8000/api/send-report-email', {
+  //               to: `${location.state.uemail}`,
+  //               subject: 'Purchase Order from Southern Agro',
+  //               body: `Order Details\n 
+  //                 ID:${location.state.uSupID}\n
+  //                 Order ID : ${response1.data.orderid}
+  //                 Requested Date : ${reqdate}
+  //                 Items: ${JSON.stringify(items)}
+  //                 Date: ${response1.data.date}
+  //               `,
+  //             }, { headers: { Authorization: `Bearer ${token}` } }); // include the authorization header
+  //             toast.success("Email sent successfully");
+  //             console.log(response2.data);
+  //         } catch (error) {
+  //             console.error(error);
+  //             //setError('Error sending email');
+  //         }
+          
+  //         navigate('/allpur');
+  //     } catch (err) {
+  //         alert(err.message);
+  //     }
+  // };
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth();
+    const currentDay = currentDate.getDate();
+    
+    const reqDateObj = new Date(reqdate);
+    const reqYear = reqDateObj.getFullYear();
+    const reqMonth = reqDateObj.getMonth();
+    const reqDay = reqDateObj.getDate();
+    
+    if (reqYear < currentYear) {
+      toast.error("Requested date cannot be in the past.");
+      return;
+    }
+    if (reqYear === currentYear && reqMonth < currentMonth) {
+      toast.error("Requested date cannot be in the past.");
+      return;
+    }
+    if (reqYear === currentYear && reqMonth === currentMonth && reqDay < currentDay) {
+      toast.error("Requested date cannot be in the past.");
+      return;
+    }
+    
+    try {
+      const token = localStorage.getItem('token'); // get the access token from local storage
+      const response1 = await axios.post('http://localhost:8000/api/addPurchase', 
+        {supid: location.state.uID, reqdate, items},
+        { headers: { Authorization: `Bearer ${token}` } } // include the authorization header
+      );
+      toast.success("Purchase order added successfully");
+      console.log(response1);
+      console.log("Requested Date: ", reqdate);
+      console.log("Current Date: ", currentDate.toLocaleDateString('en-GB'));
+    
+      try {
+        const response2 = await axios.post('http://localhost:8000/api/send-report-email', {
+          to: `${location.state.uemail}`,
+          subject: 'Purchase Order from Southern Agro',
+          body: `Order Details\n 
+            ID:${location.state.uSupID}\n
+            Order ID : ${response1.data.orderid}
+            Requested Date : ${reqdate}
+            Items: ${JSON.stringify(items)}
+            Date: ${response1.data.date}
+          `,
+        }, { headers: { Authorization: `Bearer ${token}` } }); // include the authorization header
+        toast.success("Email sent successfully");
+        console.log(response2.data);
+      } catch (error) {
+        console.error(error);
+        //setError('Error sending email');
+      }
+      
+      navigate('/allpur');
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+  
   
     return(
       <>
