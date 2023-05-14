@@ -102,6 +102,8 @@ const AllStock = () => {
   };
   return (
     <>
+
+    
       <Helmet>
         <title>Stocks</title>
       </Helmet>

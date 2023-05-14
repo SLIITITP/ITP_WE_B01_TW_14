@@ -224,6 +224,7 @@ const App = () => {
   // Ashen********************************************************
   return (
     <Router>
+      <div style={{minHeight:"90vh", margin:"0px", padding:"0px"}}>
       <ToastContextProvider>
         <AuthContextProvider>
           <ThemeProvider theme={theme}>
@@ -443,7 +444,10 @@ const App = () => {
           </ThemeProvider>
         </AuthContextProvider>
       </ToastContextProvider>
+      </div>
+      <div>
       <Footer />
+      </div>
     </Router>
   );
 };
