@@ -15,7 +15,7 @@ import { Helmet } from "react-helmet-async";
 // import Button from 'react-bootstrap/Button';
 // import Modal from 'react-bootstrap/Modal';
 
-// import { ToastContainer, toast } from "react-toastify"; 
+// import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 
 const Index = () => {
@@ -160,7 +160,7 @@ const Index = () => {
           {/* <a href="/index" className="btn btn-danger my-2">
             Reload Employee List
           </a> */}
-          <div>
+          <div style={{ textAlign: "right" }}>
             <Link className="btn btn-info mb-2" to={"/createemp"} role="button">
               Add New Employee
             </Link>
