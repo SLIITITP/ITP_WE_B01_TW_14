@@ -70,7 +70,9 @@ const AddProfit = () => {
 
   return (
     <>
-      <h2>Stock Profit Details</h2>
+      <h2 className="text-center bg-darkgreen text-white p-2">Stock Profit Details</h2>
+      <div className="row justify-content-center">
+        <div className="col-12 col-md-6">
       <form onSubmit={handleSubmit}>
         {/* empid */}
         <div className="form-group">
@@ -205,6 +207,8 @@ const AddProfit = () => {
           Clear
         </button>
       </form>
+      </div>
+      </div>
     </>
   );
 };
