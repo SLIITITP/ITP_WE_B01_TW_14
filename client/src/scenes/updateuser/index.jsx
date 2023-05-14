@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import React, { useState ,useContext} from 'react';
-
+import './index.css'
 import { Box ,useTheme} from "@mui/material";
 import Header from "components/Header.jsx";
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
@@ -109,8 +109,8 @@ const Updateuser = () => {
           {formErrors.email && <div className='text-danger mb-2'>{formErrors.email}</div>}
           <MDBInput wrapperClass='mb-4' label='Phone Number' size='lg' id='phoneNumber' type='text' name='phoneNumber' value={formData.phoneNumber} onChange={handleInputChange} />
           {formErrors.phoneNumber && <div className='text-danger mb-2 '>{formErrors.phoneNumber}</div>}
-          <MDBDropdown style={{ marginBottom: '15px' }}>
-            <MDBDropdownToggle wrapperClass='mb-4' size='lg'>
+          <MDBDropdown style={{ marginBottom: '40px' }}>
+            <MDBDropdownToggle wrapperClass='mb-4' size='lg' style={{backgroundColor:'#d2d4d2' ,color:'black', width:'100%'}}>
               {formData.role || 'Select Role'}
             </MDBDropdownToggle>
               <MDBDropdownMenu style={{cursor: 'pointer'}}>
@@ -152,9 +152,11 @@ const Updateuser = () => {
           {/* <div className='d-flex flex-row justify-content-center mb-4'>
             <MDBCheckbox name='flexCheck' id='flexCheckDefault' label='I agree all statements in Terms of service' />
           </div> */}
-          <MDBBtn className='mb-4 w-100 gradient-custom-4' size='lg' type='submit' disabled={isLoading} onClick={handleSubmit}>
+            <div className='button' >
+          <MDBBtn className='btn btn-info mb-2' size='lg' type='submit' disabled={isLoading} onClick={handleSubmit}>
             {isLoading ? 'Submitting...' : 'Submit' }
           </MDBBtn>
+          </div>
           {error && <div className='text-center text-danger'>{error.message}</div>}
         </MDBCardBody>
       </MDBCard>
