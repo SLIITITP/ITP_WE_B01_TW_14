@@ -14,11 +14,27 @@ const Header = () => {
       className="d-flex justify-content-between align-items-center py-3 px-4"
       style={{ background: 'linear-gradient(to right, #214956 , #498459)' }}
     >
-      <Link to="/" className="navbar-brand" style={{ textDecoration: 'none' }}>
-        <h1 className="m-2 text-white " style={{ paddingLeft: '25px' }}>
-          Southern Agro
-        </h1>
-      </Link>
+      {user && user.role === 'Customer' ? (
+        <Link
+          to="/products"
+          className="navbar-brand"
+          style={{ textDecoration: 'none' }}
+        >
+          <h1 className="m-2 text-white " style={{ paddingLeft: '25px' }}>
+            Southern Agro
+          </h1>
+        </Link>
+      ) : (
+        <Link
+          to="/"
+          className="navbar-brand"
+          style={{ textDecoration: 'none' }}
+        >
+          <h1 className="m-2 text-white " style={{ paddingLeft: '25px' }}>
+            Southern Agro
+          </h1>
+        </Link>
+      )}
       {user &&
         (user.role === 'Customer Manager' || user.role === 'Customer') && (
           <SearchBox />
@@ -55,12 +71,12 @@ const Header = () => {
             />
           )}
 
-          {user.role === 'Delivery Manager' && (
+          {/* {user.role === 'Delivery Manager' && ( */}
 
-          {user.role === "Administrator" && (
+          {user.role === 'Administrator' && (
             <img
               src={
-                "https://media.licdn.com/dms/image/D5603AQEOpuARV18dBQ/profile-displayphoto-shrink_400_400/0/1674372898612?e=1689206400&v=beta&t=S_AAStf8e8WRs3NuYrT8GFDZLS4bHmHJGV2Wl2VBkWM"
+                'https://media.licdn.com/dms/image/D5603AQEOpuARV18dBQ/profile-displayphoto-shrink_400_400/0/1674372898612?e=1689206400&v=beta&t=S_AAStf8e8WRs3NuYrT8GFDZLS4bHmHJGV2Wl2VBkWM'
               }
               alt={user.name}
               className="rounded-circle mr-2"
@@ -68,8 +84,7 @@ const Header = () => {
               height="40"
             />
           )}
-          {user.role === "Delivery Manager" && (
-
+          {user.role === 'Delivery Manager' && (
             <img
               src={
                 'https://scontent.fcmb1-2.fna.fbcdn.net/v/t39.30808-6/343738766_958774192127225_2020277138152706314_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=wUq0Fnd98r4AX8M5OUd&_nc_ht=scontent.fcmb1-2.fna&oh=00_AfDsApJBH-olxzm_6wXGZutzgzxNXD6QnvGb7fxIsOFFkQ&oe=645C5B60'
@@ -81,12 +96,12 @@ const Header = () => {
             />
           )}
 
-          {(user.role === 'Customer Manager' || user.role === 'Customer') && (
+          {/* {(user.role === 'Customer Manager' || user.role === 'Customer') && ( */}
 
-          {user.role === "Financial Manager" && (
+          {user.role === 'Financial Manager' && (
             <img
               src={
-                "https://media.licdn.com/dms/image/C5603AQEcfhRNz3JrHw/profile-displayphoto-shrink_100_100/0/1627656583754?e=1689206400&v=beta&t=l1IJgRlj_w-ugh7Go98kPtG0Y3v6gfF6lzGvZ9xgwv8"
+                'https://media.licdn.com/dms/image/C5603AQEcfhRNz3JrHw/profile-displayphoto-shrink_100_100/0/1627656583754?e=1689206400&v=beta&t=l1IJgRlj_w-ugh7Go98kPtG0Y3v6gfF6lzGvZ9xgwv8'
               }
               alt={user.name}
               className="rounded-circle mr-2"
@@ -94,8 +109,7 @@ const Header = () => {
               height="40"
             />
           )}
-          {user.role === "Customer Manager" && (
-
+          {user.role === 'Customer Manager' && (
             <img
               src={
                 'https://scontent.fcmb1-2.fna.fbcdn.net/v/t39.30808-1/325512809_720598059414679_7618836821725563303_n.jpg?stp=dst-jpg_p320x320&_nc_cat=103&ccb=1-7&_nc_sid=7206a8&_nc_ohc=tWSlVzr__XAAX_v0NbS&_nc_ht=scontent.fcmb1-2.fna&oh=00_AfDuU0nXEGkyeOpD4c1J_VmPjlNBEsjQtwNWOraT0SrWtQ&oe=645CB58C'

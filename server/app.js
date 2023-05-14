@@ -1,17 +1,10 @@
 require('dotenv').config({ path: './config/config.env' });
 
-
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser'); //pasindu
-
-const express = require("express");
-const morgan = require("morgan");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser"); //pasindu
-const axios = require("axios"); //wasana
-
+const axios = require('axios'); //wasana
 
 //Initialize express app
 const app = express();
@@ -42,7 +35,6 @@ app.use('/api/', require('./routes/report'));
 
 //Bhanuka***************************************************************************
 
-
 app.use('/api/', require('./routes/vehicle'));
 app.use('/api/', require('./routes/fuel'));
 app.use('/api/', require('./routes/runningrecord'));
@@ -52,16 +44,15 @@ app.use('/api/', require('./routes/driver-vehicle-assign'));
 app.use('/api/', require('./routes/repairassign'));
 app.use('/api/', require('./routes/repair'));
 
-app.use("/api/", require("./routes/vehicle"));
-app.use("/api/", require("./routes/fuel"));
-app.use("/api/", require("./routes/runningrecord"));
-app.use("/api/", require("./routes/garage"));
-app.use("/api/", require("./routes/vehicledocument"));
-app.use("/api/", require("./routes/driver-vehicle-assign"));
-app.use("/api/", require("./routes/repairassign"));
-app.use("/api/", require("./routes/repair"));
-app.use("/vehicleuploads", express.static("./vehicleuploads"));
-
+app.use('/api/', require('./routes/vehicle'));
+app.use('/api/', require('./routes/fuel'));
+app.use('/api/', require('./routes/runningrecord'));
+app.use('/api/', require('./routes/garage'));
+app.use('/api/', require('./routes/vehicledocument'));
+app.use('/api/', require('./routes/driver-vehicle-assign'));
+app.use('/api/', require('./routes/repairassign'));
+app.use('/api/', require('./routes/repair'));
+app.use('/vehicleuploads', express.static('./vehicleuploads'));
 
 // const vehiclerouter = require("./routes/vehicle");
 // const fuelrouter = require("./routes/fuel");
@@ -157,41 +148,41 @@ app.use('/api', require('./routes/deliveryreport'));
 //Pasindu***************************************************************************
 
 //Wasana****************************************************************************
-const cron = require("node-cron");
-const nodemailer = require("nodemailer");
+const cron = require('node-cron');
+const nodemailer = require('nodemailer');
 
 //routes
-app.use("/api", require("./routes/auth"));
-app.use("/api", require("./routes/supRouter"));
-app.use("/api", require("./routes/purchaseRouter"));
-app.use("/api", require("./routes/appointmentRouter"));
+app.use('/api', require('./routes/auth'));
+app.use('/api', require('./routes/supRouter'));
+app.use('/api', require('./routes/purchaseRouter'));
+app.use('/api', require('./routes/appointmentRouter'));
 
 //new
-app.use("/api", require("./routes/expiredAppointmentRouter"));
+app.use('/api', require('./routes/expiredAppointmentRouter'));
 //new
 
-const PurchaseOrders = require("./models/purchaseSchema");
-const Suppliers = require("./models/supSchema");
+const PurchaseOrders = require('./models/purchaseSchema');
+const Suppliers = require('./models/supSchema');
 
 // Function to send reminder emails to suppliers
 const sendReminderEmail = async (supplierEmail, orderItems) => {
   try {
     // Create nodemailer transporter object
     let transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
+      host: 'smtp.gmail.com',
       port: 465,
       secure: true,
       auth: {
-        user: "fruwani5@gmail.com",
-        pass: "fpaetacctrymcawy",
+        user: 'fruwani5@gmail.com',
+        pass: 'fpaetacctrymcawy',
       },
     });
 
     // Define email message
     let message = {
-      from: "fruwani5@gmail.com",
+      from: 'fruwani5@gmail.com',
       to: supplierEmail,
-      subject: "Purchase Order Reminder",
+      subject: 'Purchase Order Reminder',
       text: `Dear supplier,\n\nThis is a reminder that the following items in your purchase order are still pending:\n\n${orderItems}\n\nPlease update us on the status of your order as soon as possible.\n\nBest regards,\nSouthern Agro Serve`,
     };
 
@@ -207,7 +198,7 @@ const sendReminderEmail = async (supplierEmail, orderItems) => {
 //cron.schedule('*/1 * * * *', async () => {
 // cron.schedule('0 0 * * *', async () => {
 
-cron.schedule("0 0 * * *", async () => {
+cron.schedule('0 0 * * *', async () => {
   try {
     const currentDate = new Date();
     const fiveDaysAgo = new Date(
@@ -217,14 +208,14 @@ cron.schedule("0 0 * * *", async () => {
     const incompleteOrders = await PurchaseOrders.find({
       completed: false,
       reqdate: { $lte: fiveDaysAgo },
-    }).populate("supid", "email name");
+    }).populate('supid', 'email name');
 
     incompleteOrders.forEach(async (order) => {
       const { supid, items } = order;
       const { email } = supid;
       const orderItems = items
         .map((item) => `- ${item.quantity} ${item.itemName}`)
-        .join("\n");
+        .join('\n');
 
       await sendReminderEmail(email, orderItems);
 
@@ -237,8 +228,8 @@ cron.schedule("0 0 * * *", async () => {
   }
 });
 
-const Appointment = require("./models/appointmentSchema");
-const Expired = require("./models/expAppSchema");
+const Appointment = require('./models/appointmentSchema');
+const Expired = require('./models/expAppSchema');
 
 // const deleteExpiredAppointments = async () => {
 //   try {
@@ -277,10 +268,10 @@ const deleteExpiredAppointments = async () => {
     const currentDate = new Date();
     const expiredAppointments = await Appointment.find({
       date: { $lte: currentDate },
-      end: { $lte: currentDate.toLocaleTimeString("en-US", { hour12: false }) },
+      end: { $lte: currentDate.toLocaleTimeString('en-US', { hour12: false }) },
     });
     if (expiredAppointments.length > 0) {
-      console.log("Deleting expired appointments...");
+      console.log('Deleting expired appointments...');
       for (let appointment of expiredAppointments) {
         try {
           // Save expired appointment to expiredAppointments database
@@ -291,7 +282,7 @@ const deleteExpiredAppointments = async () => {
             start: appointment.start,
             end: appointment.end,
             email: appointment.email,
-            appointmentid: appointment.appid // Add appointmentid as string
+            appointmentid: appointment.appid, // Add appointmentid as string
           });
           await newExpired.save();
           console.log(
@@ -305,16 +296,15 @@ const deleteExpiredAppointments = async () => {
         }
       }
     } else {
-      console.log("No expired appointments found");
+      console.log('No expired appointments found');
     }
   } catch (err) {
     console.error(err);
   }
 };
 
-
 // Schedule to run the task every minute
-cron.schedule("* * * * *", () => {
+cron.schedule('* * * * *', () => {
   deleteExpiredAppointments();
 });
 

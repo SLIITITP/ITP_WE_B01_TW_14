@@ -90,7 +90,7 @@ export default function OrderHistoryScreen() {
                 <td>{order.totalPrice.toFixed(2)}</td>
                 <td>{order.status}</td>
                 <td>
-                  {order.status === 'Accepted'
+                  {order.status === 'Accepted' || order.status === 'Delivered'
                     ? order.acceptedAt.substring(0, 10)
                     : 'No'}
                 </td>
