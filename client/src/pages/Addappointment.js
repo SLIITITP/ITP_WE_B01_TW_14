@@ -19,6 +19,29 @@ const Addapp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth();
+    const currentDay = currentDate.getDate();
+    
+    const reqDateObj = new Date(date);
+    const reqYear = reqDateObj.getFullYear();
+    const reqMonth = reqDateObj.getMonth();
+    const reqDay = reqDateObj.getDate();
+    
+    if (reqYear < currentYear) {
+      toast.error("Requested date cannot be in the past.");
+      return;
+    }
+    if (reqYear === currentYear && reqMonth < currentMonth) {
+      toast.error("Requested date cannot be in the past.");
+      return;
+    }
+    if (reqYear === currentYear && reqMonth === currentMonth && reqDay < currentDay) {
+      toast.error("Requested date cannot be in the past.");
+      return;
+    }
     try {
       const token = localStorage.getItem('token');
       if (!token) {
