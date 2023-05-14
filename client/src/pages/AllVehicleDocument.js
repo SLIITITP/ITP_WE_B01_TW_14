@@ -299,7 +299,7 @@ export const AllVehicleDocument = () => {
                   onChange={setdata}
                   className="form-select"
                 >
-                  <option>Select Fuel Type</option>
+                  <option>Select Vehicle Document Type</option>
                   <option>Vehicle Registration Book</option>
                   <option>Vehicle Revenue License</option>
                 </select>

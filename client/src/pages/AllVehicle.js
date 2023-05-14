@@ -445,7 +445,7 @@ export const AllVehicle = () => {
               </Form>
             </div>
             <div className="add_btn ">
-              <Button variant="primary" className="btn-info" onClick={adduser} >Add Vehicle</Button>
+              <Button variant="primary" className="btn-info" onClick={adduser} ><b>Add Vehicle</b></Button>
             </div>
           </div>
 
