@@ -16,7 +16,9 @@ const AddProfit = () => {
     costprice: "",
     sellingprice: "",
     quantitysold: "",
-    timeperiod: "",
+    // timeperiod: "",
+    startdate:"",
+    enddate:""
   });
   const navigate = useNavigate();
 
@@ -45,7 +47,9 @@ const AddProfit = () => {
         costprice: "",
         sellingprice: "",
         quantitysold: "",
-        timeperiod: "",
+        // timeperiod: "",
+        startdate:"",
+        enddate:""
       });
     } else {
       toast.error(result.error);
@@ -58,13 +62,17 @@ const AddProfit = () => {
       costprice: "",
       sellingprice: "",
       quantitysold: "",
-      timeperiod: "",
+      // timeperiod: "",
+      startdate:"",
+        enddate:""
     });
   };
 
   return (
     <>
-      <h2>Stock Profit Details</h2>
+      <h2 className="text-center bg-darkgreen text-white p-2">Stock Profit Details</h2>
+      <div className="row justify-content-center">
+        <div className="col-12 col-md-6">
       <form onSubmit={handleSubmit}>
         {/* empid */}
         <div className="form-group">
@@ -134,7 +142,46 @@ const AddProfit = () => {
             fdprocessedid="8n2of"
           />
         </div>
+
         <div className="form-group">
+          <label htmlFor="startDateInput" className="form-label mt-4">
+            Start Date
+          </label>
+          <input
+            type="date"
+            className="form-control"
+            id="startDateInput"
+            name="startdate"
+            value={profitDetails.startdate}
+            onChange={handleInputChange}
+            placeholder="01/02/2023"
+            max={new Date().toISOString().split("T")[0]}
+            min={new Date().toISOString().split("T")[0]}
+            required
+            fdprocessedid="8n2of"
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="endDateInput" className="form-label mt-4">
+            End Date
+          </label>
+          <input
+            type="date"
+            className="form-control"
+            id="endDateInput"
+            name="enddate"
+            value={profitDetails.enddate}
+            onChange={handleInputChange}
+            placeholder="30/02/2023"
+            max={new Date().toISOString().split("T")[0]}
+            min={new Date().toISOString().split("T")[0]}
+            required
+            fdprocessedid="8n2of"
+          />
+        </div>
+
+        {/* <div className="form-group">
           <label htmlFor="timePeriodInput" className="form-label mt-4">
             Time Period
           </label>
@@ -149,7 +196,7 @@ const AddProfit = () => {
             required
             fdprocessedid="8n2of"
           />
-        </div>
+        </div> */}
         <input type="submit" value="Submit" className="btn btn-info my-2" />
         <button
           type="button"
@@ -160,6 +207,8 @@ const AddProfit = () => {
           Clear
         </button>
       </form>
+      </div>
+      </div>
     </>
   );
 };

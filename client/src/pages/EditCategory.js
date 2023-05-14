@@ -95,7 +95,9 @@ const EditCategory = () => {
         <Spinner splash="Loading Category..." />
       ) : (
         <>
-          <h2>Edit Category</h2>
+          <h2 className="text-center bg-darkgreen text-white p-2">Edit Category</h2>
+          <div className="row justify-content-center">
+        <div className="col-12 col-md-6">
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="nameInput" className="form-label mt-4">
@@ -190,6 +192,8 @@ const EditCategory = () => {
               className="btn btn-info my-2"
             />
           </form>
+        </div>
+      </div>
         </>
       )}
     </>

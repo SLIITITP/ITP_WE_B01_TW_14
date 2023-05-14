@@ -165,6 +165,7 @@ const AllProfit = () => {
                   <p>
                     Your Total Profits: <strong>{profits.length}</strong>{" "}
                   </p>
+                  <div className="table-responsive">
                   <table className="table table-hover">
                     <thead>
                       <tr>
@@ -200,8 +201,20 @@ const AllProfit = () => {
                           scope="col"
                           style={{ width: "10%", whiteSpace: "nowrap" }}
                         >
-                          Time Period
+                          start Date 
                         </th>
+                        <th
+                          scope="col"
+                          style={{ width: "10%", whiteSpace: "nowrap" }}
+                        >
+                          End Date
+                        </th>
+                        {/* <th
+                          scope="col"
+                          style={{ width: "10%", whiteSpace: "nowrap" }}
+                        >
+                          Time Period
+                        </th> */}
                         <th
                           scope="col"
                           style={{ width: "10%", whiteSpace: "nowrap" }}
@@ -238,7 +251,9 @@ const AllProfit = () => {
                           <td>LKR {profit.costprice}</td>
                           <td>LKR {profit.sellingprice}</td>
                           <td>{profit.quantitysold}</td>
-                          <td>{profit.timeperiod}</td> 
+                          <td>{profit.startdate}</td>
+                          <td>{profit.enddate}</td>
+                          {/* <td>{profit.timeperiod}</td>  */}
                           <td>LKR {profit.grossprofit}</td> 
                           <td>LKR {profit.totalrevenue}</td> 
                           <td>LKR {profit.profitmargin}</td> 
@@ -246,6 +261,7 @@ const AllProfit = () => {
                       ))}
                     </tbody>
                   </table>
+                  </div>
                 </>
               )
             ) : (
@@ -272,8 +288,14 @@ const AllProfit = () => {
             <strong>Quantity Sold</strong>: {modalData.quantitysold}
           </p>
           <p>
-            <strong>Time Period</strong>: {modalData.timeperiod}
+            <strong>Start Date</strong>: {modalData.startdate}
           </p>
+          <p>
+            <strong>End Date</strong>: {modalData.enddate}
+          </p>
+          {/* <p>
+            <strong>Time Period</strong>: {modalData.timeperiod}
+          </p> */}
           <p>
             <strong>Gross Profit</strong>: {modalData.grossprofit}
           </p>

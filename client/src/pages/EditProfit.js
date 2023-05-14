@@ -17,7 +17,9 @@ const EditProfit = () => {
     costprice: "",
     sellingprice: "",
     quantitysold: "",
-    timeperiod: "",
+    // timeperiod: "",
+    startdate:"",
+    enddate:""
   });
   const [loading, setLoading] = useState(false);
 
@@ -49,7 +51,10 @@ const EditProfit = () => {
         costprice: "",
         sellingprice: "",
         quantitysold: "",
-        timeperiod: "",
+        // timeperiod: "",
+        startdate:"",
+        enddate:""
+
       });
       navigate("/myprofits");
     } else {
@@ -76,7 +81,9 @@ const EditProfit = () => {
             costprice: result.costprice,
             sellingprice: result.sellingprice,
             quantitysold: result.quantitysold,
-            timeperiod: result.timeperiod,
+            startdate:result.startdate,
+            enddate:result.enddate
+            // timeperiod: result.timeperiod,
           });
         } else {
           toast.error(result.error);
@@ -166,7 +173,41 @@ const EditProfit = () => {
                 fdprocessedid="8n2of"
               />
             </div>
+
             <div className="form-group">
+          <label htmlFor="startDateInput" className="form-label mt-4">
+            Start Date
+          </label>
+          <input
+            type="date"
+            className="form-control"
+            id="startDateInput"
+            name="startdate"
+            value={profitDetails.startdate}
+            onChange={handleInputChange}
+            placeholder="01/02/2023"
+            required
+            fdprocessedid="8n2of"
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="endDateInput" className="form-label mt-4">
+            End Date
+          </label>
+          <input
+            type="date"
+            className="form-control"
+            id="endDateInput"
+            name="enddate"
+            value={profitDetails.enddate}
+            onChange={handleInputChange}
+            placeholder="30/02/2023"
+            required
+            fdprocessedid="8n2of"
+          />
+        </div>
+            {/* <div className="form-group">
               <label htmlFor="timePeriodInput" className="form-label mt-4">
                 Time Period
               </label>
@@ -181,7 +222,7 @@ const EditProfit = () => {
                 required
                 fdprocessedid="8n2of"
               />
-            </div>
+            </div> */}
             <input
               type="submit"
               value="Save Changes"
