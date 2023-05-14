@@ -59,6 +59,77 @@ const Addapp = () => {
     }
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   const currentDate = new Date();
+  //   const currentYear = currentDate.getFullYear();
+  //   const currentMonth = currentDate.getMonth();
+  //   const currentDay = currentDate.getDate();
+    
+  //   const reqDateObj = new Date(date);
+  //   const reqYear = reqDateObj.getFullYear();
+  //   const reqMonth = reqDateObj.getMonth();
+  //   const reqDay = reqDateObj.getDate();
+    
+  //   if (reqYear < currentYear) {
+  //     console.log("Requested date cannot be in the past.");
+  //     return;
+  //   }
+  //   if (reqYear === currentYear && reqMonth < currentMonth) {
+  //     console.log("Requested date cannot be in the past.");
+  //     return;
+  //   }
+  //   if (reqYear === currentYear && reqMonth === currentMonth && reqDay < currentDay) {
+  //     console.log("Requested date cannot be in the past.");
+  //     return;
+  //   }
+
+  //   try {
+  //     const token = localStorage.getItem('token');
+  //     if (!token) {
+  //       throw new Error('Authorization failed!');
+  //     }
+  //     const config = {
+  //       headers: { Authorization: `Bearer ${token}` },
+  //     };
+
+  //     // Check availability with backend before adding appointment
+  //     try {
+  //       const token = localStorage.getItem('token');
+  //       if (!token) {
+  //         throw new Error('Authorization failed!');
+  //       }
+      
+  //       const config = {
+  //         headers: { Authorization: `Bearer ${token}` },
+  //       };
+      
+  //       const availabilityCheck = await axios.post(
+  //         'http://localhost:8000/api/availability',
+  //         { date, start, end },
+  //         config
+  //       );
+      
+  //       if (availabilityCheck.status === 400) {
+  //         console.log(availabilityCheck.data.message); // Log error message to console if appointment is not available
+  //         return;
+  //       }
+      
+  //       // Rest of the code for adding the appointment
+  //     } catch (err) {
+  //       console.error(err);
+  //       toast.error('Error adding appointment!');
+  //     }
+      
+
+  //     await axios.post('http://localhost:8000/api/addAppointment', { name, date, start, end, email }, config);
+  //     toast.success("Appointment added successfully!");
+  //     navigate('/allapp');
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 const handleClear = () => {
     setName("");
     setDate("");
@@ -79,16 +150,8 @@ const handleClear = () => {
 
         <form onSubmit={handleSubmit} >
           <div className="form-group">
-            <label htmlFor="name" className="form-label mt-4">
-              Enter Supplier Name
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="name"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+            <label htmlFor="name" className="form-label mt-4">Enter Supplier Name</label>
+            <input type="text" className="form-control" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)}
               placeholder="Brian Perera"
               required
               maxLength="25" // add maxLength attribute to limit input to 10 characters
@@ -108,7 +171,9 @@ const handleClear = () => {
                 name="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                placeholder="Negombo"
+                placeholder="Date"
+                // max={new Date().toISOString.split("T")[0]}
+                // min={new Date().toISOString.split("T")[0]}
                 required
                 maxLength="50"
                 fdprocessedid="8n2of"
