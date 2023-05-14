@@ -189,6 +189,14 @@ import EditCustomerScreen from './screens/EditCustomerScreen';
 
 // Ashen********************************************************
 
+//Chamikara****************************************************
+import AllInvoice from './pages/InvoiceList';
+import AddInvoice from './pages/AddInvoice';
+import EditDeleteInvoice from './pages/EditDeleteInvoice';
+import InvReport from './pages/InvReport';
+
+//Chamikara****************************************************
+
 const App = () => {
   //Hasaranga***********************************************
   const mode = useSelector((state) => state.global.mode);
@@ -328,6 +336,14 @@ const App = () => {
                 <Route path="/imdashboard" element={<IMDashboard />} />
 
                 {/* Yasitha******************************************************** */}
+
+                {/*Chamikara********************************************************/}
+                <Route path="/addInv" element={<AddInvoice />} />
+                <Route path="/allInv" element={<AllInvoice />} />
+                <Route path="/editInv/:id" element={<EditDeleteInvoice />} />
+                <Route path="/reportInv" element={<InvReport />} />
+
+                {/*Chamikara********************************************************/}
 
                 {/* Ashen******************************************************** */}
                 {/* <ToastContainer position="bottom-center" limit={1} /> */}
