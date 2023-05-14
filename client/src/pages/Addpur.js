@@ -64,7 +64,7 @@ export default function Addpur() {
     return(
       <>
       <Helmet>
-        <title>Supplier</title>
+        <title>Purchase Order</title>
       </Helmet>
       <h2 className="text-center bg-darkgreen text-white p-2">Send purchase Order</h2>
       <Card>

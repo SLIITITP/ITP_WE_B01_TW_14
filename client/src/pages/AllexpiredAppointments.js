@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { Modal } from "react-bootstrap";
-import ToastContext from "../context/ToastContext";
+import { Helmet } from "react-helmet-async";
 
 const Allexp = ()=>{
     const [expires, setExpires] = useState([]);
@@ -36,9 +35,11 @@ const Allexp = ()=>{
 
     return(
         <>
+        <Helmet>
+        <title>Expired Appointments</title>
+      </Helmet>
       <div>
-        <h1>Your Expired Appointments</h1>
-
+        <h2 className="text-center bg-darkgreen text-white p-2">Your Expired Appointments</h2>
         <hr className="my-4" />
 
         <table className="table table-hover">
