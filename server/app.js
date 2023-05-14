@@ -186,7 +186,7 @@ const sendReminderEmail = async (supplierEmail, orderItems) => {
 //cron.schedule('*/1 * * * *', async () => {
 // cron.schedule('0 0 * * *', async () => {
 
-cron.schedule("0 0 * * *", async () => {
+cron.schedule('0 0 * * *', async () => {
   try {
     const currentDate = new Date();
     const fiveDaysAgo = new Date(

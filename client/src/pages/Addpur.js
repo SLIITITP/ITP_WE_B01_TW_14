@@ -2,7 +2,8 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from 'axios';
 import ToastContext from "../context/ToastContext";
-import Card from "react-bootstrap/Card";
+import { Helmet } from "react-helmet-async";
+import { Card } from "react-bootstrap";
 
 export default function Addpur() {
 
@@ -61,36 +62,39 @@ export default function Addpur() {
       };
   
     return(
-        <div className="container mt-5">
-          <Card clasName="shadow card">
-            <form className="mx-auto w-50 shadow p-5" onSubmit={handleSubmit}>
-                <Link className="btn btn-primary" to="/allsup">Suppliers</Link>
-                <h3 className="mt-5" >Fill Order Details</h3>
-                <p>{location.state.uSupID}</p>
-                <p>{location.state.uemail}</p>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1">Supplier Address</label>
-                    <input type="date" class="form-control" id="exampleInputEmail1" name="reqdate" value={reqdate} onChange={(e) => setReqdate(e.target.value)} required aria-describedby="emailHelp"/>
+      <>
+      <Helmet>
+        <title>Supplier</title>
+      </Helmet>
+      <h2 className="text-center bg-darkgreen text-white p-2">Send purchase Order</h2>
+      <Card>
+            <form onSubmit={handleSubmit}>
+                <h3 className="mt-5" style={{fontWeight:'bold', color: 'black'}}>Fill Order Details</h3><br></br>
+                <p style={{fontWeight: 'bold', color: 'Black'}}>{"Suplier ID : " + location.state.uSupID}</p>
+                <p style={{fontWeight: 'bold', color: 'Black'}}>{"To : " + location.state.uemail}</p><br></br>
+                <div className="form-group">
+                    <label for="exampleInputEmail1">Request Date</label>
+                    <input type="date" class="form-control" style={{width: '200px'}} id="exampleInputEmail1" name="reqdate" value={reqdate} onChange={(e) => setReqdate(e.target.value)} required aria-describedby="emailHelp"/>
                 </div>
-                <div class="form-row">
+                <div className="form-group">
                     <div class="col">
                         <label for="exampleInputEmail1">Item Name</label>
-                        <input type="text" class="form-control" name="item" value={itemName} onChange={(e) => setItemName(e.target.value)}/>
+                        <input type="text" class="form-control" style={{width: '500px'}} name="item" value={itemName} onChange={(e) => setItemName(e.target.value)}/>
                     </div>
                     <div class="col">
                         <label for="exampleInputEmail1">Quantity</label>
-                        <input type="number" class="form-control" name="qty" value={quantity} onChange={(e) => setQuantity(e.target.value)}/>
+                        <input type="number" class="form-control" style={{width: '100px'}} name="qty" value={quantity} onChange={(e) => setQuantity(e.target.value)}/>
                     </div>
                 </div>
-                <button onClick={handleAddItem}>Add Item</button>
+                <button className="btn btn-primary my-2" onClick={handleAddItem}>Add Item</button>
                 <ul>
                     {items.map((item, index) => (
                         <li key={index}>{item.itemName} - {item.quantity}</li>
                     ))}
                 </ul>
-                <button className="btn btn-primary" type="submit">Add</button>
+                <button className="btn btn-info mb-2" type="submit">Send order</button>
             </form>
             </Card>
-        </div>
+        </>
     )
 }
