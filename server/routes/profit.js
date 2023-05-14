@@ -6,8 +6,9 @@ const {Stock} = require("../models/Stock");
 const auth = require("../middlewares/auth");
 
 router.post("/profit", auth, async (req, res) => {
-  const { stockid, costprice, sellingprice, quantitysold, timeperiod } = req.body;
-
+  // const { stockid, costprice, sellingprice, quantitysold, timeperiod } = req.body;
+  const { stockid, costprice, sellingprice, quantitysold, startdate, enddate } = req.body;
+  
   const { error } = validateProfit(req.body);
 
   if (error) {
@@ -29,7 +30,9 @@ router.post("/profit", auth, async (req, res) => {
     costprice,
     sellingprice,
     quantitysold,
-    timeperiod,
+    startdate,
+    enddate,
+    //timeperiod,
     grossprofit,
     totalrevenue,
     profitmargin,
@@ -51,7 +54,7 @@ router.get("/myprofits", auth, async (req, res) => {
     );
 
     return res.status(200).json({ profit: profit });
-    // return res.status(200).json({ employee: employee.reverse() });
+   
   } catch (err) {
     console.log(err);
   }
