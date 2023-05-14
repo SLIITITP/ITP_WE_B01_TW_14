@@ -19,11 +19,11 @@ const profitSchema = new mongoose.Schema({
     required: true,
   },
   startdate: {
-    type: Date,
+    type: String,
     required: true
   },
   enddate: {
-    type: Date,
+    type: String,
     required: true
   },
   // timeperiod: {
@@ -56,8 +56,8 @@ const validateProfit = (data) => {
     costprice: Joi.number().min(3).max(100000000000).required(),
     sellingprice: Joi.number().min(3).max(100000000000).required(),
     quantitysold: Joi.number().min(1).max(100000000000).required(),
-    startdate: Joi.date().required(),
-    enddate: Joi.date().required(),
+    startdate: Joi.string().required(),
+    enddate: Joi.string().required(),
     // timeperiod: Joi.string().required(),
     // grossprofit: Joi.number().min(5).max(100000000000).required(),
     // totalrevenue: Joi.number().min(5).max(100000000000).required(),

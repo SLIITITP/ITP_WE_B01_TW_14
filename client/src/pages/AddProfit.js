@@ -153,6 +153,8 @@ const AddProfit = () => {
             value={profitDetails.startdate}
             onChange={handleInputChange}
             placeholder="01/02/2023"
+            max={new Date().toISOString().split("T")[0]}
+            min={new Date().toISOString().split("T")[0]}
             required
             fdprocessedid="8n2of"
           />
@@ -170,6 +172,8 @@ const AddProfit = () => {
             value={profitDetails.enddate}
             onChange={handleInputChange}
             placeholder="30/02/2023"
+            max={new Date().toISOString().split("T")[0]}
+            min={new Date().toISOString().split("T")[0]}
             required
             fdprocessedid="8n2of"
           />

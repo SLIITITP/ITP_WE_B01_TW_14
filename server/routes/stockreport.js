@@ -82,13 +82,13 @@ router.get("/stockreport", async (req, res) => {
         `Stock ID : ${stock.stockid}`, { bold: true })
         .list(
           [
-        `Stock Name : ${stock.name}`,,
-      `Category : ${stock.category}`,,
-      `Stock Description : ${stock.description}`,,
-      `Cost Price : ${stock.costprice}`,,
-      `Selling Price : ${stock.sellingprice}`,,
-      `Quantity : ${stock.quantity}`,,
-      `Supplier : ${stock.supplier}`,,
+        `Stock Name : ${stock.name}`,
+      `Category : ${stock.category}`,
+      `Stock Description : ${stock.description}`,
+      `Cost Price : ${stock.costprice}`,
+      `Selling Price : ${stock.sellingprice}`,
+      `Quantity : ${stock.quantity}`,
+      `Supplier : ${stock.supplier}`,
           ],
           {
             bulletRadius: 2,
@@ -112,13 +112,13 @@ router.get("/stockreport", async (req, res) => {
         `Stock ID: ${profit.stockid}`)
       .list(
         [
-      `Cost Price:(${profit.costprice})`,,
-      `Selling Price:(${profit.sellingprice})`,,
-      `Quantity Sold:(${profit.quantitysold})`,,
-      `Time Period:(${profit.timeperiod})`,,
-      `Gross Profit:(${profit.grossprofit})`,,
-      `Total Revenue:(${profit.totalrevenue})`,,
-      `Profit Margin:(${profit.profitmargin})`,,
+      `Cost Price:(${profit.costprice})`,
+      `Selling Price:(${profit.sellingprice})`,
+      `Quantity Sold:(${profit.quantitysold})`,
+      `Time Period:(${profit.timeperiod})`,
+      `Gross Profit:(${profit.grossprofit})`,
+      `Total Revenue:(${profit.totalrevenue})`,
+      `Profit Margin:(${profit.profitmargin})`,
         ],
         {
           bulletRadius: 2,
