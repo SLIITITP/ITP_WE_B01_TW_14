@@ -37,6 +37,6 @@ https://github.com/SLIITITP/ITP_WE_B01_TW_14/assets/96247301/ca900e4e-5694-41f5-
 
 Note - The student's github account should be given in brackets e.g. (asiriRepos), this ideally should be your student id 
 
-# Project Started on : 13 / 12 / 2022 ⭕
-# Project Completed on : 5 / 14 / 2023 ✅
+##### Project Started on : 13 / 12 / 2022 ⭕
+##### Project Completed on : 5 / 14 / 2023 ✅
 
