@@ -9,6 +9,7 @@ import { useRef} from "react"
 import { toPng } from 'html-to-image'
 import download from 'downloadjs'
 import {DownloadOutlined} from "@mui/icons-material";
+import FlexBetween from "components/FlexBetween";
 
 const Daily = () => {
 
@@ -64,6 +65,8 @@ const Daily = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
+      <FlexBetween>
+        <Header title="DAILY SALES" subtitle="Chart of daily sales" />
       <Button
             onClick={handleExportSVG}
             sx={{
@@ -79,8 +82,8 @@ const Daily = () => {
             <DownloadOutlined sx={{ mr: "10px" }} />
             Download Daily Chart
           </Button>
+      </FlexBetween>
       <div style={{ height: '100%', width: '100%' }} ref={chart}>
-      <Header title="DAILY SALES" subtitle="Chart of daily sales" />
       <Box height="75vh">
         <Box display="flex" justifyContent="flex-end">
           <Box>

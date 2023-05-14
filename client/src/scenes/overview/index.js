@@ -6,6 +6,7 @@ import {DownloadOutlined} from "@mui/icons-material";
 import { useRef} from "react"
 import { toPng } from 'html-to-image'
 import download from 'downloadjs'
+import FlexBetween from "components/FlexBetween";
 
 const Overview = () => {
   const [view, setView] = useState("units");
@@ -20,8 +21,13 @@ const Overview = () => {
       download(dataUrl, 'chart.png')
     }
   
-  return (
-    <Box m="1.5rem 2.5rem">
+    return (
+      <Box m="1.5rem 2.5rem">
+      <FlexBetween>
+      <Header
+        title="OVERVIEW"
+        subtitle="Overview of general revenue and profit"
+      />
       <Button
             onClick={handleExportSVG}
             sx={{
@@ -37,11 +43,8 @@ const Overview = () => {
             <DownloadOutlined sx={{ mr: "10px" }} />
             Download Overview Chart
           </Button>
+      </FlexBetween>
        <div style={{ height: '100%', width: '100%' }} ref={chart}>
-      <Header
-        title="OVERVIEW"
-        subtitle="Overview of general revenue and profit"
-      />
       
       <Box height="75vh">
         <FormControl sx={{ mt: "1rem" }}>

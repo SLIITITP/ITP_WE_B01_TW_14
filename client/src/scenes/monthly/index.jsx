@@ -7,7 +7,7 @@ import { useRef} from "react"
 import { toPng } from 'html-to-image'
 import download from 'downloadjs'
 import {DownloadOutlined} from "@mui/icons-material";
-
+import FlexBetween from "components/FlexBetween";
 const Monthly = () => {
   const chart = useRef(null)
 
@@ -53,6 +53,8 @@ const Monthly = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
+      <FlexBetween>
+      <Header title="MONTHLY SALES" subtitle="Chart of monthlysales" />
        <Button
             onClick={handleExportSVG}
             sx={{
@@ -68,8 +70,8 @@ const Monthly = () => {
             <DownloadOutlined sx={{ mr: "10px" }} />
             Download Monthly Chart
           </Button>
+      </FlexBetween>
       <div style={{ height: '100%', width: '100%' }} ref={chart}>
-      <Header title="MONTHLY SALES" subtitle="Chart of monthlysales" />
       <Box height="75vh">
         {data ? (
           <ResponsiveLine
