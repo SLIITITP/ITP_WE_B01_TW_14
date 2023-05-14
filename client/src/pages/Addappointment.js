@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import ToastContext from "../context/ToastContext";
 import axios from 'axios';
+import { Helmet } from "react-helmet-async";
 
 const Addapp = () => {
   const [name, setName] = useState("");
@@ -46,9 +47,14 @@ const handleClear = () => {
 
   return (
     <>
-      <h2>Create Appointment</h2>
-      <Card clasName="shadow card">
-        <form onSubmit={handleSubmit}>
+    <Helmet>
+        <title>Add Appointment</title>
+      </Helmet>
+      <div className="container d-flex justify-content-center align-items-center">
+      <div className="col-lg-6 col-md-8 col-12">
+      <h2 className="text-center bg-darkgreen text-white p-2">Add appointment</h2>
+
+        <form onSubmit={handleSubmit} >
           <div className="form-group">
             <label htmlFor="name" className="form-label mt-4">
               Enter Supplier Name
@@ -145,13 +151,14 @@ const handleClear = () => {
 
           <button
             type="button"
-            onClick={handleClear}
-            className="btn btn-danger my-2 ml-2"
+            onClick={handleClear}  
+            className="btn btn-danger my-3 ml-2"
           >
             Clear
           </button>
         </form>
-      </Card>
+        </div>
+        </div>
     </>
   );
 };

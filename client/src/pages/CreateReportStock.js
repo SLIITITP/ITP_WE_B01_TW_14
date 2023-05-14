@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 function StockReport() {
   const [loading, setLoading] = useState(false);
@@ -23,7 +24,11 @@ function StockReport() {
   };
 
   return (
+    
     <div>
+      <Helmet>
+        <title>Report</title>
+      </Helmet>
       <button
         className="btn btn-success"
         onClick={handleDownload}

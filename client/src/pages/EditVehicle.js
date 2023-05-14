@@ -180,7 +180,6 @@ export const EditVehicle = () => {
         ""
       )}
       <div className="container">
-        <NavLink to="/">home</NavLink>
         <div className="d-flex">
           <h2>Update Vehicle Details</h2>
         </div>

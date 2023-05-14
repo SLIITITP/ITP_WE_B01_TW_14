@@ -132,10 +132,10 @@ export const ViewFuelDetails = () => {
 
             <div style={{ position: 'relative' }}>
                 <div style={{ position: 'absolute', top: -40, right: 0 }}>
-                    <h2>Total Cost: {totalCost}</h2>
+                    <h2>Total Cost: Rs.{totalCost}</h2>
                 </div>
                 <div style={{ position: 'absolute', top: -40, left: 0 }}>
-                    <h2>Total Fuel: {totalFuel}</h2>
+                    <h2>Total Fuel: {totalFuel} Litre</h2>
                 </div>
                 <div className="row">
                     <div className="col-xl-12 col-g-12">

@@ -4,6 +4,10 @@ const { Category } = require("../models/Category");
 const { validateStock, Stock } = require("../models/Stock");
 const auth = require("../middlewares/auth");
 
+
+
+
+
 router.post("/stock", auth, async (req, res) => {
   const {
     name,
@@ -43,63 +47,7 @@ router.post("/stock", auth, async (req, res) => {
   }
 });
 
-// router.post("/stock", auth, async (req, res) => {
-//   const {
-//     name,
-//     //image,
-//     category,
-//     description,
-//     costprice,
-//     sellingprice,
-//     quantity,
-//     supplier,
-//   } = req.body;
 
-//   const { error } = validateStock(req.body);
-
-//   if (error) {
-//     return res.status(400).json({ error: error.details[0].message });
-//   }
-
-//   try {
-//     let categoryId;
-//     if (category) {
-//       // Check if the category already exists
-//       const existingCategory = await Category.findOne({ name: category });
-
-//       if (existingCategory) {
-//         categoryId = existingCategory.name;
-//       } else {
-//         // Create a new category if it doesn't exist
-//         const newCategory = new Category({ name: category });
-//         const savedCategory = await newCategory.save();
-//         categoryId = savedCategory.name;
-//       }
-//     }
-
-//     const newStock = new Stock({
-//       name,
-//       //image,
-//       category: categoryId,
-//       description,
-//       costprice,
-//       sellingprice,
-//       quantity,
-//       supplier,
-//       postedBy: req.user._id,
-//     });
-
-//     //save the stock
-//     const result = await newStock.save();
-
-//     //201 means success
-//     //._doc defines name, address, email and phone
-//     return res.status(201).json({ ...result._doc, category: categoryId });
-
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
 
 //fetch contacts
 router.get("/mystocks", auth, async (req, res) => {
