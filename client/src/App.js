@@ -40,6 +40,9 @@ import { Editdocument } from "./pages/Editdocument";
 import { AddRunnigRecords } from "./pages/AddRunnigRecords";
 import { AddRepair } from "./pages/AddRepair";
 import { RegisterGarage } from "./pages/RegisterGarage";
+import { ViewRunningRecords } from "./pages/ViewRunningRecords";
+import { ViewFuelDetails } from "./pages/ViewFuelDetails";
+
 // Bhanuka********************************************************
 
 // Pasindu********************************************************
@@ -103,8 +106,8 @@ import PaymentGatewayScreen from "./screens/PaymentGatewayScreen";
 // import { AuthContextProvider } from './context/AuthContext';
 import CreateCustomer from "./screens/CreateCustomer";
 import CustomerScreen from "./screens/CustomerScreen";
-import { ViewRunningRecords } from "./pages/ViewRunningRecords";
-import { ViewFuelDetails } from "./pages/ViewFuelDetails";
+// import { ViewRunningRecords } from "./pages/ViewRunningRecords";
+// import { ViewFuelDetails } from "./pages/ViewFuelDetails";
 
 // Ashen********************************************************
 
