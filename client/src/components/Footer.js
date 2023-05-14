@@ -1,8 +1,9 @@
 import React from "react";
+import Calendar from "react-calendar";
+//import "react-calender/dist/Calendar.css";
 
 const Footer = () => {
   return (
-    
     <footer
       className="text-center mt-5"
       style={{
@@ -11,6 +12,9 @@ const Footer = () => {
         textAlign: "center",
       }}
     >
+      {/* <div>
+        <Calendar />
+      </div> */}
       <p
         style={{
           color: "white",
@@ -23,7 +27,6 @@ const Footer = () => {
 };
 
 export default Footer;
-
 
 // function Footer() {
 //   return (
@@ -61,4 +64,3 @@ export default Footer;
 //   );
 // }
 // export default Footer;
-
