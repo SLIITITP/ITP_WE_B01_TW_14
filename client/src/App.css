@@ -7,7 +7,7 @@
   position: relative; /* add position relative to make the overlay absolute */
   width: 100%;
   height: 100%;
-  background-image: url("https://shipsy.io/wp-content/uploads/2021/09/Food_Delivery_Image-2.png");
+  background-image: url('https://shipsy.io/wp-content/uploads/2021/09/Food_Delivery_Image-2.png');
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -17,7 +17,7 @@
 
 .button-link1::before {
   /* add a pseudo-element to create the overlay */
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -41,7 +41,7 @@
   position: relative; /* add position relative to make the overlay absolute */
   width: 100%;
   height: 100%;
-  background-image: url("https://www.extensiv.com/hubfs/Skubana/Blog%20Pages/Imported_Blog_Media/order%20management-1-Oct-12-2022-05-41-13-08-PM.png");
+  background-image: url('https://www.extensiv.com/hubfs/Skubana/Blog%20Pages/Imported_Blog_Media/order%20management-1-Oct-12-2022-05-41-13-08-PM.png');
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -51,7 +51,7 @@
 
 .button-link2::before {
   /* add a pseudo-element to create the overlay */
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -76,7 +76,7 @@
   position: relative; /* add position relative to make the overlay absolute */
   width: 100%;
   height: 100%;
-  background-image: url("https://krushikendra.com/image/cache/catalog/New%20Images%20Folder/Sprayer-Slider-KK-750x320.png");
+  background-image: url('https://krushikendra.com/image/cache/catalog/New%20Images%20Folder/Sprayer-Slider-KK-750x320.png');
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -86,7 +86,7 @@
 
 .button-link9::before {
   /* add a pseudo-element to create the overlay */
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -111,7 +111,7 @@
   position: relative; /* add position relative to make the overlay absolute */
   width: 100%;
   height: 100%;
-  background-image: url("https://news-assets.spot.io/app/uploads/2022/03/29174410/News_Cover_User_management_1_21mar221.png");
+  background-image: url('https://news-assets.spot.io/app/uploads/2022/03/29174410/News_Cover_User_management_1_21mar221.png');
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -121,7 +121,7 @@
 
 .button-link3::before {
   /* add a pseudo-element to create the overlay */
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -145,7 +145,7 @@
   position: relative; /* add position relative to make the overlay absolute */
   width: 100%;
   height: 100%;
-  background-image: url("https://content.pymnts.com/wp-content/uploads/2021/12/Data-brief-debit-cards.jpg");
+  background-image: url('https://content.pymnts.com/wp-content/uploads/2021/12/Data-brief-debit-cards.jpg');
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -155,7 +155,7 @@
 
 .button-link4::before {
   /* add a pseudo-element to create the overlay */
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -179,7 +179,7 @@
   position: relative; /* add position relative to make the overlay absolute */
   width: 100%;
   height: 100%;
-  background-image: url("https://cdn-aekfi.nitrocdn.com/BhHUnZmQXkWPzBaLMaTftVhEvszyNTtP/assets/images/source/rev-32039f4/blog/images/2020/01/employee-management-1536x1024.jpg.webp");
+  background-image: url('https://cdn-aekfi.nitrocdn.com/BhHUnZmQXkWPzBaLMaTftVhEvszyNTtP/assets/images/source/rev-32039f4/blog/images/2020/01/employee-management-1536x1024.jpg.webp');
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -189,7 +189,7 @@
 
 .button-link5::before {
   /* add a pseudo-element to create the overlay */
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -213,7 +213,7 @@
   position: relative; /* add position relative to make the overlay absolute */
   width: 100%;
   height: 100%;
-  background-image: url("https://dynamics.folio3.com/blog/wp-content/uploads/2021/02/shutterstock_1848611224-e1612781141461.jpg");
+  background-image: url('https://dynamics.folio3.com/blog/wp-content/uploads/2021/02/shutterstock_1848611224-e1612781141461.jpg');
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -223,7 +223,7 @@
 
 .button-link6::before {
   /* add a pseudo-element to create the overlay */
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -247,7 +247,7 @@
   position: relative; /* add position relative to make the overlay absolute */
   width: 100%;
   height: 100%;
-  background-image: url("https://www.scmdojo.com/wp-content/uploads/2018/12/Supplier-Relationship-Management-scaled-850x558-1.jpg");
+  background-image: url('https://www.scmdojo.com/wp-content/uploads/2018/12/Supplier-Relationship-Management-scaled-850x558-1.jpg');
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -257,7 +257,7 @@
 
 .button-link7::before {
   /* add a pseudo-element to create the overlay */
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -281,7 +281,7 @@
   position: relative; /* add position relative to make the overlay absolute */
   width: 100%;
   height: 100%;
-  background-image: url("https://zenduit.com/wp-content/uploads/2022/07/Fuel-Management.jpg");
+  background-image: url('https://zenduit.com/wp-content/uploads/2022/07/Fuel-Management.jpg');
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -291,7 +291,7 @@
 
 .button-link8::before {
   /* add a pseudo-element to create the overlay */
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -535,8 +535,8 @@ form h2 {
   margin-bottom: 5px; /* Add some space between the label and the input field */
 }
 
-.form-group input[type="text"],
-.form-group input[type="date"] {
+.form-group input[type='text'],
+.form-group input[type='date'] {
   border-radius: 5px; /* Add rounded edges to the input fields */
 }
 
@@ -695,9 +695,8 @@ form h2 {
 
 /* Ashen **********************************************************/
 
-
 /**********Bhanuka ********************************/
-.form-row{
+.form-row {
   display: flex;
   flex-wrap: wrap;
 }
