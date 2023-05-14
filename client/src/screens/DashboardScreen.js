@@ -8,6 +8,8 @@ import MessageBox from '../components/MessageBox';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import '../index.css';
+import { Helmet } from 'react-helmet-async';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -53,6 +55,9 @@ export default function DashboardScreen() {
   return (
     <div>
       <h1>Dashboard</h1>
+      <Helmet>
+        <title>Dashboard</title>
+      </Helmet>
       {loading ? (
         <LoadingBox />
       ) : error ? (
@@ -62,8 +67,8 @@ export default function DashboardScreen() {
           <Row>
             <Col md={4}>
               <Card>
-                <Card.Body>
-                  <Card.Title>
+                <Card.Body style={{ borderRadius: '10px', fontWeight: '500' }}>
+                  <Card.Title style={{ fontSize: '20px', color: 'black' }}>
                     {summary.users && summary.users[0]
                       ? summary.users[0].numUsers
                       : 0}
@@ -74,8 +79,13 @@ export default function DashboardScreen() {
             </Col>
             <Col md={4}>
               <Card>
-                <Card.Body>
-                  <Card.Title>
+                <Card.Body
+                  style={{
+                    borderRadius: '10px',
+                    fontWeight: '500',
+                  }}
+                >
+                  <Card.Title style={{ fontSize: '20px', color: 'black' }}>
                     {summary.orders && summary.users[0]
                       ? summary.orders[0].numOrders
                       : 0}
@@ -86,8 +96,8 @@ export default function DashboardScreen() {
             </Col>
             <Col md={4}>
               <Card>
-                <Card.Body>
-                  <Card.Title>
+                <Card.Body style={{ borderRadius: '10px', fontWeight: '500' }}>
+                  <Card.Title style={{ fontSize: '20px', color: 'black' }}>
                     Rs.
                     {summary.orders && summary.users[0]
                       ? summary.orders[0].totalSales.toFixed(2)

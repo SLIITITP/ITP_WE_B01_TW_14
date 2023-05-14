@@ -1,8 +1,46 @@
-import { Routes as Switch, Route } from "react-router-dom";
-import { BrowserRouter as Router } from "react-router-dom";
-import Layout from "./components/Layout";
+import { Routes as Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Layout from './components/Layout';
 // import { ToastContextProvider } from "./context/ToastContext";
-import { AuthContextProvider } from "./context/AuthContext";
+import { AuthContextProvider } from './context/AuthContext';
+
+
+//ashen
+import { ToastContainer, toast } from 'react-toastify';
+
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import CreateContact from './pages/CreateContact';
+import AllContact from './pages/AllContact';
+import EditContact from './pages/EditContact';
+import { ToastContextProvider } from './context/ToastContext';
+import CreateEmployee from './pages/CreateEmployee';
+import AllEmployee from './pages/AllEmployees';
+import EditEmployee from './pages/EditEmployee';
+import CreateSalary from './pages/AddSalary';
+import CreateAttendance from './pages/AddAttendance';
+import Report from './pages/CreateReport';
+import Index from './pages';
+import EMDashboard from './pages/EMDashboard';
+import Footer from './components/Footer';
+import Header from './components/Header';
+
+// Bhanuka********************************************************
+//import {Navbar} from './components/Navbar';
+import { AllVehicle } from './pages/AllVehicle';
+import { AddVehicle } from './pages/AddVehicle';
+import { EditVehicle } from './pages/EditVehicle';
+import { VehicleDetail } from './pages/VehicleDetail';
+import { DriverVehicleAssign } from './pages/DriverVehicleAssign';
+import { AddFuel } from './pages/AddFuel';
+import { RepairAssign } from './pages/RepairAssign';
+import { VMDashboard } from './pages/VMDashboard';
+import { AllVehicleDocument } from './pages/AllVehicleDocument';
+import { Editdocument } from './pages/Editdocument';
+import { AddRunnigRecords } from './pages/AddRunnigRecords';
+import { AddRepair } from './pages/AddRepair';
+import { RegisterGarage } from './pages/RegisterGarage';
 
 import { ToastContainer, toast } from "react-toastify";
 
@@ -43,16 +81,17 @@ import { AddRepair } from "./pages/AddRepair";
 import { RegisterGarage } from "./pages/RegisterGarage";
 import { ViewRunningRecords } from "./pages/ViewRunningRecords";
 import { ViewFuelDetails } from "./pages/ViewFuelDetails";
+
 // Bhanuka********************************************************
 
 // Pasindu********************************************************
-import AllSalesReps from "./pages/AllSalesReps";
-import CreateSalesRep from "./pages/CreateRep";
-import EditDelivery from "./pages/EditSalesRep";
-import AllSchedules from "./pages/AllSchedules";
-import CreateSchedule from "./pages/CreateSchedule";
-import EditSchedule from "./pages/EditSchedule";
-import CreateDeliveryReport from "./pages/CreateDeliveryReport";
+import AllSalesReps from './pages/AllSalesReps';
+import CreateSalesRep from './pages/CreateRep';
+import EditDelivery from './pages/EditSalesRep';
+import AllSchedules from './pages/AllSchedules';
+import CreateSchedule from './pages/CreateSchedule';
+import EditSchedule from './pages/EditSchedule';
+import CreateDeliveryReport from './pages/CreateDeliveryReport';
 
 // Pasindu********************************************************
 
@@ -71,55 +110,63 @@ import Allexp from "./pages/AllexpiredAppointments";
 //Wasana
 
 // Yasitha********************************************************
-import CreateStock from "./pages/CreateStock";
-import AllStock from "./pages/AllStocks";
-import CreateCategory from "./pages/CreateCategory";
-import AllCategory from "./pages/AllCategories";
-import EditStock from "./pages/EditStock";
-import EditCategory from "./pages/EditCategory";
-import AddProfit from "./pages/AddProfit";
-import AllProfit from "./pages/AllProfits";
-import EditProfit from "./pages/EditProfit";
-import StockReport from "./pages/CreateReportStock";
-import IMDashboard from "./pages/IMDashboard";
+import CreateStock from './pages/CreateStock';
+import AllStock from './pages/AllStocks';
+import CreateCategory from './pages/CreateCategory';
+import AllCategory from './pages/AllCategories';
+import EditStock from './pages/EditStock';
+import EditCategory from './pages/EditCategory';
+import AddProfit from './pages/AddProfit';
+import AllProfit from './pages/AllProfits';
+import EditProfit from './pages/EditProfit';
+import StockReport from './pages/CreateReportStock';
+import IMDashboard from './pages/IMDashboard';
 
 // Yasitha********************************************************
 
 // Ashen********************************************************
 
-import HomeScreen from "./screens/HomeScreen";
-import ProductScreen from "./screens/ProductScreen";
-import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
-import { LinkContainer } from "react-router-bootstrap";
-import Badge from "react-bootstrap/Badge";
-import Nav from "react-bootstrap/Nav";
-import { useContext, useEffect, useState } from "react";
-import { Store } from "./Store";
-import CartScreen from "./screens/CartScreen";
-import ShippingDetailsScreen from "./screens/ShippingDetailsScreen";
-import PlaceOrderScreen from "./screens/PlaceOrderScreen";
-import SigninScreen from "./screens/SigninScreen";
+import HomeScreen from './screens/HomeScreen';
+import ProductScreen from './screens/ProductScreen';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import { LinkContainer } from 'react-router-bootstrap';
+import Badge from 'react-bootstrap/Badge';
+import Nav from 'react-bootstrap/Nav';
+import { useContext, useEffect, useState } from 'react';
+import { Store } from './Store';
+import CartScreen from './screens/CartScreen';
+import ShippingDetailsScreen from './screens/ShippingDetailsScreen';
+import PlaceOrderScreen from './screens/PlaceOrderScreen';
+import SigninScreen from './screens/SigninScreen';
 // import Header from './components/Header';
-import OrderScreen from "./screens/OrderScreen";
-import OrderHistoryScreen from "./screens/OrderHistoryScreen";
-import { getError } from "./utils";
-import SearchBox from "./components/SearchBox";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import SearchScreen from "./screens/SearchScreen";
-import ProtectedRoute from "./components/ProtectedRoute";
-import AdminRoute from "./components/AdminRoute";
-import DashboardScreen from "./screens/DashboardScreen";
-import OrderListScreen from "./screens/OrderListSCreen";
-import NavigationScreen from "./screens/NavigationScreen";
-import PaymentGatewayScreen from "./screens/PaymentGatewayScreen";
+import OrderScreen from './screens/OrderScreen';
+import OrderHistoryScreen from './screens/OrderHistoryScreen';
+import { getError } from './utils';
+import SearchBox from './components/SearchBox';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import SearchScreen from './screens/SearchScreen';
+import ProtectedRoute from './components/ProtectedRoute';
+import AdminRoute from './components/AdminRoute';
+import DashboardScreen from './screens/DashboardScreen';
+import OrderListScreen from './screens/OrderListSCreen';
+import NavigationScreen from './screens/NavigationScreen';
+import PaymentGatewayScreen from './screens/PaymentGatewayScreen';
 // import Footer from './components/Footer';
 //import CreateCategory from './pages/CreateCategory';
 // import Layout from './components/Layout';
 // import Login from './screens/Login';
 // import { AuthContextProvider } from './context/AuthContext';
+
+import CreateCustomer from './screens/CreateCustomer';
+import CustomerScreen from './screens/CustomerScreen';
+import AllSalary from './pages/AllSalaries';
+import AllAttendance from './pages/AllAttendances';
+import EditCustomerScreen from './screens/EditCustomerScreen';
+
 import CreateCustomer from "./screens/CreateCustomer";
 import CustomerScreen from "./screens/CustomerScreen";
+
 
 
 // Ashen********************************************************
@@ -131,10 +178,10 @@ const App = () => {
   const { cart, userInfo } = state;
 
   const signoutHandler = () => {
-    ctxDispatch({ type: "USER_SIGNOUT" });
-    localStorage.removeItem("userInfo");
-    localStorage.removeItem("cartItems");
-    localStorage.removeItem("shippingDetails");
+    ctxDispatch({ type: 'USER_SIGNOUT' });
+    localStorage.removeItem('userInfo');
+    localStorage.removeItem('cartItems');
+    localStorage.removeItem('shippingDetails');
   };
 
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
@@ -304,17 +351,17 @@ const App = () => {
               <Route
                 path="/admin/dashboard"
                 element={
-                  <AdminRoute>
-                    <DashboardScreen />
-                  </AdminRoute>
+                  // <AdminRoute>
+                  <DashboardScreen />
+                  // </AdminRoute>
                 }
               />
               <Route
                 path="/admin/orders"
                 element={
-                  <AdminRoute>
-                    <OrderListScreen />
-                  </AdminRoute>
+                  // <AdminRoute>
+                  <OrderListScreen />
+                  // </AdminRoute>
                 }
               ></Route>
 
@@ -342,6 +389,11 @@ const App = () => {
                   </AuthContextProvider>
                 }
               />
+              <Route
+                path="/editcustomer/:id"
+                element={<EditCustomerScreen />}
+              />
+
               {/* </Container>
               </main> */}
 

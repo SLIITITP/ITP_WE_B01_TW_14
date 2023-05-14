@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const joi = require("joi");
+const mongoose = require('mongoose');
+const joi = require('joi');
 
 const categorySchema = mongoose.Schema({
   catid: {
@@ -24,18 +24,13 @@ const categorySchema = mongoose.Schema({
     type: Number,
     required: true,
   },
-
-  // postedBy: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'User',
-  // },
 });
 
-categorySchema.pre("save", async function (next) {
+categorySchema.pre('save', async function (next) {
   try {
     if (!this.orderId) {
       let count = await this.constructor.countDocuments({});
-      let id = `CAT${(count + 1).toString().padStart(3, "0")}`;
+      let id = `CAT${(count + 1).toString().padStart(3, '0')}`;
       let duplicate = true;
 
       //Check if id already exists in the database
@@ -45,7 +40,7 @@ categorySchema.pre("save", async function (next) {
           duplicate = false;
         } else {
           count++;
-          id = `CAT${(count + 1).toString().padStart(3, "0")}`;
+          id = `CAT${(count + 1).toString().padStart(3, '0')}`;
         }
       }
 
@@ -68,5 +63,5 @@ const validateCategory = (data) => {
   return schema.validate(data);
 };
 
-const Category = mongoose.model("CategoryModel", categorySchema);
+const Category = mongoose.model('CategoryModel', categorySchema);
 (module.exports = Category), validateCategory;

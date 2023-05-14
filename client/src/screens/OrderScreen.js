@@ -134,7 +134,6 @@ export default function OrderScreen() {
     successReject,
     navigate,
   ]);
-
   async function deliverOrderHandler() {
     try {
       dispatch({ type: 'DELIVER_REQUEST' });
@@ -193,7 +192,7 @@ export default function OrderScreen() {
     const doc = new jsPDF();
 
     // Add background color to the page
-    doc.setFillColor('#f4f4f4');
+    doc.setFillColor('#E6E9ED');
     doc.rect(
       0,
       0,
@@ -254,7 +253,6 @@ export default function OrderScreen() {
       20,
       doc.autoTable.previous.finalY + 30
     );
-
     // Save the PDF
     doc.save(`order_${order.orderId}.pdf`);
   };
@@ -271,7 +269,7 @@ export default function OrderScreen() {
       <h1 className="my-3">Order {order.orderId}</h1>
       <Row>
         <Col md={8}>
-          <Card className="mb-3">
+          <Card className="mb-3" style={{ color: 'black', fontWeight: '400' }}>
             <Card.Body>
               <Card.Title>Shipping</Card.Title>
               <Card.Text>
@@ -307,7 +305,7 @@ export default function OrderScreen() {
               </Card.Text>
             </Card.Body>
           </Card>
-          <Card className="mb-3">
+          <Card className="mb-3" style={{ color: 'black', fontWeight: '400' }}>
             <Card.Body>
               <Card.Title>Credit Details</Card.Title>
               <Card.Text>
@@ -315,17 +313,10 @@ export default function OrderScreen() {
                 {order.shippingDetails.creditDays} <br />
                 <strong>Credit Amount :</strong> {order.totalPrice.toFixed(2)}
               </Card.Text>
-              {/* {order.isPaid ? (
-                <MessageBox variant="success">
-                  Paid at {order.paidAt}
-                </MessageBox>
-              ) : (
-                <MessageBox variant="danger">Not Paid</MessageBox>
-              )} */}
             </Card.Body>
           </Card>
 
-          <Card className="mb-3">
+          <Card className="mb-3" style={{ color: 'black', fontWeight: '400' }}>
             <Card.Body>
               <Card.Title>Items</Card.Title>
               <Row className="align-items-center order-screen-items-head">
@@ -349,7 +340,12 @@ export default function OrderScreen() {
                           alt={item.name}
                           className="img-fluid rounded img-thumbnail"
                         ></img>{' '}
-                        <Link to={`/product/${item.name}`}>{item.name}</Link>
+                        <Link
+                          style={{ letterSpacing: '0px', color: '#0d6efd' }}
+                          to={`/product/${item.name}`}
+                        >
+                          {item.name}
+                        </Link>
                       </Col>
                       <Col md={3}>
                         <span>{item.quantity}</span>
@@ -365,7 +361,7 @@ export default function OrderScreen() {
           </Card>
         </Col>
         <Col md={4}>
-          <Card className="mb-3">
+          <Card className="mb-3" style={{ color: 'black', fontWeight: '400' }}>
             <Card.Body>
               <Card.Title>Order Summary</Card.Title>
               <ListGroup variant="flush">
@@ -398,53 +394,82 @@ export default function OrderScreen() {
                   </Row>
                 </ListGroup.Item>
                 <div className="d-grid">
-                  <Button variant="primary" onClick={generatePDF}>
+                  <Button
+                    variant="primary"
+                    onClick={generatePDF}
+                    style={{
+                      backgroundColor: '#f0c040',
+                      color: 'black',
+                      borderRadius: '10px',
+                      border: '1px black solid',
+                    }}
+                  >
                     Download Order Bill (PDF)
                   </Button>
                 </div>
                 <ListGroup.Item></ListGroup.Item>
-                {userInfo.isAdmin && order.status === 'Pending' && (
-                  <ListGroup.Item>
-                    {loadingAccept && <LoadingBox></LoadingBox>}
-                    <div className="d-grid">
-                      <Button
-                        type="button"
-                        variant="success"
-                        onClick={acceptOrderHandler}
-                      >
-                        Accept Order
-                      </Button>
-                    </div>
-                  </ListGroup.Item>
-                )}
-                {userInfo.isAdmin && order.status === 'Pending' && (
-                  <ListGroup.Item>
-                    {loadingReject && <LoadingBox></LoadingBox>}
-                    <div className="d-grid">
-                      <Button
-                        type="button"
-                        variant="danger"
-                        onClick={rejectOrderHandler}
-                      >
-                        Reject Order
-                      </Button>
-                    </div>
-                  </ListGroup.Item>
-                )}
-                {userInfo.isAdmin && order.status === 'Accepted' && (
-                  <ListGroup.Item>
-                    {loadingDeliver && <LoadingBox></LoadingBox>}
-                    <div className="d-grid">
-                      <Button
-                        type="button"
-                        variant="primary"
-                        onClick={deliverOrderHandler}
-                      >
-                        Deliver Order
-                      </Button>
-                    </div>
-                  </ListGroup.Item>
-                )}
+                {userInfo.user.role === 'Customer Manager' &&
+                  order.status === 'Pending' && (
+                    <ListGroup.Item>
+                      {loadingAccept && <LoadingBox></LoadingBox>}
+                      <div className="d-grid">
+                        <Button
+                          type="button"
+                          variant="success"
+                          onClick={acceptOrderHandler}
+                          style={{
+                            backgroundColor: '#14AA54',
+                            borderRadius: '10px',
+                            border: '1px black solid',
+                          }}
+                        >
+                          Accept Order
+                        </Button>
+                      </div>
+                    </ListGroup.Item>
+                  )}
+                {userInfo.user.role === 'Customer Manager' &&
+                  order.status === 'Pending' && (
+                    <ListGroup.Item>
+                      {loadingReject && <LoadingBox></LoadingBox>}
+                      <div className="d-grid">
+                        <Button
+                          type="button"
+                          variant="danger"
+                          onClick={rejectOrderHandler}
+                          style={{
+                            backgroundColor: '#C0281E',
+                            borderRadius: '10px',
+                            border: '1px black solid',
+                          }}
+                        >
+                          Reject Order
+                        </Button>
+                      </div>
+                    </ListGroup.Item>
+                  )}
+
+                {userInfo.user.role === 'Customer Manager' &&
+                  order.status === 'Accepted' && (
+                    <ListGroup.Item>
+                      {loadingDeliver && <LoadingBox></LoadingBox>}
+                      <div className="d-grid">
+                        <Button
+                          type="button"
+                          variant="primary"
+                          onClick={deliverOrderHandler}
+                          style={{
+                            backgroundColor: '#f0c040',
+                            color: 'black',
+                            borderRadius: '10px',
+                            border: '1px black solid',
+                          }}
+                        >
+                          Deliver Order
+                        </Button>
+                      </div>
+                    </ListGroup.Item>
+                  )}
               </ListGroup>
             </Card.Body>
           </Card>

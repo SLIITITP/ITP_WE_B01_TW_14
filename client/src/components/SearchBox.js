@@ -20,9 +20,18 @@ export default function SearchBox() {
     return null; // don't render the search box if the user is not signed in
   }
   return (
-    <Form className="d-flex me-auto" onSubmit={submitHandler}>
+    <Form
+      className="d-flex me-auto"
+      onSubmit={submitHandler}
+      style={{ height: '60px', paddingTop: '10px' }}
+    >
       <InputGroup>
         <FormControl
+          style={{
+            borderRadius: '10px 0px 0px 10px',
+            height: '45px',
+            border: '#0d6efd solid 0.5px',
+          }}
           type="text"
           name="q"
           id="q"
@@ -31,8 +40,17 @@ export default function SearchBox() {
           aria-label="Search Products"
           aria-describedby="button-search"
         ></FormControl>
-        <Button variant="outline-primary" type="submit" id="button-search">
-          <i className="fas fa-search"></i>
+        <Button
+          variant="outline-primary"
+          type="submit"
+          id="button-search"
+          style={{
+            borderRadius: '0px 10px 10px 0px',
+            height: '45px',
+            border: '#0d6efd solid 0.5px',
+          }}
+        >
+          <i className="fas fa-search" style={{ color: '#0d6efd' }}></i>
         </Button>
       </InputGroup>
     </Form>

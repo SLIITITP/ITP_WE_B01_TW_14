@@ -1,17 +1,17 @@
-const express = require("express");
-const Order = require("../models/orderModel");
-const { isAuth, isAdmin } = require("../utils.js");
-const expressAsyncHandler = require("express-async-handler");
+const express = require('express');
+const Order = require('../models/orderModel');
+const { isAuth, isAdmin } = require('../utils.js');
+const expressAsyncHandler = require('express-async-handler');
 const orderRouter = express.Router();
-const User = require("../models/User");
-const Product = require("../models/productModel.js");
+const User = require('../models/User');
+const Product = require('../models/productModel.js');
 
 orderRouter.get(
-  "/",
+  '/',
   isAuth,
-  isAdmin,
+  //isAdmin,
   expressAsyncHandler(async (req, res) => {
-    const orders = await Order.find().populate("user", "name");
+    const orders = await Order.find().populate('user', 'name');
     res.send(orders);
   })
 );
@@ -25,7 +25,7 @@ orderRouter.get(`/`, async (req, res) => {
   res.send(orderList);
 });
 
-orderRouter.post("/", isAuth, async (req, res) => {
+orderRouter.post('/', isAuth, async (req, res) => {
   const newOrder = new Order({
     orderItems: req.body.orderItems.map((x) => ({ ...x, product: x._id })),
     shippingDetails: req.body.shippingDetails,
@@ -36,20 +36,20 @@ orderRouter.post("/", isAuth, async (req, res) => {
     user: req.user._id,
   });
   const order = await newOrder.save();
-  res.status(201).send({ message: "New Order Created", order });
+  res.status(201).send({ message: 'New Order Created', order });
 });
 
 orderRouter.get(
-  "/summary",
+  '/summary',
   isAuth,
-  isAdmin,
+  // isAdmin,
   expressAsyncHandler(async (req, res) => {
     const orders = await Order.aggregate([
       {
         $group: {
           _id: null,
           numOrders: { $sum: 1 },
-          totalSales: { $sum: "$totalPrice" },
+          totalSales: { $sum: '$totalPrice' },
         },
       },
     ]);
@@ -64,9 +64,9 @@ orderRouter.get(
     const dailyOrders = await Order.aggregate([
       {
         $group: {
-          _id: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
+          _id: { $dateToString: { format: '%Y-%m-%d', date: '$createdAt' } },
           orders: { $sum: 1 },
-          sales: { $sum: "$totalPrice" },
+          sales: { $sum: '$totalPrice' },
         },
       },
       { $sort: { _id: 1 } },
@@ -74,25 +74,25 @@ orderRouter.get(
     const productCategories = await Product.aggregate([
       {
         $group: {
-          _id: "$category",
+          _id: '$category',
           count: { $sum: 1 },
         },
       },
       {
         $lookup: {
-          from: "categories", // Replace 'categories' with the actual name of your category collection in the database
-          localField: "_id",
-          foreignField: "_id",
-          as: "category",
+          from: 'categorymodels',
+          localField: '_id',
+          foreignField: '_id',
+          as: 'category',
         },
       },
       {
-        $unwind: "$category",
+        $unwind: '$category',
       },
       {
         $project: {
           _id: 0,
-          category: "$category.name", // Replace 'name' with the actual field name that contains the category name in your category collection
+          category: '$category.name',
           count: 1,
         },
       },
@@ -102,55 +102,55 @@ orderRouter.get(
 );
 
 orderRouter.put(
-  "/:id/deliver",
+  '/:id/deliver',
   isAuth,
   expressAsyncHandler(async (req, res) => {
     const order = await Order.findById(req.params.id);
     if (order) {
-      order.status = "Delivered";
+      order.status = 'Delivered';
       order.deliveredAt = Date.now();
       await order.save();
-      res.send({ message: "Order Delivered" });
+      res.send({ message: 'Order Delivered' });
     } else {
-      res.status(404).send({ message: "Order Not Found" });
+      res.status(404).send({ message: 'Order Not Found' });
     }
   })
 );
 
 orderRouter.put(
-  "/:id/accept",
+  '/:id/accept',
   isAuth,
   expressAsyncHandler(async (req, res) => {
     const order = await Order.findById(req.params.id);
     if (order) {
-      order.status = "Accepted";
+      order.status = 'Accepted';
       order.acceptedAt = Date.now();
       await order.save();
-      res.send({ message: "Order Accepted" });
+      res.send({ message: 'Order Accepted' });
     } else {
-      res.status(404).send({ message: "Order Not Found" });
+      res.status(404).send({ message: 'Order Not Found' });
     }
   })
 );
 
 orderRouter.put(
-  "/:id/reject",
+  '/:id/reject',
   isAuth,
   expressAsyncHandler(async (req, res) => {
     const order = await Order.findById(req.params.id);
     if (order) {
-      order.status = "Rejected";
+      order.status = 'Rejected';
       order.rejectedAt = Date.now();
       await order.save();
-      res.send({ message: "Order Rejected" });
+      res.send({ message: 'Order Rejected' });
     } else {
-      res.status(404).send({ message: "Order Not Found" });
+      res.status(404).send({ message: 'Order Not Found' });
     }
   })
 );
 
 orderRouter.get(
-  "/mine",
+  '/mine',
   isAuth,
   expressAsyncHandler(async (req, res) => {
     const orders = await Order.find({ user: req.user._id });
@@ -159,29 +159,29 @@ orderRouter.get(
 );
 
 orderRouter.get(
-  "/:id",
+  '/:id',
   isAuth,
   expressAsyncHandler(async (req, res) => {
     const order = await Order.findById(req.params.id);
     if (order) {
       res.send(order);
     } else {
-      res.status(404).send({ message: "Order Not Found" });
+      res.status(404).send({ message: 'Order Not Found' });
     }
   })
 );
 
 orderRouter.delete(
-  "/:id",
+  '/:id',
   isAuth,
-  isAdmin,
+  //isAdmin,
   expressAsyncHandler(async (req, res) => {
     const order = await Order.findById(req.params.id);
     if (order) {
       await order.deleteOne();
-      res.send({ message: "Order Deleted" });
+      res.send({ message: 'Order Deleted' });
     } else {
-      res.status(404).send({ message: "Order Not Found" });
+      res.status(404).send({ message: 'Order Not Found' });
     }
   })
 );

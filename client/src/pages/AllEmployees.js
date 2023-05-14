@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import Spinner from "../components/Spinner";
-import { Modal } from "react-bootstrap";
-import ToastContext from "../context/ToastContext";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import React, { useContext, useEffect, useState } from 'react';
+import Spinner from '../components/Spinner';
+import { Modal } from 'react-bootstrap';
+import ToastContext from '../context/ToastContext';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 // import Button from 'react-bootstrap/Button';
 // import Modal from 'react-bootstrap/Modal';
@@ -16,7 +16,7 @@ const AllEmployee = () => {
   const [employees, setEmployees] = useState([]);
   // const [originalEmployees, setOriginalEmployees] = useState([]);
   // const [employees, setEmployees] = useState(initialEmployees);
-  const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
     setLoading(true);
@@ -26,9 +26,9 @@ const AllEmployee = () => {
     async function fetchData() {
       try {
         const res = await fetch(`http://localhost:8000/api/myemployees`, {
-          method: "GET",
+          method: 'GET',
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         });
         const result = await res.json();
@@ -47,25 +47,25 @@ const AllEmployee = () => {
   }, []);
 
   const deleteEmployee = async (id) => {
-    if (window.confirm("Are you sure you want to delete this contact?")) {
+    if (window.confirm('Are you sure you want to delete this contact?')) {
       try {
         const res = await fetch(`http://localhost:8000/api/deleteemp/${id}`, {
-          method: "DELETE",
+          method: 'DELETE',
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         });
         const result = await res.json();
         if (!result.error) {
           setEmployees(result.employees);
-          toast.success("Deleted Successfully");
+          toast.success('Deleted Successfully');
           setShowModal(false);
         } else {
           toast.error(result.error);
         }
       } catch (err) {
         console.log(err);
-        toast.error("Failed to delete employee. Please try again later.");
+        toast.error('Failed to delete employee. Please try again later.');
       }
     }
   };
@@ -100,7 +100,7 @@ const AllEmployee = () => {
 
   const handleInputChange = (event) => {
     setSearchInput(event.target.value);
-    if (event.target.value === "") {
+    if (event.target.value === '') {
       setEmployees([]);
     }
   };
@@ -116,7 +116,7 @@ const AllEmployee = () => {
             Reload Employee List
           </a>
           <div>
-            <Link className="btn btn-info mb-2" to={"/createemp"} role="button">
+            <Link className="btn btn-info mb-2" to={'/createemp'} role="button">
               Add Employee
             </Link>
           </div>
@@ -178,60 +178,60 @@ const AllEmployee = () => {
                     </button>
                   </form> */}
                   <p>
-                    Your Total Contacts: <strong>{employees.length}</strong>{" "}
+                    Your Total Contacts: <strong>{employees.length}</strong>{' '}
                   </p>
                   <table className="table table-hover">
                     <thead>
                       <tr>
                         <th
                           scope="col"
-                          style={{ width: "10%", whiteSpace: "nowrap" }}
+                          style={{ width: '10%', whiteSpace: 'nowrap' }}
                         >
                           Employee ID
                         </th>
                         <th
                           scope="col"
-                          style={{ width: "15%", whiteSpace: "nowrap" }}
+                          style={{ width: '15%', whiteSpace: 'nowrap' }}
                         >
                           First Name
                         </th>
                         <th
                           scope="col"
-                          style={{ width: "15%", whiteSpace: "nowrap" }}
+                          style={{ width: '15%', whiteSpace: 'nowrap' }}
                         >
                           Last Name
                         </th>
                         <th
                           scope="col"
                           style={{
-                            width: "20%",
-                            whiteSpace: "nowrap",
-                            textAlign: "center",
+                            width: '20%',
+                            whiteSpace: 'nowrap',
+                            textAlign: 'center',
                           }}
                         >
                           Email
                         </th>
                         <th
                           scope="col"
-                          style={{ width: "10%", whiteSpace: "nowrap" }}
+                          style={{ width: '10%', whiteSpace: 'nowrap' }}
                         >
                           Contact Number
                         </th>
                         <th
                           scope="col"
-                          style={{ width: "10%", whiteSpace: "nowrap" }}
+                          style={{ width: '10%', whiteSpace: 'nowrap' }}
                         >
                           Date Joined
                         </th>
                         <th
                           scope="col"
-                          style={{ width: "10%", whiteSpace: "nowrap" }}
+                          style={{ width: '10%', whiteSpace: 'nowrap' }}
                         >
                           Department
                         </th>
                         <th
                           scope="col"
-                          style={{ width: "10%", whiteSpace: "nowrap" }}
+                          style={{ width: '10%', whiteSpace: 'nowrap' }}
                         >
                           Designation
                         </th>
