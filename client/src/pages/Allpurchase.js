@@ -3,6 +3,8 @@ import axios from "axios";
 import { Modal } from "react-bootstrap";
 import ToastContext from "../context/ToastContext";
 import moment from "moment";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 const Allpur = () => {
   const { toast } = useContext(ToastContext);
@@ -137,7 +139,49 @@ const handleCountClick = async () => {
 
 
   //new
+  const handlePrint = (orderid) => {
+    const unit = "pt";
+    const size = "A4";
+    const orientation = "portrait";
+    const marginLeft = 40;
+    const doc = new jsPDF(orientation, unit, size);
+    doc.setFontSize(16);
+    doc.setFont("helvetica", "bold");
+    doc.text(`Purchase Order ${orderid}\n\n`, marginLeft, 40);
   
+    const order = purchases.find((p) => p.orderid === orderid);
+    if (!order) {
+      console.error(`Could not find order with orderid ${orderid}`);
+      return;
+    }
+  
+    // Add supplier details
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "normal");
+    doc.text(`Supplier ID: ${order.supid && order.supid.supid ? order.supid.supid.toString() : ""}`, marginLeft, 70);
+    doc.text(`Requested Date: ${order.requestedDate ? order.requestedDate.toString() : ""}\n\n`, marginLeft, 90);
+  
+    // Add order items
+    doc.setFontSize(14);
+    doc.setFont("helvetica", "bold");
+    doc.text("Order Items", marginLeft, 120);
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "normal");
+    order.items.forEach((item, index) => {
+      const startY = 140 + index * 20;
+      doc.text(`${item.itemName}: ${item.quantity}`, marginLeft, startY);
+    });
+  
+    // Add some extra text
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "italic");
+    const startY = 520;
+    doc.text("Thank you for your order!", marginLeft, startY);
+    doc.setFont("helvetica", "normal");
+    doc.text("Please contact us if you have any questions or concerns.", marginLeft, startY + 20);
+  
+    doc.save(`purchase-order-${orderid}.pdf`);
+  };
 
   return (
     <>
@@ -240,6 +284,7 @@ const handleCountClick = async () => {
         </Modal.Body>
 
         <Modal.Footer>
+        <button className="btn btn-info mx-2" onClick={()=> handlePrint(modalData.orderid)}>Print</button>
         <button className="btn btn-danger" onClick={() => modalData && handleDelete(modalData._id)}>Delete</button>
           <button className="btn btn-warning" onClick={() => setShowModal(false)}>Close</button>
           {!received && <button className="btn btn-success" onClick={() => handleReceived()}>Received</button>}
