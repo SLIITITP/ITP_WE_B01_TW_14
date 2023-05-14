@@ -16,6 +16,7 @@ const Editapp = () =>{
 
     useEffect(() => {
         const fetchUser = async () => {
+          
           try {
             const token = localStorage.getItem('token');
             if (!token) {
@@ -42,6 +43,8 @@ const Editapp = () =>{
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+
         try {
           const token = localStorage.getItem('token');
           if (!token) {
@@ -72,12 +75,13 @@ const Editapp = () =>{
             <form onSubmit={handleSubmit}>
             <div className="form-group">
                     <label htmlFor="name">Supplier Name</label>
+                    {/* new */}
                     <input type="text" className="form-control"id="name" name="name" onChange={handleInputChange} value={user.name}  aria-describedby="nameHelp"/>
                 </div>
 
                 <div className="form-group">
                 <label htmlFor="address">Date</label>
-                    <input type="date" className="form-control" id="date" name="date" onChange={handleInputChange} value={new Date(user.date).toLocaleDateString()} aria-describedby="addressHelp"/>
+                    <input type="date" className="form-control" id="date" name="date" onChange={handleInputChange} value={new Date(user.date).toLocaleDateString()} min={new Date()} aria-describedby="addressHelp"/>
                 </div>
         
                 <div className="form-group">

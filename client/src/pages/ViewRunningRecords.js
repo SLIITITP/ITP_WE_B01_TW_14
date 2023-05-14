@@ -66,7 +66,7 @@ export const ViewRunningRecords = () => {
         };
 
         doc.autoTable(content)
-        doc.text(`\nTotal Mileage: ${totalMileage}`, marginLeft, doc.autoTable.previous.finalY + 10);
+        doc.text(`\nTotal Mileage: ${totalMileage}km`, marginLeft, doc.autoTable.previous.finalY + 10);
         doc.save("runningrecord.pdf")
     }
 
@@ -101,6 +101,7 @@ export const ViewRunningRecords = () => {
                             <b>Vehicle No:</b>
                             <input
                                 type="text"
+                                placeholder="Search"
                                 value={vehicleNo}
                                 onChange={(event) => setVehicleNo(event.target.value)}
                                 class="form-control"
@@ -131,7 +132,7 @@ export const ViewRunningRecords = () => {
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-6 mb-3">
                         <br></br>
-                    <button className="btn btn-warning mx-2" onClick={() => handlePrintAll()}>Generate Report</button>
+                    <button className="btn btn-warning mx-2" onClick={() => handlePrintAll()}><b>Generate Report</b></button>
                     </div>
                 </div>
             </form>

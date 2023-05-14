@@ -5,7 +5,7 @@ import {
   SettingsOutlined,
   ChevronLeft,
   ChevronRightOutlined,
-  HomeOutlined, 
+  HomeOutlined,
   ShoppingCartOutlined,
   Groups2Outlined,
   ReceiptLongOutlined,
@@ -16,7 +16,7 @@ import {
   AdminPanelSettingsOutlined,
   TrendingUpOutlined,
   PieChartOutlined,
-} from "@mui/icons-material";
+} from '@mui/icons-material';
 
 import { useContext, useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
@@ -47,6 +47,8 @@ import {
   faUsersGear,
   faGasPump,
   faTools,
+  faPlus,
+  faList,
 } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = ({ title = 'Southern Agro' }) => {
@@ -222,25 +224,34 @@ const Navbar = ({ title = 'Southern Agro' }) => {
           user && user.role === 'Financial Manager' ? (
             <>
               <li className="nav-item">
-                <Link to="/add-your-one" role="button" className="nav-link">
+                <Link to="/" role="button" className="nav-link">
                   <FontAwesomeIcon
-                    icon={faUserTie}
+                    icon={faChartBar}
                     style={{ marginRight: '10px', color: 'white' }}
                   />
-                  add-your-one
+                  Dashboard
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/add-your one" role="button" className="nav-link">
+                <Link to="/addInv" role="button" className="nav-link">
                   <FontAwesomeIcon
-                    icon={faTruck}
+                    icon={faPlus}
                     style={{ marginRight: '10px', color: 'white' }}
                   />
-                  add-your-one
+                  Add Invoice
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/add-your one" role="button" className="nav-link">
+                <Link to="/allInv" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faList}
+                    style={{ marginRight: '10px', color: 'white' }}
+                  />
+                  Invoice List
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/reportInv" role="button" className="nav-link">
                   <FontAwesomeIcon
                     icon={faFileAlt}
                     style={{ marginRight: '10px', color: 'white' }}
@@ -447,7 +458,7 @@ const Navbar = ({ title = 'Southern Agro' }) => {
           ) : // Driver - Bhanuka Dayananda - Lakshitha Gunathilake
           user && user.role === 'Driver' ? (
             <>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link to="/allvehicle" role="button" className="nav-link">
                   <FontAwesomeIcon
                     icon={faChartBar}
@@ -455,7 +466,7 @@ const Navbar = ({ title = 'Southern Agro' }) => {
                   />
                   Vehicle
                 </Link>
-              </li>
+              </li> */}
 
               <li className="nav-item">
                 <Link
@@ -473,46 +484,6 @@ const Navbar = ({ title = 'Southern Agro' }) => {
                   Add Running Records
                 </Link>
               </li>
-
-              <li className="nav-item">
-                <Link to="/addrepair" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    icon={faClipboardList}
-                    style={{ marginRight: '10px', color: 'white' }}
-                  />
-                  Repair
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/registerGarage" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    icon={faFileAlt}
-                    style={{ marginRight: '10px', color: 'white' }}
-                  />
-                  Garage
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/allDocument" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    icon={faFileAlt}
-                    style={{ marginRight: '10px', color: 'white' }}
-                  />
-                  Document Storage
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/repairAssign" role="button" className="nav-link">
-                  <FontAwesomeIcon
-                    //icon={faFileAlt}
-                    //style={{ marginRight: '10px', color: 'white' }}
-
-                    icon={faTools}
-                    style={{ marginRight: '10px', color: 'white' }}
-                  />
-                  Add Repair
-                </Link>
-              </li>
               <li className="nav-item">
                 <Link to="/addFuel" role="button" className="nav-link">
                   <FontAwesomeIcon
@@ -525,6 +496,58 @@ const Navbar = ({ title = 'Southern Agro' }) => {
                   Add Fuel
                 </Link>
               </li>
+
+              <li className="nav-item">
+                <Link to="/addrepair" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faTools}
+                    style={{ marginRight: '10px', color: 'white' }}
+                  />
+                  Add Repair
+                </Link>
+              </li>
+              {/* <li className="nav-item">
+                <Link to="/registerGarage" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faFileAlt}
+                    style={{ marginRight: '10px', color: 'white' }}
+                  />
+                  Garage
+                </Link>
+              </li> */}
+              {/* <li className="nav-item">
+                <Link to="/allDocument" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faFileAlt}
+                    style={{ marginRight: '10px', color: 'white' }}
+                  />
+                  Document Storage
+                </Link>
+              </li> */}
+              {/* <li className="nav-item">
+                <Link to="/repairAssign" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    //icon={faFileAlt}
+                    //style={{ marginRight: '10px', color: 'white' }}
+
+                    icon={faTools}
+                    style={{ marginRight: '10px', color: 'white' }}
+                  />
+                  Add Repair
+                </Link>
+              </li> */}
+              {/* <li className="nav-item">
+                <Link to="/addFuel" role="button" className="nav-link">
+                  <FontAwesomeIcon
+                    //icon={faFileAlt}
+                    //style={{ marginRight: '10px', color: 'white' }}
+
+                    icon={faGasPump}
+                    style={{ marginRight: '10px', color: 'white' }}
+                  />
+                  Add Fuel
+                </Link>
+              </li> */}
               <li
                 className="nav-item"
                 onClick={() => {
@@ -768,135 +791,130 @@ const Navbar = ({ title = 'Southern Agro' }) => {
               </li>
             </>
           ) : // Administrator - Hasaranga
-          user && user.role === "Administrator" ? (
+          user && user.role === 'Administrator' ? (
             <>
               <li className="nav-item">
                 <Link to="/dashboardAdmin" role="button" className="nav-link">
-                <HomeOutlined />
+                  <HomeOutlined />
                   <FontAwesomeIcon
                     // icon={}
-                    style={{marginRight: "10px", color: "white" }}
+                    style={{ marginRight: '10px', color: 'white' }}
                   />
                   Dashboard
                 </Link>
               </li>
 
               <li className="nav-item">
-                <Link
-                  to="/productsAdmin"
-                  role="button"
-                  className="nav-link"
-                >
-                   <ShoppingCartOutlined />
+                <Link to="/productsAdmin" role="button" className="nav-link">
+                  <ShoppingCartOutlined />
                   <FontAwesomeIcon
                     // icon={faFolder}
-                    style={{ marginRight: "10px", color: "white" }}
+                    style={{ marginRight: '10px', color: 'white' }}
                   />
-
                   Products
                 </Link>
               </li>
 
               <li className="nav-item">
                 <Link to="/users" role="button" className="nav-link">
-                <Groups2Outlined />
+                  <Groups2Outlined />
                   <FontAwesomeIcon
                     // icon={faClipboardList}
-                    style={{ marginRight: "10px", color: "white" }}
+                    style={{ marginRight: '10px', color: 'white' }}
                   />
                   Users
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="/transactions" role="button" className="nav-link">
-                <ReceiptLongOutlined />
+                  <ReceiptLongOutlined />
                   <FontAwesomeIcon
                     // icon={faFileAlt}
-                    style={{ marginRight: "10px", color: "white" }}
+                    style={{ marginRight: '10px', color: 'white' }}
                   />
                   Transactions
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="/overview" role="button" className="nav-link">
-                <PointOfSaleOutlined />
+                  <PointOfSaleOutlined />
                   <FontAwesomeIcon
                     // icon={faFileAlt}
-                    style={{ marginRight: "10px", color: "white" }}
+                    style={{ marginRight: '10px', color: 'white' }}
                   />
                   Overview
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="/daily" role="button" className="nav-link">
-                 <TodayOutlined />
+                  <TodayOutlined />
                   <FontAwesomeIcon
                     // icon={faFileAlt}
-                    style={{ marginRight: "10px", color: "white" }}
+                    style={{ marginRight: '10px', color: 'white' }}
                   />
                   Daily
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="/monthly" role="button" className="nav-link">
-                <CalendarMonthOutlined />
+                  <CalendarMonthOutlined />
                   <FontAwesomeIcon
                     // icon={faFileAlt}
-                    style={{ marginRight: "10px", color: "white" }}
+                    style={{ marginRight: '10px', color: 'white' }}
                   />
                   Monthly
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="/breakdown" role="button" className="nav-link">
-                <PieChartOutlined />
+                  <PieChartOutlined />
                   <FontAwesomeIcon
                     // icon={faFileAlt}
-                    style={{ marginRight: "10px", color: "white" }}
+                    style={{ marginRight: '10px', color: 'white' }}
                   />
                   Breakdown
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="/admin" role="button" className="nav-link">
-                <AdminPanelSettingsOutlined />
+                  <AdminPanelSettingsOutlined />
                   <FontAwesomeIcon
                     // icon={faFileAlt}
-                    style={{ marginRight: "10px", color: "white" }}
+                    style={{ marginRight: '10px', color: 'white' }}
                   />
                   Admin
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="/performance" role="button" className="nav-link">
-                <TrendingUpOutlined />
+                  <TrendingUpOutlined />
                   <FontAwesomeIcon
                     // icon={faFileAlt}
-                    style={{ marginRight: "10px", color: "white" }}
+                    style={{ marginRight: '10px', color: 'white' }}
                   />
                   Performance
                 </Link>
               </li>
-              
+
               <li
                 className="nav-item"
                 onClick={() => {
                   setUser(null);
                   localStorage.clear();
-                  toast.success("Logout Successful!");
-                  navigate("/login", { replace: true });
+                  toast.success('Logout Successful!');
+                  navigate('/login', { replace: true });
                 }}
               >
                 <button className="btn btn-danger">
                   <FontAwesomeIcon
                     icon={faSignOutAlt}
-                    style={{ marginRight: "10px", color: "white" }}
+                    style={{ marginRight: '10px', color: 'white' }}
                   />
                   Logout
                 </button>
               </li>
             </>
-          ): (
+          ) : (
             <>
               <li className="nav-item">
                 <Link
