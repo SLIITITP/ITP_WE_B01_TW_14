@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 // import { ToastContextProvider } from "./context/ToastContext";
 import { AuthContextProvider } from './context/AuthContext';
 
+
 //ashen
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -40,6 +41,47 @@ import { Editdocument } from './pages/Editdocument';
 import { AddRunnigRecords } from './pages/AddRunnigRecords';
 import { AddRepair } from './pages/AddRepair';
 import { RegisterGarage } from './pages/RegisterGarage';
+
+import { ToastContainer, toast } from "react-toastify";
+
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import CreateContact from "./pages/CreateContact";
+import AllContact from "./pages/AllContact";
+import EditContact from "./pages/EditContact";
+import { ToastContextProvider } from "./context/ToastContext";
+import CreateEmployee from "./pages/CreateEmployee";
+import AllEmployee from "./pages/AllEmployees";
+import EditEmployee from "./pages/EditEmployee";
+import CreateSalary from "./pages/AddSalary";
+import CreateAttendance from "./pages/AddAttendance";
+import AllSalary from "./pages/AllSalaries";
+import AllAttendance from "./pages/AllAttendances";
+import Report from "./pages/CreateReport";
+import Index from "./pages";
+import EMDashboard from "./pages/EMDashboard";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+
+// Bhanuka********************************************************
+//import {Navbar} from './components/Navbar';
+import { AllVehicle } from "./pages/AllVehicle";
+import { AddVehicle } from "./pages/AddVehicle";
+import { EditVehicle } from "./pages/EditVehicle";
+import { VehicleDetail } from "./pages/VehicleDetail";
+import { DriverVehicleAssign } from "./pages/DriverVehicleAssign";
+import { AddFuel } from "./pages/AddFuel";
+import { RepairAssign } from "./pages/RepairAssign";
+import { VMDashboard } from "./pages/VMDashboard";
+import { AllVehicleDocument } from "./pages/AllVehicleDocument";
+import { Editdocument } from "./pages/Editdocument";
+import { AddRunnigRecords } from "./pages/AddRunnigRecords";
+import { AddRepair } from "./pages/AddRepair";
+import { RegisterGarage } from "./pages/RegisterGarage";
+import { ViewRunningRecords } from "./pages/ViewRunningRecords";
+import { ViewFuelDetails } from "./pages/ViewFuelDetails";
+
 // Bhanuka********************************************************
 
 // Pasindu********************************************************
@@ -52,6 +94,20 @@ import EditSchedule from './pages/EditSchedule';
 import CreateDeliveryReport from './pages/CreateDeliveryReport';
 
 // Pasindu********************************************************
+
+//Wasana
+import Addsup from "./pages/Addsup";
+import Allsup from "./pages/Allsup";
+import Editsup from "./pages/Editsup";
+import Allpur from "./pages/Allpurchase";
+import Addpur from "./pages/Addpur";
+import Allapp from "./pages/Allappointmens";
+import Addapp from "./pages/Addappointment";
+import Editapp from "./pages/Editappointment";
+import AllRecW from "./pages/AllReportsW";
+import Dashboard from "./pages/DashboardW";
+import Allexp from "./pages/AllexpiredAppointments";
+//Wasana
 
 // Yasitha********************************************************
 import CreateStock from './pages/CreateStock';
@@ -101,11 +157,17 @@ import PaymentGatewayScreen from './screens/PaymentGatewayScreen';
 // import Layout from './components/Layout';
 // import Login from './screens/Login';
 // import { AuthContextProvider } from './context/AuthContext';
+
 import CreateCustomer from './screens/CreateCustomer';
 import CustomerScreen from './screens/CustomerScreen';
 import AllSalary from './pages/AllSalaries';
 import AllAttendance from './pages/AllAttendances';
 import EditCustomerScreen from './screens/EditCustomerScreen';
+
+import CreateCustomer from "./screens/CreateCustomer";
+import CustomerScreen from "./screens/CustomerScreen";
+
+
 
 // Ashen********************************************************
 
@@ -189,6 +251,11 @@ const App = () => {
               <Route path="/addRunningRecords" element={<AddRunnigRecords />} />
               <Route path="/addrepair" element={<AddRepair />} />
               <Route path="/registerGarage" element={<RegisterGarage />} />
+              <Route
+                path="/viewRunningRecords"
+                element={<ViewRunningRecords />}
+              />
+              <Route path="/viewFuelRecords" element={<ViewFuelDetails />} />
               {/* Bhanuka******************************************************** */}
 
               {/* Pasindu******************************************************** */}
@@ -204,6 +271,20 @@ const App = () => {
               />
 
               {/* Pasindu******************************************************** */}
+
+              {/* Wasana*/}
+              <Route path="/addsup" element={<Addsup />} />
+              <Route path="/allsup" element={<Allsup />} />
+              <Route path="/editsup" element={<Editsup />} />
+              <Route path="/allpur" element={<Allpur />} />
+              <Route path="/addpur" element={<Addpur />} />
+              <Route path="/allapp" element={<Allapp />} />
+              <Route path="/addapp" element={<Addapp />} />
+              <Route path="/editapp" element={<Editapp />} />
+              <Route path="/allrepw" element={<AllRecW />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/allexp" element={<Allexp />} />
+              {/* Wasana*/}
 
               {/* Yasitha******************************************************** */}
               <Route path="/createcategory" element={<CreateCategory />} />
