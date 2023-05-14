@@ -151,7 +151,7 @@ const handleClear = () => {
 
           <button
             type="button"
-            onClick={handleClear}
+            onClick={handleClear}  
             className="btn btn-danger my-3 ml-2"
           >
             Clear
