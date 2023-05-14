@@ -78,7 +78,7 @@ export const RegisterGarage = () => {
             <div className="row">
               <div class="mb-3 col-lg-6 col-md-6 col-12">
                 <label for="exampleInputEmail1" class="form-label">
-                  Garage Name
+                  <b>Garage Name</b>
                 </label>
                 <input
                   type="text"
@@ -91,7 +91,7 @@ export const RegisterGarage = () => {
               </div>
               <div class="mb-3 col-lg-6 col-md-6 col-12">
                 <label for="exampleInputPassword1" class="form-label">
-                  Garage Owner
+                  <b>Garage Owner</b>
                 </label>
                 <input
                   type="text"
@@ -104,7 +104,7 @@ export const RegisterGarage = () => {
               </div>
               <div class="mb-3 col-lg-6 col-md-6 col-12">
                 <label for="exampleInputPassword1" class="form-label">
-                  Address
+                  <b>Address</b>
                 </label>
                 <input
                   type="text"
@@ -118,7 +118,7 @@ export const RegisterGarage = () => {
 
               <div class="mb-3 col-lg-6 col-md-6 col-12">
                 <label for="exampleInputPassword1" class="form-label">
-                  Email
+                  <b>Email</b>
                 </label>
                 <input
                   type="text"
@@ -131,7 +131,7 @@ export const RegisterGarage = () => {
               </div>
               <div class="mb-3 col-lg-6 col-md-6 col-12">
                 <label for="exampleInputPassword1" class="form-label">
-                  Contact No
+                  <b>Contact No</b>
                 </label>
                 <input
                   type="text"

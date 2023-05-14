@@ -111,7 +111,7 @@ export const AddFuel = () => {
                     </div> */}
               <div className="row">
                 <Form.Group className="mb-3 col-lg-6 col-md-6 col-12">
-                  <Form.Label>Vehicle No</Form.Label>
+                  <Form.Label><b>Vehicle No</b></Form.Label>
                   <select
                     value={inpval.registerNo}
                     onChange={setdata}
@@ -125,7 +125,7 @@ export const AddFuel = () => {
                   </select>
                 </Form.Group>
                 <div class="mb-3 col-lg-6 col-md-6 col-12">
-                  <label class="form-label">Fuel Type</label>
+                  <label class="form-label"><b>Fuel Type</b></label>
                   <select
                     value={inpval.fuelType}
                     onChange={setdata}
@@ -149,9 +149,10 @@ export const AddFuel = () => {
                   className="mb-3 col-lg-6 col-md-6 col-12"
                   controlId="formBasicEmail"
                 >
-                  <Form.Label>Capacity (L)</Form.Label>
+                  <Form.Label><b>Capacity (L)</b></Form.Label>
                   <Form.Control
                     type="text"
+                    placeholder="Enter Fuel Capacity"
                     value={inpval.capacity}
                     onChange={setdata}
                     name="capacity"
@@ -166,9 +167,10 @@ export const AddFuel = () => {
                   className="mb-3 col-lg-6 col-md-6 col-12"
                   controlId="formBasicEmail"
                 >
-                  <Form.Label>Amount (Rs.)</Form.Label>
+                  <Form.Label><b>Amount (Rs.)</b></Form.Label>
                   <Form.Control
                     type="text"
+                    placeholder="Enter Fuel Amount"
                     value={inpval.Amount}
                     onChange={setdata}
                     name="Amount"
@@ -182,9 +184,10 @@ export const AddFuel = () => {
                   className="mb-3 col-lg-6 col-md-6 col-12"
                   controlId="formBasicEmail"
                 >
-                  <Form.Label>Filling Station</Form.Label>
+                  <Form.Label><b>Filling Station</b></Form.Label>
                   <Form.Control
                     type="text"
+                    placeholder="ex-Galle"
                     value={inpval.fillingStation}
                     onChange={setdata}
                     name="fillingStation"
