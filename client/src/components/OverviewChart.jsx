@@ -1,9 +1,22 @@
 import React, { useMemo } from "react";
 import { ResponsiveLine } from "@nivo/line";
-import { useTheme } from "@mui/material";
+import { useTheme,Button } from "@mui/material";
 import { useGetSalesQuery } from "state/api";
+import { useRef} from "react"
+import { toPng } from 'html-to-image'
+import download from 'downloadjs'
+import {DownloadOutlined} from "@mui/icons-material";
 
 const OverviewChart = ({ isDashboard = false, view }) => {
+  const chart = useRef(null)
+
+  const handleExportSVG =async () => {
+      if (!chart.current) {
+        return
+      }
+      const dataUrl = await toPng(chart.current)
+      download(dataUrl, 'chart.png')
+    }
   const theme = useTheme();
   const { data, isLoading } = useGetSalesQuery();
   console.log("🚀 ~ file: OverviewChart.jsx:9 ~ OverviewChart ~ data:", data)
@@ -48,6 +61,8 @@ const OverviewChart = ({ isDashboard = false, view }) => {
   if (!data || isLoading) return "Loading...";
 
   return (
+   
+      
     <ResponsiveLine
       data={view === "sales" ? totalSalesLine : totalUnitsLine}
       theme={{
@@ -161,6 +176,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
           : undefined
       }
     />
+    
   );
 };
 

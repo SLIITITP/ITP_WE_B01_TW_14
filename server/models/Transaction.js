@@ -1,5 +1,4 @@
-import mongoose from "mongoose";
-
+const mongoose = require('mongoose');
 const TransactionSchema = new mongoose.Schema(
   {
     userId: String,
@@ -13,4 +12,4 @@ const TransactionSchema = new mongoose.Schema(
 );
 
 const Transaction = mongoose.model("Transaction", TransactionSchema);
-export default Transaction;
+module.exports= Transaction;

@@ -1,10 +1,23 @@
 import React, { useMemo } from "react";
-import { Box, useTheme } from "@mui/material";
-import Header from "components/Header";
-import { ResponsiveLine } from "@nivo/line";
+import { Box, useTheme ,Button} from "@mui/material";
+import Header from "components/Header.jsx";
+import { ResponsiveLine } from "@nivo/line"; 
 import { useGetSalesQuery } from "state/api";
-
+import { useRef} from "react"
+import { toPng } from 'html-to-image'
+import download from 'downloadjs'
+import {DownloadOutlined} from "@mui/icons-material";
+import FlexBetween from "components/FlexBetween";
 const Monthly = () => {
+  const chart = useRef(null)
+
+  const handleExportSVG =async () => {
+      if (!chart.current) {
+        return
+      }
+      const dataUrl = await toPng(chart.current)
+      download(dataUrl, 'chart.png')
+    }
   const { data } = useGetSalesQuery();
   const theme = useTheme();
 
@@ -40,7 +53,25 @@ const Monthly = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
+      <FlexBetween>
       <Header title="MONTHLY SALES" subtitle="Chart of monthlysales" />
+       <Button
+            onClick={handleExportSVG}
+            sx={{
+              backgroundColor: theme.palette.secondary.light,
+              color: theme.palette.background.alt,
+              fontSize: "14px",
+              fontWeight: "bold",
+              padding: "10px 20px",
+              marginBottom: "20px"
+              
+            }}
+          >
+            <DownloadOutlined sx={{ mr: "10px" }} />
+            Download Monthly Chart
+          </Button>
+      </FlexBetween>
+      <div style={{ height: '100%', width: '100%' }} ref={chart}>
       <Box height="75vh">
         {data ? (
           <ResponsiveLine
@@ -149,6 +180,7 @@ const Monthly = () => {
           <>Loading...</>
         )}
       </Box>
+      </div>
     </Box>
   );
 };

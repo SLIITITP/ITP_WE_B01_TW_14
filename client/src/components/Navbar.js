@@ -1,6 +1,22 @@
 // //NOTES:
 
 // //Difference between Link and <a> tag in react-router-dom is that Link tag does not refresh the page, it just changes the url in the browser and <a> tag refreshes the page.
+import {
+  SettingsOutlined,
+  ChevronLeft,
+  ChevronRightOutlined,
+  HomeOutlined, 
+  ShoppingCartOutlined,
+  Groups2Outlined,
+  ReceiptLongOutlined,
+  PublicOutlined,
+  PointOfSaleOutlined,
+  TodayOutlined,
+  CalendarMonthOutlined,
+  AdminPanelSettingsOutlined,
+  TrendingUpOutlined,
+  PieChartOutlined,
+} from "@mui/icons-material";
 
 import { useContext, useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
@@ -781,7 +797,136 @@ const Navbar = ({ title = 'Southern Agro' }) => {
                 </button>
               </li>
             </>
-          ) : (
+          ) : // Administrator - Hasaranga
+          user && user.role === "Administrator" ? (
+            <>
+              <li className="nav-item">
+                <Link to="/dashboardAdmin" role="button" className="nav-link">
+                <HomeOutlined />
+                  <FontAwesomeIcon
+                    // icon={}
+                    style={{marginRight: "10px", color: "white" }}
+                  />
+                  Dashboard
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link
+                  to="/productsAdmin"
+                  role="button"
+                  className="nav-link"
+                >
+                   <ShoppingCartOutlined />
+                  <FontAwesomeIcon
+                    // icon={faFolder}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+
+                  Products
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link to="/users" role="button" className="nav-link">
+                <Groups2Outlined />
+                  <FontAwesomeIcon
+                    // icon={faClipboardList}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Users
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/transactions" role="button" className="nav-link">
+                <ReceiptLongOutlined />
+                  <FontAwesomeIcon
+                    // icon={faFileAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Transactions
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/overview" role="button" className="nav-link">
+                <PointOfSaleOutlined />
+                  <FontAwesomeIcon
+                    // icon={faFileAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Overview
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/daily" role="button" className="nav-link">
+                 <TodayOutlined />
+                  <FontAwesomeIcon
+                    // icon={faFileAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Daily
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/monthly" role="button" className="nav-link">
+                <CalendarMonthOutlined />
+                  <FontAwesomeIcon
+                    // icon={faFileAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Monthly
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/breakdown" role="button" className="nav-link">
+                <PieChartOutlined />
+                  <FontAwesomeIcon
+                    // icon={faFileAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Breakdown
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/admin" role="button" className="nav-link">
+                <AdminPanelSettingsOutlined />
+                  <FontAwesomeIcon
+                    // icon={faFileAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Admin
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/performance" role="button" className="nav-link">
+                <TrendingUpOutlined />
+                  <FontAwesomeIcon
+                    // icon={faFileAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Performance
+                </Link>
+              </li>
+              
+              <li
+                className="nav-item"
+                onClick={() => {
+                  setUser(null);
+                  localStorage.clear();
+                  toast.success("Logout Successful!");
+                  navigate("/login", { replace: true });
+                }}
+              >
+                <button className="btn btn-danger">
+                  <FontAwesomeIcon
+                    icon={faSignOutAlt}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Logout
+                </button>
+              </li>
+            </>
+          ): (
             <>
               <li className="nav-item">
                 <Link

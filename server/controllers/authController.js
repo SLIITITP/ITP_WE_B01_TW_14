@@ -1,7 +1,7 @@
-import User from "../models/Userdata";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import asyncHandler from "express-async-handler";
+const User = require("../models/Userdata");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const asyncHandler = require("express-async-handler");
 
 // @desc Login
 // @route POST /auth
@@ -61,7 +61,7 @@ const login = asyncHandler(async (req, res) => {
 const refresh = (req, res) => {
   const cookies = req.cookies;
 
-  if (!cookies?.jwt) return res.status(401).json({ message: "Unauthorized" });
+  if (!cookies || !cookies.jwt) return res.status(401).json({ message: "Unauthorized" });
 
   const refreshToken = cookies.jwt;
 
@@ -97,9 +97,9 @@ const refresh = (req, res) => {
 // @access Public - just to clear cookie if exists
 const logout = (req, res) => {
   const cookies = req.cookies;
-  if (!cookies?.jwt) return res.sendStatus(204); //No content
+  if (!cookies || !cookies.jwt) return res.sendStatus(204); //No content
   res.clearCookie("jwt", { httpOnly: true, sameSite: "None", secure: true });
   res.json({ message: "Cookie cleared" });
 };
 
-export { login, refresh, logout };
+module.exports = { login, refresh, logout };

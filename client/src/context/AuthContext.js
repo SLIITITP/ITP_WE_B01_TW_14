@@ -70,6 +70,13 @@ export const AuthContextProvider = ({ children }) => {
         localStorage.setItem('token', result.token);
         setUser(result.user);
         toast.success(`Welcome ${result.user.name}`);
+
+        ctxDispatch({ type: "USER_SIGNIN", payload: result });
+        localStorage.setItem("userInfo", JSON.stringify(result));
+        
+        result.user.role === "Administrator" ?  navigate("/dashboardAdmin", { replace: true }): navigate("/", { replace: true });
+       
+
         ctxDispatch({ type: 'USER_SIGNIN', payload: result });
         localStorage.setItem('userInfo', JSON.stringify(result));
 
@@ -78,6 +85,7 @@ export const AuthContextProvider = ({ children }) => {
         } else {
           navigate('/', { replace: true });
         }
+
       } else {
         toast.error(result.error);
       }

@@ -29,4 +29,4 @@ const OverallStatSchema = new mongoose.Schema(
 );
 
 const OverallStat = mongoose.model("OverallStat", OverallStatSchema);
-export default OverallStat;
+module.exports= OverallStat;

@@ -7,23 +7,20 @@ import {
   Collapse,
   Button,
   Typography,
-  Rating,
   useTheme,
-  useMediaQuery,
+  CardMedia 
 } from "@mui/material"; 
 
 import { useGetProductsQuery } from "state/api";
-import Header from "components/Header";
+import Header from "components/Header.jsx";
 
 const Product = ({
   _id,
   name,
   description,
   price,
-  rating,
-  category,
+  imageUrl,
   supply,
-  stat,
 }) => {
   const theme = useTheme();
   const [isExpanded, setIsExpanded] = useState(false);
@@ -37,22 +34,28 @@ const Product = ({
       }}
     >
       <CardContent>
-        <Typography
+        {/* <Typography
           sx={{ fontSize: 14 }}
           color={theme.palette.secondary[700]}
           gutterBottom
         >
           {category}
-        </Typography>
-        <Typography variant="h5" component="div">
+        </Typography> */}
+        <Typography variant="h5" component="div" height="45px">
           {name}
         </Typography>
         <Typography sx={{ mb: "1.5rem" }} color={theme.palette.secondary[400]}>
           ${Number(price).toFixed(2)}
         </Typography>
-        <Rating value={rating} readOnly />
+        <CardMedia
+          component="img"
+           height="194"
+           image={imageUrl}
+            alt="image"
+      />
+        {/* <Rating value={rating} readOnly /> */}
 
-        <Typography variant="body2">{description}</Typography>
+        <Typography variant="body2" mt="7px"height="20px">{description}</Typography>
       </CardContent>
       <CardActions>
         <Button
@@ -73,13 +76,13 @@ const Product = ({
       >
         <CardContent>
           <Typography>id: {_id}</Typography>
-          <Typography>Supply Left: {supply}</Typography>
-          <Typography>
+          <Typography>Supplier: {supply}</Typography>
+          {/* <Typography>
             Yearly Sales This Year: {stat.yearlySalesTotal}
-          </Typography>
-          <Typography>
+          </Typography> */}
+          {/* <Typography>
             Yearly Units Sold This Year: {stat.yearlyTotalSoldUnits}
-          </Typography>
+          </Typography> */}
         </CardContent>
       </Collapse>
     </Card>
@@ -110,22 +113,20 @@ const Products = () => {
               _id,
               name,
               description,
-              price,
-              rating,
+              sellingprice,
+              imageUrl,
               category,
-              supply,
-              stat,
+              supplier,
             }) => (
               <Product
                 key={_id}
                 _id={_id}
                 name={name}
                 description={description}
-                price={price}
-                rating={rating}
+                price={sellingprice}
+                imageUrl = {imageUrl}
                 category={category}
-                supply={supply}
-                stat={stat}
+                supply={supplier}
               />
             )
           )}

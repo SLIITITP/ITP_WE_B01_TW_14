@@ -1,6 +1,6 @@
-import OverallStat from "../models/OverallStat.js";
+const OverallStat = require ("../models/OverallStat.js");
 
-export const getSales = async (req, res) => {
+const getSales = async (req, res) => {
   try {
     const overallStats = await OverallStat.find();
 
@@ -9,3 +9,5 @@ export const getSales = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+module.exports = getSales

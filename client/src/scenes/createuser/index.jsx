@@ -1,12 +1,14 @@
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './index.css'
 import { Box ,useTheme} from "@mui/material";
-import Header from "components/Header";
+import Header from "components/Header.jsx";
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useCreateUserMutation } from  '../../state/api';
 import { useNavigate } from 'react-router-dom';
+import ToastContext from "../../context/ToastContext";
+import { MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem } from 'mdb-react-ui-kit';
 
 import {
   MDBBtn,
@@ -21,12 +23,13 @@ from 'mdb-react-ui-kit';
 
 const Createuser = () => {
 
+  const { toast } = useContext(ToastContext);
+
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
-    occupation: '',
     phoneNumber: '',
     role:'',
   });
@@ -37,7 +40,6 @@ const Createuser = () => {
     name: '',
     email: '',
     password: '',
-    occupation: '',
     phoneNumber: '',
     role:'',
   });
@@ -46,6 +48,11 @@ const Createuser = () => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
     setFormErrors({ ...formErrors, [name]: '' });
+  };
+
+  const handleDropdownChange = (value) => {
+    setFormData({ ...formData, role: value });
+    setFormErrors({ ...formErrors, role: '' });
   };
 
 
@@ -64,15 +71,12 @@ const Createuser = () => {
     if (formData.password.trim() === '') {
       errors.password = 'Password is required';
     }
-    if (formData.occupation.trim() === '') {
-      errors.occupation = 'Occupation is required';
-    }
     if (formData.phoneNumber.trim() === '') {
       errors.phoneNumber = 'Phone number is required';
-      console.log()
+   
     }
-    if (formData.role.trim() === '' || ( (formData.role.toLowerCase().trim()) && (formData.role.toLowerCase().trim() !== 'admin')) ) {
-          errors.role = 'Enter a valid role';
+    if (formData.role === 'Select Role' || formData.role === '' ) {
+          errors.role = 'Enter a role';
     } 
     else if (!/^\d{10}$/.test(formData.phoneNumber)) {
       errors.phoneNumber = 'Phone number is invalid';
@@ -81,23 +85,24 @@ const Createuser = () => {
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
     } else {
-      formData.role=formData.role.toLowerCase().trim()
+    
       createUser(formData);
       navigate("/users")
-      alert("User Created successfully!")
+      toast.success('User Created successfully');
+
     }
   };
   return (
     <Box m="1.5rem 2.5rem">
        <Header title="Users" subtitle="Create user accounts" />
      <Box
-        mt="40px"
-        height="75vh"
+        // mt="40px"
+        // height="75vh"
       
         >
     <MDBContainer fluid className='d-flex align-items-center justify-content-center bg-image'  >
       <div className='mask gradient-custom-3'></div>
-      <MDBCard className='m-5' style={{maxWidth: '600px'}}>
+      <MDBCard className='m-5' style={{maxWidth: '500px'}}>
         <MDBCardBody className='px-5'>
          
     
@@ -107,11 +112,48 @@ const Createuser = () => {
           {formErrors.email && <div className='text-danger mb-2'>{formErrors.email}</div>}
           <MDBInput wrapperClass='mb-4' label='Password' size='lg' id='password' type='password' name='password' value={formData.password} onChange={handleInputChange} />
           {formErrors.password && <div className='text-danger mb-2'>{formErrors.password}</div>}
-          <MDBInput wrapperClass='mb-4' label='Occupation' size='lg' id='occupation' type='text' name='occupation' value={formData.occupation} onChange={handleInputChange} />
-          {formErrors.occupation && <div className='text-danger mb-2 '>{formErrors.occupation}</div>}
+          
           <MDBInput wrapperClass='mb-4' label='Phone Number' size='lg' id='phoneNumber' type='text' name='phoneNumber' value={formData.phoneNumber} onChange={handleInputChange} />
           {formErrors.phoneNumber && <div className='text-danger mb-2 '>{formErrors.phoneNumber}</div>}
-          <MDBInput wrapperClass='mb-4' label='Role' size='lg' id='role' type='text' name='role' value={formData.role} onChange={handleInputChange} />
+          {/* <MDBInput wrapperClass='mb-4' label='Role' size='lg' id='role' type='text' name='role' value={formData.role} onChange={handleInputChange} /> */}
+        
+          <MDBDropdown style={{ marginBottom: '15px' }}>
+            <MDBDropdownToggle wrapperClass='mb-4' size='lg'>
+              {formData.role || 'Select Role'}
+            </MDBDropdownToggle>
+              <MDBDropdownMenu style={{cursor: 'pointer'}}>
+                <MDBDropdownItem   onClick={() => handleDropdownChange("Administator")}>
+                  Administrator
+                </MDBDropdownItem>
+                <MDBDropdownItem  onClick={() => handleDropdownChange("HR Manager")}>
+                  HR Manager
+                </MDBDropdownItem>
+                <MDBDropdownItem  onClick={() => handleDropdownChange("Inventory Control Manager")}>
+                  Inventory Control Manager
+                </MDBDropdownItem>
+                <MDBDropdownItem  onClick={() => handleDropdownChange("Customer Manager")}>
+                   Customer Manager
+                </MDBDropdownItem>
+                <MDBDropdownItem  onClick={() => handleDropdownChange("Delivery Manager")}>
+                Delivery Manager
+                </MDBDropdownItem>
+                <MDBDropdownItem  onClick={() => handleDropdownChange("Vehicle Manager")}>
+                Vehicle Manager
+                </MDBDropdownItem>
+                <MDBDropdownItem  onClick={() => handleDropdownChange("Driver")}>
+                Driver
+                </MDBDropdownItem>
+                <MDBDropdownItem  onClick={() => handleDropdownChange("Supplier Manager")}>
+                   Supplier Manager
+                </MDBDropdownItem>
+                <MDBDropdownItem  onClick={() => handleDropdownChange("Financial Manager")}>
+                  Financial Manager
+                </MDBDropdownItem>
+                <MDBDropdownItem  onClick={() => handleDropdownChange("Customer")}>
+                  Customer
+                </MDBDropdownItem>
+              </MDBDropdownMenu>
+          </MDBDropdown>
           {formErrors.role && <div className='text-danger mb-2 '>{formErrors.role}</div>}
           
           <MDBBtn className='mb-4 w-100 gradient-custom-4' size='lg' type='submit' disabled={isLoading} onClick={handleSubmit}>

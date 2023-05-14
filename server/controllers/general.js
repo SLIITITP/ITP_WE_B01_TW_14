@@ -1,8 +1,8 @@
-import User from "../models/Userdata";
-import OverallStat from "../models/OverallStat.js";
-import Transaction from "../models/Transaction.js";
-
-export const getUser = async (req, res) => {
+const User = require("../models/Userdata"); 
+const Users = require("../models/User"); 
+const OverallStat = require("../models/OverallStat.js");
+const Transaction = require("../models/Transaction.js");
+exports.getUser = async (req, res) => {
   try {
     const { id } = req.params;
     const user = await User.findById(id);
@@ -11,8 +11,8 @@ export const getUser = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
-export const deleteCustomers = async (req, res) => {
-  const user = await User.findById(req.params.id);
+exports.deleteCustomers = async (req, res) => {
+  const user = await Users.findById(req.params.id);
   if (user) {
     await user.deleteOne();
     res.send({ message: "User Deleted" });
@@ -21,10 +21,10 @@ export const deleteCustomers = async (req, res) => {
   }
 };
 
-export const updateCutomers = async (req, res) => {
+exports.updateCutomers = async (req, res) => {
   const { id, name, email, phoneNumber, occupation, role } = req.body;
   try {
-    const updatedData = await User.findByIdAndUpdate(
+    const updatedData = await Users.findByIdAndUpdate(
       id,
       { id, name, email, phoneNumber, occupation, role },
       { new: true }
@@ -34,11 +34,11 @@ export const updateCutomers = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-export const getDashboardStats = async (req, res) => {
+exports.getDashboardStats = async (req, res) => {
   try {
-    // hardcoded values
+   
     const currentMonth = "November";
-    const currentYear = 2021;
+    const currentYear = 2023;
     const currentDay = "2021-11-15";
 
     /* Recent Transactions */
@@ -79,15 +79,14 @@ export const getDashboardStats = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
-export const createCutomers = async (req, res, next) => {
+exports.createCutomers = async (req, res, next) => {
   try {
-    const { name, email, password, occupation, phoneNumber, role } = req.body;
+    const { name, email, password, phoneNumber, role } = req.body;
 
-    const user = new User({
+    const user = new Users({
       name,
       email,
       password,
-      occupation,
       phoneNumber,
       role,
     });
