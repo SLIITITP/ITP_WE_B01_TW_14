@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 
 import { useContext, useState } from "react";
 
@@ -70,6 +71,9 @@ const AddProfit = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Add Profit</title>
+      </Helmet>
       <h2 className="text-center bg-darkgreen text-white p-2">Stock Profit Details</h2>
       <div className="row justify-content-center">
         <div className="col-12 col-md-6">
