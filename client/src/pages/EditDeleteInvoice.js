@@ -213,8 +213,11 @@ const EditInvoice = () => {
                 value={invoiceDetails.invoiceNo}
                 onChange={handleInputChange}
                 placeholder='INV001'
+                pattern='^INV\d{3,5}$'
+                title='Invoice number must start with INV and contain 3-5 digits after it.'
+                minLength={6}
+                maxLength={8}
                 required
-                fdprocessedid='8n20f'
               />
             </div>
 
@@ -231,7 +234,6 @@ const EditInvoice = () => {
                 onChange={handleInputChange}
                 placeholder='2023-01-01'
                 required
-                fdprocessedid='8n20f'
               />
             </div>
             <hr className='line' />
@@ -247,7 +249,8 @@ const EditInvoice = () => {
                 name='cusName'
                 value={invoiceDetails.cusName}
                 onChange={handleInputChange}
-                fdprocessedid='8n20f'
+                minLength={4}
+                maxLength={50}
               />
             </div>
             <div className='form-group'>
@@ -262,7 +265,8 @@ const EditInvoice = () => {
                 onChange={handleInputChange}
                 name='mobileNo'
                 value={invoiceDetails.mobileNo}
-                fdprocessedid='8n20f'
+                pattern='[0-9]{10}'
+                title='Mobile number must has 10 digits.'
               />
             </div>
             <div className='form-group'>
@@ -277,8 +281,9 @@ const EditInvoice = () => {
                 onChange={handleInputChange}
                 name='busiName'
                 value={invoiceDetails.busiName}
+                minLength={4}
+                maxLength={50}
                 required
-                fdprocessedid='8n20f'
               />
             </div>
             <div className='form-group'>
@@ -294,7 +299,8 @@ const EditInvoice = () => {
                 name='address'
                 // defaultValue={invoiceDetails.address}
                 value={invoiceDetails.address}
-                fdprocessedid='8n20f'
+                minLength={0}
+                maxLength={50}
               />
             </div>
             <hr className='line' />
@@ -309,7 +315,6 @@ const EditInvoice = () => {
                 value={invoiceDetails.payMethod}
                 onChange={handleInputChange}
                 required
-                fdprocessedid='8n2of'
               >
                 <option value=''>Select Payment method</option>
                 <option value='cheque'>Cheque Payment</option>
@@ -390,6 +395,8 @@ const EditInvoice = () => {
                 name='bankCode'
                 value={invoiceDetails.bankCode}
                 disabled={invoiceDetails.payMethod === "cash"}
+                minLength={0}
+                maxLength={15}
                 // fdprocessedid='8n20f'
               />
             </div>
@@ -405,6 +412,8 @@ const EditInvoice = () => {
                 name='bankDate'
                 value={invoiceDetails.bankDate}
                 disabled={invoiceDetails.payMethod === "cash"}
+                minLength={0}
+                maxLength={15}
                 // fdprocessedid='8n20f'
               />
             </div>
@@ -420,6 +429,8 @@ const EditInvoice = () => {
                 name='cheqNo'
                 value={invoiceDetails.cheqNo}
                 disabled={invoiceDetails.payMethod === "cash"}
+                minLength={0}
+                maxLength={15}
                 // fdprocessedid='8n20f'
               />
             </div>
@@ -439,7 +450,7 @@ const EditInvoice = () => {
                   onChange={handleInputChange}
                   name='paidAmount'
                   value={invoiceDetails.paidAmount}
-                  fdprocessedid='8n20f'
+                  pattern='^\d{1,10}\.\d{2}$'
                   required
                 />
               </div>

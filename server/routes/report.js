@@ -175,6 +175,86 @@ router.get("/report", async (req, res) => {
   }
 });
 
+//invoice entry system report generating daily, weekly, monthly
+router.get("/report/:type", async (req, res) => {
+  try {
+    const { type } = req.params;
+    const invoices = await Invoice.find();
+    const doc = new PDFDocument();
+    let reportTitle = "Southern Agro Serve (Pvt) Ltd Report\n\n\n";
+    let filteredInvoices = [];
+
+    switch (type) {
+      case "daily":
+        const today = new Date();
+        reportTitle += `Daily Report - ${today.toDateString()}\n\n\n`;
+        filteredInvoices = invoices.filter(
+          (invoice) =>
+            new Date(invoice.issuedDate).toDateString() === today.toDateString()
+        );
+        break;
+      case "weekly":
+        const curr = new Date();
+        const first = curr.getDate() - curr.getDay();
+        const last = first + 6;
+        const startDate = new Date(curr.setDate(first));
+        const endDate = new Date(curr.setDate(last));
+        reportTitle += `Weekly Report - ${startDate.toDateString()} to ${endDate.toDateString()}\n\n\n`;
+        filteredInvoices = invoices.filter(
+          (invoice) =>
+            new Date(invoice.issuedDate) >= startDate &&
+            new Date(invoice.issuedDate) <= endDate
+        );
+        break;
+      case "monthly":
+        const todayMonth = new Date().getMonth();
+        reportTitle += `Monthly Report - ${new Date().toLocaleString(
+          "default",
+          {
+            month: "long",
+          }
+        )}\n\n\n`;
+        filteredInvoices = invoices.filter(
+          (invoice) => new Date(invoice.issuedDate).getMonth() === todayMonth
+        );
+        break;
+      default:
+        return res.status(400).json({ error: "Invalid report type" });
+    }
+
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader(
+      "Content-Disposition",
+      `attachment; filename=${type}_report.pdf`
+    );
+
+    doc.fontSize(40).fillColor("blue").text(reportTitle, { align: "center" });
+    doc.fontSize(20).fillColor("black").text("Invoice Details:\n");
+
+    filteredInvoices.forEach((invoice) => {
+      doc.fontSize(18).text(
+        `Invoice No : ${invoice.invoiceNo}\n
+        Date of issued : ${invoice.issuedDate}\n
+        Customer Name : ${invoice.cusName}\n
+        Business Name : ${invoice.busiName}\n
+        Address : ${invoice.address}\n
+        Mobile Number : ${invoice.mobileNo}\n
+        Payment method : ${invoice.payMethod}\n
+        Bank Code : ${invoice.bankCode}\n
+        Banking Date : ${invoice.bankDate}\n
+        Cheque No : ${invoice.cheqNo}\n
+        Paid Amount : ${invoice.paidAmount}\n\n\n`
+      );
+    });
+
+    doc.pipe(res);
+    doc.end();
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Error generating report" });
+  }
+});
+
 module.exports = router;
 
 // //https://www.npmjs.com/package/pdfkit

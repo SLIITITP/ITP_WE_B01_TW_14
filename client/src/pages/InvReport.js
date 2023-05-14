@@ -38,7 +38,7 @@ const AllInvoice = () => {
     fetchData();
   }, []);
 
-  const handleDownload = async () => {
+  const handleDownloadReport = async () => {
     setLoading(true);
     try {
       const res = await axios.get("http://localhost:8000/invoice/report", {
@@ -56,21 +56,71 @@ const AllInvoice = () => {
     setLoading(false);
   };
 
+  const handleDownloadReportType = async (type) => {
+    setLoading(true);
+    try {
+      const res = await axios.get(
+        `http://localhost:8000/invoice/report/${type}`,
+        {
+          responseType: "blob",
+        }
+      );
+      const url = window.URL.createObjectURL(new Blob([res.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute(
+        "download",
+        `Southern Agro Serve (Pvt) Ltd ${type} Report.pdf`
+      );
+      document.body.appendChild(link);
+      link.click();
+    } catch (err) {
+      console.log(err);
+    }
+    setLoading(false);
+  };
+
   return (
     <>
       <div>
-        <h1 className='hometitle'>Customer Invoices</h1>
+        {/* <h1 className='text-center bg-darkgreen text-white p-2'>
+          Report Generate
+        </h1> */}
         <div className='d-flex justify-content-between'>
-          <a href='/report' className='btn btn-danger my-2'>
+          <a href='/reportInv' className='btn btn-danger my-2'>
             Reload Invoice List
           </a>
           <div>
+            <h4 style={{ verticalAlign: "middle", display: "inline-block" }}>
+              Download:
+            </h4>
             <button
               className='btn btn-info mb-2'
-              onClick={handleDownload}
+              onClick={handleDownloadReport}
               disabled={loading}
             >
-              {loading ? "Generating report..." : "Download Report"}
+              {loading ? "Generating report..." : "All Invoice Report"}
+            </button>
+            <button
+              className='btn btn-info mb-2'
+              onClick={() => handleDownloadReportType("daily")}
+              disabled={loading}
+            >
+              {loading ? "Generating report..." : "Daily Report"}
+            </button>
+            <button
+              className='btn btn-info mb-2'
+              onClick={() => handleDownloadReportType("weekly")}
+              disabled={loading}
+            >
+              {loading ? "Generating report..." : "Weekly Report"}
+            </button>
+            <button
+              className='btn btn-info mb-2'
+              onClick={() => handleDownloadReportType("monthly")}
+              disabled={loading}
+            >
+              {loading ? "Generating report..." : "Monthly Report"}
             </button>
           </div>
         </div>

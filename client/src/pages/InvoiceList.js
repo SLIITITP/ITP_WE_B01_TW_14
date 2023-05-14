@@ -106,7 +106,9 @@ const AllInvoice = () => {
   return (
     <>
       <div>
-        <h1 className='hometitle'>Customer Invoices</h1>
+        <h1 className='text-center bg-darkgreen text-white p-2'>
+          Customer Invoices
+        </h1>
         <div className='d-flex justify-content-between'>
           <a href='/allInv' className='btn btn-danger my-2'>
             Reload Invoice List
@@ -220,12 +222,12 @@ const AllInvoice = () => {
                         >
                           Business Name
                         </th>
-                        <th
+                        {/* <th
                           scope='col'
                           style={{ width: "10%", whiteSpace: "nowrap" }}
                         >
                           Address
-                        </th>
+                        </th> */}
                         <th
                           scope='col'
                           style={{ width: "10%", whiteSpace: "nowrap" }}
@@ -275,7 +277,7 @@ const AllInvoice = () => {
                           <td>{invoice.cusName}</td>
                           <td>{invoice.mobileNo}</td>
                           <td>{invoice.busiName}</td>
-                          <td>{invoice.address}</td>
+                          {/* <td>{invoice.address}</td> */}
                           <td>{invoice.payMethod}</td>
                           {/* <td>{invoice.bankCode}</td>
                           <td>{invoice.bankDate}</td>

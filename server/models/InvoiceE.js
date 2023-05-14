@@ -109,9 +109,9 @@ const validateInvoice = (invoice) => {
       .max(8)
       .min(6)
       .required(),
-    issuedDate: Joi.string().min(4).max(50).required(),
-    cusName: Joi.string().min(4).max(100).optional(),
-    busiName: Joi.string().min(4).max(100).required(),
+    issuedDate: Joi.string().min(4).max(15).required(),
+    cusName: Joi.string().min(4).max(50).optional(),
+    busiName: Joi.string().min(4).max(50).required(),
     address: Joi.string().min(0).max(100).optional(),
     mobileNo: Joi.string()
       // .min(0)
@@ -119,7 +119,7 @@ const validateInvoice = (invoice) => {
       .pattern(/^[0-9]+$/),
     payMethod: Joi.string().min(4).max(10).required(),
     bankCode: Joi.string().min(0).max(15).optional(),
-    bankDate: Joi.string().min(0).max(50).optional(),
+    bankDate: Joi.string().min(0).max(15).optional(),
     cheqNo: Joi.string().min(0).max(15).optional(),
     paidAmount: Joi.string().min(2).max(100).required(),
   });

@@ -22,6 +22,8 @@ import {
   faUserTie,
   faFolder,
   faClipboardList,
+  faPlus,
+  faList,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = ({ title = "Southern Agro" }) => {
@@ -63,7 +65,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
 
   return (
     <>
-      <button className="toggle-btn" onClick={toggleSidebar}>
+      <button className='toggle-btn' onClick={toggleSidebar}>
         {showSidebar ? <FaTimes /> : <FaBars />}
       </button>
       <div
@@ -72,14 +74,14 @@ const Navbar = ({ title = "Southern Agro" }) => {
         onMouseEnter={handleMouseEnter} // handle mouse enter event
         onMouseLeave={handleMouseLeave} // handle mouse leave event
       >
-        <ul className="navbar-nav">
-          <p className="nav-link">{dateTime.toLocaleString()}</p>
+        <ul className='navbar-nav'>
+          <p className='nav-link'>{dateTime.toLocaleString()}</p>
 
           {/* HR Manager - Yeran Kodithuwakku*/}
           {user && user.role === "HR Manager" ? (
             <>
-              <li className="nav-item">
-                <Link to="/" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faChartBar}
                     style={{ marginRight: "10px", color: "white" }}
@@ -87,8 +89,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Dashboard
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/index" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/index' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faUsers}
                     style={{ marginRight: "10px", color: "white" }}
@@ -96,8 +98,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Employee
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/addsalary" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/addsalary' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faMoneyBillAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -105,8 +107,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Salary
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/addattendance" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/addattendance' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faCalendarAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -114,8 +116,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Attendance
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/createreport" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/createreport' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faFileAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -124,7 +126,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
               <li
-                className="nav-item"
+                className='nav-item'
                 onClick={() => {
                   setUser(null);
                   localStorage.clear();
@@ -132,7 +134,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   navigate("/login", { replace: true });
                 }}
               >
-                <button className="btn btn-danger">
+                <button className='btn btn-danger'>
                   <FontAwesomeIcon
                     icon={faSignOutAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -144,8 +146,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
           ) : // Delivery  Manager - Pasindu Jayasinghe
           user && user.role === "Delivery Manager" ? (
             <>
-              <li className="nav-item">
-                <Link to="/allsalesreps" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/allsalesreps' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faUserTie}
                     style={{ marginRight: "10px", color: "white" }}
@@ -153,8 +155,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Sales Representatives
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/myschedules" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/myschedules' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faTruck}
                     style={{ marginRight: "10px", color: "white" }}
@@ -162,11 +164,11 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Delivery Schedules
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className='nav-item'>
                 <Link
-                  to="/createdeliveryreport"
-                  role="button"
-                  className="nav-link"
+                  to='/createdeliveryreport'
+                  role='button'
+                  className='nav-link'
                 >
                   <FontAwesomeIcon
                     icon={faFileAlt}
@@ -176,7 +178,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
               <li
-                className="nav-item"
+                className='nav-item'
                 onClick={() => {
                   setUser(null);
                   localStorage.clear();
@@ -184,7 +186,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   navigate("/login", { replace: true });
                 }}
               >
-                <button className="btn btn-danger">
+                <button className='btn btn-danger'>
                   <FontAwesomeIcon
                     icon={faSignOutAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -196,26 +198,35 @@ const Navbar = ({ title = "Southern Agro" }) => {
           ) : // Financial  Manager - Chamikara vithanage
           user && user.role === "Financial Manager" ? (
             <>
-              <li className="nav-item">
-                <Link to="/add-your-one" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/' role='button' className='nav-link'>
                   <FontAwesomeIcon
-                    icon={faUserTie}
+                    icon={faChartBar}
                     style={{ marginRight: "10px", color: "white" }}
                   />
-                  add-your-one
+                  Dashboard
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/add-your one" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/addInv' role='button' className='nav-link'>
                   <FontAwesomeIcon
-                    icon={faTruck}
+                    icon={faPlus}
                     style={{ marginRight: "10px", color: "white" }}
                   />
-                  add-your-one
+                  Add Invoice
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/add-your one" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/allInv' role='button' className='nav-link'>
+                  <FontAwesomeIcon
+                    icon={faList}
+                    style={{ marginRight: "10px", color: "white" }}
+                  />
+                  Invoice List
+                </Link>
+              </li>
+              <li className='nav-item'>
+                <Link to='/reportInv' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faFileAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -224,7 +235,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
               <li
-                className="nav-item"
+                className='nav-item'
                 onClick={() => {
                   setUser(null);
                   localStorage.clear();
@@ -232,7 +243,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   navigate("/login", { replace: true });
                 }}
               >
-                <button className="btn btn-danger">
+                <button className='btn btn-danger'>
                   <FontAwesomeIcon
                     icon={faSignOutAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -244,8 +255,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
           ) : // Admin - Hasaranga Mallwarachchi
           user && user.role === "Administrator" ? (
             <>
-              <li className="nav-item">
-                <Link to="/" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faChartBar}
                     style={{ marginRight: "10px", color: "white" }}
@@ -254,7 +265,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
               <li
-                className="nav-item"
+                className='nav-item'
                 onClick={() => {
                   setUser(null);
                   localStorage.clear();
@@ -262,7 +273,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   navigate("/login", { replace: true });
                 }}
               >
-                <button className="btn btn-danger">
+                <button className='btn btn-danger'>
                   <FontAwesomeIcon
                     icon={faSignOutAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -274,8 +285,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
           ) : // Inventory Control Manager - Yasitha Dewmin
           user && user.role === "Inventory Control Manager" ? (
             <>
-              <li className="nav-item">
-                <Link to="/myprofits" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/myprofits' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faChartBar}
                     style={{ marginRight: "10px", color: "white" }}
@@ -284,8 +295,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
 
-              <li className="nav-item">
-                <Link to="/mycategories" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/mycategories' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faFolder}
                     style={{ marginRight: "10px", color: "white" }}
@@ -294,8 +305,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
 
-              <li className="nav-item">
-                <Link to="/mystocks" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/mystocks' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faClipboardList}
                     style={{ marginRight: "10px", color: "white" }}
@@ -303,8 +314,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Inventory
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/stockreport" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/stockreport' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faFileAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -313,7 +324,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
               <li
-                className="nav-item"
+                className='nav-item'
                 onClick={() => {
                   setUser(null);
                   localStorage.clear();
@@ -321,7 +332,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   navigate("/login", { replace: true });
                 }}
               >
-                <button className="btn btn-danger">
+                <button className='btn btn-danger'>
                   <FontAwesomeIcon
                     icon={faSignOutAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -333,8 +344,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
           ) : // Vehicle Manager - Bhanuka Dayananda
           user && user.role === "Vehicle Manager" ? (
             <>
-              <li className="nav-item">
-                <Link to="/allvehicle" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/allvehicle' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faChartBar}
                     style={{ marginRight: "10px", color: "white" }}
@@ -343,11 +354,11 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
 
-              <li className="nav-item">
+              <li className='nav-item'>
                 <Link
-                  to="/addRunningRecords"
-                  role="button"
-                  className="nav-link"
+                  to='/addRunningRecords'
+                  role='button'
+                  className='nav-link'
                 >
                   <FontAwesomeIcon
                     icon={faFolder}
@@ -357,8 +368,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
 
-              <li className="nav-item">
-                <Link to="/addrepair" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/addrepair' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faClipboardList}
                     style={{ marginRight: "10px", color: "white" }}
@@ -366,8 +377,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Repair
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/registerGarage" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/registerGarage' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faFileAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -375,8 +386,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Garage
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/allDocument" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/allDocument' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faFileAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -384,8 +395,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Document Storage
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/repairAssign" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/repairAssign' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faFileAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -393,8 +404,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Repair Assign
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/addFuel" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/addFuel' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faFileAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -403,7 +414,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
               <li
-                className="nav-item"
+                className='nav-item'
                 onClick={() => {
                   setUser(null);
                   localStorage.clear();
@@ -411,7 +422,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   navigate("/login", { replace: true });
                 }}
               >
-                <button className="btn btn-danger">
+                <button className='btn btn-danger'>
                   <FontAwesomeIcon
                     icon={faSignOutAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -423,8 +434,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
           ) : // Driver - Bhanuka Dayananda - Lakshitha Gunathilake
           user && user.role === "Driver" ? (
             <>
-              <li className="nav-item">
-                <Link to="/allvehicle" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/allvehicle' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faChartBar}
                     style={{ marginRight: "10px", color: "white" }}
@@ -433,11 +444,11 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
 
-              <li className="nav-item">
+              <li className='nav-item'>
                 <Link
-                  to="/addRunningRecords"
-                  role="button"
-                  className="nav-link"
+                  to='/addRunningRecords'
+                  role='button'
+                  className='nav-link'
                 >
                   <FontAwesomeIcon
                     icon={faFolder}
@@ -447,8 +458,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
 
-              <li className="nav-item">
-                <Link to="/addrepair" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/addrepair' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faClipboardList}
                     style={{ marginRight: "10px", color: "white" }}
@@ -456,8 +467,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Repair
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/registerGarage" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/registerGarage' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faFileAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -465,8 +476,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Garage
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/allDocument" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/allDocument' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faFileAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -474,8 +485,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Document Storage
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/repairAssign" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/repairAssign' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faFileAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -483,8 +494,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Repair Assign
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/addFuel" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/addFuel' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faFileAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -493,7 +504,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
               <li
-                className="nav-item"
+                className='nav-item'
                 onClick={() => {
                   setUser(null);
                   localStorage.clear();
@@ -501,7 +512,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   navigate("/login", { replace: true });
                 }}
               >
-                <button className="btn btn-danger">
+                <button className='btn btn-danger'>
                   <FontAwesomeIcon
                     icon={faSignOutAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -513,8 +524,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
           ) : // Supplier Manager - Wasana Fernando
           user && user.role === "Supplier Manager" ? (
             <>
-              <li className="nav-item">
-                <Link to="/allvehicle" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/allvehicle' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faChartBar}
                     style={{ marginRight: "10px", color: "white" }}
@@ -523,11 +534,11 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
 
-              <li className="nav-item">
+              <li className='nav-item'>
                 <Link
-                  to="/addRunningRecords"
-                  role="button"
-                  className="nav-link"
+                  to='/addRunningRecords'
+                  role='button'
+                  className='nav-link'
                 >
                   <FontAwesomeIcon
                     icon={faFolder}
@@ -537,8 +548,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
 
-              <li className="nav-item">
-                <Link to="/addrepair" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/addrepair' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faClipboardList}
                     style={{ marginRight: "10px", color: "white" }}
@@ -546,8 +557,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Repair
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/registerGarage" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/registerGarage' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faFileAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -555,8 +566,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Garage
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/allDocument" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/allDocument' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faFileAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -564,8 +575,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Document Storage
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/repairAssign" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/repairAssign' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faFileAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -573,8 +584,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Repair Assign
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/addFuel" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/addFuel' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faFileAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -583,7 +594,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
               <li
-                className="nav-item"
+                className='nav-item'
                 onClick={() => {
                   setUser(null);
                   localStorage.clear();
@@ -591,7 +602,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   navigate("/login", { replace: true });
                 }}
               >
-                <button className="btn btn-danger">
+                <button className='btn btn-danger'>
                   <FontAwesomeIcon
                     icon={faSignOutAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -603,8 +614,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
           ) : // Customer Manager - Ashen Illesinghe
           user && user.role === "Customer Manager" ? (
             <>
-              <li className="nav-item">
-                <Link to="/allvehicle" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/allvehicle' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faChartBar}
                     style={{ marginRight: "10px", color: "white" }}
@@ -613,11 +624,11 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
 
-              <li className="nav-item">
+              <li className='nav-item'>
                 <Link
-                  to="/addRunningRecords"
-                  role="button"
-                  className="nav-link"
+                  to='/addRunningRecords'
+                  role='button'
+                  className='nav-link'
                 >
                   <FontAwesomeIcon
                     icon={faFolder}
@@ -627,8 +638,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
 
-              <li className="nav-item">
-                <Link to="/addrepair" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/addrepair' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faClipboardList}
                     style={{ marginRight: "10px", color: "white" }}
@@ -636,8 +647,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Repair
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/registerGarage" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/registerGarage' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faFileAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -645,8 +656,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Garage
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/allDocument" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/allDocument' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faFileAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -654,8 +665,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Document Storage
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/repairAssign" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/repairAssign' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faFileAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -663,8 +674,8 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   Repair Assign
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/addFuel" role="button" className="nav-link">
+              <li className='nav-item'>
+                <Link to='/addFuel' role='button' className='nav-link'>
                   <FontAwesomeIcon
                     icon={faFileAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -673,7 +684,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                 </Link>
               </li>
               <li
-                className="nav-item"
+                className='nav-item'
                 onClick={() => {
                   setUser(null);
                   localStorage.clear();
@@ -681,7 +692,7 @@ const Navbar = ({ title = "Southern Agro" }) => {
                   navigate("/login", { replace: true });
                 }}
               >
-                <button className="btn btn-danger">
+                <button className='btn btn-danger'>
                   <FontAwesomeIcon
                     icon={faSignOutAlt}
                     style={{ marginRight: "10px", color: "white" }}
@@ -692,10 +703,10 @@ const Navbar = ({ title = "Southern Agro" }) => {
             </>
           ) : (
             <>
-              <li className="nav-item">
+              <li className='nav-item'>
                 <Link
-                  to="/login"
-                  className="nav-link"
+                  to='/login'
+                  className='nav-link'
                   style={{ textDecoration: "none" }}
                 >
                   <FontAwesomeIcon
