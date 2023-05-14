@@ -141,7 +141,7 @@ export const ViewRunningRecords = () => {
 
             <div style={{ position: 'relative' }}>
                 <div style={{ position: 'absolute', top: -40, right: 0 }}>
-                    <h2>Total Mileage: {totalMileage}</h2>
+                    <h2>Total Mileage: {totalMileage}km</h2>
                 </div>
                 <div className="row">
                     <div className="col-xl-12 col-g-12">
@@ -165,7 +165,7 @@ export const ViewRunningRecords = () => {
                                                     <TableCell className="tableCell">{opts.driverName}</TableCell>
                                                     <TableCell className="tableCell">{opts.routeDetails}</TableCell>
                                                     <TableCell className="tableCell">
-                                                        {opts.noOfMiles}
+                                                        {opts.noOfMiles} km
                                                     </TableCell>
                                                     <TableCell className="tableCell">
                                                         {new Date(opts.deliverdate).toLocaleDateString()}
