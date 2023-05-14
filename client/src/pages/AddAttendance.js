@@ -124,6 +124,8 @@ const CreateAttendance = () => {
                 value={userDetails.date}
                 onChange={handleInputChange}
                 placeholder="01-01-2021"
+                max={new Date().toISOString().split("T")[0]} //to restrict the date to today's date by blocking the future dates
+                min={new Date().toISOString().split("T")[0]} //to restrict the date to today's date by blocking the past dates
                 required
                 fdprocessedid="8n2of"
               />
