@@ -58,6 +58,7 @@ export default function CartScreen() {
                         src={item.imageUrl}
                         alt={item.name}
                         className="img-fluid rounded img-thumbnail"
+                        style={{ maxWidth: '80px' }}
                       ></img>{' '}
                       <Link
                         to={`/product/${item.name}`}
@@ -113,7 +114,13 @@ export default function CartScreen() {
             <Card.Body>
               <ListGroup variant="flush">
                 <ListGroup.Item>
-                  <h5 style={{ letterSpacing: '0px', fontWeight: '500' }}>
+                  <h5
+                    style={{
+                      letterSpacing: '0px',
+                      fontWeight: '400',
+                      fontSize: '16px',
+                    }}
+                  >
                     <b>
                       Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}{' '}
                       items) : Rs.
@@ -137,7 +144,7 @@ export default function CartScreen() {
                         border: '1px black solid',
                       }}
                     >
-                      Proceed to Checkout
+                      <b>Proceed to Checkout</b>
                     </Button>
                   </div>
                 </ListGroup.Item>

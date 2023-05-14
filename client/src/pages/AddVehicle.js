@@ -166,7 +166,7 @@ export const AddVehicle = () => {
           <div className="row">
             <div class="mb-3 col-lg-6 col-md-6 col-12">
               <label for="exampleInputEmail1" class="form-label">
-                Register No
+                <b>Register No</b>  
               </label>
               <input
                 type="text"
@@ -183,7 +183,7 @@ export const AddVehicle = () => {
             </div>
             <div class="mb-3 col-lg-6 col-md-6 col-12">
               <label for="exampleInputEmail1" class="form-label">
-                Vehicle Type
+                <b>Vehicle Type</b>
               </label>
               <input
                 type="text"
@@ -200,7 +200,7 @@ export const AddVehicle = () => {
             </div>
             <div class="mb-3 col-lg-6 col-md-6 col-12">
               <label for="exampleInputPassword1" class="form-label">
-                Brand
+                <b>Brand</b>
               </label>
               <input
                 type="email"
@@ -215,7 +215,7 @@ export const AddVehicle = () => {
             </div>
             <div class="mb-3 col-lg-6 col-md-6 col-12">
               <label for="exampleInputPassword1" class="form-label">
-                Model
+                <b>Model</b>
               </label>
               <input
                 type="text"
@@ -230,7 +230,7 @@ export const AddVehicle = () => {
             </div>
             <div class="mb-3 col-lg-6 col-md-6 col-12">
               <label for="exampleInputPassword1" class="form-label">
-                Fuel Type
+                <b>Fuel Type</b>
               </label>
               <select
                 value={inpval.fuelType}
@@ -247,7 +247,7 @@ export const AddVehicle = () => {
               )}
             </div>
             <Form.Group className="mb-3 col-lg-6" controlId="formBasicEmail">
-              <Form.Label>Select Vehicle Image</Form.Label>
+              <Form.Label><b>Select Vehicle Image</b></Form.Label>
               <Form.Control
                 type="file"
                 name="user_profile"
@@ -256,12 +256,12 @@ export const AddVehicle = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3 col-lg-6" controlId="formBasicEmail">
-              <Form.Label>Select Vehicle Status</Form.Label>
+              <Form.Label><b>Select Vehicle Status</b></Form.Label>
               <Select options={options} onChange={setStatusValue} />
             </Form.Group>
             <div class="mb-3 col-lg-6 col-md-6 col-12">
               <label for="exampleInputPassword1" class="form-label">
-                Vehicle Color
+                <b>Vehicle Color</b>
               </label>
               <input
                 type="text"
@@ -278,7 +278,7 @@ export const AddVehicle = () => {
             </div>
             <div class="mb-3 col-lg-6 col-md-6 col-12">
               <label for="exampleInputPassword1" class="form-label">
-                Manufacture Year
+                <b>Manufacture Year</b>
               </label>
               <input
                 type="text"
@@ -295,7 +295,7 @@ export const AddVehicle = () => {
             </div>
             <div class="mb-3 col-lg-6 col-md-6 col-12">
               <label for="exampleInputPassword1" class="form-label">
-                Chassis No
+                <b>Chassis No</b>
               </label>
               <input
                 type="text"
@@ -310,7 +310,7 @@ export const AddVehicle = () => {
             </div>
             <div class="mb-3 col-lg-6 col-md-6 col-12">
               <label for="exampleInputPassword1" class="form-label">
-                Licence Expired Date
+                <b>Licence Expired Date</b>
               </label>
               <input
                 type="date"
@@ -328,7 +328,7 @@ export const AddVehicle = () => {
 
             <div class="mb-3 col-lg-6 col-md-6 col-12">
               <label for="exampleInputPassword1" class="form-label">
-                Insurance Expired Date
+                <b>Insurance Expired Date</b>
               </label>
               <input
                 type="date"

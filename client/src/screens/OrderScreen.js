@@ -339,6 +339,7 @@ export default function OrderScreen() {
                           src={item.imageUrl}
                           alt={item.name}
                           className="img-fluid rounded img-thumbnail"
+                          style={{ maxWidth: '100px' }}
                         ></img>{' '}
                         <Link
                           style={{ letterSpacing: '0px', color: '#0d6efd' }}
@@ -348,10 +349,14 @@ export default function OrderScreen() {
                         </Link>
                       </Col>
                       <Col md={3}>
-                        <span>{item.quantity}</span>
+                        <span>
+                          <b>{item.quantity}</b>
+                        </span>
                       </Col>
                       <Col md={3}>
-                        Rs. {(item.sellingprice * item.quantity).toFixed(2)}
+                        <b>
+                          Rs. {(item.sellingprice * item.quantity).toFixed(2)}
+                        </b>
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -404,7 +409,7 @@ export default function OrderScreen() {
                       border: '1px black solid',
                     }}
                   >
-                    Download Order Bill (PDF)
+                    <b>Download Order Bill (PDF)</b>
                   </Button>
                 </div>
                 <ListGroup.Item></ListGroup.Item>
@@ -423,7 +428,7 @@ export default function OrderScreen() {
                             border: '1px black solid',
                           }}
                         >
-                          Accept Order
+                          <b>Accept Order</b>
                         </Button>
                       </div>
                     </ListGroup.Item>
@@ -443,7 +448,7 @@ export default function OrderScreen() {
                             border: '1px black solid',
                           }}
                         >
-                          Reject Order
+                          <b>Reject Order</b>
                         </Button>
                       </div>
                     </ListGroup.Item>
@@ -465,7 +470,7 @@ export default function OrderScreen() {
                             border: '1px black solid',
                           }}
                         >
-                          Deliver Order
+                          <b>Deliver Order</b>
                         </Button>
                       </div>
                     </ListGroup.Item>

@@ -171,7 +171,7 @@ function ProductScreen() {
                       onClick={addToCartHandler}
                       variant="primary"
                     >
-                      Add to Cart
+                      <b>Add to Cart</b>
                     </Button>
                   </div>
                 </Stack>

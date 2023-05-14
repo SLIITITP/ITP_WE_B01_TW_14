@@ -245,7 +245,7 @@ export const VMDashboard = () => {
                     Total Garage's
                   </h6>
                   <span><b>{getgaragedata.length}</b></span><br></br>
-                  <span><b>{getscheduledata.length}</b></span>
+                  {/* <span><b>{getscheduledata.length}</b></span> */}
                 </div>
               </article>
             </div>
