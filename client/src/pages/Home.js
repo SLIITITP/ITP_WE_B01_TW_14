@@ -89,7 +89,7 @@ const Home = () => {
 
           <div className="col-lg-4 col-md-6 mb-4">
             <Link
-              to={'/index'}
+              //to={'/index'}
               to={'/allsup'}
               className="btn btn-success btn-lg btn-block  button-link button-link7"
             >
