@@ -72,7 +72,7 @@ const CreateSalesRep = () => {
             name="empid"
             value={userDetails.empid}
             onChange={handleInputChange}
-            placeholder="E001"
+            placeholder="EM001"
             required
             fdprocessedid="8n2of"
           />
