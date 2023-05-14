@@ -157,7 +157,7 @@ export const AddRepair = () => {
                             <Form.Control type="email" value={inpval.registerNo} onChange={setdata} name="registerNo" placeholder="Enter Vehicle No" />
                         </Form.Group> */}
               <Form.Group className="mb-3 col-lg-6 col-md-6 col-12">
-                <Form.Label>Vehicle No</Form.Label>
+                <Form.Label><b>Vehicle No</b></Form.Label>
                 <select
                   value={inpval.registerNo}
                   onChange={setdata}
@@ -178,7 +178,7 @@ export const AddRepair = () => {
                 className="mb-3 col-lg-6 col-md-6 col-12"
                 controlId="formBasicEmail"
               >
-                <Form.Label>Added Driver</Form.Label>
+                <Form.Label><b>Added Driver</b></Form.Label>
                 <Form.Control
                   type="text"
                   value={inpval.addedDriver}
@@ -191,7 +191,7 @@ export const AddRepair = () => {
                             <Form.Control type="email" value={inpval.garage} onChange={setdata} name="garage" placeholder="Enter garage" />
                         </Form.Group> */}
               <Form.Group className="mb-3 col-lg-6 col-md-6 col-12">
-                <Form.Label>Garage</Form.Label>
+                <Form.Label><b>Garage</b></Form.Label>
                 <select
                   value={inpval.garage}
                   onChange={setdata}
@@ -208,7 +208,7 @@ export const AddRepair = () => {
                 className="mb-3 col-lg-6 col-md-6 col-12"
                 controlId="formBasicEmail"
               >
-                <Form.Label>Amount</Form.Label>
+                <Form.Label><b>Amount(Rs.)</b></Form.Label>
                 <Form.Control
                   type="text"
                   value={inpval.Amount}
@@ -221,7 +221,7 @@ export const AddRepair = () => {
                 className="mb-3 col-lg-6 col-md-6 col-12"
                 controlId="formBasicPassword"
               >
-                <Form.Label>Invoice</Form.Label>
+                <Form.Label><b>Invoice</b></Form.Label>
                 <Form.Control
                   type="file"
                   name="invoiceImg"
@@ -233,7 +233,7 @@ export const AddRepair = () => {
                 className="mb-3 col-lg-6 col-md-6 col-12"
                 controlId="formBasicEmail"
               >
-                <Form.Label>Comment</Form.Label>
+                <Form.Label><b>Comment</b></Form.Label>
                 <Form.Control
                   as="textarea"
                   rows={3}
