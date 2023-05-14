@@ -91,6 +91,7 @@ export const ViewFuelDetails = () => {
                             <b>Vehicle No:</b>
                             <input
                                 type="text"
+                                placeholder="Search"
                                 value={vehicleNo}
                                 onChange={(event) => setVehicleNo(event.target.value)}
                                 class="form-control"
@@ -121,7 +122,7 @@ export const ViewFuelDetails = () => {
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-6 mb-3">
                         <br></br>
-                    <button className="btn btn-warning mx-2" onClick={() => handlePrintAll()}>Generate Report</button>
+                    <button className="btn btn-warning mx-2" onClick={() => handlePrintAll()}><b>Generate Report</b></button>
                     </div>
                 </div>
             </form>
@@ -145,7 +146,7 @@ export const ViewFuelDetails = () => {
                                     <TableRow>
                                         <TableCell className="tableCell">Vehicle No</TableCell>
                                         <TableCell className="tableCell">Fuel Type</TableCell>
-                                        <TableCell className="tableCell">Capacity</TableCell>
+                                        <TableCell className="tableCell">Capacity(L)</TableCell>
                                         <TableCell className="tableCell">Amount</TableCell>
                                         <TableCell className="tableCell">Fuel Date</TableCell>
                                     </TableRow>
