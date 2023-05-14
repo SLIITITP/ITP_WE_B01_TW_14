@@ -67,11 +67,16 @@ export default function ShippingDetailsScreen() {
       <Helmet>
         <title>Shipping Details</title>
       </Helmet>
-      <div className="container small-container">
+      <div
+        className="container small-container"
+        style={{ fontWeight: '400', color: 'black' }}
+      >
         <h1 className="my-3">Shipping Details</h1>
         <Form onSubmit={submitHandler}>
           <Form.Group className="mb-3" controlId="companyName">
-            <Form.Label>Company Name</Form.Label>
+            <Form.Label>
+              <strong>Company Name</strong>
+            </Form.Label>
             <Form.Control
               type="text"
               value={companyName}
@@ -80,7 +85,9 @@ export default function ShippingDetailsScreen() {
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="customerName">
-            <Form.Label>Customer Name</Form.Label>
+            <Form.Label>
+              <strong>Customer Name</strong>
+            </Form.Label>
             <Form.Control
               type="text"
               value={customerName}
@@ -89,7 +96,9 @@ export default function ShippingDetailsScreen() {
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="shippingAddress">
-            <Form.Label>Shipping Address</Form.Label>
+            <Form.Label>
+              <strong>Shipping Address</strong>
+            </Form.Label>
             <Form.Control
               type="text"
               value={shippingAddress}
@@ -98,7 +107,9 @@ export default function ShippingDetailsScreen() {
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="city">
-            <Form.Label>City</Form.Label>
+            <Form.Label>
+              <strong>City</strong>
+            </Form.Label>
             <Form.Control
               type="text"
               value={city}
@@ -107,18 +118,23 @@ export default function ShippingDetailsScreen() {
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="contactNo">
-            <Form.Label>Contact Number</Form.Label>
+            <Form.Label>
+              <strong>Contact Number</strong>
+            </Form.Label>
             <Form.Control
-              type="text"
+              type="tel"
               maxLength={10}
               minLength={10}
+              pattern="[0-9]{10}"
               value={contactNo}
               onChange={(e) => setContactNo(e.target.value)}
               required
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="creditDays">
-            <Form.Label>Credit Days </Form.Label>
+            <Form.Label>
+              <strong>Credit Days </strong>
+            </Form.Label>
             <br />
             <select
               value={creditDays}
@@ -133,7 +149,16 @@ export default function ShippingDetailsScreen() {
             </select>
           </Form.Group>
           <div className="mb-3 text-center">
-            <Button variant="primary" type="submit">
+            <Button
+              variant="primary"
+              type="submit"
+              style={{
+                backgroundColor: '#f0c040',
+                color: 'black',
+                borderRadius: '10px',
+                border: '1px black solid',
+              }}
+            >
               Continue
             </Button>
           </div>

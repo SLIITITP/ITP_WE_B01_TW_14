@@ -80,8 +80,19 @@ function ProductScreen() {
           ></img>
         </Col>
         <Col md={6}>
-          <ListGroup variant="flush" className="product-detail-info">
-            <ListGroup.Item variant="success">
+          <ListGroup
+            variant="flush"
+            className="product-detail-info"
+            style={{
+              borderRadius: '20px',
+              border: '#100901 1px solid',
+              fontWeight: '400',
+            }}
+          >
+            <ListGroup.Item
+              variant="success"
+              style={{ borderRadius: '20px 20px 0px 0px', border: '#100901 ' }}
+            >
               <Helmet>
                 <title>{product.name}</title>
               </Helmet>
@@ -121,23 +132,45 @@ function ProductScreen() {
                 <Col>
                   {product.countInStock > 0 ? (
                     <h5>
-                      <Badge bg="success">
+                      <Badge
+                        bg="success"
+                        style={{
+                          borderRadius: '8px',
+                        }}
+                      >
                         {product.countInStock} units available
                       </Badge>
                     </h5>
                   ) : (
                     <h5>
-                      <Badge bg="danger">Out of Stock</Badge>
+                      <Badge bg="danger" style={{ borderRadius: '8px' }}>
+                        Out of Stock
+                      </Badge>
                     </h5>
                   )}
                 </Col>
               </Row>
             </ListGroup.Item>
             {product.countInStock > 0 && (
-              <ListGroup.Item>
-                <Stack className="col-md-5 mx-auto">
+              <ListGroup.Item
+                style={{
+                  borderRadius: '0px 0px 20px 20px',
+                  border: '#100901 ',
+                }}
+              >
+                <Stack className="col-md-6 mx-auto">
                   <div className="d-grid">
-                    <Button onClick={addToCartHandler} variant="primary">
+                    <Button
+                      style={{
+                        backgroundColor: '#f0c040',
+                        borderRadius: '10px',
+                        color: 'black',
+                        border: '1px solid',
+                        height: '50px',
+                      }}
+                      onClick={addToCartHandler}
+                      variant="primary"
+                    >
                       Add to Cart
                     </Button>
                   </div>
@@ -147,43 +180,6 @@ function ProductScreen() {
           </ListGroup>
         </Col>
       </Row>
-      {/* <Row>
-        <Col md={6}>
-          <Card.Body>
-            <ListGroup>
-              <ListGroup.Item>
-                <Row>
-                  <Col>Price : </Col>
-                  <Col>Rs. {product.sellingprice}</Col>
-                </Row>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <Row>
-                  <Col>Status : </Col>
-                  <Col>
-                    {product.countInStock > 0 ? (
-                      <Badge bg="success">
-                        {product.countInStock} units available
-                      </Badge>
-                    ) : (
-                      <Badge bg="danger">Out of Stock</Badge>
-                    )}
-                  </Col>
-                </Row>
-              </ListGroup.Item>
-              {product.countInStock > 0 && (
-                <ListGroup.Item>
-                  <div className="d-grid">
-                    <Button onClick={addToCartHandler} variant="primary">
-                      Add to Cart
-                    </Button>
-                  </div>
-                </ListGroup.Item>
-              )}
-            </ListGroup>
-          </Card.Body>
-        </Col>
-      </Row> */}
     </div>
   );
 }

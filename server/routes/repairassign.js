@@ -3,8 +3,10 @@ const router = express.Router();
 const assign = require("../models/repairassign");
 const nodemailer = require("nodemailer");
 
+const auth = require("../middlewares/auth");
+
 //assign driver to vehicle to system
-router.post("/assigndrivertorepair", async (req, res) => {
+router.post("/assigndrivertorepair",auth, async (req, res) => {
   //console.log(req.body);
 
   const { registerNo, driver, driverMail, garage, vehicleIssue } = req.body;

@@ -32,7 +32,7 @@ router.post("/schedule", auth, async (req, res) => {
 //fetch delivery schedules
 router.get("/myschedules", auth, async (req, res) => {
   try {
-    const schedule = await Schedule.find({ postedBy: req.user._id }).populate(
+    const schedule = await Schedule.find().populate(
       "postedBy",
       "-password"
     );

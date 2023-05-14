@@ -61,14 +61,20 @@ export default function OrderHistoryScreen() {
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
-        <table className="table">
+        <table
+          className="table"
+          style={{
+            letterSpacing: '0px',
+            fontSize: '14px',
+            fontWeight: '400',
+          }}
+        >
           <thead>
             <tr>
               <th>ID</th>
               <th>ORDER DATE</th>
               <th>TOTAL QTY</th>
               <th>TOTAL</th>
-              {/* <th>PAID</th> */}
               <th>ORDER STATUS</th>
               <th>ACCEPETED</th>
               <th>DELIVERED</th>
@@ -82,10 +88,9 @@ export default function OrderHistoryScreen() {
                 <td>{order.createdAt.substring(0, 10)}</td>
                 <td>{order.orderItems.reduce((a, c) => a + c.quantity, 0)}</td>
                 <td>{order.totalPrice.toFixed(2)}</td>
-                {/* <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td> */}
                 <td>{order.status}</td>
                 <td>
-                  {order.status === 'Accepted'
+                  {order.status === 'Accepted' || order.status === 'Delivered'
                     ? order.acceptedAt.substring(0, 10)
                     : 'No'}
                 </td>
@@ -101,6 +106,7 @@ export default function OrderHistoryScreen() {
                     onClick={() => {
                       navigate(`/order/${order._id}`);
                     }}
+                    style={{ borderRadius: '10px' }}
                   >
                     Details
                   </Button>

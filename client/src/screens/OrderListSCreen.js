@@ -8,6 +8,7 @@ import MessageBox from '../components/MessageBox';
 import { Store } from '../Store';
 import { getError } from '../utils';
 import { toast } from 'react-toastify';
+import '../index.css';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -99,7 +100,14 @@ export default function OrderListScreen() {
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
-        <table className="table">
+        <table
+          className="table"
+          style={{
+            letterSpacing: '0px',
+            fontSize: '14px',
+            fontWeight: '400',
+          }}
+        >
           <thead>
             <tr>
               <th>ID</th>
@@ -142,6 +150,7 @@ export default function OrderListScreen() {
                     onClick={() => {
                       navigate(`/order/${order._id}`);
                     }}
+                    style={{ borderRadius: '10px' }}
                   >
                     Details
                   </Button>
@@ -150,6 +159,7 @@ export default function OrderListScreen() {
                     type="button"
                     variant="danger"
                     onClick={() => deleteHandler(order)}
+                    style={{ borderRadius: '10px' }}
                   >
                     Delete
                   </Button>

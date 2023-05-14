@@ -67,7 +67,7 @@ export const AddFuel = () => {
   };
 
   const getdata = async (e) => {
-    const res = await fetch("/getdata", {
+    const res = await fetch("/api/getvehidata", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -99,7 +99,6 @@ export const AddFuel = () => {
                 </Alert> : ""
             } */}
       <div className="container">
-        <NavLink to="/">home</NavLink>
         <div className="container mt-2">
           <div className="d-flex">
             <h2>Fuel Usage</h2>

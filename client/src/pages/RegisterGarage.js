@@ -70,7 +70,6 @@ export const RegisterGarage = () => {
         </Alert> : ""
     } */}
       <div className="container">
-        <NavLink to="/">home</NavLink>
         <div className="d-flex">
           <h2>Register Garage</h2>
         </div>
