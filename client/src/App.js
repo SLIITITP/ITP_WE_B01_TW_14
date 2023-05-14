@@ -1,46 +1,46 @@
-import { Routes as Switch, Route, Routes } from 'react-router-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Layout from './components/Layout';
+import { Routes as Switch, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import Layout from "./components/Layout";
 
 // import { ToastContextProvider } from "./context/ToastContext";
-import { AuthContextProvider } from './context/AuthContext';
+import { AuthContextProvider } from "./context/AuthContext";
 
 //ashen
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import CreateContact from './pages/CreateContact';
-import AllContact from './pages/AllContact';
-import EditContact from './pages/EditContact';
-import { ToastContextProvider } from './context/ToastContext';
-import CreateEmployee from './pages/CreateEmployee';
-import AllEmployee from './pages/AllEmployees';
-import EditEmployee from './pages/EditEmployee';
-import CreateSalary from './pages/AddSalary';
-import CreateAttendance from './pages/AddAttendance';
-import Report from './pages/CreateReport';
-import Index from './pages';
-import EMDashboard from './pages/EMDashboard';
-import Footer from './components/Footer';
-import Header from './components/Header';
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import CreateContact from "./pages/CreateContact";
+import AllContact from "./pages/AllContact";
+import EditContact from "./pages/EditContact";
+import { ToastContextProvider } from "./context/ToastContext";
+import CreateEmployee from "./pages/CreateEmployee";
+import AllEmployee from "./pages/AllEmployees";
+import EditEmployee from "./pages/EditEmployee";
+import CreateSalary from "./pages/AddSalary";
+import CreateAttendance from "./pages/AddAttendance";
+import Report from "./pages/CreateReport";
+import Index from "./pages";
+import EMDashboard from "./pages/EMDashboard";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 // Bhanuka********************************************************
 //import {Navbar} from './components/Navbar';
-import { AllVehicle } from './pages/AllVehicle';
-import { AddVehicle } from './pages/AddVehicle';
-import { EditVehicle } from './pages/EditVehicle';
-import { VehicleDetail } from './pages/VehicleDetail';
-import { DriverVehicleAssign } from './pages/DriverVehicleAssign';
-import { AddFuel } from './pages/AddFuel';
-import { RepairAssign } from './pages/RepairAssign';
-import { VMDashboard } from './pages/VMDashboard';
-import { AllVehicleDocument } from './pages/AllVehicleDocument';
-import { Editdocument } from './pages/Editdocument';
-import { AddRunnigRecords } from './pages/AddRunnigRecords';
-import { AddRepair } from './pages/AddRepair';
-import { RegisterGarage } from './pages/RegisterGarage';
+import { AllVehicle } from "./pages/AllVehicle";
+import { AddVehicle } from "./pages/AddVehicle";
+import { EditVehicle } from "./pages/EditVehicle";
+import { VehicleDetail } from "./pages/VehicleDetail";
+import { DriverVehicleAssign } from "./pages/DriverVehicleAssign";
+import { AddFuel } from "./pages/AddFuel";
+import { RepairAssign } from "./pages/RepairAssign";
+import { VMDashboard } from "./pages/VMDashboard";
+import { AllVehicleDocument } from "./pages/AllVehicleDocument";
+import { Editdocument } from "./pages/Editdocument";
+import { AddRunnigRecords } from "./pages/AddRunnigRecords";
+import { AddRepair } from "./pages/AddRepair";
+import { RegisterGarage } from "./pages/RegisterGarage";
 
 // import Home from "./pages/Home";
 // import Login from "./pages/Login";
@@ -77,112 +77,112 @@ import { RegisterGarage } from './pages/RegisterGarage';
 // import { AddRunnigRecords } from "./pages/AddRunnigRecords";
 // import { AddRepair } from "./pages/AddRepair";
 // import { RegisterGarage } from "./pages/RegisterGarage";
-import { ViewRunningRecords } from './pages/ViewRunningRecords';
-import { ViewFuelDetails } from './pages/ViewFuelDetails';
+import { ViewRunningRecords } from "./pages/ViewRunningRecords";
+import { ViewFuelDetails } from "./pages/ViewFuelDetails";
 
 // Bhanuka********************************************************
 
 // Pasindu********************************************************
-import AllSalesReps from './pages/AllSalesReps';
-import CreateSalesRep from './pages/CreateRep';
-import EditDelivery from './pages/EditSalesRep';
-import AllSchedules from './pages/AllSchedules';
-import CreateSchedule from './pages/CreateSchedule';
-import EditSchedule from './pages/EditSchedule';
-import CreateDeliveryReport from './pages/CreateDeliveryReport';
+import AllSalesReps from "./pages/AllSalesReps";
+import CreateSalesRep from "./pages/CreateRep";
+import EditDelivery from "./pages/EditSalesRep";
+import AllSchedules from "./pages/AllSchedules";
+import CreateSchedule from "./pages/CreateSchedule";
+import EditSchedule from "./pages/EditSchedule";
+import CreateDeliveryReport from "./pages/CreateDeliveryReport";
 
 // Pasindu********************************************************
 
 //Wasana
-import Addsup from './pages/Addsup';
-import Allsup from './pages/Allsup';
-import Editsup from './pages/Editsup';
-import Allpur from './pages/Allpurchase';
-import Addpur from './pages/Addpur';
-import Allapp from './pages/Allappointmens';
-import Addapp from './pages/Addappointment';
-import Editapp from './pages/Editappointment';
-import AllRecW from './pages/AllReportsW';
-import Dashboard from './pages/DashboardW';
-import Allexp from './pages/AllexpiredAppointments';
+import Addsup from "./pages/Addsup";
+import Allsup from "./pages/Allsup";
+import Editsup from "./pages/Editsup";
+import Allpur from "./pages/Allpurchase";
+import Addpur from "./pages/Addpur";
+import Allapp from "./pages/Allappointmens";
+import Addapp from "./pages/Addappointment";
+import Editapp from "./pages/Editappointment";
+import AllRecW from "./pages/AllReportsW";
+import Dashboard from "./pages/DashboardW";
+import Allexp from "./pages/AllexpiredAppointments";
 //Wasana
 
 // Yasitha********************************************************
-import CreateStock from './pages/CreateStock';
-import AllStock from './pages/AllStocks';
-import CreateCategory from './pages/CreateCategory';
-import AllCategory from './pages/AllCategories';
-import EditStock from './pages/EditStock';
-import EditCategory from './pages/EditCategory';
-import AddProfit from './pages/AddProfit';
-import AllProfit from './pages/AllProfits';
-import EditProfit from './pages/EditProfit';
-import StockReport from './pages/CreateReportStock';
-import IMDashboard from './pages/IMDashboard';
+import CreateStock from "./pages/CreateStock";
+import AllStock from "./pages/AllStocks";
+import CreateCategory from "./pages/CreateCategory";
+import AllCategory from "./pages/AllCategories";
+import EditStock from "./pages/EditStock";
+import EditCategory from "./pages/EditCategory";
+import AddProfit from "./pages/AddProfit";
+import AllProfit from "./pages/AllProfits";
+import EditProfit from "./pages/EditProfit";
+import StockReport from "./pages/CreateReportStock";
+import IMDashboard from "./pages/IMDashboard";
 
 // Yasitha********************************************************
 
 // Hasaranga********************************************************
-import { CssBaseline, ThemeProvider } from '@mui/material';
-import { createTheme } from '@mui/material/styles';
-import { themeSettings } from 'theme';
-import { useSelector } from 'react-redux';
-import { useMemo } from 'react';
-import { BrowserRouter, Navigate } from 'react-router-dom';
-import DashboardAdmin from './scenes/dashboard/index.jsx';
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+import { themeSettings } from "theme";
+import { useSelector } from "react-redux";
+import { useMemo } from "react";
+import { BrowserRouter, Navigate } from "react-router-dom";
+import DashboardAdmin from "./scenes/dashboard/index.jsx";
 
-import Products from 'scenes/products';
-import Customers from 'scenes/customers';
-import Transactions from 'scenes/transactions';
-import Overview from 'scenes/overview';
-import Daily from 'scenes/daily';
-import Monthly from 'scenes/monthly';
-import Breakdown from 'scenes/breakdown';
-import Admin from 'scenes/admin';
-import Createuser from 'scenes/createuser';
-import Updateuser from 'scenes/updateuser';
-import Performance from 'scenes/performance';
+import Products from "scenes/products";
+import Customers from "scenes/customers";
+import Transactions from "scenes/transactions";
+import Overview from "scenes/overview";
+import Daily from "scenes/daily";
+import Monthly from "scenes/monthly";
+import Breakdown from "scenes/breakdown";
+import Admin from "scenes/admin";
+import Createuser from "scenes/createuser";
+import Updateuser from "scenes/updateuser";
+import Performance from "scenes/performance";
 
 // Hasaranga********************************************************
 // Ashen********************************************************
 
-import HomeScreen from './screens/HomeScreen';
-import ProductScreen from './screens/ProductScreen';
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
-import { LinkContainer } from 'react-router-bootstrap';
-import Badge from 'react-bootstrap/Badge';
-import Nav from 'react-bootstrap/Nav';
-import { useContext, useEffect, useState } from 'react';
-import { Store } from './Store';
-import CartScreen from './screens/CartScreen';
-import ShippingDetailsScreen from './screens/ShippingDetailsScreen';
-import PlaceOrderScreen from './screens/PlaceOrderScreen';
-import SigninScreen from './screens/SigninScreen';
+import HomeScreen from "./screens/HomeScreen";
+import ProductScreen from "./screens/ProductScreen";
+import Container from "react-bootstrap/Container";
+import Navbar from "react-bootstrap/Navbar";
+import { LinkContainer } from "react-router-bootstrap";
+import Badge from "react-bootstrap/Badge";
+import Nav from "react-bootstrap/Nav";
+import { useContext, useEffect, useState } from "react";
+import { Store } from "./Store";
+import CartScreen from "./screens/CartScreen";
+import ShippingDetailsScreen from "./screens/ShippingDetailsScreen";
+import PlaceOrderScreen from "./screens/PlaceOrderScreen";
+import SigninScreen from "./screens/SigninScreen";
 // import Header from './components/Header';
-import OrderScreen from './screens/OrderScreen';
-import OrderHistoryScreen from './screens/OrderHistoryScreen';
-import { getError } from './utils';
-import SearchBox from './components/SearchBox';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import SearchScreen from './screens/SearchScreen';
-import ProtectedRoute from './components/ProtectedRoute';
-import AdminRoute from './components/AdminRoute';
-import DashboardScreen from './screens/DashboardScreen';
-import OrderListScreen from './screens/OrderListSCreen';
-import NavigationScreen from './screens/NavigationScreen';
-import PaymentGatewayScreen from './screens/PaymentGatewayScreen';
+import OrderScreen from "./screens/OrderScreen";
+import OrderHistoryScreen from "./screens/OrderHistoryScreen";
+import { getError } from "./utils";
+import SearchBox from "./components/SearchBox";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import SearchScreen from "./screens/SearchScreen";
+import ProtectedRoute from "./components/ProtectedRoute";
+import AdminRoute from "./components/AdminRoute";
+import DashboardScreen from "./screens/DashboardScreen";
+import OrderListScreen from "./screens/OrderListSCreen";
+import NavigationScreen from "./screens/NavigationScreen";
+import PaymentGatewayScreen from "./screens/PaymentGatewayScreen";
 // import Footer from './components/Footer';
 //import CreateCategory from './pages/CreateCategory';
 // import Layout from './components/Layout';
 // import Login from './screens/Login';
 // import { AuthContextProvider } from './context/AuthContext';
 
-import CreateCustomer from './screens/CreateCustomer';
-import CustomerScreen from './screens/CustomerScreen';
-import AllSalary from './pages/AllSalaries';
-import AllAttendance from './pages/AllAttendances';
-import EditCustomerScreen from './screens/EditCustomerScreen';
+import CreateCustomer from "./screens/CreateCustomer";
+import CustomerScreen from "./screens/CustomerScreen";
+import AllSalary from "./pages/AllSalaries";
+import AllAttendance from "./pages/AllAttendances";
+import EditCustomerScreen from "./screens/EditCustomerScreen";
 
 // import CreateCustomer from "./screens/CreateCustomer";
 // import CustomerScreen from "./screens/CustomerScreen";
@@ -190,10 +190,10 @@ import EditCustomerScreen from './screens/EditCustomerScreen';
 // Ashen********************************************************
 
 //Chamikara****************************************************
-import AllInvoice from './pages/InvoiceList';
-import AddInvoice from './pages/AddInvoice';
-import EditDeleteInvoice from './pages/EditDeleteInvoice';
-import InvReport from './pages/InvReport';
+import AllInvoice from "./pages/InvoiceList";
+import AddInvoice from "./pages/AddInvoice";
+import EditDeleteInvoice from "./pages/EditDeleteInvoice";
+import InvReport from "./pages/InvReport";
 
 //Chamikara****************************************************
 
@@ -209,10 +209,10 @@ const App = () => {
   const { cart, userInfo } = state;
 
   const signoutHandler = () => {
-    ctxDispatch({ type: 'USER_SIGNOUT' });
-    localStorage.removeItem('userInfo');
-    localStorage.removeItem('cartItems');
-    localStorage.removeItem('shippingDetails');
+    ctxDispatch({ type: "USER_SIGNOUT" });
+    localStorage.removeItem("userInfo");
+    localStorage.removeItem("cartItems");
+    localStorage.removeItem("shippingDetails");
   };
 
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
@@ -232,184 +232,187 @@ const App = () => {
   // Ashen********************************************************
   return (
     <Router>
-      <div style={{minHeight:"90vh", margin:"0px", padding:"0px"}}>
-      <ToastContextProvider>
-        <AuthContextProvider>
-          <ThemeProvider theme={theme}>
-            <Header />
-            <Layout>
-              <Switch>
-                <Route path="/" element={<Home />} />
-                <Route path="/index" element={<Index />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/create" element={<CreateContact />} />
-                <Route path="/mycontacts" element={<AllContact />} />
-                <Route path="/edit/:id" element={<EditContact />} />
-                <Route path="/createemp" element={<CreateEmployee />} />
-                <Route path="/myemployees" element={<AllEmployee />} />
-                <Route path="/editemp/:id" element={<EditEmployee />} />
-                <Route path="/addsalary" element={<CreateSalary />} />
-                <Route path="/mysalaries" element={<AllSalary />} />
-                <Route path="/addattendance" element={<CreateAttendance />} />
-                <Route path="/myattendances" element={<AllAttendance />} />
-                <Route path="/createreport" element={<Report />} />
+      <div style={{ minHeight: "90vh", margin: "0px", padding: "0px" }}>
+        <ToastContextProvider>
+          <AuthContextProvider>
+            <ThemeProvider theme={theme}>
+              <Header />
+              <Layout>
+                <Switch>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/index" element={<Index />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/create" element={<CreateContact />} />
+                  <Route path="/mycontacts" element={<AllContact />} />
+                  <Route path="/edit/:id" element={<EditContact />} />
+                  <Route path="/createemp" element={<CreateEmployee />} />
+                  <Route path="/myemployees" element={<AllEmployee />} />
+                  <Route path="/editemp/:id" element={<EditEmployee />} />
+                  <Route path="/addsalary" element={<CreateSalary />} />
+                  <Route path="/mysalaries" element={<AllSalary />} />
+                  <Route path="/addattendance" element={<CreateAttendance />} />
+                  <Route path="/myattendances" element={<AllAttendance />} />
+                  <Route path="/createreport" element={<Report />} />
 
-                {/* Bhanuka******************************************************** */}
+                  {/* Bhanuka******************************************************** */}
 
-                <Route path="/vmdashboard" exact element={<VMDashboard />} />
-                <Route path="/allvehicle" exact element={<AllVehicle />} />
-                <Route path="/registerVehicle" element={<AddVehicle />} />
-                <Route
-                  path="/allvehicle/editVehicle/:id"
-                  element={<EditVehicle />}
-                />
-                <Route
-                  path="/allvehicle/viewVehicle/:id"
-                  element={<VehicleDetail />}
-                />
-                <Route
-                  path="/drivervehicleAssign"
-                  element={<DriverVehicleAssign />}
-                />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/addFuel" element={<AddFuel />} />
-                <Route path="/repairAssign" element={<RepairAssign />} />
-                <Route path="/allDocument" element={<AllVehicleDocument />} />
-                <Route
-                  path="/allDocument/editdoc/:id"
-                  element={<Editdocument />}
-                />
-                <Route
-                  path="/addRunningRecords"
-                  element={<AddRunnigRecords />}
-                />
-                <Route path="/addrepair" element={<AddRepair />} />
-                <Route path="/registerGarage" element={<RegisterGarage />} />
-                <Route
-                  path="/viewRunningRecords"
-                  element={<ViewRunningRecords />}
-                />
-                <Route path="/viewFuelRecords" element={<ViewFuelDetails />} />
-                {/* Bhanuka******************************************************** */}
+                  <Route path="/vmdashboard" exact element={<VMDashboard />} />
+                  <Route path="/allvehicle" exact element={<AllVehicle />} />
+                  <Route path="/registerVehicle" element={<AddVehicle />} />
+                  <Route
+                    path="/allvehicle/editVehicle/:id"
+                    element={<EditVehicle />}
+                  />
+                  <Route
+                    path="/allvehicle/viewVehicle/:id"
+                    element={<VehicleDetail />}
+                  />
+                  <Route
+                    path="/drivervehicleAssign"
+                    element={<DriverVehicleAssign />}
+                  />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/addFuel" element={<AddFuel />} />
+                  <Route path="/repairAssign" element={<RepairAssign />} />
+                  <Route path="/allDocument" element={<AllVehicleDocument />} />
+                  <Route
+                    path="/allDocument/editdoc/:id"
+                    element={<Editdocument />}
+                  />
+                  <Route
+                    path="/addRunningRecords"
+                    element={<AddRunnigRecords />}
+                  />
+                  <Route path="/addrepair" element={<AddRepair />} />
+                  <Route path="/registerGarage" element={<RegisterGarage />} />
+                  <Route
+                    path="/viewRunningRecords"
+                    element={<ViewRunningRecords />}
+                  />
+                  <Route
+                    path="/viewFuelRecords"
+                    element={<ViewFuelDetails />}
+                  />
+                  {/* Bhanuka******************************************************** */}
 
-                {/* Pasindu******************************************************** */}
-                <Route path="/allsalesreps" element={<AllSalesReps />} />
-                <Route path="/createsalesrep" element={<CreateSalesRep />} />
-                <Route path="/editsalerep/:id" element={<EditDelivery />} />
-                <Route path="/myschedules" element={<AllSchedules />} />
-                <Route path="/createschedule" element={<CreateSchedule />} />
-                <Route path="/editschedule/:id" element={<EditSchedule />} />
-                <Route
-                  path="/createdeliveryreport"
-                  element={<CreateDeliveryReport />}
-                />
+                  {/* Pasindu******************************************************** */}
+                  <Route path="/allsalesreps" element={<AllSalesReps />} />
+                  <Route path="/createsalesrep" element={<CreateSalesRep />} />
+                  <Route path="/editsalerep/:id" element={<EditDelivery />} />
+                  <Route path="/myschedules" element={<AllSchedules />} />
+                  <Route path="/createschedule" element={<CreateSchedule />} />
+                  <Route path="/editschedule/:id" element={<EditSchedule />} />
+                  <Route
+                    path="/createdeliveryreport"
+                    element={<CreateDeliveryReport />}
+                  />
 
-                {/* Pasindu******************************************************** */}
+                  {/* Pasindu******************************************************** */}
 
-                {/* Wasana*/}
-                <Route path="/addsup" element={<Addsup />} />
-                <Route path="/allsup" element={<Allsup />} />
-                <Route path="/editsup" element={<Editsup />} />
-                <Route path="/allpur" element={<Allpur />} />
-                <Route path="/addpur" element={<Addpur />} />
-                <Route path="/allapp" element={<Allapp />} />
-                <Route path="/addapp" element={<Addapp />} />
-                <Route path="/editapp" element={<Editapp />} />
-                <Route path="/allrepw" element={<AllRecW />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/allexp" element={<Allexp />} />
-                {/* Wasana*/}
+                  {/* Wasana*/}
+                  <Route path="/addsup" element={<Addsup />} />
+                  <Route path="/allsup" element={<Allsup />} />
+                  <Route path="/editsup" element={<Editsup />} />
+                  <Route path="/allpur" element={<Allpur />} />
+                  <Route path="/addpur" element={<Addpur />} />
+                  <Route path="/allapp" element={<Allapp />} />
+                  <Route path="/addapp" element={<Addapp />} />
+                  <Route path="/editapp" element={<Editapp />} />
+                  <Route path="/allrepw" element={<AllRecW />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/allexp" element={<Allexp />} />
+                  {/* Wasana*/}
 
-                {/* Yasitha******************************************************** */}
-                <Route path="/createcategory" element={<CreateCategory />} />
-                <Route path="/mycategories" element={<AllCategory />} />
-                <Route path="/createstock" element={<CreateStock />} />
-                <Route path="/mystocks" element={<AllStock />} />
-                <Route path="/editstock/:id" element={<EditStock />} />
-                <Route path="/editcategory/:id" element={<EditCategory />} />
-                <Route path="/addprofit" element={<AddProfit />} />
-                <Route path="/myprofits" element={<AllProfit />} />
-                <Route path="/editprofit/:id" element={<EditProfit />} />
-                <Route path="/stockreport" element={<StockReport />} />
-                <Route path="/imdashboard" element={<IMDashboard />} />
+                  {/* Yasitha******************************************************** */}
+                  <Route path="/createcategory" element={<CreateCategory />} />
+                  <Route path="/mycategories" element={<AllCategory />} />
+                  <Route path="/createstock" element={<CreateStock />} />
+                  <Route path="/mystocks" element={<AllStock />} />
+                  <Route path="/editstock/:id" element={<EditStock />} />
+                  <Route path="/editcategory/:id" element={<EditCategory />} />
+                  <Route path="/addprofit" element={<AddProfit />} />
+                  <Route path="/myprofits" element={<AllProfit />} />
+                  <Route path="/editprofit/:id" element={<EditProfit />} />
+                  <Route path="/stockreport" element={<StockReport />} />
+                  <Route path="/imdashboard" element={<IMDashboard />} />
 
-                {/* Yasitha******************************************************** */}
+                  {/* Yasitha******************************************************** */}
 
-                {/*Chamikara********************************************************/}
-                <Route path="/addInv" element={<AddInvoice />} />
-                <Route path="/allInv" element={<AllInvoice />} />
-                <Route path="/editInv/:id" element={<EditDeleteInvoice />} />
-                <Route path="/reportInv" element={<InvReport />} />
+                  {/*Chamikara********************************************************/}
+                  <Route path="/addInv" element={<AddInvoice />} />
+                  <Route path="/allInv" element={<AllInvoice />} />
+                  <Route path="/editInv/:id" element={<EditDeleteInvoice />} />
+                  <Route path="/reportInv" element={<InvReport />} />
 
-                {/*Chamikara********************************************************/}
+                  {/*Chamikara********************************************************/}
 
-                {/* Ashen******************************************************** */}
-                {/* <ToastContainer position="bottom-center" limit={1} /> */}
-                {/* <main>
+                  {/* Ashen******************************************************** */}
+                  {/* <ToastContainer position="bottom-center" limit={1} /> */}
+                  {/* <main>
                 <Container> */}
-                {/* <Route path="/" element={<SigninScreen />} /> */}
-                <Route
-                  path="/products"
-                  element={
-                    <ProtectedRoute>
-                      <HomeScreen />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route path="/product/:name" element={<ProductScreen />} />
-                <Route
-                  path="/cart"
-                  element={
-                    <ProtectedRoute>
-                      <CartScreen />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route path="/navscreen" element={<NavigationScreen />} />
-                <Route path="/shipping" element={<ShippingDetailsScreen />} />
-                <Route path="/placeorder" element={<PlaceOrderScreen />} />
-                <Route path="/order/:id" element={<OrderScreen />} />
+                  {/* <Route path="/" element={<SigninScreen />} /> */}
+                  <Route
+                    path="/products"
+                    element={
+                      <ProtectedRoute>
+                        <HomeScreen />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route path="/product/:name" element={<ProductScreen />} />
+                  <Route
+                    path="/cart"
+                    element={
+                      <ProtectedRoute>
+                        <CartScreen />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route path="/navscreen" element={<NavigationScreen />} />
+                  <Route path="/shipping" element={<ShippingDetailsScreen />} />
+                  <Route path="/placeorder" element={<PlaceOrderScreen />} />
+                  <Route path="/order/:id" element={<OrderScreen />} />
 
-                <Route
-                  path="/paymentgateway"
-                  element={<PaymentGatewayScreen />}
-                />
-                <Route
-                  path="/orderhistory"
-                  element={
-                    <ProtectedRoute>
-                      <OrderHistoryScreen />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/search"
-                  element={
-                    <ProtectedRoute>
-                      <SearchScreen />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/admin/dashboard"
-                  element={
-                    // <AdminRoute>
-                    <DashboardScreen />
-                    // </AdminRoute>
-                  }
-                />
-                <Route
-                  path="/admin/orders"
-                  element={
-                    // <AdminRoute>
-                    <OrderListScreen />
-                    // </AdminRoute>
-                  }
-                ></Route>
+                  <Route
+                    path="/paymentgateway"
+                    element={<PaymentGatewayScreen />}
+                  />
+                  <Route
+                    path="/orderhistory"
+                    element={
+                      <ProtectedRoute>
+                        <OrderHistoryScreen />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/search"
+                    element={
+                      <ProtectedRoute>
+                        <SearchScreen />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/admin/dashboard"
+                    element={
+                      // <AdminRoute>
+                      <DashboardScreen />
+                      // </AdminRoute>
+                    }
+                  />
+                  <Route
+                    path="/admin/orders"
+                    element={
+                      // <AdminRoute>
+                      <OrderListScreen />
+                      // </AdminRoute>
+                    }
+                  ></Route>
 
-                {/* <Route
+                  {/* <Route
                     path="/login"
                     element={
                       <AuthContextProvider>
@@ -417,52 +420,52 @@ const App = () => {
                       </AuthContextProvider>
                     }
                   /> */}
-                <Route
-                  path="/customerinfo"
-                  element={
-                    <AuthContextProvider>
-                      <CustomerScreen />
-                    </AuthContextProvider>
-                  }
-                />
-                <Route
-                  path="/createcustomer"
-                  element={
-                    <AuthContextProvider>
-                      <CreateCustomer />
-                    </AuthContextProvider>
-                  }
-                />
-                <Route
-                  path="/editcustomer/:id"
-                  element={<EditCustomerScreen />}
-                />
+                  <Route
+                    path="/customerinfo"
+                    element={
+                      <AuthContextProvider>
+                        <CustomerScreen />
+                      </AuthContextProvider>
+                    }
+                  />
+                  <Route
+                    path="/createcustomer"
+                    element={
+                      <AuthContextProvider>
+                        <CreateCustomer />
+                      </AuthContextProvider>
+                    }
+                  />
+                  <Route
+                    path="/editcustomer/:id"
+                    element={<EditCustomerScreen />}
+                  />
 
-                {/* </Container>
+                  {/* </Container>
               </main> */}
 
-                {/* Ashen******************************************************** */}
+                  {/* Ashen******************************************************** */}
 
-                <Route path="/dashboardAdmin" element={<DashboardAdmin />} />
-                <Route path="/productsAdmin" element={<Products />} />
-                <Route path="/users" element={<Customers />} />
-                <Route path="/transactions" element={<Transactions />} />
-                <Route path="/overview" element={<Overview />} />
-                <Route path="/daily" element={<Daily />} />
-                <Route path="/monthly" element={<Monthly />} />
-                <Route path="/breakdown" element={<Breakdown />} />
-                <Route path="/admin" element={<Admin />} />
-                <Route path="/performance" element={<Performance />} />
-                <Route path="/createuser" element={<Createuser />} />
-                <Route path="/updateuser" element={<Updateuser />} />
-              </Switch>
-            </Layout>
-          </ThemeProvider>
-        </AuthContextProvider>
-      </ToastContextProvider>
+                  <Route path="/dashboardAdmin" element={<DashboardAdmin />} />
+                  <Route path="/productsAdmin" element={<Products />} />
+                  <Route path="/users" element={<Customers />} />
+                  <Route path="/transactions" element={<Transactions />} />
+                  <Route path="/overview" element={<Overview />} />
+                  <Route path="/daily" element={<Daily />} />
+                  <Route path="/monthly" element={<Monthly />} />
+                  <Route path="/breakdown" element={<Breakdown />} />
+                  <Route path="/admin" element={<Admin />} />
+                  <Route path="/performance" element={<Performance />} />
+                  <Route path="/createuser" element={<Createuser />} />
+                  <Route path="/updateuser" element={<Updateuser />} />
+                </Switch>
+              </Layout>
+            </ThemeProvider>
+          </AuthContextProvider>
+        </ToastContextProvider>
       </div>
       <div>
-      <Footer />
+        <Footer />
       </div>
     </Router>
   );
