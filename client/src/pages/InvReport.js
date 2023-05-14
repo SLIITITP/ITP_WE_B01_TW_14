@@ -41,7 +41,7 @@ const AllInvoice = () => {
   const handleDownloadReport = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://localhost:8000/invoice/report", {
+      const res = await axios.get("http://localhost:8000/invoice/reportAll", {
         responseType: "blob",
       });
       const url = window.URL.createObjectURL(new Blob([res.data]));
@@ -106,21 +106,21 @@ const AllInvoice = () => {
               onClick={() => handleDownloadReportType("daily")}
               disabled={loading}
             >
-              {loading ? "Generating report..." : "Daily Report"}
+              Daily Report
             </button>
             <button
               className='btn btn-info mb-2'
               onClick={() => handleDownloadReportType("weekly")}
               disabled={loading}
             >
-              {loading ? "Generating report..." : "Weekly Report"}
+              Weekly Report
             </button>
             <button
               className='btn btn-info mb-2'
               onClick={() => handleDownloadReportType("monthly")}
               disabled={loading}
             >
-              {loading ? "Generating report..." : "Monthly Report"}
+              Monthly Report
             </button>
           </div>
         </div>
@@ -200,12 +200,7 @@ const AllInvoice = () => {
                         >
                           Business Name
                         </th>
-                        <th
-                          scope='col'
-                          style={{ width: "10%", whiteSpace: "nowrap" }}
-                        >
-                          Address
-                        </th>
+
                         <th
                           scope='col'
                           style={{ width: "10%", whiteSpace: "nowrap" }}
@@ -243,16 +238,14 @@ const AllInvoice = () => {
                       {invoices.map((invoice) => (
                         <tr>
                           <th scope='row'>{invoice.invoiceNo}</th>
-                          {/* <td>{invoice.invoiceNo}</td> */}
+
                           <td>{invoice.issuedDate}</td>
                           <td>{invoice.cusName}</td>
                           <td>{invoice.mobileNo}</td>
                           <td>{invoice.busiName}</td>
-                          <td>{invoice.address}</td>
+
                           <td>{invoice.payMethod}</td>
-                          {/* <td>{invoice.bankCode}</td>
-                          <td>{invoice.bankDate}</td>
-                          <td>{invoice.cheqNo}</td> */}
+
                           <td>{`LKR.${invoice.paidAmount}`}</td>
                         </tr>
                       ))}

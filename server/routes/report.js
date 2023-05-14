@@ -149,24 +149,136 @@ router.get("/report", async (req, res) => {
     });
 
     //invoices
-    doc.fontSize(20).fillColor("black").text("Invoice Details:\n");
+    doc
+      .fontSize(24)
+      .fillColor("#2E7D32")
+      .text("Invoice Details", { underline: true })
+      .moveDown(1);
+
     invoices.forEach((invoice) => {
-      doc.fontSize(18).text(
-        `Invoice No : ${invoice.invoiceNo}\n
-      Date of issued : ${invoice.issuedDate}\n
-    Customer Name : ${invoice.cusName}\n
-    Business Name : ${invoice.busiName}\n
-    Address : ${invoice.address}\n
-    Mobile Number : ${invoice.mobileNo}\n
-    Payment method : ${invoice.payMethod}\n
-    Bank Code : ${invoice.bankCode}\n
-    Banking Date : ${invoice.bankDate}\n
-    Cheque No : ${invoice.cheqNo}\n
-    Paid Amount : ${invoice.paidAmount}\n\n\n`
-      );
+      doc
+        .fontSize(16)
+        .fillColor("#000000")
+        .text(`Invoice No: ${invoice.invoiceNo}`, { bold: true })
+        .list(
+          [
+            `Date of issued : ${invoice.issuedDate}`,
+            `Customer Name : ${invoice.cusName}`,
+            `Business Name : ${invoice.busiName}`,
+            `Address : ${invoice.address}`,
+            `Mobile Number : ${invoice.mobileNo}`,
+            `Payment method : ${invoice.payMethod}`,
+            `Bank Code : ${invoice.bankCode}`,
+            `Banking Date : ${invoice.bankDate}`,
+            `Cheque No : ${invoice.cheqNo}`,
+            `Paid Amount : ${invoice.paidAmount}`,
+          ],
+          {
+            bulletRadius: 2,
+            bulletIndent: 10,
+            textIndent: 20,
+            lineGap: 5,
+          }
+        )
+        .moveDown(1);
     });
+    // doc.fontSize(20).fillColor("black").text("Invoice Details:\n");
+    // invoices.forEach((invoice) => {
+    //   doc.fontSize(18).text(
+    //     `Invoice No : ${invoice.invoiceNo}\n
+    //   Date of issued : ${invoice.issuedDate}\n
+    // Customer Name : ${invoice.cusName}\n
+    // Business Name : ${invoice.busiName}\n
+    // Address : ${invoice.address}\n
+    // Mobile Number : ${invoice.mobileNo}\n
+    // Payment method : ${invoice.payMethod}\n
+    // Bank Code : ${invoice.bankCode}\n
+    // Banking Date : ${invoice.bankDate}\n
+    // Cheque No : ${invoice.cheqNo}\n
+    // Paid Amount : ${invoice.paidAmount}\n\n\n`
+    //   );
+    // });
 
     // Pipe the PDF to the response object
+    doc.pipe(res);
+    doc.end();
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Error generating report" });
+  }
+});
+
+router.get("/reportAll", async (req, res) => {
+  try {
+    const invoices = await Invoice.find();
+
+    // Create a new PDF document
+    const doc = new PDFDocument();
+
+    // Set the filename of the PDF to be downloaded
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader("Content-Disposition", "attachment; filename=report.pdf");
+
+    // Write data to the PDF
+
+    // Define the gradient colors
+    const gradient = doc.linearGradient(0, 0, doc.page.width, 100);
+    gradient.stop(0, "#378b29");
+    gradient.stop(0.74, "#74d680");
+
+    // Read the logo file
+
+    // Get the absolute path to the logo.png file
+    const logoPath = path.join(__dirname, "..", "images", "logo.png");
+
+    // Read the contents of the logo.png file
+    const logo = fs.readFileSync(logoPath);
+
+    doc
+      .moveUp(4)
+      .rect(0, 0, doc.page.width, 100)
+      .fill("#009150")
+      .fillColor("white")
+      .image(logo, 10, 10, { width: 80, height: 80 })
+      .fontSize(40)
+      .text("Southern Agro Serve (Pvt) Ltd", { align: "center" })
+      .moveDown(2);
+
+    //invoices
+    doc
+      .fontSize(24)
+      .fillColor("#2E7D32")
+      .text("Invoice Details", { underline: true })
+      .moveDown(1);
+
+    invoices.forEach((invoice) => {
+      doc
+        .fontSize(16)
+        .fillColor("#000000")
+        .text(`Invoice No: ${invoice.invoiceNo}`, { bold: true })
+        .list(
+          [
+            `Date of issued : ${invoice.issuedDate}`,
+            `Customer Name : ${invoice.cusName}`,
+            `Business Name : ${invoice.busiName}`,
+            `Address : ${invoice.address}`,
+            `Mobile Number : ${invoice.mobileNo}`,
+            `Payment method : ${invoice.payMethod}`,
+            `Bank Code : ${invoice.bankCode}`,
+            `Banking Date : ${invoice.bankDate}`,
+            `Cheque No : ${invoice.cheqNo}`,
+            `Paid Amount : ${invoice.paidAmount}`,
+          ],
+          {
+            bulletRadius: 2,
+            bulletIndent: 10,
+            textIndent: 20,
+            lineGap: 5,
+          }
+        )
+        .moveDown(1);
+    });
+
     doc.pipe(res);
     doc.end();
   } catch (err) {
@@ -181,25 +293,67 @@ router.get("/report/:type", async (req, res) => {
     const { type } = req.params;
     const invoices = await Invoice.find();
     const doc = new PDFDocument();
-    let reportTitle = "Southern Agro Serve (Pvt) Ltd Report\n\n\n";
+    let reportTitle = "Invoice Entry System";
     let filteredInvoices = [];
+
+    // Set the filename of the PDF to be downloaded
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader("Content-Disposition", "attachment; filename=report.pdf");
+
+    // Write data to the PDF
+
+    // Define the gradient colors
+    const gradient = doc.linearGradient(0, 0, doc.page.width, 100);
+    gradient.stop(0, "#378b29");
+    gradient.stop(0.74, "#74d680");
+
+    // Read the logo file
+
+    // Get the absolute path to the logo.png file
+    const logoPath = path.join(__dirname, "..", "images", "logo.png");
+
+    // Read the contents of the logo.png file
+    const logo = fs.readFileSync(logoPath);
+
+    doc
+      .moveUp(4)
+      .rect(0, 0, doc.page.width, 100)
+      .fill("#009150")
+      .fillColor("white")
+      .image(logo, 10, 10, { width: 80, height: 80 })
+      .fontSize(40)
+      .text("Southern Agro Serve (Pvt) Ltd", { align: "center" })
+      .moveDown(2);
 
     switch (type) {
       case "daily":
         const today = new Date();
-        reportTitle += `Daily Report - ${today.toDateString()}\n\n\n`;
+        reportTitle += `\nDaily Report - ${today.toDateString()}\n\n`;
         filteredInvoices = invoices.filter(
           (invoice) =>
             new Date(invoice.issuedDate).toDateString() === today.toDateString()
         );
         break;
       case "weekly":
-        const curr = new Date();
-        const first = curr.getDate() - curr.getDay();
-        const last = first + 6;
-        const startDate = new Date(curr.setDate(first));
-        const endDate = new Date(curr.setDate(last));
-        reportTitle += `Weekly Report - ${startDate.toDateString()} to ${endDate.toDateString()}\n\n\n`;
+        const today1 = new Date();
+        const oneWeekAgo = new Date(today1.getTime() - 7 * 24 * 60 * 60 * 1000);
+        const startDate = new Date(
+          oneWeekAgo.getFullYear(),
+          oneWeekAgo.getMonth(),
+          oneWeekAgo.getDate(),
+          0,
+          0,
+          0
+        );
+        const endDate = new Date(
+          today1.getFullYear(),
+          today1.getMonth(),
+          today1.getDate(),
+          23,
+          59,
+          59
+        );
+        reportTitle += `\nWeekly Report - ${startDate.toDateString()} to\n ${endDate.toDateString()}\n\n`;
         filteredInvoices = invoices.filter(
           (invoice) =>
             new Date(invoice.issuedDate) >= startDate &&
@@ -208,12 +362,12 @@ router.get("/report/:type", async (req, res) => {
         break;
       case "monthly":
         const todayMonth = new Date().getMonth();
-        reportTitle += `Monthly Report - ${new Date().toLocaleString(
+        reportTitle += `\nMonthly Report - ${new Date().toLocaleString(
           "default",
           {
             month: "long",
           }
-        )}\n\n\n`;
+        )}\n\n`;
         filteredInvoices = invoices.filter(
           (invoice) => new Date(invoice.issuedDate).getMonth() === todayMonth
         );
@@ -228,23 +382,39 @@ router.get("/report/:type", async (req, res) => {
       `attachment; filename=${type}_report.pdf`
     );
 
-    doc.fontSize(40).fillColor("blue").text(reportTitle, { align: "center" });
-    doc.fontSize(20).fillColor("black").text("Invoice Details:\n");
+    doc.fontSize(25).fillColor("black").text(reportTitle, { align: "center" });
+    doc
+      .fontSize(24)
+      .fillColor("#2E7D32")
+      .text("Invoice Details", { underline: true })
+      .moveDown(1);
 
     filteredInvoices.forEach((invoice) => {
-      doc.fontSize(18).text(
-        `Invoice No : ${invoice.invoiceNo}\n
-        Date of issued : ${invoice.issuedDate}\n
-        Customer Name : ${invoice.cusName}\n
-        Business Name : ${invoice.busiName}\n
-        Address : ${invoice.address}\n
-        Mobile Number : ${invoice.mobileNo}\n
-        Payment method : ${invoice.payMethod}\n
-        Bank Code : ${invoice.bankCode}\n
-        Banking Date : ${invoice.bankDate}\n
-        Cheque No : ${invoice.cheqNo}\n
-        Paid Amount : ${invoice.paidAmount}\n\n\n`
-      );
+      doc
+        .fontSize(16)
+        .fillColor("#000000")
+        .text(`Invoice No: ${invoice.invoiceNo}`, { bold: true })
+        .list(
+          [
+            `Date of issued : ${invoice.issuedDate}`,
+            `Customer Name : ${invoice.cusName}`,
+            `Business Name : ${invoice.busiName}`,
+            `Address : ${invoice.address}`,
+            `Mobile Number : ${invoice.mobileNo}`,
+            `Payment method : ${invoice.payMethod}`,
+            `Bank Code : ${invoice.bankCode}`,
+            `Banking Date : ${invoice.bankDate}`,
+            `Cheque No : ${invoice.cheqNo}`,
+            `Paid Amount : ${invoice.paidAmount}`,
+          ],
+          {
+            bulletRadius: 2,
+            bulletIndent: 10,
+            textIndent: 20,
+            lineGap: 5,
+          }
+        )
+        .moveDown(1);
     });
 
     doc.pipe(res);
