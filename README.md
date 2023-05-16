@@ -5,7 +5,7 @@ Please go under edit and edit this file as needed for your project
 ### Group Leader - IT21234484 - Jayasinghe P.T. (Pasindujay1)
 ### Member 2     - IT21286278  - Illesinghe A. T. (IT21286278)
 ### Member 3     - IT21209420  - Hasaranga M.D.E. (IT21209420)
-### Member 4     - IT21219498  - Vithanage C.S.  (GITHUB ID)
+### Member 4     - IT21219498  - Vithanage C.S.  (IT21219498)
 ### Member 5     - IT21440236 - Kodithuwakku Y.S.(IT21440236)
 ### Member 6     - IT21440922  - Dewmin T.Y.(yasidew)
 ### Member 7     - IT21312908  - Fernando K.R.A.W.(it21312908)
@@ -36,4 +36,7 @@ https://github.com/SLIITITP/ITP_WE_B01_TW_14/assets/96247301/ca900e4e-5694-41f5-
 # Link to GitHub Repo - https://github.com/SLIITITP/ITP_WE_B01_TW_14
 
 Note - The student's github account should be given in brackets e.g. (asiriRepos), this ideally should be your student id 
+
+##### Project Started on : 13 / 12 / 2022 ⭕
+##### Project Completed on : 5 / 14 / 2023 ✅
 
