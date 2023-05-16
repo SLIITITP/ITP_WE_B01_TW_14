@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
     //we are going to return a promise
-    return mongoose.connect("mongodb+srv://Ykods:upRvsKM9ybdb4rnl@cluster0.cvi3gmx.mongodb.net/employee_db?retryWrites=true&w=majority")
+    return mongoose.connect("Add Your URL")
     .then(() => console.log(`connection to Database established`))
     //if any error occurs while connecting to the database, we will catch it here. 
     .catch((err) => console.log(err)); 
