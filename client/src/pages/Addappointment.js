@@ -59,77 +59,7 @@ const Addapp = () => {
     }
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   const currentDate = new Date();
-  //   const currentYear = currentDate.getFullYear();
-  //   const currentMonth = currentDate.getMonth();
-  //   const currentDay = currentDate.getDate();
-    
-  //   const reqDateObj = new Date(date);
-  //   const reqYear = reqDateObj.getFullYear();
-  //   const reqMonth = reqDateObj.getMonth();
-  //   const reqDay = reqDateObj.getDate();
-    
-  //   if (reqYear < currentYear) {
-  //     console.log("Requested date cannot be in the past.");
-  //     return;
-  //   }
-  //   if (reqYear === currentYear && reqMonth < currentMonth) {
-  //     console.log("Requested date cannot be in the past.");
-  //     return;
-  //   }
-  //   if (reqYear === currentYear && reqMonth === currentMonth && reqDay < currentDay) {
-  //     console.log("Requested date cannot be in the past.");
-  //     return;
-  //   }
-
-  //   try {
-  //     const token = localStorage.getItem('token');
-  //     if (!token) {
-  //       throw new Error('Authorization failed!');
-  //     }
-  //     const config = {
-  //       headers: { Authorization: `Bearer ${token}` },
-  //     };
-
-  //     // Check availability with backend before adding appointment
-  //     try {
-  //       const token = localStorage.getItem('token');
-  //       if (!token) {
-  //         throw new Error('Authorization failed!');
-  //       }
-      
-  //       const config = {
-  //         headers: { Authorization: `Bearer ${token}` },
-  //       };
-      
-  //       const availabilityCheck = await axios.post(
-  //         'http://localhost:8000/api/availability',
-  //         { date, start, end },
-  //         config
-  //       );
-      
-  //       if (availabilityCheck.status === 400) {
-  //         console.log(availabilityCheck.data.message); // Log error message to console if appointment is not available
-  //         return;
-  //       }
-      
-  //       // Rest of the code for adding the appointment
-  //     } catch (err) {
-  //       console.error(err);
-  //       toast.error('Error adding appointment!');
-  //     }
-      
-
-  //     await axios.post('http://localhost:8000/api/addAppointment', { name, date, start, end, email }, config);
-  //     toast.success("Appointment added successfully!");
-  //     navigate('/allapp');
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+ 
 const handleClear = () => {
     setName("");
     setDate("");

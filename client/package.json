@@ -32,6 +32,7 @@
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
+    "react-calendar": "^4.2.1",
     "react-currency-input-field": "^3.6.10",
     "react-datepicker": "^4.11.0",
     "react-dom": "^18.2.0",

@@ -124,6 +124,8 @@ const CreateAttendance = () => {
                 value={userDetails.date}
                 onChange={handleInputChange}
                 placeholder="01-01-2021"
+                // max={new Date().toISOString().split("T")[0]}//this will set the max date to today's date. It will not allow the user to select a date greater than today's date
+                // min={new Date().toISOString().split("T")[0]}//this will set the min date to today's date. It will not allow the user to select a date less than today's date
                 required
                 fdprocessedid="8n2of"
               />

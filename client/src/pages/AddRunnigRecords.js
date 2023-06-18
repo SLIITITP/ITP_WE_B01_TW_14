@@ -310,7 +310,7 @@ export const AddRunnigRecords = () => {
                 <Form className='mt-4'>
                     <div className="row">
                         <Form.Group className="mb-3 col-lg-6 col-md-6 col-12">
-                            <Form.Label>Vehicle No</Form.Label>
+                            <Form.Label><b>Vehicle No</b></Form.Label>
                             <select value={inpval.registerNo} onChange={setdata} name="registerNo" className="form-select">
                                 <option>Select Vehicle No</option>
                                 {
@@ -330,27 +330,27 @@ export const AddRunnigRecords = () => {
                         </Form.Group>
 
                         <Form.Group className="mb-3 col-lg-6 col-md-6 col-12" controlId="formBasicEmail">
-                            <Form.Label>Driver Name</Form.Label>
+                            <Form.Label><b>Driver Name</b></Form.Label>
                             <Form.Control type="text" value={inpval.driverName} onChange={setdata} name="driverName" placeholder="ex-Kamal"/>
                         </Form.Group>
 
                         <Form.Group className="mb-3 col-lg-6 col-md-6 col-12" controlId="formBasicEmail">
-                            <Form.Label>No Of Kilometers</Form.Label>
+                            <Form.Label><b>No Of Kilometers</b></Form.Label>
                             <Form.Control type="text" value={inpval.noOfMiles} onChange={setdata} name="noOfMiles" placeholder="ex-123"/>
                         </Form.Group>
 
                         <Form.Group className="mb-3 col-lg-6 col-md-6 col-12" controlId="formBasicEmail">
-                            <Form.Label>Route Details</Form.Label>
+                            <Form.Label><b>Route Details</b></Form.Label>
                             <Form.Control type="text" value={inpval.routeDetails} onChange={setdata} name="routeDetails" placeholder="ex- X-Y-Z-K"/>
                         </Form.Group>
 
                         <Form.Group className="mb-3 col-lg-6 col-md-6 col-12" controlId="formBasicEmail">
-                            <Form.Label>Deliver Time</Form.Label>
+                            <Form.Label><b>Deliver Time</b></Form.Label>
                             <Form.Control type="text" value={inpval.DeliverTime} onChange={setdata} name="DeliverTime" placeholder="ex-10.20AM"/>
                         </Form.Group>
 
                         <Form.Group className="mb-3 col-lg-6 col-md-6 col-12" controlId="formBasicEmail">
-                            <Form.Label>Accident/mechanical fault in the vehicle</Form.Label>
+                            <Form.Label><b>Accident/mechanical fault in the vehicle</b></Form.Label>
                             <Form.Control type="text" value={inpval.comment} onChange={setdata} name="comment" placeholder="ex- No accident(none)"/>
                         </Form.Group>
                     </div>

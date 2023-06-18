@@ -77,6 +77,11 @@ const CreateSalesRep = () => {
             fdprocessedid="8n2of"
           />
         </div>
+        {/* <input type="radio" id="male" />
+        <label for="male">Male</label>
+        <br></br>
+        <input type="radio" id="female" />
+        <label for="male">Female</label> */}
         {/* LAST NAME */}
         <div className="form-group">
           <label htmlFor="territoryInput" className="form-label mt-4">
@@ -94,7 +99,6 @@ const CreateSalesRep = () => {
             fdprocessedid="8n2of"
           />
         </div>
-
         <input
           type="submit"
           value="Add Sales Representative"

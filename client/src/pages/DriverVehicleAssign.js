@@ -261,7 +261,7 @@ export const DriverVehicleAssign = () => {
                             <Form.Control type="email" value={inpval.registerNo} onChange={setdata} name="registerNo" placeholder="Enter Vehicle No" />
                         </Form.Group> */}
                         <Form.Group className="mb-3">
-                        <Form.Label>Vehicle No</Form.Label>
+                        <Form.Label><b>Vehicle No</b></Form.Label>
                             <select value={inpval.registerNo} onChange={setdata} name="registerNo" className="form-select">
                                 <option>Select Vehicle No</option>
                                 {
@@ -276,11 +276,11 @@ export const DriverVehicleAssign = () => {
                             </select>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Driver Name</Form.Label>
+                            <Form.Label><b>Driver Name</b></Form.Label>
                             <Form.Control type="email" value={inpval.driver} onChange={setdata} name="driver" placeholder="Enter driver name" />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Driver Email</Form.Label>
+                            <Form.Label><b>Driver Email</b></Form.Label>
                             <Form.Control type="email" value={inpval.driverMail} onChange={setdata} name="driverMail" placeholder="Enter driver email" />
                         </Form.Group>
                         <Button variant="primary" className="btn-success" type="submit" onClick={addinpdata}>

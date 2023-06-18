@@ -1,25 +1,25 @@
-import React from 'react';
+import React from "react";
 
-import { useContext, useState } from 'react';
+import { useContext, useState } from "react";
 
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-import AuthContext from '../context/AuthContext';
-import ToastContext from '../context/ToastContext';
-import Card from 'react-bootstrap/Card';
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import AuthContext from "../context/AuthContext";
+import ToastContext from "../context/ToastContext";
+import Card from "react-bootstrap/Card";
 
 const CreateEmployee = () => {
   const { user } = useContext(AuthContext);
   const { toast } = useContext(ToastContext);
 
   const [userDetails, setUserDetails] = useState({
-    firstname: '',
-    lastname: '',
-    email: '',
-    phone: '',
-    datejoined: '',
-    department: '',
-    designation: '',
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    datejoined: "",
+    department: "",
+    designation: "",
   });
   const navigate = useNavigate();
 
@@ -32,10 +32,10 @@ const CreateEmployee = () => {
     event.preventDefault(); //prevent the default behaviour of the form; which is to refresh the page
 
     const res = await fetch(`http://localhost:8000/api/employee`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify(userDetails),
     });
@@ -44,13 +44,13 @@ const CreateEmployee = () => {
       toast.success(`Employee [${userDetails.firstname}] Added Successfully`);
 
       setUserDetails({
-        firstname: '',
-        lastname: '',
-        email: '',
-        phone: '',
-        datejoined: '',
-        department: '',
-        designation: '',
+        firstname: "",
+        lastname: "",
+        email: "",
+        phone: "",
+        datejoined: "",
+        department: "",
+        designation: "",
       });
     } else {
       toast.error(result.error);
@@ -59,13 +59,13 @@ const CreateEmployee = () => {
 
   const handleClear = () => {
     setUserDetails({
-      firstname: '',
-      lastname: '',
-      email: '',
-      phone: '',
-      datejoined: '',
-      department: '',
-      designation: '',
+      firstname: "",
+      lastname: "",
+      email: "",
+      phone: "",
+      datejoined: "",
+      department: "",
+      designation: "",
     });
   };
 

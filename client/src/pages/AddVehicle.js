@@ -90,18 +90,18 @@ export const AddVehicle = () => {
     }
 
     if (registerNo.length > 8) {
-      toast.error("Inavlid Register No.....")
-      return false
+      toast.error("Inavlid Register No.....");
+      return false;
     }
 
     if (manufactureYear.length !== 4) {
-      toast.error("Invalid manufacturing year!..")
-      return false
+      toast.error("Invalid manufacturing year!..");
+      return false;
     }
 
     if (chassisNo.length > 20) {
-      toast.error("Invalid Chassis No.....")
-      return false
+      toast.error("Invalid Chassis No.....");
+      return false;
     }
 
     // const res = await fetch("/registerVehicle", {
@@ -159,197 +159,198 @@ export const AddVehicle = () => {
   return (
     <div className="container">
       <div className="d-flex">
-        <h2>Register Vehicle</h2>
+        <h2 className="text-center bg-darkgreen text-white p-2">
+          Register Vehicle
+        </h2>
       </div>
-      <Card className="shadow card">
-        <form className="mt-4">
-          <div className="row">
-            <div class="mb-3 col-lg-6 col-md-6 col-12">
-              <label for="exampleInputEmail1" class="form-label">
-                <b>Register No</b>  
-              </label>
-              <input
-                type="text"
-                value={inpval.registerNo}
-                onChange={setdata}
-                name="registerNo"
-                class="form-control"
-              />
-              {error && !inpval.registerNo && (
-                <span className="invalid-input">
-                  Register No can't be Empty
-                </span>
-              )}
-            </div>
-            <div class="mb-3 col-lg-6 col-md-6 col-12">
-              <label for="exampleInputEmail1" class="form-label">
-                <b>Vehicle Type</b>
-              </label>
-              <input
-                type="text"
-                value={inpval.vehicleType}
-                onChange={setdata}
-                name="vehicleType"
-                class="form-control"
-              />
-              {error && !inpval.vehicleType && (
-                <span className="invalid-input">
-                  Vehicle Type can't be Empty
-                </span>
-              )}
-            </div>
-            <div class="mb-3 col-lg-6 col-md-6 col-12">
-              <label for="exampleInputPassword1" class="form-label">
-                <b>Brand</b>
-              </label>
-              <input
-                type="email"
-                value={inpval.brand}
-                onChange={setdata}
-                name="brand"
-                class="form-control"
-              />
-              {error && !inpval.brand && (
-                <span className="invalid-input">brand can't be Empty</span>
-              )}
-            </div>
-            <div class="mb-3 col-lg-6 col-md-6 col-12">
-              <label for="exampleInputPassword1" class="form-label">
-                <b>Model</b>
-              </label>
-              <input
-                type="text"
-                value={inpval.model}
-                onChange={setdata}
-                name="model"
-                class="form-control"
-              />
-              {error && !inpval.model && (
-                <span className="invalid-input">Model can't be Empty</span>
-              )}
-            </div>
-            <div class="mb-3 col-lg-6 col-md-6 col-12">
-              <label for="exampleInputPassword1" class="form-label">
-                <b>Fuel Type</b>
-              </label>
-              <select
-                value={inpval.fuelType}
-                onChange={setdata}
-                name="fuelType"
-                className="form-select"
-              >
-                <option>Select Fuel Type</option>
-                <option>Diesal</option>
-                <option>Petrol</option>
-              </select>
-              {error && !inpval.fuelType && (
-                <span className="invalid-input">Fuel Type can't be Empty</span>
-              )}
-            </div>
-            <Form.Group className="mb-3 col-lg-6" controlId="formBasicEmail">
-              <Form.Label><b>Select Vehicle Image</b></Form.Label>
-              <Form.Control
-                type="file"
-                name="user_profile"
-                onChange={setProfile}
-                placeholder="Select Your Profile"
-              />
-            </Form.Group>
-            <Form.Group className="mb-3 col-lg-6" controlId="formBasicEmail">
-              <Form.Label><b>Select Vehicle Status</b></Form.Label>
-              <Select options={options} onChange={setStatusValue} />
-            </Form.Group>
-            <div class="mb-3 col-lg-6 col-md-6 col-12">
-              <label for="exampleInputPassword1" class="form-label">
-                <b>Vehicle Color</b>
-              </label>
-              <input
-                type="text"
-                value={inpval.vehicleColor}
-                onChange={setdata}
-                name="vehicleColor"
-                class="form-control"
-              />
-              {error && !inpval.vehicleColor && (
-                <span className="invalid-input">
-                  Vehicle Color can't be Empty
-                </span>
-              )}
-            </div>
-            <div class="mb-3 col-lg-6 col-md-6 col-12">
-              <label for="exampleInputPassword1" class="form-label">
-                <b>Manufacture Year</b>
-              </label>
-              <input
-                type="text"
-                value={inpval.manufactureYear}
-                onChange={setdata}
-                name="manufactureYear"
-                class="form-control"
-              />
-              {error && !inpval.manufactureYear && (
-                <span className="invalid-input">
-                  Manufacture Year can't be Empty
-                </span>
-              )}
-            </div>
-            <div class="mb-3 col-lg-6 col-md-6 col-12">
-              <label for="exampleInputPassword1" class="form-label">
-                <b>Chassis No</b>
-              </label>
-              <input
-                type="text"
-                value={inpval.chassisNo}
-                onChange={setdata}
-                name="chassisNo"
-                class="form-control"
-              />
-              {error && !inpval.chassisNo && (
-                <span className="invalid-input">Chassis No can't be Empty</span>
-              )}
-            </div>
-            <div class="mb-3 col-lg-6 col-md-6 col-12">
-              <label for="exampleInputPassword1" class="form-label">
-                <b>Licence Expired Date</b>
-              </label>
-              <input
-                type="date"
-                name="LicenceExpiredDate"
-                value={inpval.LicenceExpiredDate}
-                onChange={setdata}
-                className="form-control"
-              />
-              {error && !inpval.LicenceExpiredDate && (
-                <span className="invalid-input">
-                  Licence Expired Date can't be Empty
-                </span>
-              )}
-            </div>
 
-            <div class="mb-3 col-lg-6 col-md-6 col-12">
-              <label for="exampleInputPassword1" class="form-label">
-                <b>Insurance Expired Date</b>
-              </label>
-              <input
-                type="date"
-                name="InsuranceExpiredDate"
-                value={inpval.InsuranceExpiredDate}
-                onChange={setdata}
-                className="form-control"
-              />
-              {error && !inpval.InsuranceExpiredDate && (
-                <span className="invalid-input">
-                  Insurance Expired Date can't be Empty
-                </span>
-              )}
-            </div>
+      <form className="mt-4">
+        <div className="row">
+          <div class="mb-3 col-lg-6 col-md-6 col-12">
+            <label for="exampleInputEmail1" class="form-label">
+              <b>Register No</b>
+            </label>
+            <input
+              type="text"
+              value={inpval.registerNo}
+              onChange={setdata}
+              name="registerNo"
+              class="form-control"
+            />
+            {error && !inpval.registerNo && (
+              <span className="invalid-input">Register No can't be Empty</span>
+            )}
+          </div>
+          <div class="mb-3 col-lg-6 col-md-6 col-12">
+            <label for="exampleInputEmail1" class="form-label">
+              <b>Vehicle Type</b>
+            </label>
+            <input
+              type="text"
+              value={inpval.vehicleType}
+              onChange={setdata}
+              name="vehicleType"
+              class="form-control"
+            />
+            {error && !inpval.vehicleType && (
+              <span className="invalid-input">Vehicle Type can't be Empty</span>
+            )}
+          </div>
+          <div class="mb-3 col-lg-6 col-md-6 col-12">
+            <label for="exampleInputPassword1" class="form-label">
+              <b>Brand</b>
+            </label>
+            <input
+              type="email"
+              value={inpval.brand}
+              onChange={setdata}
+              name="brand"
+              class="form-control"
+            />
+            {error && !inpval.brand && (
+              <span className="invalid-input">brand can't be Empty</span>
+            )}
+          </div>
+          <div class="mb-3 col-lg-6 col-md-6 col-12">
+            <label for="exampleInputPassword1" class="form-label">
+              <b>Model</b>
+            </label>
+            <input
+              type="text"
+              value={inpval.model}
+              onChange={setdata}
+              name="model"
+              class="form-control"
+            />
+            {error && !inpval.model && (
+              <span className="invalid-input">Model can't be Empty</span>
+            )}
+          </div>
+          <div class="mb-3 col-lg-6 col-md-6 col-12">
+            <label for="exampleInputPassword1" class="form-label">
+              <b>Fuel Type</b>
+            </label>
+            <select
+              value={inpval.fuelType}
+              onChange={setdata}
+              name="fuelType"
+              className="form-select"
+            >
+              <option>Select Fuel Type</option>
+              <option>Diesal</option>
+              <option>Petrol</option>
+            </select>
+            {error && !inpval.fuelType && (
+              <span className="invalid-input">Fuel Type can't be Empty</span>
+            )}
+          </div>
+          <Form.Group className="mb-3 col-lg-6" controlId="formBasicEmail">
+            <Form.Label>
+              <b>Select Vehicle Image</b>
+            </Form.Label>
+            <Form.Control
+              type="file"
+              name="user_profile"
+              onChange={setProfile}
+              placeholder="Select Your Profile"
+            />
+          </Form.Group>
+          <Form.Group className="mb-3 col-lg-6" controlId="formBasicEmail">
+            <Form.Label>
+              <b>Select Vehicle Status</b>
+            </Form.Label>
+            <Select options={options} onChange={setStatusValue} />
+          </Form.Group>
+          <div class="mb-3 col-lg-6 col-md-6 col-12">
+            <label for="exampleInputPassword1" class="form-label">
+              <b>Vehicle Color</b>
+            </label>
+            <input
+              type="text"
+              value={inpval.vehicleColor}
+              onChange={setdata}
+              name="vehicleColor"
+              class="form-control"
+            />
+            {error && !inpval.vehicleColor && (
+              <span className="invalid-input">
+                Vehicle Color can't be Empty
+              </span>
+            )}
+          </div>
+          <div class="mb-3 col-lg-6 col-md-6 col-12">
+            <label for="exampleInputPassword1" class="form-label">
+              <b>Manufacture Year</b>
+            </label>
+            <input
+              type="text"
+              value={inpval.manufactureYear}
+              onChange={setdata}
+              name="manufactureYear"
+              class="form-control"
+            />
+            {error && !inpval.manufactureYear && (
+              <span className="invalid-input">
+                Manufacture Year can't be Empty
+              </span>
+            )}
+          </div>
+          <div class="mb-3 col-lg-6 col-md-6 col-12">
+            <label for="exampleInputPassword1" class="form-label">
+              <b>Chassis No</b>
+            </label>
+            <input
+              type="text"
+              value={inpval.chassisNo}
+              onChange={setdata}
+              name="chassisNo"
+              class="form-control"
+            />
+            {error && !inpval.chassisNo && (
+              <span className="invalid-input">Chassis No can't be Empty</span>
+            )}
+          </div>
+          <div class="mb-3 col-lg-6 col-md-6 col-12">
+            <label for="exampleInputPassword1" class="form-label">
+              <b>Licence Expired Date</b>
+            </label>
+            <input
+              type="date"
+              name="LicenceExpiredDate"
+              value={inpval.LicenceExpiredDate}
+              onChange={setdata}
+              className="form-control"
+            />
+            {error && !inpval.LicenceExpiredDate && (
+              <span className="invalid-input">
+                Licence Expired Date can't be Empty
+              </span>
+            )}
           </div>
 
-          <button type="submit" onClick={addinpdata} class=" btn-style">
-            Submit
-          </button>
-        </form>
-      </Card>
+          <div class="mb-3 col-lg-6 col-md-6 col-12">
+            <label for="exampleInputPassword1" class="form-label">
+              <b>Insurance Expired Date</b>
+            </label>
+            <input
+              type="date"
+              name="InsuranceExpiredDate"
+              value={inpval.InsuranceExpiredDate}
+              onChange={setdata}
+              className="form-control"
+            />
+            {error && !inpval.InsuranceExpiredDate && (
+              <span className="invalid-input">
+                Insurance Expired Date can't be Empty
+              </span>
+            )}
+          </div>
+        </div>
+
+        <button type="submit" onClick={addinpdata} class=" btn-style">
+          Submit
+        </button>
+      </form>
     </div>
   );
 };

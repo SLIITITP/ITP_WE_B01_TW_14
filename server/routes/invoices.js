@@ -61,10 +61,7 @@ router.get("/allInv", auth, async (req, res) => {
   //     });
 
   try {
-    const invoice = await Invoice.find({ postedBy: req.user._id }).populate(
-      "postedBy",
-      "-password"
-    );
+    const invoice = await Invoice.find({}).populate("postedBy", "-password");
 
     return res.status(200).json({ invoice: invoice });
     // return res.status(200).json({ employee: employee.reverse() });
