@@ -20,7 +20,7 @@ const Header = () => {
           className="navbar-brand"
           style={{ textDecoration: "none" }}
         >
-          <h1 className="m-2 text-white " style={{ paddingLeft: "25px" }}>
+          <h1 className="m-2 text-white" style={{ paddingLeft: "25px" }}>
             Southern Agro
           </h1>
         </Link>
@@ -62,7 +62,7 @@ const Header = () => {
           {user.role === "HR Manager" && (
             <img
               src={
-                "https://media.licdn.com/dms/image/C5603AQE8grUhgHpt2g/profile-displayphoto-shrink_400_400/0/1659579550842?e=1689206400&v=beta&t=6h28vX-YyfU1OlNA0cZNyqd-Md1raXIomtDBM9ABHSM"
+                "https://media.licdn.com/dms/image/D5603AQHP3Pcr3WftmA/profile-displayphoto-shrink_400_400/0/1687081611222?e=1693440000&v=beta&t=4KoE3y-HRW-J2PoP7T5R35dYeo1BMwoz4sLcBFyTVwM"
               }
               alt={user.name}
               className="rounded-circle mr-2"
@@ -134,7 +134,7 @@ const Header = () => {
           {user.role === "Supplier Manager" && (
             <img
               src={
-                "https://media.licdn.com/dms/image/C4E03AQHB_MIwKJx34w/profile-displayphoto-shrink_100_100/0/1625974004067?e=1689206400&v=beta&t=S-zJ17gQe6GBTK-3w4jOwfyk4tf53wPyTioY-OenTss"
+                "https://media.licdn.com/dms/image/D5603AQFRfwp34BSWaQ/profile-displayphoto-shrink_400_400/0/1684298473935?e=1689811200&v=beta&t=v-EMeI6tUvbYcHGobcUzkdGFqKWoITv26WNdjjkWx1c"
               }
               alt={user.name}
               className="rounded-circle mr-2"
