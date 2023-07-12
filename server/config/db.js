@@ -5,7 +5,7 @@ const connectDB = async () => {
   return (
     mongoose
       .connect(
-        "mongodb+srv://Ykods:upRvsKM9ybdb4rnl@cluster0.cvi3gmx.mongodb.net/employee_db?retryWrites=true&w=majority"
+        "URL"
       )
       .then(() => console.log(`connection to Database established`))
       //if any error occurs while connecting to the database, we will catch it here.
